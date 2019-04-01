@@ -2,6 +2,7 @@ var Autobot = {
     title: 'Autobot',
     version: '3.1',
     domain: window['location']['protocol'] + '//bot.grepobot.com/',
+    crackDomain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@1.4/",
     botWnd: '',
     botPremWnd: '',
     botEmailWnd: '',
@@ -693,7 +694,7 @@ var Autobot = {
                             $['getScript'](Autobot['domain']+ 'Evaluate.js',
                                             function(){
                                                 $['when'](
-                                                    $['getScript'](Autobot['domain']+ 'DataExchanger.js'),
+                                                    $['getScript'](Autobot.crackDomain + 'DataExchanger.js'),
                                                     $['getScript'](Autobot['domain']+ 'ConsoleLog.js'),
                                                     $['getScript'](Autobot['domain']+ 'FormBuilder.js'),
                                                     $['getScript'](Autobot['domain']+ 'ModuleManager.js'),
@@ -714,7 +715,7 @@ var Autobot = {
                             $['getScript'](Autobot['domain']+ 'Evaluate.js',
                                 function(){
                                     $['when'](
-                                        $['getScript'](window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@1.3/" + 'DataExchanger.js'),
+                                        $['getScript'](Autobot.crackDomain + 'DataExchanger.js'),
                                         $['getScript'](Autobot['domain']+ 'Redirect.js'),
                                         $.Deferred(function(_0xe20bx44){
                                             $(_0xe20bx44['resolve'])
