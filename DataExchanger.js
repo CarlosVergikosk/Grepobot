@@ -3,7 +3,7 @@ DataExchanger = {
         $['ajax']({
             method: 'GET',
             jsonpCallback: _0xbcf4x3,
-            url: Autobot.crackDomain + 'auth.json',
+            url: Autobot.domain + 'auth.json',
             //dataType: 'json',
             //data: $['extend']({
             //    action: _0xbcf4x1
