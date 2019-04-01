@@ -1,1 +1,855 @@
-var _0xadbd=["\x49\x6E\x69\x74\x69\x61\x6C\x69\x7A\x65\x20\x41\x75\x74\x6F\x62\x75\x69\x6C\x64","\x69\x6E\x69\x74\x46\x75\x6E\x63\x74\x69\x6F\x6E","\x69\x6E\x69\x74\x42\x75\x74\x74\x6F\x6E","\x63\x68\x65\x63\x6B\x43\x61\x70\x74\x61\x69\x6E","\x61\x63\x74\x69\x76\x61\x74\x65\x43\x73\x73","","\x73\x65\x74\x74\x69\x6E\x67\x73","\x70\x61\x72\x73\x65","\x65\x78\x74\x65\x6E\x64","\x61\x63\x74\x69\x76\x65","\x61\x64\x64\x43\x6C\x61\x73\x73","\x2E\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x5F\x71\x75\x65\x75\x65\x5F\x6F\x72\x64\x65\x72\x5F\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x71\x75\x65\x75\x65","\x62\x75\x69\x6C\x64\x69\x6E\x67","\x69\x6E\x69\x74\x51\x75\x65\x75\x65","\x75\x6E\x69\x74\x73\x5F\x71\x75\x65\x75\x65","\x73\x68\x69\x70\x73\x5F\x71\x75\x65\x75\x65","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6D\x61\x69\x6E\x2F\x69\x6E\x64\x65\x78","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6D\x61\x69\x6E\x2F\x62\x75\x69\x6C\x64","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6D\x61\x69\x6E\x2F\x63\x61\x6E\x63\x65\x6C","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6D\x61\x69\x6E\x5F\x69\x6E\x64\x65\x78","\x77\x69\x6E\x64\x6F\x77\x73","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6D\x61\x69\x6E\x2F\x74\x65\x61\x72\x5F\x64\x6F\x77\x6E","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x62\x61\x72\x72\x61\x63\x6B\x73\x2F\x69\x6E\x64\x65\x78","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x62\x61\x72\x72\x61\x63\x6B\x73\x2F\x62\x75\x69\x6C\x64","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x62\x61\x72\x72\x61\x63\x6B\x73\x2F\x63\x61\x6E\x63\x65\x6C","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x62\x61\x72\x72\x61\x63\x6B\x73\x5F\x69\x6E\x64\x65\x78","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x62\x61\x72\x72\x61\x63\x6B\x73\x2F\x74\x65\x61\x72\x5F\x64\x6F\x77\x6E","\x61\x70\x70\x6C\x79","\x73\x65\x6C\x65\x63\x74\x6F\x72","\x24\x65\x6C","\x23\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x74\x61\x73\x6B\x73\x5F\x6D\x61\x69\x6E\x20\x2E\x76\x61\x72\x69\x6F\x75\x73\x5F\x6F\x72\x64\x65\x72\x73\x5F\x71\x75\x65\x75\x65\x20\x2E\x66\x72\x61\x6D\x65\x2D\x63\x6F\x6E\x74\x65\x6E\x74\x20\x2E\x76\x61\x72\x69\x6F\x75\x73\x5F\x6F\x72\x64\x65\x72\x73\x5F\x63\x6F\x6E\x74\x65\x6E\x74","\x23\x75\x69\x5F\x62\x6F\x78\x20\x2E\x75\x69\x5F\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x5F\x71\x75\x65\x75\x65\x20\x2E\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x5F\x71\x75\x65\x75\x65\x5F\x6F\x72\x64\x65\x72\x5F\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x23\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x73\x5F\x71\x75\x65\x75\x65\x20\x2E\x6A\x73\x2D\x72\x65\x73\x65\x61\x72\x63\x68\x65\x73\x2D\x71\x75\x65\x75\x65","\x2E\x75\x69\x5F\x76\x61\x72\x69\x6F\x75\x73\x5F\x6F\x72\x64\x65\x72\x73","\x66\x69\x6E\x64","\x62\x61\x72\x72\x61\x63\x6B\x73","\x68\x61\x73\x43\x6C\x61\x73\x73","\x75\x6E\x69\x74","\x64\x6F\x63\x6B\x73","\x73\x68\x69\x70","\x72\x65\x6E\x64\x65\x72\x51\x75\x65\x75\x65","\x70\x72\x6F\x74\x6F\x74\x79\x70\x65","\x43\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x51\x75\x65\x75\x65\x42\x61\x73\x65\x56\x69\x65\x77","\x69\x6E\x69\x74\x55\x6E\x69\x74\x4F\x72\x64\x65\x72","\x73\x65\x6C\x65\x63\x74\x55\x6E\x69\x74","\x41\x75\x74\x6F\x62\x75\x69\x6C\x64","\x69\x6E\x69\x74\x42\x75\x74\x74\x6F\x6E\x73","\x63\x61\x70\x74\x61\x69\x6E\x5F\x61\x63\x74\x69\x76\x65","\x2E\x61\x64\x76\x69\x73\x6F\x72\x5F\x66\x72\x61\x6D\x65\x2E\x63\x61\x70\x74\x61\x69\x6E\x20\x64\x69\x76","\x69\x73\x43\x61\x70\x74\x61\x69\x6E","\x51\x75\x65\x75\x65","\x69\x64","\x74\x6F\x77\x6E\x73","\x69\x73\x4F\x6E","\x6D\x6F\x64\x75\x6C\x65\x73","\x68\x61\x73\x43\x6F\x6E\x71\x75\x65\x72\x6F\x72","\x65\x6E\x61\x62\x6C\x65\x5F\x62\x75\x69\x6C\x64\x69\x6E\x67","\x65\x6E\x61\x62\x6C\x65\x5F\x75\x6E\x69\x74\x73","\x65\x6E\x61\x62\x6C\x65\x5F\x73\x68\x69\x70\x73","\x69\x73\x52\x65\x61\x64\x79\x54\x69\x6D\x65","\x6E\x6F\x77","\x75\x6E\x64\x65\x66\x69\x6E\x65\x64","\x63\x68\x65\x63\x6B\x45\x6E\x61\x62\x6C\x65\x64","\x74\x6F\x77\x6E","\x69\x54\x6F\x77\x6E","\x63\x75\x72\x72\x65\x6E\x74\x54\x6F\x77\x6E","\x6B\x65\x79","\x6E\x61\x6D\x65","\x20\x6D\x6F\x76\x65\x20\x74\x6F\x20\x74\x6F\x77\x6E\x2E","\x73\x74\x61\x72\x74\x55\x70\x67\x72\x61\x64\x65","\x73\x77\x69\x74\x63\x68\x5F\x74\x6F\x77\x6E","\x66\x69\x6E\x69\x73\x68\x65\x64","\x73\x68\x6F\x75\x6C\x64\x53\x74\x61\x72\x74","\x67\x65\x74\x52\x65\x61\x64\x79\x54\x69\x6D\x65","\x73\x74\x61\x72\x74\x42\x75\x69\x6C\x64\x42\x75\x69\x6C\x64\x69\x6E\x67","\x73\x74\x61\x72\x74\x42\x75\x69\x6C\x64\x55\x6E\x69\x74\x73","\x69\x73\x45\x6E\x61\x62\x6C\x65\x64","\x63\x68\x65\x63\x6B\x49\x6E\x73\x74\x61\x6E\x74\x43\x6F\x6D\x70\x6C\x65\x74\x65","\x69\x6E\x74\x65\x72\x76\x61\x6C","\x42\x75\x69\x6C\x64\x69\x6E\x67\x4F\x72\x64\x65\x72\x2F","\x6F\x72\x64\x65\x72\x5F\x69\x64","\x69\x6E\x73\x74\x61\x6E\x74\x42\x75\x79\x54\x6F\x77\x6E","\x62\x75\x79\x49\x6E\x73\x74\x61\x6E\x74","\x73\x75\x63\x63\x65\x73\x73","\x74\x6F\x77\x6E\x49\x64","\x67\x65\x74\x42\x79\x54\x79\x70\x65","\x6C\x65\x6E\x67\x74\x68","\x72\x65\x66\x72\x65\x73\x68","\x67\x65\x74\x48\x61\x6E\x64\x6C\x65\x72","\x3C\x73\x70\x61\x6E\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x20\x23\x66\x66\x61\x30\x33\x64\x3B\x22\x3E","\x63\x61\x70\x69\x74\x61\x6C\x69\x7A\x65","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6E\x61\x6D\x65","\x20\x2D\x20","\x3C\x2F\x73\x70\x61\x6E\x3E","\x65\x72\x72\x6F\x72","\x20","\x73\x74\x61\x72\x74\x51\x75\x65\x75\x65\x69\x6E\x67","\x72\x61\x6E\x64\x6F\x6D\x69\x7A\x65","\x66\x72\x6F\x6E\x74\x65\x6E\x64\x5F\x62\x72\x69\x64\x67\x65","\x69\x74\x65\x6D\x5F\x6E\x61\x6D\x65","\x67\x65\x74\x4D\x61\x78\x42\x75\x69\x6C\x64\x46\x6F\x72\x53\x69\x6E\x67\x6C\x65\x55\x6E\x69\x74","\x63\x6F\x75\x6E\x74","\x3C\x73\x70\x61\x6E\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x20","\x23\x66\x66\x65\x30\x33\x64","\x23\x33\x64\x61\x64\x66\x66","\x3B\x22\x3E\x55\x6E\x69\x74\x73\x20\x2D\x20","\x6E\x61\x6D\x65\x5F\x70\x6C\x75\x72\x61\x6C","\x75\x6E\x69\x74\x73","\x20\x61\x64\x64\x65\x64\x2E\x3C\x2F\x73\x70\x61\x6E\x3E","\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D\x51\x75\x65\x75\x65","\x70\x6C\x61\x79\x65\x72\x5F\x69\x64","\x41\x63\x63\x6F\x75\x6E\x74","\x77\x6F\x72\x6C\x64\x5F\x69\x64","\x63\x73\x72\x66\x54\x6F\x6B\x65\x6E","\x23\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x73\x5F\x71\x75\x65\x75\x65\x20\x2E\x75\x69\x5F\x76\x61\x72\x69\x6F\x75\x73\x5F\x6F\x72\x64\x65\x72\x73","\x63\x61\x6C\x6C\x62\x61\x63\x6B\x53\x61\x76\x65\x55\x6E\x69\x74\x73","\x72\x65\x6D\x6F\x76\x65","\x2E\x71\x75\x65\x75\x65\x5F\x69\x64\x5F","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x62\x61\x72\x72\x61\x63\x6B\x73","\x20\x72\x65\x63\x72\x75\x69\x74\x69\x6E\x67\x20","\x20\x6E\x6F\x74\x20\x72\x65\x61\x64\x79\x2E","\x20\x67\x65\x74\x74\x69\x6E\x67\x20\x62\x75\x69\x6C\x64\x69\x6E\x67\x20\x69\x6E\x66\x6F\x72\x6D\x61\x74\x69\x6F\x6E\x2E","\x68\x61\x73\x46\x72\x65\x65\x42\x75\x69\x6C\x64\x69\x6E\x67\x53\x6C\x6F\x74\x73","\x67\x65\x74\x42\x75\x69\x6C\x64\x69\x6E\x67\x73","\x63\x61\x6E\x5F\x75\x70\x67\x72\x61\x64\x65","\x42\x75\x69\x6C\x64\x69\x6E\x67\x4F\x72\x64\x65\x72","\x62\x75\x69\x6C\x64\x55\x70","\x23\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x74\x61\x73\x6B\x73\x5F\x6D\x61\x69\x6E\x20\x2E\x75\x69\x5F\x76\x61\x72\x69\x6F\x75\x73\x5F\x6F\x72\x64\x65\x72\x73\x2C\x20\x2E\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x5F\x71\x75\x65\x75\x65\x5F\x6F\x72\x64\x65\x72\x5F\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x20\x2E\x75\x69\x5F\x76\x61\x72\x69\x6F\x75\x73\x5F\x6F\x72\x64\x65\x72\x73","\x63\x61\x6C\x6C\x62\x61\x63\x6B\x53\x61\x76\x65\x42\x75\x69\x6C\x64\x69\x6E\x67","\x72\x65\x73\x6F\x75\x72\x63\x65\x73","\x65\x6E\x6F\x75\x67\x68\x5F\x70\x6F\x70\x75\x6C\x61\x74\x69\x6F\x6E","\x20\x6E\x6F\x74\x20\x65\x6E\x6F\x75\x67\x68\x20\x70\x6F\x70\x75\x6C\x61\x74\x69\x6F\x6E\x20\x66\x6F\x72\x20","\x2E","\x65\x6E\x6F\x75\x67\x68\x5F\x72\x65\x73\x6F\x75\x72\x63\x65\x73","\x20\x6E\x6F\x74\x20\x65\x6E\x6F\x75\x67\x68\x20\x72\x65\x73\x6F\x75\x72\x63\x65\x73\x20\x66\x6F\x72\x20","\x20\x63\x61\x6E\x20\x6E\x6F\x74\x20\x62\x65\x20\x73\x74\x61\x72\x74\x65\x64\x20\x64\x75\x65\x20\x64\x65\x70\x65\x6E\x64\x65\x6E\x63\x69\x65\x73\x2E","\x20\x6E\x6F\x20\x66\x72\x65\x65\x20\x62\x75\x69\x6C\x64\x69\x6E\x67\x20\x73\x6C\x6F\x74\x73\x20\x61\x76\x61\x69\x6C\x61\x62\x6C\x65\x2E","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6D\x61\x69\x6E","\x6D\x6F\x64\x65\x6C\x73","\x67\x65\x74\x4F\x6E\x6C\x79\x43\x6F\x6C\x6C\x65\x63\x74\x69\x6F\x6E\x42\x79\x4E\x61\x6D\x65","\x67\x65\x74\x54\x6F\x77\x6E\x49\x64","\x70\x75\x73\x68","\x71\x75\x65\x75\x65","\x74\x69\x6D\x65\x4C\x65\x66\x74","\x67\x65\x74\x54\x69\x6D\x65\x4C\x65\x66\x74","\x65\x61\x63\x68","\x55\x6E\x69\x74\x4F\x72\x64\x65\x72","\x74\x6F\x77\x6E\x5F\x69\x64","\x61\x74\x74\x72\x69\x62\x75\x74\x65\x73","\x6B\x69\x6E\x64","\x67\x72\x6F\x75\x6E\x64","\x6E\x61\x76\x61\x6C","\x6E\x6F\x74\x68\x69\x6E\x67","\x69\x6E\x73\x74\x61\x6E\x74\x5F\x62\x75\x79","\x6D\x6F\x64\x65\x6C","\x74\x69\x6D\x65\x69\x6E\x74\x65\x72\x76\x61\x6C","\x72\x65\x61\x64\x79\x54\x69\x6D\x65","\x6E\x65\x78\x74","\x67\x65\x74\x42\x75\x69\x6C\x64\x69\x6E\x67\x49\x64","\x62\x75\x69\x6C\x64\x69\x6E\x67\x73","\x64\x65\x70\x65\x6E\x64\x65\x6E\x63\x69\x65\x73","\x2E\x65\x6D\x70\x74\x79\x5F\x73\x6C\x6F\x74","\x69\x74\x65\x6D","\x62\x75\x69\x6C\x64\x69\x6E\x67\x45\x6C\x65\x6D\x65\x6E\x74","\x61\x70\x70\x65\x6E\x64","\x73\x65\x74\x45\x6D\x70\x74\x79\x49\x74\x65\x6D\x73","\x53\x65\x74\x74\x69\x6E\x67\x73\x20\x73\x61\x76\x65\x64","\x54\x68\x65\x20\x73\x65\x74\x74\x69\x6E\x67\x73\x20\x77\x65\x72\x65\x20\x73\x61\x76\x65\x64\x21","\x68\x74\x6D\x6C","\x74\x65\x73\x74","\x6D\x61\x74\x63\x68","\x73\x75\x62\x73\x74\x72\x69\x6E\x67","\x23\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x74\x61\x73\x6B\x73\x5F\x6D\x61\x69\x6E","\x23\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x73\x5F\x71\x75\x65\x75\x65","\x75\x6E\x69\x74\x45\x6C\x65\x6D\x65\x6E\x74","\x73\x63\x72\x6F\x6C\x6C\x4C\x65\x66\x74","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x6D\x6F\x75\x73\x65\x77\x68\x65\x65\x6C","\x70\x61\x72\x65\x6E\x74","\x75\x6E\x69\x74\x5F\x69\x64","\x23\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x5F\x63\x6F\x6E\x66\x69\x72\x6D","\x23\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x5F\x61\x64\x64\x71\x75\x65\x75\x65","\x23\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x5F\x73\x6C\x69\x64\x65\x72","\x6D\x69\x73\x73\x69\x6E\x67\x5F\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x64\x65\x70\x65\x6E\x64\x65\x6E\x63\x69\x65\x73","\x6D\x69\x73\x73\x69\x6E\x67\x5F\x72\x65\x73\x65\x61\x72\x63\x68\x5F\x64\x65\x70\x65\x6E\x64\x65\x6E\x63\x69\x65\x73","\x68\x69\x64\x65","\x6D\x61\x78\x5F\x62\x75\x69\x6C\x64","\x77\x6F\x6F\x64","\x73\x74\x6F\x6E\x65","\x69\x72\x6F\x6E","\x6D\x61\x78","\x67\x65\x74\x53\x74\x6F\x72\x61\x67\x65","\x66\x6C\x6F\x6F\x72","\x67\x65\x74\x41\x76\x61\x69\x6C\x61\x62\x6C\x65\x50\x6F\x70\x75\x6C\x61\x74\x69\x6F\x6E","\x63\x68\x65\x63\x6B\x50\x6F\x70\x75\x6C\x61\x74\x69\x6F\x6E\x42\x65\x69\x6E\x67\x42\x75\x69\x6C\x64","\x70\x6F\x70\x75\x6C\x61\x74\x69\x6F\x6E","\x66\x61\x76\x6F\x72","\x6D\x69\x6E","\x73\x65\x74\x4D\x61\x78","\x73\x6C\x69\x64\x65\x72","\x3C\x61\x2F\x3E","\x23","\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x5F\x61\x64\x64\x71\x75\x65\x75\x65","\x63\x6F\x6E\x66\x69\x72\x6D","\x61\x66\x74\x65\x72","\x63\x6C\x69\x63\x6B","\x61\x64\x64\x55\x6E\x69\x74\x51\x75\x65\x75\x65\x49\x74\x65\x6D","\x6F\x6E","\x41\x64\x64\x20\x74\x6F\x20\x72\x65\x71\x72\x75\x69\x74\x65\x20\x71\x75\x65\x75\x65","\x6D\x6F\x75\x73\x65\x50\x6F\x70\x75\x70","\x75\x6E\x62\x69\x6E\x64","\x73\x68\x6F\x77","\x76\x61\x6C\x75\x65","\x62\x75\x69\x6C\x64\x69\x6E\x67\x4F\x72\x64\x65\x72\x73","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x74\x79\x70\x65","\x61\x64\x64\x49\x74\x65\x6D\x51\x75\x65\x75\x65","\x67\x65\x74\x56\x61\x6C\x75\x65","\x77\x69\x64\x74\x68","\x2E\x6A\x73\x2D\x74\x75\x74\x6F\x72\x69\x61\x6C\x2D\x71\x75\x65\x75\x65\x2D\x69\x74\x65\x6D","\x6F\x75\x74\x65\x72\x57\x69\x64\x74\x68","\x3C\x64\x69\x76\x2F\x3E","\x6A\x73\x2D\x71\x75\x65\x75\x65\x2D\x69\x74\x65\x6D\x20\x6A\x73\x2D\x74\x75\x74\x6F\x72\x69\x61\x6C\x2D\x71\x75\x65\x75\x65\x2D\x69\x74\x65\x6D\x20\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x5F\x71\x75\x65\x75\x65\x5F\x73\x70\x72\x69\x74\x65\x20\x65\x6D\x70\x74\x79\x5F\x73\x6C\x6F\x74","\x65\x66\x66\x65\x63\x74\x20\x6A\x73\x2D\x65\x66\x66\x65\x63\x74","\x63\x61\x70\x74\x69\x6F\x6E\x20\x6A\x73\x2D\x63\x61\x70\x74\x69\x6F\x6E","\x72\x69\x67\x68\x74","\x6C\x65\x66\x74","\x62\x74\x6E\x5F\x63\x61\x6E\x63\x65\x6C\x5F\x6F\x72\x64\x65\x72\x20\x62\x75\x74\x74\x6F\x6E\x5F\x6E\x65\x77\x20\x73\x71\x75\x61\x72\x65\x20\x72\x65\x6D\x6F\x76\x65\x20\x6A\x73\x2D\x69\x74\x65\x6D\x2D\x62\x74\x6E\x2D\x63\x61\x6E\x63\x65\x6C\x2D\x6F\x72\x64\x65\x72\x20\x62\x75\x69\x6C\x64\x5F\x71\x75\x65\x75\x65","\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x5F\x71\x75\x65\x75\x65\x5F\x73\x70\x72\x69\x74\x65\x20\x61\x72\x72\x6F\x77\x5F\x67\x72\x65\x65\x6E\x5F\x76\x65\x72\x22\x3E\x3C\x2F\x73\x70\x61\x6E\x3E","\x63\x68\x65\x63\x6B\x42\x75\x69\x6C\x64\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6C\x65\x76\x65\x6C","\x69\x74\x65\x6D\x5F\x69\x63\x6F\x6E\x20\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x69\x63\x6F\x6E\x34\x30\x78\x34\x30\x20\x6A\x73\x2D\x69\x74\x65\x6D\x2D\x69\x63\x6F\x6E\x20\x62\x75\x69\x6C\x64\x5F\x71\x75\x65\x75\x65\x20","\x20\x71\x75\x65\x75\x65\x64","\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x69\x6F\x6E\x5F\x71\x75\x65\x75\x65\x5F\x73\x70\x72\x69\x74\x65\x20\x66\x72\x61\x6D\x65","\x6A\x73\x2D\x74\x75\x74\x6F\x72\x69\x61\x6C\x2D\x71\x75\x65\x75\x65\x2D\x69\x74\x65\x6D\x20\x71\x75\x65\x75\x65\x64\x5F\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6F\x72\x64\x65\x72\x20\x6C\x61\x73\x74\x5F\x6F\x72\x64\x65\x72\x20","\x20\x71\x75\x65\x75\x65\x5F\x69\x64\x5F","\x75\x6E\x69\x74\x5F\x63\x6F\x75\x6E\x74\x20\x74\x65\x78\x74\x5F\x73\x68\x61\x64\x6F\x77","\x69\x74\x65\x6D\x5F\x69\x63\x6F\x6E\x20\x75\x6E\x69\x74\x5F\x69\x63\x6F\x6E\x34\x30\x78\x34\x30\x20\x6A\x73\x2D\x69\x74\x65\x6D\x2D\x69\x63\x6F\x6E\x20\x62\x75\x69\x6C\x64\x5F\x71\x75\x65\x75\x65\x20","\x5F","\x72\x65\x70\x6C\x61\x63\x65","\x73\x65\x72\x69\x61\x6C\x69\x7A\x65\x4F\x62\x6A\x65\x63\x74","\x23\x41\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x73\x65\x74\x74\x69\x6E\x67\x73","\x61\x75\x74\x6F\x73\x74\x61\x72\x74","\x61\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x61\x75\x74\x6F\x73\x74\x61\x72\x74","\x61\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x74\x69\x6D\x65\x69\x6E\x74\x65\x72\x76\x61\x6C","\x61\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x65\x6E\x61\x62\x6C\x65","\x61\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x62\x61\x72\x72\x61\x63\x6B\x73\x5F\x65\x6E\x61\x62\x6C\x65","\x61\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x73\x68\x69\x70\x73\x5F\x65\x6E\x61\x62\x6C\x65","\x61\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x69\x6E\x73\x74\x61\x6E\x74\x5F\x62\x75\x79","\x73\x61\x76\x65\x42\x75\x69\x6C\x64","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x63\x61\x6C\x6C\x62\x61\x63\x6B\x53\x61\x76\x65\x53\x65\x74\x74\x69\x6E\x67\x73","\x62\x74\x6E\x5F\x73\x61\x76\x65","\x6E\x6F\x74\x65\x73","\x67\x65\x74\x6C\x31\x30\x6E","\x74\x6F\x70\x3A\x20\x31\x30\x70\x78\x3B","\x62\x75\x74\x74\x6F\x6E","\x46\x72\x65\x65\x20\x49\x6E\x73\x74\x61\x6E\x74\x20\x42\x75\x79\x2E","\x77\x69\x64\x74\x68\x3A\x20\x31\x30\x30\x25\x3B","\x63\x68\x65\x63\x6B\x62\x6F\x78","\x45\x6E\x61\x62\x6C\x65\x20\x73\x68\x69\x70\x73\x20\x71\x75\x65\x75\x65\x2E","\x77\x69\x64\x74\x68\x3A\x20\x31\x30\x30\x25\x3B\x70\x61\x64\x64\x69\x6E\x67\x2D\x62\x6F\x74\x74\x6F\x6D\x3A\x20\x33\x35\x70\x78\x3B","\x45\x6E\x61\x62\x6C\x65\x20\x62\x61\x72\x72\x61\x63\x6B\x73\x20\x71\x75\x65\x75\x65\x2E","\x45\x6E\x61\x62\x6C\x65\x20\x62\x75\x69\x6C\x64\x69\x6E\x67\x20\x71\x75\x65\x75\x65\x2E","\x77\x69\x64\x74\x68\x3A\x20\x31\x30\x30\x25\x3B\x70\x61\x64\x64\x69\x6E\x67\x2D\x74\x6F\x70\x3A\x20\x33\x35\x70\x78\x3B","\x43\x68\x65\x63\x6B\x20\x65\x76\x65\x72\x79\x3A\x20","\x77\x69\x64\x74\x68\x3A\x20\x31\x32\x30\x70\x78\x3B","\x31\x32\x30","\x32\x20\x6D\x69\x6E\x75\x74\x65\x73","\x33\x30\x30","\x35\x20\x6D\x69\x6E\x75\x74\x65\x73","\x36\x30\x30","\x31\x30\x20\x6D\x69\x6E\x75\x74\x65\x73","\x39\x30\x30","\x31\x35\x20\x6D\x69\x6E\x75\x74\x65\x73","\x73\x65\x6C\x65\x63\x74\x42\x6F\x78","\x41\x75\x74\x6F\x53\x74\x61\x72\x74\x20\x41\x75\x74\x6F\x62\x75\x69\x6C\x64\x2E","\x41\x75\x74\x6F\x62\x75\x69\x6C\x64\x20\x53\x65\x74\x74\x69\x6E\x67\x73","\x3C\x6C\x65\x67\x65\x6E\x64\x2F\x3E","\x3C\x66\x69\x65\x6C\x64\x73\x65\x74\x2F\x3E","\x41\x75\x74\x6F\x62\x75\x69\x6C\x64\x5F\x73\x65\x74\x74\x69\x6E\x67\x73","\x66\x6C\x6F\x61\x74\x3A\x6C\x65\x66\x74\x3B\x20\x77\x69\x64\x74\x68\x3A\x34\x37\x32\x70\x78\x3B\x20\x68\x65\x69\x67\x68\x74\x3A\x20\x32\x37\x30\x70\x78\x3B","\x77\x6E\x64","\x67\x65\x74\x4F\x70\x65\x6E\x46\x69\x72\x73\x74","\x63\x75\x72\x72\x65\x6E\x74\x57\x69\x6E\x64\x6F\x77","\x2E\x67\x70\x77\x69\x6E\x64\x6F\x77\x5F\x63\x6F\x6E\x74\x65\x6E\x74","\x67\x65\x74\x4A\x51\x45\x6C\x65\x6D\x65\x6E\x74","\x23\x6D\x61\x69\x6E\x5F\x74\x61\x73\x6B\x73\x20\x68\x34","\x2F\x26\x69\x6E\x66\x69\x6E\x3B\x29","\x74\x68\x65\x61\x74\x65\x72","\x74\x68\x65\x72\x6D\x61\x6C","\x6C\x69\x62\x72\x61\x72\x79","\x6C\x69\x67\x68\x74\x68\x6F\x75\x73\x65","\x74\x6F\x77\x65\x72","\x73\x74\x61\x74\x75\x65","\x6F\x72\x61\x63\x6C\x65","\x74\x72\x61\x64\x65\x5F\x6F\x66\x66\x69\x63\x65","\x23\x62\x75\x69\x6C\x64\x69\x6E\x67\x73\x20\x2E\x62\x75\x74\x74\x6F\x6E\x5F\x62\x75\x69\x6C\x64\x2E\x62\x75\x69\x6C\x64\x5F\x67\x72\x65\x79\x2E\x62\x75\x69\x6C\x64\x5F\x75\x70\x2E\x73\x6D\x61\x6C\x6C\x2E\x62\x6F\x6C\x64","\x62\x75\x69\x6C\x64\x69\x6E\x67\x5F\x6D\x61\x69\x6E\x5F","\x61\x74\x74\x72","\x67\x65\x74\x54\x6F\x77\x6E","\x63\x68\x65\x63\x6B\x42\x75\x69\x6C\x64\x69\x6E\x67\x44\x65\x70\x65\x6E\x63\x65\x6E\x63\x69\x65\x73","\x69\x6E\x41\x72\x72\x61\x79","\x41\x64\x64\x20\x74\x6F\x20\x71\x75\x65\x75\x65","\x62\x75\x69\x6C\x64","\x62\x75\x69\x6C\x64\x5F\x67\x72\x65\x79","\x72\x65\x6D\x6F\x76\x65\x43\x6C\x61\x73\x73","\x23\x75\x6E\x69\x74\x5F\x6F\x72\x64\x65\x72\x73\x5F\x71\x75\x65\x75\x65\x20\x68\x34","\x26\x69\x6E\x66\x69\x6E\x3B","\x2E\x6A\x73\x2D\x6D\x61\x78\x2D\x6F\x72\x64\x65\x72\x2D\x71\x75\x65\x75\x65\x2D\x63\x6F\x75\x6E\x74"];Autobuild= {settings:{autostart:false,enable_building:true,enable_units:true,enable_ships:true,timeinterval:120,instant_buy:false},building_queue:{},units_queue:{},ships_queue:{},town:null,iTown:null,interval:null,currentWindow:null,isCaptain:false,Queue:0,init:function(){ConsoleLog.Log(_0xadbd[0],3);Autobuild[_0xadbd[1]]();Autobuild[_0xadbd[2]]();Autobuild[_0xadbd[3]]();Autobuild[_0xadbd[4]]()},setSettings:function(_0xc4a4x1){if(_0xc4a4x1!= _0xadbd[5]&& _0xc4a4x1!= null){$[_0xadbd[8]](Autobuild[_0xadbd[6]],JSON[_0xadbd[7]](_0xc4a4x1))}},activateCss:function(){$(_0xadbd[11])[_0xadbd[10]](_0xadbd[9])},setQueue:function(_0xc4a4x2,_0xc4a4x3,_0xc4a4x4){if(_0xc4a4x2!= _0xadbd[5]&& _0xc4a4x2!= null){Autobuild[_0xadbd[12]]= JSON[_0xadbd[7]](_0xc4a4x2);Autobuild[_0xadbd[14]]($(_0xadbd[11]),_0xadbd[13])};if(_0xc4a4x3!= _0xadbd[5]&& _0xc4a4x3!= null){Autobuild[_0xadbd[15]]= JSON[_0xadbd[7]](_0xc4a4x3)};if(_0xc4a4x4!= _0xadbd[5]&& _0xc4a4x4!= null){Autobuild[_0xadbd[16]]= JSON[_0xadbd[7]](_0xc4a4x4)}},calls:function(_0xc4a4x5){switch(_0xc4a4x5){case _0xadbd[17]:;case _0xadbd[18]:;case _0xadbd[19]:;case _0xadbd[22]:Autobuild[_0xadbd[21]][_0xadbd[20]](_0xc4a4x5);break;case _0xadbd[23]:;case _0xadbd[24]:;case _0xadbd[25]:;case _0xadbd[27]:Autobuild[_0xadbd[21]][_0xadbd[26]](_0xc4a4x5);break}},initFunction:function(){var _0xc4a4x6=function(_0xc4a4x7){return function(){_0xc4a4x7[_0xadbd[28]](this,arguments);if(this[_0xadbd[30]][_0xadbd[29]]== _0xadbd[31]|| this[_0xadbd[30]][_0xadbd[29]]== _0xadbd[32]){Autobuild[_0xadbd[14]](this.$el,_0xadbd[13])};if(this[_0xadbd[30]][_0xadbd[29]]== _0xadbd[33]){var _0xc4a4x8=this[_0xadbd[30]][_0xadbd[35]](_0xadbd[34]);if(_0xc4a4x8[_0xadbd[37]](_0xadbd[36])){Autobuild[_0xadbd[14]](this.$el,_0xadbd[38])}else {if(_0xc4a4x8[_0xadbd[37]](_0xadbd[39])){Autobuild[_0xadbd[14]](this.$el,_0xadbd[40])}}}}};GameViews[_0xadbd[43]][_0xadbd[42]][_0xadbd[41]]= _0xc4a4x6(GameViews[_0xadbd[43]][_0xadbd[42]][_0xadbd[41]]);var _0xc4a4x9=function(_0xc4a4x7){return function(){_0xc4a4x7[_0xadbd[28]](this,arguments);if(this[_0xadbd[36]]){Autobuild[_0xadbd[44]](this,_0xadbd[38])}else {if(!this[_0xadbd[36]]){Autobuild[_0xadbd[44]](this,_0xadbd[40])}}}};UnitOrder[_0xadbd[45]]= _0xc4a4x9(UnitOrder[_0xadbd[45]])},initButton:function(){ModuleManager[_0xadbd[47]](_0xadbd[46])},checkCaptain:function(){if($(_0xadbd[49])[_0xadbd[37]](_0xadbd[48])){Autobuild[_0xadbd[50]]= true};Autobuild[_0xadbd[51]]= Autobuild[_0xadbd[50]]?7:2},checkReady:function(_0xc4a4xa){var _0xc4a4xb=ITowns[_0xadbd[53]][_0xc4a4xa[_0xadbd[52]]];if(!ModuleManager[_0xadbd[55]][_0xadbd[46]][_0xadbd[54]]){return false};if(_0xc4a4xb[_0xadbd[56]]()){return false};if(!Autobuild[_0xadbd[6]][_0xadbd[57]]&&  !Autobuild[_0xadbd[6]][_0xadbd[58]] &&  !Autobuild[_0xadbd[6]][_0xadbd[59]]){return false};if(_0xc4a4xa[_0xadbd[55]][_0xadbd[46]][_0xadbd[60]]>= Timestamp[_0xadbd[61]]()){return _0xc4a4xa[_0xadbd[55]][_0xadbd[46]][_0xadbd[60]]};return !( typeof (Autobuild[_0xadbd[12]][_0xc4a4xa[_0xadbd[52]]])== _0xadbd[62]&&  typeof (Autobuild[_0xadbd[15]][_0xc4a4xa[_0xadbd[52]]])== _0xadbd[62]&&  typeof (Autobuild[_0xadbd[16]][_0xc4a4xa[_0xadbd[52]]])== _0xadbd[62])},startBuild:function(_0xc4a4xa){if(!Autobuild[_0xadbd[63]]()){return false};Autobuild[_0xadbd[64]]= _0xc4a4xa;Autobuild[_0xadbd[65]]= ITowns[_0xadbd[53]][Autobuild[_0xadbd[64]][_0xadbd[52]]];if(ModuleManager[_0xadbd[66]]!= Autobuild[_0xadbd[64]][_0xadbd[67]]){ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[69],3);DataExchanger[_0xadbd[71]](Autobuild[_0xadbd[64]][_0xadbd[52]],function(){ModuleManager[_0xadbd[66]]= Autobuild[_0xadbd[64]][_0xadbd[67]];Autobuild[_0xadbd[70]]()})}else {Autobuild[_0xadbd[70]]()}},startQueueing:function(){if(!Autobuild[_0xadbd[63]]()){return false};if( typeof (Autobuild[_0xadbd[12]][Autobuild[_0xadbd[64]][_0xadbd[52]]])== _0xadbd[62]&&  typeof (Autobuild[_0xadbd[15]][Autobuild[_0xadbd[64]][_0xadbd[52]]])== _0xadbd[62]&&  typeof (Autobuild[_0xadbd[16]][Autobuild[_0xadbd[64]][_0xadbd[52]]])== _0xadbd[62]){Autobuild[_0xadbd[72]]()};var _0xc4a4xc=Autobuild[_0xadbd[74]](Autobuild[_0xadbd[64]][_0xadbd[52]])[_0xadbd[73]];if(_0xc4a4xc== _0xadbd[13]){Autobuild[_0xadbd[75]]()}else {if(_0xc4a4xc== _0xadbd[38]|| _0xc4a4xc== _0xadbd[40]){Autobuild[_0xadbd[76]](_0xc4a4xc== _0xadbd[38]?Autobuild[_0xadbd[15]]:Autobuild[_0xadbd[16]],_0xc4a4xc)}else {Autobuild[_0xadbd[72]]()}}},startUpgrade:function(){if(!Autobuild[_0xadbd[63]]()){return false};if(GameDataInstantBuy[_0xadbd[77]]()&& Autobuild[_0xadbd[78]](Autobuild[_0xadbd[64]][_0xadbd[52]])){Autobuild[_0xadbd[79]]= setTimeout(function(){DataExchanger[_0xadbd[99]](Autobuild[_0xadbd[64]][_0xadbd[52]],{model_url:_0xadbd[80]+ Autobuild[_0xadbd[82]][_0xadbd[81]],action_name:_0xadbd[83],arguments:{order_id:Autobuild[_0xadbd[82]][_0xadbd[81]]},town_id:Autobuild[_0xadbd[64]][_0xadbd[52]],nl_init:true},function(_0xc4a4xd){if(_0xc4a4xd[_0xadbd[84]]){if(Autobuild[_0xadbd[64]][_0xadbd[52]]== Game[_0xadbd[85]]){var _0xc4a4xe=GPWindowMgr[_0xadbd[86]](GPWindowMgr.TYPE_BUILDING);for(var _0xc4a4xf=0;_0xc4a4xe[_0xadbd[87]]> _0xc4a4xf;_0xc4a4xf++){_0xc4a4xe[_0xc4a4xf][_0xadbd[89]]()[_0xadbd[88]]()}};ConsoleLog.Log(_0xadbd[90]+ Autobuild[_0xadbd[82]][_0xadbd[92]][_0xadbd[91]]()+ _0xadbd[93]+ _0xc4a4xd[_0xadbd[84]]+ _0xadbd[94],3)};if(_0xc4a4xd[_0xadbd[95]]){ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[96]+ _0xc4a4xd[_0xadbd[95]],3)};Autobuild[_0xadbd[79]]= setTimeout(function(){Autobuild[_0xadbd[82]]= false;Autobuild[_0xadbd[97]]()},Autobot[_0xadbd[98]](500,700))})},Autobot[_0xadbd[98]](1000,2000))}else {Autobuild[_0xadbd[97]]()}},startBuildUnits:function(_0xc4a4x10,_0xc4a4x11){if(!Autobuild[_0xadbd[63]]()){return false};if(_0xc4a4x10[Autobuild[_0xadbd[64]][_0xadbd[52]]]!= undefined){if(_0xc4a4x10[Autobuild[_0xadbd[64]][_0xadbd[52]]][_0xc4a4x11]!= undefined){var _0xc4a4x12=_0xc4a4x10[Autobuild[_0xadbd[64]][_0xadbd[52]]][_0xc4a4x11][0];if(GameDataUnits[_0xadbd[101]](_0xc4a4x12[_0xadbd[100]])>= _0xc4a4x12[_0xadbd[102]]){Autobuild[_0xadbd[79]]= setTimeout(function(){DataExchanger[_0xadbd[119]](Autobuild[_0xadbd[64]][_0xadbd[52]],{"\x75\x6E\x69\x74\x5F\x69\x64":_0xc4a4x12[_0xadbd[100]],"\x61\x6D\x6F\x75\x6E\x74":_0xc4a4x12[_0xadbd[102]],"\x74\x6F\x77\x6E\x5F\x69\x64":Autobuild[_0xadbd[64]][_0xadbd[52]],"\x6E\x6C\x5F\x69\x6E\x69\x74":true},function(_0xc4a4xd){if(_0xc4a4xd[_0xadbd[95]]){ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[96]+ _0xc4a4xd[_0xadbd[95]],3)}else {if(Autobuild[_0xadbd[64]][_0xadbd[52]]== Game[_0xadbd[85]]){var _0xc4a4xe=GPWindowMgr[_0xadbd[86]](GPWindowMgr.TYPE_BUILDING);for(var _0xc4a4xf=0;_0xc4a4xe[_0xadbd[87]]> _0xc4a4xf;_0xc4a4xf++){_0xc4a4xe[_0xc4a4xf][_0xadbd[89]]()[_0xadbd[88]]()}};ConsoleLog.Log(_0xadbd[103]+ (_0xc4a4x11== _0xadbd[38]?_0xadbd[104]:_0xadbd[105])+ _0xadbd[106]+ _0xc4a4x12[_0xadbd[102]]+ _0xadbd[96]+ GameData[_0xadbd[108]][_0xc4a4x12[_0xadbd[100]]][_0xadbd[107]]+ _0xadbd[109],3);DataExchanger.Auth(_0xadbd[110],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],town_id:Autobuild[_0xadbd[64]][_0xadbd[52]],item_id:_0xc4a4x12[_0xadbd[52]],type:_0xc4a4x11},Autobuild[_0xadbd[116]]($(_0xadbd[115]),_0xc4a4x11));$(_0xadbd[118]+ _0xc4a4x12[_0xadbd[52]])[_0xadbd[117]]()};Autobuild[_0xadbd[72]]()})},Autobot[_0xadbd[98]](1000,2000))}else {ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[120]+ _0xc4a4x12[_0xadbd[102]]+ _0xadbd[96]+ GameData[_0xadbd[108]][_0xc4a4x12[_0xadbd[100]]][_0xadbd[107]]+ _0xadbd[121],3);Autobuild[_0xadbd[72]]()}}else {Autobuild[_0xadbd[72]]()}}else {Autobuild[_0xadbd[72]]()}},startBuildBuilding:function(){if(!Autobuild[_0xadbd[63]]()){return false};if(Autobuild[_0xadbd[12]][Autobuild[_0xadbd[64]][_0xadbd[52]]]!= undefined){if(Autobuild[_0xadbd[12]][Autobuild[_0xadbd[64]][_0xadbd[52]]][_0xadbd[13]]){Autobuild[_0xadbd[79]]= setTimeout(function(){ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[122],3);DataExchanger[_0xadbd[138]](Autobuild[_0xadbd[64]][_0xadbd[52]],function(_0xc4a4xd){if(Autobuild[_0xadbd[123]](_0xc4a4xd)){var _0xc4a4x13=Autobuild[_0xadbd[12]][Autobuild[_0xadbd[64]][_0xadbd[52]]][_0xadbd[13]][0];if(_0xc4a4x13!= undefined){var _0xc4a4x14=Autobuild[_0xadbd[124]](_0xc4a4xd)[_0xc4a4x13[_0xadbd[100]]];if(_0xc4a4x14[_0xadbd[125]]){DataExchanger[_0xadbd[99]](Autobuild[_0xadbd[64]][_0xadbd[52]],{model_url:_0xadbd[126],action_name:_0xadbd[127],arguments:{building_id:_0xc4a4x13[_0xadbd[100]]},town_id:Autobuild[_0xadbd[64]][_0xadbd[52]],nl_init:true},function(_0xc4a4xd){if(_0xc4a4xd[_0xadbd[84]]){if(Autobuild[_0xadbd[64]][_0xadbd[52]]== Game[_0xadbd[85]]){var _0xc4a4xe=GPWindowMgr[_0xadbd[86]](GPWindowMgr.TYPE_BUILDING);for(var _0xc4a4xf=0;_0xc4a4xe[_0xadbd[87]]> _0xc4a4xf;_0xc4a4xf++){_0xc4a4xe[_0xc4a4xf][_0xadbd[89]]()[_0xadbd[88]]()}};ConsoleLog.Log(_0xadbd[90]+ _0xc4a4x13[_0xadbd[100]][_0xadbd[91]]()+ _0xadbd[93]+ _0xc4a4xd[_0xadbd[84]]+ _0xadbd[94],3);DataExchanger.Auth(_0xadbd[110],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],town_id:Autobuild[_0xadbd[64]][_0xadbd[52]],item_id:_0xc4a4x13[_0xadbd[52]],type:_0xadbd[13]},Autobuild[_0xadbd[129]]($(_0xadbd[128])));$(_0xadbd[118]+ _0xc4a4x13[_0xadbd[52]])[_0xadbd[117]]()};if(_0xc4a4xd[_0xadbd[95]]){ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[96]+ _0xc4a4xd[_0xadbd[95]],3)};Autobuild[_0xadbd[72]]()})}else {var _0xc4a4x15=Autobuild[_0xadbd[65]][_0xadbd[130]]();if(!_0xc4a4x14[_0xadbd[131]]){ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[132]+ _0xc4a4x13[_0xadbd[100]]+ _0xadbd[133],3);Autobuild[_0xadbd[72]]()}else {if(!_0xc4a4x14[_0xadbd[134]]){ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[135]+ _0xc4a4x13[_0xadbd[100]]+ _0xadbd[133],3);Autobuild[_0xadbd[72]]()}else {ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[96]+ _0xc4a4x13[_0xadbd[100]]+ _0xadbd[136],3);DataExchanger.Auth(_0xadbd[110],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],town_id:Autobuild[_0xadbd[64]][_0xadbd[52]],item_id:_0xc4a4x13[_0xadbd[52]],type:_0xadbd[13]},Autobuild[_0xadbd[129]]($(_0xadbd[128])));$(_0xadbd[118]+ _0xc4a4x13[_0xadbd[52]])[_0xadbd[117]]();Autobuild[_0xadbd[72]]()}}}}else {Autobuild[_0xadbd[72]]()}}else {ConsoleLog.Log(Autobuild[_0xadbd[64]][_0xadbd[68]]+ _0xadbd[137],3);Autobuild[_0xadbd[72]]()}})},Autobot[_0xadbd[98]](1000,2000))}else {Autobuild[_0xadbd[72]]()}}else {Autobuild[_0xadbd[72]]()}},getReadyTime:function(_0xc4a4x16){var _0xc4a4x17={building:{queue:[],timeLeft:0},unit:{queue:[],timeLeft:0},ship:{queue:[],timeLeft:0}};$[_0xadbd[146]](MM[_0xadbd[140]](_0xadbd[126])[_0xadbd[139]],function(_0xc4a4x18,_0xc4a4x19){if(_0xc4a4x16== _0xc4a4x19[_0xadbd[141]]()){_0xc4a4x17[_0xadbd[13]][_0xadbd[143]][_0xadbd[142]]({type:_0xadbd[13],model:_0xc4a4x19});_0xc4a4x17[_0xadbd[13]][_0xadbd[144]]+= _0xc4a4x19[_0xadbd[145]]()}});$[_0xadbd[146]](MM[_0xadbd[140]](_0xadbd[147])[_0xadbd[139]],function(_0xc4a4x18,_0xc4a4x19){if(_0xc4a4x16== _0xc4a4x19[_0xadbd[149]][_0xadbd[148]]){if(_0xc4a4x19[_0xadbd[149]][_0xadbd[150]]== _0xadbd[151]){_0xc4a4x17[_0xadbd[38]][_0xadbd[143]][_0xadbd[142]]({type:_0xadbd[38],model:_0xc4a4x19});_0xc4a4x17[_0xadbd[38]][_0xadbd[144]]+= _0xc4a4x19[_0xadbd[145]]()};if(_0xc4a4x19[_0xadbd[149]][_0xadbd[150]]== _0xadbd[152]){_0xc4a4x17[_0xadbd[40]][_0xadbd[143]][_0xadbd[142]]({type:_0xadbd[40],model:_0xc4a4x19});_0xc4a4x17[_0xadbd[40]][_0xadbd[144]]+= _0xc4a4x19[_0xadbd[145]]()}}});var _0xc4a4x1a=null;var _0xc4a4xc=_0xadbd[153];$[_0xadbd[146]](_0xc4a4x17,function(_0xc4a4x18,_0xc4a4x1b){if((_0xc4a4x18== _0xadbd[13]&& Autobuild[_0xadbd[12]][_0xc4a4x16]!= undefined)|| (_0xc4a4x18== _0xadbd[38]&& Autobuild[_0xadbd[15]][_0xc4a4x16]!= undefined)|| (_0xc4a4x18== _0xadbd[40]&& Autobuild[_0xadbd[16]][_0xc4a4x16]!= undefined)){if(_0xc4a4x1a== null){_0xc4a4x1a= _0xc4a4x1b[_0xadbd[144]];_0xc4a4xc= _0xc4a4x18}else {if(_0xc4a4x1b[_0xadbd[144]]< _0xc4a4x1a){_0xc4a4x1a= _0xc4a4x1b[_0xadbd[144]];_0xc4a4xc= _0xc4a4x18}}}});if(_0xc4a4xc== _0xadbd[13]&& GameDataInstantBuy[_0xadbd[77]]()&& Autobuild[_0xadbd[6]][_0xadbd[154]]){if(_0xc4a4x17[_0xadbd[13]][_0xadbd[143]][_0xadbd[87]]> 0){_0xc4a4x1a= _0xc4a4x17[_0xadbd[13]][_0xadbd[143]][0][_0xadbd[155]][_0xadbd[145]]()- 300}};return {readyTime:Timestamp[_0xadbd[61]]()+ (_0xc4a4x1a> 0?_0xc4a4x1a:+Autobuild[_0xadbd[6]][_0xadbd[156]]),shouldStart:_0xc4a4xc}},stop:function(){clearInterval(Autobuild[_0xadbd[79]])},checkEnabled:function(){return ModuleManager[_0xadbd[55]][_0xadbd[46]][_0xadbd[54]]},finished:function(){if(!Autobuild[_0xadbd[63]]()){return false};Autobuild[_0xadbd[64]][_0xadbd[55]][_0xadbd[46]][_0xadbd[60]]= Autobuild[_0xadbd[74]](Autobuild[_0xadbd[64]][_0xadbd[52]])[_0xadbd[157]];ModuleManager[_0xadbd[51]][_0xadbd[158]]()},checkInstantComplete:function(_0xc4a4x16){Autobuild[_0xadbd[82]]= false;$[_0xadbd[146]](MM[_0xadbd[140]](_0xadbd[126])[_0xadbd[139]],function(_0xc4a4x18,_0xc4a4x19){if(_0xc4a4x16== _0xc4a4x19[_0xadbd[141]]()&& _0xc4a4x19[_0xadbd[145]]()< 300){Autobuild[_0xadbd[82]]= {order_id:_0xc4a4x19[_0xadbd[52]],building_name:_0xc4a4x19[_0xadbd[159]]()};return false}});return Autobuild[_0xadbd[82]]},checkBuildingDepencencies:function(_0xc4a4x1c,_0xc4a4x1d){var _0xc4a4x1e=GameData[_0xadbd[160]][_0xc4a4x1c],_0xc4a4x1f=_0xc4a4x1e[_0xadbd[161]],_0xc4a4x20=_0xc4a4x1d[_0xadbd[124]](),_0xc4a4x21=_0xc4a4x20[_0xadbd[124]]();var _0xc4a4x22=[];$[_0xadbd[146]](_0xc4a4x1f,function(_0xc4a4x23,_0xc4a4x24){var _0xc4a4x25=_0xc4a4x21[_0xc4a4x23];if(_0xc4a4x25< _0xc4a4x24){_0xc4a4x22[_0xadbd[142]]({building_id:_0xc4a4x23,level:_0xc4a4x24})}});return _0xc4a4x22},callbackSaveBuilding:function(_0xc4a4x26){return function(_0xc4a4xd){if(_0xc4a4xd[_0xadbd[84]]){_0xc4a4x26[_0xadbd[146]](function(){$(this)[_0xadbd[35]](_0xadbd[162])[_0xadbd[117]]();if(_0xc4a4xd[_0xadbd[163]]){$(this)[_0xadbd[165]](Autobuild[_0xadbd[164]]($(this),_0xc4a4xd[_0xadbd[163]]));Autobuild[_0xadbd[166]]($(this))}else {Autobuild[_0xadbd[166]]($(this))}});delete (_0xc4a4xd[_0xadbd[163]]);delete (_0xc4a4xd[_0xadbd[84]]);Autobuild[_0xadbd[12]]= _0xc4a4xd}}},callbackSaveSettings:function(){ConsoleLog.Log(_0xadbd[167],3);HumanMessage[_0xadbd[84]](_0xadbd[168])},hasFreeBuildingSlots:function(_0xc4a4x27){var _0xc4a4x28=false;if(_0xc4a4x27!= undefined){if(/BuildingMain\.full_queue = false;/g[_0xadbd[170]](_0xc4a4x27[_0xadbd[169]])){_0xc4a4x28= true}};return _0xc4a4x28},getBuildings:function(_0xc4a4x27){var _0xc4a4x14=null;if(_0xc4a4x27[_0xadbd[169]]!= undefined){var _0xc4a4x29=_0xc4a4x27[_0xadbd[169]][_0xadbd[171]](/BuildingMain\.buildings = (.*);/g);if(_0xc4a4x29[0]!= undefined){_0xc4a4x14= JSON[_0xadbd[7]](_0xc4a4x29[0][_0xadbd[172]](25,_0xc4a4x29[0][_0xadbd[87]]- 1))}};return _0xc4a4x14},initQueue:function(_0xc4a4x2a,_0xc4a4x11){var _0xc4a4x26=_0xc4a4x2a[_0xadbd[35]](_0xadbd[34]);_0xc4a4x26[_0xadbd[35]](_0xadbd[162])[_0xadbd[117]]();if(_0xc4a4x11== _0xadbd[13]){$(_0xadbd[173])[_0xadbd[10]](_0xadbd[9]);if(Autobuild[_0xadbd[12]][Game[_0xadbd[85]]]!= undefined){if(Autobuild[_0xadbd[12]][Game[_0xadbd[85]]][_0xc4a4x11]!= undefined){$[_0xadbd[146]](Autobuild[_0xadbd[12]][Game[_0xadbd[85]]][_0xc4a4x11],function(_0xc4a4x18,_0xc4a4x1b){_0xc4a4x26[_0xadbd[165]](Autobuild[_0xadbd[164]](_0xc4a4x26,_0xc4a4x1b))})}}};if(_0xc4a4x11== _0xadbd[38]){$(_0xadbd[174])[_0xadbd[10]](_0xadbd[9]);if(Autobuild[_0xadbd[15]][Game[_0xadbd[85]]]!= undefined){if(Autobuild[_0xadbd[15]][Game[_0xadbd[85]]][_0xc4a4x11]!= undefined){$[_0xadbd[146]](Autobuild[_0xadbd[15]][Game[_0xadbd[85]]][_0xc4a4x11],function(_0xc4a4x18,_0xc4a4x1b){_0xc4a4x26[_0xadbd[165]](Autobuild[_0xadbd[175]](_0xc4a4x26,_0xc4a4x1b,_0xc4a4x11))})}}};if(_0xc4a4x11== _0xadbd[40]){$(_0xadbd[174])[_0xadbd[10]](_0xadbd[9]);if(Autobuild[_0xadbd[16]][Game[_0xadbd[85]]]!= undefined){if(Autobuild[_0xadbd[16]][Game[_0xadbd[85]]][_0xc4a4x11]!= undefined){$[_0xadbd[146]](Autobuild[_0xadbd[16]][Game[_0xadbd[85]]][_0xc4a4x11],function(_0xc4a4x18,_0xc4a4x1b){_0xc4a4x26[_0xadbd[165]](Autobuild[_0xadbd[175]](_0xc4a4x26,_0xc4a4x1b,_0xc4a4x11))})}}};Autobuild[_0xadbd[166]](_0xc4a4x26);_0xc4a4x26[_0xadbd[179]]()[_0xadbd[178]](function(_0xc4a4x2b,_0xc4a4x2c){this[_0xadbd[176]]-= (_0xc4a4x2c* 30);_0xc4a4x2b[_0xadbd[177]]()})},initUnitOrder:function(_0xc4a4x2d,_0xc4a4x11){var _0xc4a4x12=_0xc4a4x2d[_0xadbd[108]][_0xc4a4x2d[_0xadbd[180]]];var _0xc4a4x2e=_0xc4a4x2d[_0xadbd[30]][_0xadbd[35]](_0xadbd[181]);var _0xc4a4x2f=_0xc4a4x2d[_0xadbd[30]][_0xadbd[35]](_0xadbd[182]);var _0xc4a4x30=_0xc4a4x2d[_0xadbd[30]][_0xadbd[35]](_0xadbd[183]);if(_0xc4a4x2f[_0xadbd[87]]>= 0&& (_0xc4a4x12[_0xadbd[184]][_0xadbd[87]]>= 1|| _0xc4a4x12[_0xadbd[185]][_0xadbd[87]]>= 1)){_0xc4a4x2f[_0xadbd[186]]()};if(_0xc4a4x12[_0xadbd[184]][_0xadbd[87]]== 0&& _0xc4a4x12[_0xadbd[185]][_0xadbd[87]]== 0){var _0xc4a4x31=ITowns[_0xadbd[53]][Game[_0xadbd[85]]];var _0xc4a4x32=_0xc4a4x12[_0xadbd[187]];var _0xc4a4x33=Math[_0xadbd[191]][_0xadbd[28]](this,[_0xc4a4x12[_0xadbd[130]][_0xadbd[188]],_0xc4a4x12[_0xadbd[130]][_0xadbd[189]],_0xc4a4x12[_0xadbd[130]][_0xadbd[190]]]);var _0xc4a4x34=[];_0xc4a4x34[_0xadbd[142]](Math[_0xadbd[193]](_0xc4a4x31[_0xadbd[192]]()/ _0xc4a4x33));_0xc4a4x34[_0xadbd[142]](Math[_0xadbd[193]]((_0xc4a4x31[_0xadbd[194]]()- Autobuild[_0xadbd[195]]())/ _0xc4a4x12[_0xadbd[196]]));if(_0xc4a4x12[_0xadbd[197]]> 0){_0xc4a4x34[_0xadbd[142]](Math[_0xadbd[193]](500/ _0xc4a4x12[_0xadbd[197]]))};var _0xc4a4x35=Math[_0xadbd[198]][_0xadbd[28]](this,_0xc4a4x34);if(_0xc4a4x35> 0&& _0xc4a4x35>= _0xc4a4x32){_0xc4a4x2d[_0xadbd[200]][_0xadbd[199]](_0xc4a4x35)};if(_0xc4a4x2f[_0xadbd[87]]== 0){_0xc4a4x2f= $(_0xadbd[201],{href:_0xadbd[202],id:_0xadbd[203],"\x63\x6C\x61\x73\x73":_0xadbd[204]});_0xc4a4x2e[_0xadbd[205]](_0xc4a4x2f);_0xc4a4x2f[_0xadbd[210]]( new MousePopup(_0xadbd[209]))[_0xadbd[208]](_0xadbd[206],function(_0xc4a4x36){_0xc4a4x36[_0xadbd[177]]();Autobuild[_0xadbd[207]](_0xc4a4x12,_0xc4a4x11)})}else {_0xc4a4x2f[_0xadbd[211]](_0xadbd[206]);_0xc4a4x2f[_0xadbd[208]](_0xadbd[206],function(_0xc4a4x36){_0xc4a4x36[_0xadbd[177]]();Autobuild[_0xadbd[207]](_0xc4a4x12,_0xc4a4x11)})};if(_0xc4a4x35<= 0){_0xc4a4x2f[_0xadbd[186]]()}else {_0xc4a4x2f[_0xadbd[212]]()};_0xc4a4x2e[_0xadbd[212]]();_0xc4a4x30[_0xadbd[200]]({slide:function(_0xc4a4x2b,_0xc4a4x37){if(_0xc4a4x37[_0xadbd[213]]> _0xc4a4x32){_0xc4a4x2e[_0xadbd[186]]()}else {if(_0xc4a4x37[_0xadbd[213]]>= 0&& _0xc4a4x37[_0xadbd[213]]<= _0xc4a4x32){_0xc4a4x2e[_0xadbd[212]]()}};if(_0xc4a4x37[_0xadbd[213]]== 0){_0xc4a4x2f[_0xadbd[186]]()}else {if(_0xc4a4x37[_0xadbd[213]]> 0&& _0xc4a4x35> 0){_0xc4a4x2f[_0xadbd[212]]()}}}})}},checkBuildingLevel:function(_0xc4a4x1b){var _0xc4a4x38=ITowns[_0xadbd[53]][Game[_0xadbd[85]]][_0xadbd[124]]()[_0xadbd[149]][_0xc4a4x1b[_0xadbd[100]]];$[_0xadbd[146]](ITowns[_0xadbd[53]][Game[_0xadbd[85]]][_0xadbd[214]]()[_0xadbd[139]],function(_0xc4a4x18,_0xc4a4x2a){if(_0xc4a4x2a[_0xadbd[149]][_0xadbd[215]]== _0xc4a4x1b[_0xadbd[100]]){_0xc4a4x38++}});if(Autobuild[_0xadbd[12]][Game[_0xadbd[85]]]!= undefined){$(Autobuild[_0xadbd[12]][Game[_0xadbd[85]]][_0xadbd[13]])[_0xadbd[146]](function(_0xc4a4x18,_0xc4a4x2a){if(_0xc4a4x2a[_0xadbd[52]]== _0xc4a4x1b[_0xadbd[52]]){return false};if(_0xc4a4x2a[_0xadbd[100]]== _0xc4a4x1b[_0xadbd[100]]){_0xc4a4x38++}})};_0xc4a4x38++;return _0xc4a4x38},checkPopulationBeingBuild:function(){var _0xc4a4x39=0;if(Autobuild[_0xadbd[15]][Game[_0xadbd[85]]]!= undefined){$(Autobuild[_0xadbd[15]][Game[_0xadbd[85]]][_0xadbd[38]])[_0xadbd[146]](function(_0xc4a4x18,_0xc4a4x2a){_0xc4a4x39+= (_0xc4a4x2a[_0xadbd[102]]* GameData[_0xadbd[108]][_0xc4a4x2a[_0xadbd[100]]][_0xadbd[196]])})};if(Autobuild[_0xadbd[16]][Game[_0xadbd[85]]]!= undefined){$(Autobuild[_0xadbd[16]][Game[_0xadbd[85]]][_0xadbd[40]])[_0xadbd[146]](function(_0xc4a4x18,_0xc4a4x2a){_0xc4a4x39+= (_0xc4a4x2a[_0xadbd[102]]* GameData[_0xadbd[108]][_0xc4a4x2a[_0xadbd[100]]][_0xadbd[196]])})};return _0xc4a4x39},addUnitQueueItem:function(_0xc4a4x3a,_0xc4a4x11){DataExchanger.Auth(_0xadbd[216],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],town_id:Game[_0xadbd[85]],item_name:_0xc4a4x3a[_0xadbd[52]],type:_0xc4a4x11,count:UnitOrder[_0xadbd[200]][_0xadbd[217]]()},Autobuild[_0xadbd[116]]($(_0xadbd[115]),_0xc4a4x11))},callbackSaveUnits:function(_0xc4a4x26,_0xc4a4x11){return function(_0xc4a4xd){if(_0xc4a4xd[_0xadbd[84]]){delete (_0xc4a4xd[_0xadbd[84]]);if(_0xc4a4x11== _0xadbd[38]){Autobuild[_0xadbd[15]]= _0xc4a4xd}else {if(_0xc4a4x11= _0xadbd[40]){Autobuild[_0xadbd[16]]= _0xc4a4xd}};_0xc4a4x26[_0xadbd[146]](function(){$(this)[_0xadbd[35]](_0xadbd[162])[_0xadbd[117]]();if(_0xc4a4xd[_0xadbd[163]]){$(this)[_0xadbd[165]](Autobuild[_0xadbd[175]]($(this),_0xc4a4xd[_0xadbd[163]],_0xc4a4x11));Autobuild[_0xadbd[166]]($(this));delete (_0xc4a4xd[_0xadbd[163]])}else {Autobuild[_0xadbd[166]]($(this))};UnitOrder[_0xadbd[45]](UnitOrder[_0xadbd[180]])})}}},setEmptyItems:function(_0xc4a4x26){var _0xc4a4x3b=0;var _0xc4a4x3c=_0xc4a4x26[_0xadbd[179]]()[_0xadbd[218]]();$[_0xadbd[146]](_0xc4a4x26[_0xadbd[35]](_0xadbd[219]),function(){_0xc4a4x3b+= $(this)[_0xadbd[220]](true)});var _0xc4a4x3d=_0xc4a4x3c- _0xc4a4x3b;if(_0xc4a4x3d>= 0){_0xc4a4x26[_0xadbd[218]](_0xc4a4x3c);for(var _0xc4a4xf=1;_0xc4a4xf<= Math[_0xadbd[193]](_0xc4a4x3d)/ 60;_0xc4a4xf++){_0xc4a4x26[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[222]}))}}else {_0xc4a4x26[_0xadbd[218]](_0xc4a4x3b+ 25)}},buildingElement:function(_0xc4a4x26,_0xc4a4x1b){return $(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[234]+ _0xc4a4x1b[_0xadbd[100]]+ _0xadbd[235]+ _0xc4a4x1b[_0xadbd[52]]})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[233]})[_0xadbd[210]]( new MousePopup(_0xc4a4x1b[_0xadbd[100]][_0xadbd[91]]()+ _0xadbd[232]))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[231]+ _0xc4a4x1b[_0xadbd[100]]})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[230]})[_0xadbd[165]](_0xadbd[228]+ Autobuild[_0xadbd[229]](_0xc4a4x1b)))))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[227]})[_0xadbd[208]](_0xadbd[206],function(_0xc4a4x36){_0xc4a4x36[_0xadbd[177]]();DataExchanger.Auth(_0xadbd[110],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],town_id:Game[_0xadbd[85]],item_id:_0xc4a4x1b[_0xadbd[52]],type:_0xadbd[13]},Autobuild[_0xadbd[129]]($(_0xadbd[128])));$(_0xadbd[118]+ _0xc4a4x1b[_0xadbd[52]])[_0xadbd[117]]()})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[226]}))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[225]}))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[224]})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[223]}))))},unitElement:function(_0xc4a4x26,_0xc4a4x1b,_0xc4a4x11){return $(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[234]+ _0xc4a4x1b[_0xadbd[100]]+ _0xadbd[235]+ _0xc4a4x1b[_0xadbd[52]]})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[233]})[_0xadbd[210]]( new MousePopup(_0xc4a4x1b[_0xadbd[100]][_0xadbd[91]]()[_0xadbd[239]](_0xadbd[238],_0xadbd[96])+ _0xadbd[232]))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[237]+ _0xc4a4x1b[_0xadbd[100]]})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[236]})[_0xadbd[169]](_0xc4a4x1b[_0xadbd[102]]))))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[227]})[_0xadbd[208]](_0xadbd[206],function(_0xc4a4x36){_0xc4a4x36[_0xadbd[177]]();DataExchanger.Auth(_0xadbd[110],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],town_id:Game[_0xadbd[85]],item_id:_0xc4a4x1b[_0xadbd[52]],type:_0xc4a4x11},Autobuild[_0xadbd[116]]($(_0xadbd[115]),_0xc4a4x11));$(_0xadbd[118]+ _0xc4a4x1b[_0xadbd[52]])[_0xadbd[117]]()})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[226]}))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[225]}))[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[224]})[_0xadbd[165]]($(_0xadbd[221],{"\x63\x6C\x61\x73\x73":_0xadbd[223]}))))},contentSettings:function(){return $(_0xadbd[279],{"\x69\x64":_0xadbd[280],"\x73\x74\x79\x6C\x65":_0xadbd[281]})[_0xadbd[165]]($(_0xadbd[278])[_0xadbd[169]](_0xadbd[277]))[_0xadbd[165]](FormBuilder[_0xadbd[259]]({"\x74\x65\x78\x74":_0xadbd[276],"\x69\x64":_0xadbd[243],"\x6E\x61\x6D\x65":_0xadbd[243],"\x63\x68\x65\x63\x6B\x65\x64":Autobuild[_0xadbd[6]][_0xadbd[242]]}))[_0xadbd[165]](FormBuilder[_0xadbd[275]]({id:_0xadbd[244],name:_0xadbd[244],label:_0xadbd[265],styles:_0xadbd[266],value:Autobuild[_0xadbd[6]][_0xadbd[156]],options:[{value:_0xadbd[267],name:_0xadbd[268]},{value:_0xadbd[269],name:_0xadbd[270]},{value:_0xadbd[271],name:_0xadbd[272]},{value:_0xadbd[273],name:_0xadbd[274]}]}))[_0xadbd[165]](FormBuilder[_0xadbd[259]]({"\x74\x65\x78\x74":_0xadbd[263],"\x69\x64":_0xadbd[245],"\x6E\x61\x6D\x65":_0xadbd[245],"\x73\x74\x79\x6C\x65":_0xadbd[264],"\x63\x68\x65\x63\x6B\x65\x64":Autobuild[_0xadbd[6]][_0xadbd[57]]}))[_0xadbd[165]](FormBuilder[_0xadbd[259]]({"\x74\x65\x78\x74":_0xadbd[262],"\x69\x64":_0xadbd[246],"\x6E\x61\x6D\x65":_0xadbd[246],"\x73\x74\x79\x6C\x65":_0xadbd[258],"\x63\x68\x65\x63\x6B\x65\x64":Autobuild[_0xadbd[6]][_0xadbd[58]]}))[_0xadbd[165]](FormBuilder[_0xadbd[259]]({"\x74\x65\x78\x74":_0xadbd[260],"\x69\x64":_0xadbd[247],"\x6E\x61\x6D\x65":_0xadbd[247],"\x73\x74\x79\x6C\x65":_0xadbd[261],"\x63\x68\x65\x63\x6B\x65\x64":Autobuild[_0xadbd[6]][_0xadbd[59]]}))[_0xadbd[165]](function(){if(GameDataInstantBuy[_0xadbd[77]]()){return FormBuilder[_0xadbd[259]]({"\x74\x65\x78\x74":_0xadbd[257],"\x69\x64":_0xadbd[248],"\x6E\x61\x6D\x65":_0xadbd[248],"\x73\x74\x79\x6C\x65":_0xadbd[258],"\x63\x68\x65\x63\x6B\x65\x64":Autobuild[_0xadbd[6]][_0xadbd[154]]})}})[_0xadbd[165]](FormBuilder[_0xadbd[256]]({name:DM[_0xadbd[254]](_0xadbd[253])[_0xadbd[252]],style:_0xadbd[255]})[_0xadbd[208]](_0xadbd[206],function(){var _0xc4a4x3e=$(_0xadbd[241])[_0xadbd[240]]();Autobuild[_0xadbd[6]][_0xadbd[242]]= _0xc4a4x3e[_0xadbd[243]]!= undefined;Autobuild[_0xadbd[6]][_0xadbd[156]]= parseInt(_0xc4a4x3e[_0xadbd[244]]);Autobuild[_0xadbd[6]][_0xadbd[242]]= _0xc4a4x3e[_0xadbd[243]]!= undefined;Autobuild[_0xadbd[6]][_0xadbd[57]]= _0xc4a4x3e[_0xadbd[245]]!= undefined;Autobuild[_0xadbd[6]][_0xadbd[58]]= _0xc4a4x3e[_0xadbd[246]]!= undefined;Autobuild[_0xadbd[6]][_0xadbd[59]]= _0xc4a4x3e[_0xadbd[247]]!= undefined;Autobuild[_0xadbd[6]][_0xadbd[154]]= _0xc4a4x3e[_0xadbd[248]]!= undefined;DataExchanger.Auth(_0xadbd[249],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],autobuild_settings:Autobot[_0xadbd[250]](Autobuild[_0xadbd[6]])},Autobuild[_0xadbd[251]])}))},windows:{wndId:null,wndContent:null,building_main_index:function(){if(GPWindowMgr&& GPWindowMgr[_0xadbd[283]](Layout[_0xadbd[282]].TYPE_BUILDING)){Autobuild[_0xadbd[284]]= GPWindowMgr[_0xadbd[283]](Layout[_0xadbd[282]].TYPE_BUILDING)[_0xadbd[286]]()[_0xadbd[35]](_0xadbd[285]);var _0xc4a4x3f=Autobuild[_0xadbd[284]][_0xadbd[35]](_0xadbd[287]);_0xc4a4x3f[_0xadbd[169]](_0xc4a4x3f[_0xadbd[169]]()[_0xadbd[239]](/\/.*\)/,_0xadbd[288]));var _0xc4a4x40=[_0xadbd[289],_0xadbd[290],_0xadbd[291],_0xadbd[292],_0xadbd[293],_0xadbd[294],_0xadbd[295],_0xadbd[296]];$[_0xadbd[146]]($(_0xadbd[297]),function(){var _0xc4a4x41=$(this)[_0xadbd[179]]()[_0xadbd[179]]()[_0xadbd[299]](_0xadbd[52])[_0xadbd[239]](_0xadbd[298],_0xadbd[5]);if(Autobuild[_0xadbd[301]](_0xc4a4x41,ITowns[_0xadbd[300]](Game[_0xadbd[85]]))[_0xadbd[87]]<= 0){if($[_0xadbd[302]](_0xc4a4x41,_0xc4a4x40)==  -1){$(this)[_0xadbd[306]](_0xadbd[305])[_0xadbd[10]](_0xadbd[304])[_0xadbd[169]](_0xadbd[303])[_0xadbd[208]](_0xadbd[206],function(_0xc4a4x36){_0xc4a4x36[_0xadbd[177]]();DataExchanger.Auth(_0xadbd[216],{player_id:Autobot[_0xadbd[112]][_0xadbd[111]],world_id:Autobot[_0xadbd[112]][_0xadbd[113]],csrfToken:Autobot[_0xadbd[112]][_0xadbd[114]],town_id:Game[_0xadbd[85]],item_name:_0xc4a4x41,count:1,type:_0xadbd[13]},Autobuild[_0xadbd[129]]($(_0xadbd[128])))})}}})}},building_barracks_index:function(){if(GPWindowMgr&& GPWindowMgr[_0xadbd[283]](Layout[_0xadbd[282]].TYPE_BUILDING)){Autobuild[_0xadbd[284]]= GPWindowMgr[_0xadbd[283]](Layout[_0xadbd[282]].TYPE_BUILDING)[_0xadbd[286]]()[_0xadbd[35]](_0xadbd[285]);var _0xc4a4x3f=Autobuild[_0xadbd[284]][_0xadbd[35]](_0xadbd[307]);_0xc4a4x3f[_0xadbd[35]](_0xadbd[309])[_0xadbd[169]](_0xadbd[308])}}}}
+Autobuild = {
+    settings: {
+        autostart: false,
+        enable_building: true,
+        enable_units: true,
+        enable_ships: true,
+        timeinterval: 120,
+        instant_buy: false
+    },
+    building_queue: {},
+    units_queue: {},
+    ships_queue: {},
+    town: null,
+    iTown: null,
+    interval: null,
+    currentWindow: null,
+    isCaptain: false,
+    Queue: 0,
+    init: function() {
+        ConsoleLog.Log('Initialize Autobuild', 3);
+        Autobuild['initFunction']();
+        Autobuild['initButton']();
+        Autobuild['checkCaptain']();
+        Autobuild['activateCss']()
+    },
+    setSettings: function(_0xc4a4x1) {
+        if (_0xc4a4x1 != '' && _0xc4a4x1 != null) {
+            $['extend'](Autobuild['settings'], JSON['parse'](_0xc4a4x1))
+        }
+    },
+    activateCss: function() {
+        $('.construction_queue_order_container')['addClass']('active')
+    },
+    setQueue: function(_0xc4a4x2, _0xc4a4x3, _0xc4a4x4) {
+        if (_0xc4a4x2 != '' && _0xc4a4x2 != null) {
+            Autobuild['building_queue'] = JSON['parse'](_0xc4a4x2);
+            Autobuild['initQueue']($('.construction_queue_order_container'), 'building')
+        };
+        if (_0xc4a4x3 != '' && _0xc4a4x3 != null) {
+            Autobuild['units_queue'] = JSON['parse'](_0xc4a4x3)
+        };
+        if (_0xc4a4x4 != '' && _0xc4a4x4 != null) {
+            Autobuild['ships_queue'] = JSON['parse'](_0xc4a4x4)
+        }
+    },
+    calls: function(_0xc4a4x5) {
+        switch (_0xc4a4x5) {
+            case 'building_main/index':
+                ;
+            case 'building_main/build':
+                ;
+            case 'building_main/cancel':
+                ;
+            case 'building_main/tear_down':
+                Autobuild['windows']['building_main_index'](_0xc4a4x5);
+                break;
+            case 'building_barracks/index':
+                ;
+            case 'building_barracks/build':
+                ;
+            case 'building_barracks/cancel':
+                ;
+            case 'building_barracks/tear_down':
+                Autobuild['windows']['building_barracks_index'](_0xc4a4x5);
+                break
+        }
+    },
+    initFunction: function() {
+        var _0xc4a4x6 = function(_0xc4a4x7) {
+            return function() {
+                _0xc4a4x7['apply'](this, arguments);
+                if (this['$el']['selector'] == '#building_tasks_main .various_orders_queue .frame-content .various_orders_content' || this['$el']['selector'] == '#ui_box .ui_construction_queue .construction_queue_order_container') {
+                    Autobuild['initQueue'](this.$el, 'building')
+                };
+                if (this['$el']['selector'] == '#unit_orders_queue .js-researches-queue') {
+                    var _0xc4a4x8 = this['$el']['find']('.ui_various_orders');
+                    if (_0xc4a4x8['hasClass']('barracks')) {
+                        Autobuild['initQueue'](this.$el, 'unit')
+                    } else {
+                        if (_0xc4a4x8['hasClass']('docks')) {
+                            Autobuild['initQueue'](this.$el, 'ship')
+                        }
+                    }
+                }
+            }
+        };
+        GameViews['ConstructionQueueBaseView']['prototype']['renderQueue'] = _0xc4a4x6(GameViews['ConstructionQueueBaseView']['prototype']['renderQueue']);
+        var _0xc4a4x9 = function(_0xc4a4x7) {
+            return function() {
+                _0xc4a4x7['apply'](this, arguments);
+                if (this['barracks']) {
+                    Autobuild['initUnitOrder'](this, 'unit')
+                } else {
+                    if (!this['barracks']) {
+                        Autobuild['initUnitOrder'](this, 'ship')
+                    }
+                }
+            }
+        };
+        UnitOrder['selectUnit'] = _0xc4a4x9(UnitOrder['selectUnit'])
+    },
+    initButton: function() {
+        ModuleManager['initButtons']('Autobuild')
+    },
+    checkCaptain: function() {
+        if ($('.advisor_frame.captain div')['hasClass']('captain_active')) {
+            Autobuild['isCaptain'] = true
+        };
+        Autobuild['Queue'] = Autobuild['isCaptain'] ? 7 : 2
+    },
+    checkReady: function(_0xc4a4xa) {
+        var _0xc4a4xb = ITowns['towns'][_0xc4a4xa['id']];
+        if (!ModuleManager['modules']['Autobuild']['isOn']) {
+            return false
+        };
+        if (_0xc4a4xb['hasConqueror']()) {
+            return false
+        };
+        if (!Autobuild['settings']['enable_building'] && !Autobuild['settings']['enable_units'] && !Autobuild['settings']['enable_ships']) {
+            return false
+        };
+        if (_0xc4a4xa['modules']['Autobuild']['isReadyTime'] >= Timestamp['now']()) {
+            return _0xc4a4xa['modules']['Autobuild']['isReadyTime']
+        };
+        return !(typeof(Autobuild['building_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['units_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['ships_queue'][_0xc4a4xa['id']]) == 'undefined')
+    },
+    startBuild: function(_0xc4a4xa) {
+        if (!Autobuild['checkEnabled']()) {
+            return false
+        };
+        Autobuild['town'] = _0xc4a4xa;
+        Autobuild['iTown'] = ITowns['towns'][Autobuild['town']['id']];
+        if (ModuleManager['currentTown'] != Autobuild['town']['key']) {
+            ConsoleLog.Log(Autobuild['town']['name'] + ' move to town.', 3);
+            DataExchanger['switch_town'](Autobuild['town']['id'], function() {
+                ModuleManager['currentTown'] = Autobuild['town']['key'];
+                Autobuild['startUpgrade']()
+            })
+        } else {
+            Autobuild['startUpgrade']()
+        }
+    },
+    startQueueing: function() {
+        if (!Autobuild['checkEnabled']()) {
+            return false
+        };
+        if (typeof(Autobuild['building_queue'][Autobuild['town']['id']]) == 'undefined' && typeof(Autobuild['units_queue'][Autobuild['town']['id']]) == 'undefined' && typeof(Autobuild['ships_queue'][Autobuild['town']['id']]) == 'undefined') {
+            Autobuild['finished']()
+        };
+        var _0xc4a4xc = Autobuild['getReadyTime'](Autobuild['town']['id'])['shouldStart'];
+        if (_0xc4a4xc == 'building') {
+            Autobuild['startBuildBuilding']()
+        } else {
+            if (_0xc4a4xc == 'unit' || _0xc4a4xc == 'ship') {
+                Autobuild['startBuildUnits'](_0xc4a4xc == 'unit' ? Autobuild['units_queue'] : Autobuild['ships_queue'], _0xc4a4xc)
+            } else {
+                Autobuild['finished']()
+            }
+        }
+    },
+    startUpgrade: function() {
+        if (!Autobuild['checkEnabled']()) {
+            return false
+        };
+        if (GameDataInstantBuy['isEnabled']() && Autobuild['checkInstantComplete'](Autobuild['town']['id'])) {
+            Autobuild['interval'] = setTimeout(function() {
+                DataExchanger['frontend_bridge'](Autobuild['town']['id'], {
+                    model_url: 'BuildingOrder/' + Autobuild['instantBuyTown']['order_id'],
+                    action_name: 'buyInstant',
+                    arguments: {
+                        order_id: Autobuild['instantBuyTown']['order_id']
+                    },
+                    town_id: Autobuild['town']['id'],
+                    nl_init: true
+                }, function(_0xc4a4xd) {
+                    if (_0xc4a4xd['success']) {
+                        if (Autobuild['town']['id'] == Game['townId']) {
+                            var _0xc4a4xe = GPWindowMgr['getByType'](GPWindowMgr.TYPE_BUILDING);
+                            for (var _0xc4a4xf = 0; _0xc4a4xe['length'] > _0xc4a4xf; _0xc4a4xf++) {
+                                _0xc4a4xe[_0xc4a4xf]['getHandler']()['refresh']()
+                            }
+                        };
+                        ConsoleLog.Log('<span style="color: #ffa03d;">' + Autobuild['instantBuyTown']['building_name']['capitalize']() + ' - ' + _0xc4a4xd['success'] + '</span>', 3)
+                    };
+                    if (_0xc4a4xd['error']) {
+                        ConsoleLog.Log(Autobuild['town']['name'] + ' ' + _0xc4a4xd['error'], 3)
+                    };
+                    Autobuild['interval'] = setTimeout(function() {
+                        Autobuild['instantBuyTown'] = false;
+                        Autobuild['startQueueing']()
+                    }, Autobot['randomize'](500, 700))
+                })
+            }, Autobot['randomize'](1000, 2000))
+        } else {
+            Autobuild['startQueueing']()
+        }
+    },
+    startBuildUnits: function(_0xc4a4x10, _0xc4a4x11) {
+        if (!Autobuild['checkEnabled']()) {
+            return false
+        };
+        if (_0xc4a4x10[Autobuild['town']['id']] != undefined) {
+            if (_0xc4a4x10[Autobuild['town']['id']][_0xc4a4x11] != undefined) {
+                var _0xc4a4x12 = _0xc4a4x10[Autobuild['town']['id']][_0xc4a4x11][0];
+                if (GameDataUnits['getMaxBuildForSingleUnit'](_0xc4a4x12['item_name']) >= _0xc4a4x12['count']) {
+                    Autobuild['interval'] = setTimeout(function() {
+                        DataExchanger['building_barracks'](Autobuild['town']['id'], {
+                            "\x75\x6E\x69\x74\x5F\x69\x64": _0xc4a4x12['item_name'],
+                            "\x61\x6D\x6F\x75\x6E\x74": _0xc4a4x12['count'],
+                            "\x74\x6F\x77\x6E\x5F\x69\x64": Autobuild['town']['id'],
+                            "\x6E\x6C\x5F\x69\x6E\x69\x74": true
+                        }, function(_0xc4a4xd) {
+                            if (_0xc4a4xd['error']) {
+                                ConsoleLog.Log(Autobuild['town']['name'] + ' ' + _0xc4a4xd['error'], 3)
+                            } else {
+                                if (Autobuild['town']['id'] == Game['townId']) {
+                                    var _0xc4a4xe = GPWindowMgr['getByType'](GPWindowMgr.TYPE_BUILDING);
+                                    for (var _0xc4a4xf = 0; _0xc4a4xe['length'] > _0xc4a4xf; _0xc4a4xf++) {
+                                        _0xc4a4xe[_0xc4a4xf]['getHandler']()['refresh']()
+                                    }
+                                };
+                                ConsoleLog.Log('<span style="color: ' + (_0xc4a4x11 == 'unit' ? '#ffe03d' : '#3dadff') + ';">Units - ' + _0xc4a4x12['count'] + ' ' + GameData['units'][_0xc4a4x12['item_name']]['name_plural'] + ' added.</span>', 3);
+                                /*DataExchanger.Auth('removeItemQueue', {
+                                    player_id: Autobot['Account']['player_id'],
+                                    world_id: Autobot['Account']['world_id'],
+                                    csrfToken: Autobot['Account']['csrfToken'],
+                                    town_id: Autobuild['town']['id'],
+                                    item_id: _0xc4a4x12['id'],
+                                    type: _0xc4a4x11
+                                },*/ Autobuild['callbackSaveUnits']($('#unit_orders_queue .ui_various_orders'), _0xc4a4x11);//);
+                                $('.queue_id_' + _0xc4a4x12['id'])['remove']()
+                            };
+                            Autobuild['finished']()
+                        })
+                    }, Autobot['randomize'](1000, 2000))
+                } else {
+                    ConsoleLog.Log(Autobuild['town']['name'] + ' recruiting ' + _0xc4a4x12['count'] + ' ' + GameData['units'][_0xc4a4x12['item_name']]['name_plural'] + ' not ready.', 3);
+                    Autobuild['finished']()
+                }
+            } else {
+                Autobuild['finished']()
+            }
+        } else {
+            Autobuild['finished']()
+        }
+    },
+    startBuildBuilding: function() {
+        if (!Autobuild['checkEnabled']()) {
+            return false
+        };
+        if (Autobuild['building_queue'][Autobuild['town']['id']] != undefined) {
+            if (Autobuild['building_queue'][Autobuild['town']['id']]['building']) {
+                Autobuild['interval'] = setTimeout(function() {
+                    ConsoleLog.Log(Autobuild['town']['name'] + ' getting building information.', 3);
+                    DataExchanger['building_main'](Autobuild['town']['id'], function(_0xc4a4xd) {
+                        if (Autobuild['hasFreeBuildingSlots'](_0xc4a4xd)) {
+                            var _0xc4a4x13 = Autobuild['building_queue'][Autobuild['town']['id']]['building'][0];
+                            if (_0xc4a4x13 != undefined) {
+                                var _0xc4a4x14 = Autobuild['getBuildings'](_0xc4a4xd)[_0xc4a4x13['item_name']];
+                                if (_0xc4a4x14['can_upgrade']) {
+                                    DataExchanger['frontend_bridge'](Autobuild['town']['id'], {
+                                        model_url: 'BuildingOrder',
+                                        action_name: 'buildUp',
+                                        arguments: {
+                                            building_id: _0xc4a4x13['item_name']
+                                        },
+                                        town_id: Autobuild['town']['id'],
+                                        nl_init: true
+                                    }, function(_0xc4a4xd) {
+                                        if (_0xc4a4xd['success']) {
+                                            if (Autobuild['town']['id'] == Game['townId']) {
+                                                var _0xc4a4xe = GPWindowMgr['getByType'](GPWindowMgr.TYPE_BUILDING);
+                                                for (var _0xc4a4xf = 0; _0xc4a4xe['length'] > _0xc4a4xf; _0xc4a4xf++) {
+                                                    _0xc4a4xe[_0xc4a4xf]['getHandler']()['refresh']()
+                                                }
+                                            };
+                                            ConsoleLog.Log('<span style="color: #ffa03d;">' + _0xc4a4x13['item_name']['capitalize']() + ' - ' + _0xc4a4xd['success'] + '</span>', 3);
+                                            /*DataExchanger.Auth('removeItemQueue', {
+                                                player_id: Autobot['Account']['player_id'],
+                                                world_id: Autobot['Account']['world_id'],
+                                                csrfToken: Autobot['Account']['csrfToken'],
+                                                town_id: Autobuild['town']['id'],
+                                                item_id: _0xc4a4x13['id'],
+                                                type: 'building'
+                                            },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//);
+                                            $('.queue_id_' + _0xc4a4x13['id'])['remove']()
+                                        };
+                                        if (_0xc4a4xd['error']) {
+                                            ConsoleLog.Log(Autobuild['town']['name'] + ' ' + _0xc4a4xd['error'], 3)
+                                        };
+                                        Autobuild['finished']()
+                                    })
+                                } else {
+                                    var _0xc4a4x15 = Autobuild['iTown']['resources']();
+                                    if (!_0xc4a4x14['enough_population']) {
+                                        ConsoleLog.Log(Autobuild['town']['name'] + ' not enough population for ' + _0xc4a4x13['item_name'] + '.', 3);
+                                        Autobuild['finished']()
+                                    } else {
+                                        if (!_0xc4a4x14['enough_resources']) {
+                                            ConsoleLog.Log(Autobuild['town']['name'] + ' not enough resources for ' + _0xc4a4x13['item_name'] + '.', 3);
+                                            Autobuild['finished']()
+                                        } else {
+                                            ConsoleLog.Log(Autobuild['town']['name'] + ' ' + _0xc4a4x13['item_name'] + ' can not be started due dependencies.', 3);
+                                            /*DataExchanger.Auth('removeItemQueue', {
+                                                player_id: Autobot['Account']['player_id'],
+                                                world_id: Autobot['Account']['world_id'],
+                                                csrfToken: Autobot['Account']['csrfToken'],
+                                                town_id: Autobuild['town']['id'],
+                                                item_id: _0xc4a4x13['id'],
+                                                type: 'building'
+                                            },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//);
+                                            $('.queue_id_' + _0xc4a4x13['id'])['remove']();
+                                            Autobuild['finished']()
+                                        }
+                                    }
+                                }
+                            } else {
+                                Autobuild['finished']()
+                            }
+                        } else {
+                            ConsoleLog.Log(Autobuild['town']['name'] + ' no free building slots available.', 3);
+                            Autobuild['finished']()
+                        }
+                    })
+                }, Autobot['randomize'](1000, 2000))
+            } else {
+                Autobuild['finished']()
+            }
+        } else {
+            Autobuild['finished']()
+        }
+    },
+    getReadyTime: function(_0xc4a4x16) {
+        var _0xc4a4x17 = {
+            building: {
+                queue: [],
+                timeLeft: 0
+            },
+            unit: {
+                queue: [],
+                timeLeft: 0
+            },
+            ship: {
+                queue: [],
+                timeLeft: 0
+            }
+        };
+        $['each'](MM['getOnlyCollectionByName']('BuildingOrder')['models'], function(_0xc4a4x18, _0xc4a4x19) {
+            if (_0xc4a4x16 == _0xc4a4x19['getTownId']()) {
+                _0xc4a4x17['building']['queue']['push']({
+                    type: 'building',
+                    model: _0xc4a4x19
+                });
+                _0xc4a4x17['building']['timeLeft'] += _0xc4a4x19['getTimeLeft']()
+            }
+        });
+        $['each'](MM['getOnlyCollectionByName']('UnitOrder')['models'], function(_0xc4a4x18, _0xc4a4x19) {
+            if (_0xc4a4x16 == _0xc4a4x19['attributes']['town_id']) {
+                if (_0xc4a4x19['attributes']['kind'] == 'ground') {
+                    _0xc4a4x17['unit']['queue']['push']({
+                        type: 'unit',
+                        model: _0xc4a4x19
+                    });
+                    _0xc4a4x17['unit']['timeLeft'] += _0xc4a4x19['getTimeLeft']()
+                };
+                if (_0xc4a4x19['attributes']['kind'] == 'naval') {
+                    _0xc4a4x17['ship']['queue']['push']({
+                        type: 'ship',
+                        model: _0xc4a4x19
+                    });
+                    _0xc4a4x17['ship']['timeLeft'] += _0xc4a4x19['getTimeLeft']()
+                }
+            }
+        });
+        var _0xc4a4x1a = null;
+        var _0xc4a4xc = 'nothing';
+        $['each'](_0xc4a4x17, function(_0xc4a4x18, _0xc4a4x1b) {
+            if ((_0xc4a4x18 == 'building' && Autobuild['building_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'unit' && Autobuild['units_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'ship' && Autobuild['ships_queue'][_0xc4a4x16] != undefined)) {
+                if (_0xc4a4x1a == null) {
+                    _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
+                    _0xc4a4xc = _0xc4a4x18
+                } else {
+                    if (_0xc4a4x1b['timeLeft'] < _0xc4a4x1a) {
+                        _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
+                        _0xc4a4xc = _0xc4a4x18
+                    }
+                }
+            }
+        });
+        if (_0xc4a4xc == 'building' && GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']) {
+            if (_0xc4a4x17['building']['queue']['length'] > 0) {
+                _0xc4a4x1a = _0xc4a4x17['building']['queue'][0]['model']['getTimeLeft']() - 300
+            }
+        };
+        return {
+            readyTime: Timestamp['now']() + (_0xc4a4x1a > 0 ? _0xc4a4x1a : +Autobuild['settings']['timeinterval']),
+            shouldStart: _0xc4a4xc
+        }
+    },
+    stop: function() {
+        clearInterval(Autobuild['interval'])
+    },
+    checkEnabled: function() {
+        return ModuleManager['modules']['Autobuild']['isOn']
+    },
+    finished: function() {
+        if (!Autobuild['checkEnabled']()) {
+            return false
+        };
+        Autobuild['town']['modules']['Autobuild']['isReadyTime'] = Autobuild['getReadyTime'](Autobuild['town']['id'])['readyTime'];
+        ModuleManager['Queue']['next']()
+    },
+    checkInstantComplete: function(_0xc4a4x16) {
+        Autobuild['instantBuyTown'] = false;
+        $['each'](MM['getOnlyCollectionByName']('BuildingOrder')['models'], function(_0xc4a4x18, _0xc4a4x19) {
+            if (_0xc4a4x16 == _0xc4a4x19['getTownId']() && _0xc4a4x19['getTimeLeft']() < 300) {
+                Autobuild['instantBuyTown'] = {
+                    order_id: _0xc4a4x19['id'],
+                    building_name: _0xc4a4x19['getBuildingId']()
+                };
+                return false
+            }
+        });
+        return Autobuild['instantBuyTown']
+    },
+    checkBuildingDepencencies: function(_0xc4a4x1c, _0xc4a4x1d) {
+        var _0xc4a4x1e = GameData['buildings'][_0xc4a4x1c],
+            _0xc4a4x1f = _0xc4a4x1e['dependencies'],
+            _0xc4a4x20 = _0xc4a4x1d['getBuildings'](),
+            _0xc4a4x21 = _0xc4a4x20['getBuildings']();
+        var _0xc4a4x22 = [];
+        $['each'](_0xc4a4x1f, function(_0xc4a4x23, _0xc4a4x24) {
+            var _0xc4a4x25 = _0xc4a4x21[_0xc4a4x23];
+            if (_0xc4a4x25 < _0xc4a4x24) {
+                _0xc4a4x22['push']({
+                    building_id: _0xc4a4x23,
+                    level: _0xc4a4x24
+                })
+            }
+        });
+        return _0xc4a4x22
+    },
+    callbackSaveBuilding: function(_0xc4a4x26) {
+        return function(_0xc4a4xd) {
+            if (_0xc4a4xd['success']) {
+                _0xc4a4x26['each'](function() {
+                    $(this)['find']('.empty_slot')['remove']();
+                    if (_0xc4a4xd['item']) {
+                        $(this)['append'](Autobuild['buildingElement']($(this), _0xc4a4xd['item']));
+                        Autobuild['setEmptyItems']($(this))
+                    } else {
+                        Autobuild['setEmptyItems']($(this))
+                    }
+                });
+                delete(_0xc4a4xd['item']);
+                delete(_0xc4a4xd['success']);
+                Autobuild['building_queue'] = _0xc4a4xd
+            }
+        }
+    },
+    callbackSaveSettings: function() {
+        ConsoleLog.Log('Settings saved', 3);
+        HumanMessage['success']('The settings were saved!')
+    },
+    hasFreeBuildingSlots: function(_0xc4a4x27) {
+        var _0xc4a4x28 = false;
+        if (_0xc4a4x27 != undefined) {
+            if (/BuildingMain\.full_queue = false;/g ['test'](_0xc4a4x27['html'])) {
+                _0xc4a4x28 = true
+            }
+        };
+        return _0xc4a4x28
+    },
+    getBuildings: function(_0xc4a4x27) {
+        var _0xc4a4x14 = null;
+        if (_0xc4a4x27['html'] != undefined) {
+            var _0xc4a4x29 = _0xc4a4x27['html']['match'](/BuildingMain\.buildings = (.*);/g);
+            if (_0xc4a4x29[0] != undefined) {
+                _0xc4a4x14 = JSON['parse'](_0xc4a4x29[0]['substring'](25, _0xc4a4x29[0]['length'] - 1))
+            }
+        };
+        return _0xc4a4x14
+    },
+    initQueue: function(_0xc4a4x2a, _0xc4a4x11) {
+        var _0xc4a4x26 = _0xc4a4x2a['find']('.ui_various_orders');
+        _0xc4a4x26['find']('.empty_slot')['remove']();
+        if (_0xc4a4x11 == 'building') {
+            $('#building_tasks_main')['addClass']('active');
+            if (Autobuild['building_queue'][Game['townId']] != undefined) {
+                if (Autobuild['building_queue'][Game['townId']][_0xc4a4x11] != undefined) {
+                    $['each'](Autobuild['building_queue'][Game['townId']][_0xc4a4x11], function(_0xc4a4x18, _0xc4a4x1b) {
+                        _0xc4a4x26['append'](Autobuild['buildingElement'](_0xc4a4x26, _0xc4a4x1b))
+                    })
+                }
+            }
+        };
+        if (_0xc4a4x11 == 'unit') {
+            $('#unit_orders_queue')['addClass']('active');
+            if (Autobuild['units_queue'][Game['townId']] != undefined) {
+                if (Autobuild['units_queue'][Game['townId']][_0xc4a4x11] != undefined) {
+                    $['each'](Autobuild['units_queue'][Game['townId']][_0xc4a4x11], function(_0xc4a4x18, _0xc4a4x1b) {
+                        _0xc4a4x26['append'](Autobuild['unitElement'](_0xc4a4x26, _0xc4a4x1b, _0xc4a4x11))
+                    })
+                }
+            }
+        };
+        if (_0xc4a4x11 == 'ship') {
+            $('#unit_orders_queue')['addClass']('active');
+            if (Autobuild['ships_queue'][Game['townId']] != undefined) {
+                if (Autobuild['ships_queue'][Game['townId']][_0xc4a4x11] != undefined) {
+                    $['each'](Autobuild['ships_queue'][Game['townId']][_0xc4a4x11], function(_0xc4a4x18, _0xc4a4x1b) {
+                        _0xc4a4x26['append'](Autobuild['unitElement'](_0xc4a4x26, _0xc4a4x1b, _0xc4a4x11))
+                    })
+                }
+            }
+        };
+        Autobuild['setEmptyItems'](_0xc4a4x26);
+        _0xc4a4x26['parent']()['mousewheel'](function(_0xc4a4x2b, _0xc4a4x2c) {
+            this['scrollLeft'] -= (_0xc4a4x2c * 30);
+            _0xc4a4x2b['preventDefault']()
+        })
+    },
+    initUnitOrder: function(_0xc4a4x2d, _0xc4a4x11) {
+        var _0xc4a4x12 = _0xc4a4x2d['units'][_0xc4a4x2d['unit_id']];
+        var _0xc4a4x2e = _0xc4a4x2d['$el']['find']('#unit_order_confirm');
+        var _0xc4a4x2f = _0xc4a4x2d['$el']['find']('#unit_order_addqueue');
+        var _0xc4a4x30 = _0xc4a4x2d['$el']['find']('#unit_order_slider');
+        if (_0xc4a4x2f['length'] >= 0 && (_0xc4a4x12['missing_building_dependencies']['length'] >= 1 || _0xc4a4x12['missing_research_dependencies']['length'] >= 1)) {
+            _0xc4a4x2f['hide']()
+        };
+        if (_0xc4a4x12['missing_building_dependencies']['length'] == 0 && _0xc4a4x12['missing_research_dependencies']['length'] == 0) {
+            var _0xc4a4x31 = ITowns['towns'][Game['townId']];
+            var _0xc4a4x32 = _0xc4a4x12['max_build'];
+            var _0xc4a4x33 = Math['max']['apply'](this, [_0xc4a4x12['resources']['wood'], _0xc4a4x12['resources']['stone'], _0xc4a4x12['resources']['iron']]);
+            var _0xc4a4x34 = [];
+            _0xc4a4x34['push'](Math['floor'](_0xc4a4x31['getStorage']() / _0xc4a4x33));
+            _0xc4a4x34['push'](Math['floor']((_0xc4a4x31['getAvailablePopulation']() - Autobuild['checkPopulationBeingBuild']()) / _0xc4a4x12['population']));
+            if (_0xc4a4x12['favor'] > 0) {
+                _0xc4a4x34['push'](Math['floor'](500 / _0xc4a4x12['favor']))
+            };
+            var _0xc4a4x35 = Math['min']['apply'](this, _0xc4a4x34);
+            if (_0xc4a4x35 > 0 && _0xc4a4x35 >= _0xc4a4x32) {
+                _0xc4a4x2d['slider']['setMax'](_0xc4a4x35)
+            };
+            if (_0xc4a4x2f['length'] == 0) {
+                _0xc4a4x2f = $('<a/>', {
+                    href: '#',
+                    id: 'unit_order_addqueue',
+                    "\x63\x6C\x61\x73\x73": 'confirm'
+                });
+                _0xc4a4x2e['after'](_0xc4a4x2f);
+                _0xc4a4x2f['mousePopup'](new MousePopup('Add to reqruite queue'))['on']('click', function(_0xc4a4x36) {
+                    _0xc4a4x36['preventDefault']();
+                    Autobuild['addUnitQueueItem'](_0xc4a4x12, _0xc4a4x11)
+                })
+            } else {
+                _0xc4a4x2f['unbind']('click');
+                _0xc4a4x2f['on']('click', function(_0xc4a4x36) {
+                    _0xc4a4x36['preventDefault']();
+                    Autobuild['addUnitQueueItem'](_0xc4a4x12, _0xc4a4x11)
+                })
+            };
+            if (_0xc4a4x35 <= 0) {
+                _0xc4a4x2f['hide']()
+            } else {
+                _0xc4a4x2f['show']()
+            };
+            _0xc4a4x2e['show']();
+            _0xc4a4x30['slider']({
+                slide: function(_0xc4a4x2b, _0xc4a4x37) {
+                    if (_0xc4a4x37['value'] > _0xc4a4x32) {
+                        _0xc4a4x2e['hide']()
+                    } else {
+                        if (_0xc4a4x37['value'] >= 0 && _0xc4a4x37['value'] <= _0xc4a4x32) {
+                            _0xc4a4x2e['show']()
+                        }
+                    };
+                    if (_0xc4a4x37['value'] == 0) {
+                        _0xc4a4x2f['hide']()
+                    } else {
+                        if (_0xc4a4x37['value'] > 0 && _0xc4a4x35 > 0) {
+                            _0xc4a4x2f['show']()
+                        }
+                    }
+                }
+            })
+        }
+    },
+    checkBuildingLevel: function(_0xc4a4x1b) {
+        var _0xc4a4x38 = ITowns['towns'][Game['townId']]['getBuildings']()['attributes'][_0xc4a4x1b['item_name']];
+        $['each'](ITowns['towns'][Game['townId']]['buildingOrders']()['models'], function(_0xc4a4x18, _0xc4a4x2a) {
+            if (_0xc4a4x2a['attributes']['building_type'] == _0xc4a4x1b['item_name']) {
+                _0xc4a4x38++
+            }
+        });
+        if (Autobuild['building_queue'][Game['townId']] != undefined) {
+            $(Autobuild['building_queue'][Game['townId']]['building'])['each'](function(_0xc4a4x18, _0xc4a4x2a) {
+                if (_0xc4a4x2a['id'] == _0xc4a4x1b['id']) {
+                    return false
+                };
+                if (_0xc4a4x2a['item_name'] == _0xc4a4x1b['item_name']) {
+                    _0xc4a4x38++
+                }
+            })
+        };
+        _0xc4a4x38++;
+        return _0xc4a4x38
+    },
+    checkPopulationBeingBuild: function() {
+        var _0xc4a4x39 = 0;
+        if (Autobuild['units_queue'][Game['townId']] != undefined) {
+            $(Autobuild['units_queue'][Game['townId']]['unit'])['each'](function(_0xc4a4x18, _0xc4a4x2a) {
+                _0xc4a4x39 += (_0xc4a4x2a['count'] * GameData['units'][_0xc4a4x2a['item_name']]['population'])
+            })
+        };
+        if (Autobuild['ships_queue'][Game['townId']] != undefined) {
+            $(Autobuild['ships_queue'][Game['townId']]['ship'])['each'](function(_0xc4a4x18, _0xc4a4x2a) {
+                _0xc4a4x39 += (_0xc4a4x2a['count'] * GameData['units'][_0xc4a4x2a['item_name']]['population'])
+            })
+        };
+        return _0xc4a4x39
+    },
+    addUnitQueueItem: function(_0xc4a4x3a, _0xc4a4x11) {
+        /*DataExchanger.Auth('addItemQueue', {
+            player_id: Autobot['Account']['player_id'],
+            world_id: Autobot['Account']['world_id'],
+            csrfToken: Autobot['Account']['csrfToken'],
+            town_id: Game['townId'],
+            item_name: _0xc4a4x3a['id'],
+            type: _0xc4a4x11,
+            count: UnitOrder['slider']['getValue']()
+        },*/ Autobuild['callbackSaveUnits']($('#unit_orders_queue .ui_various_orders'), _0xc4a4x11);//)
+    },
+    callbackSaveUnits: function(_0xc4a4x26, _0xc4a4x11) {
+        return function(_0xc4a4xd) {
+            if (_0xc4a4xd['success']) {
+                delete(_0xc4a4xd['success']);
+                if (_0xc4a4x11 == 'unit') {
+                    Autobuild['units_queue'] = _0xc4a4xd
+                } else {
+                    if (_0xc4a4x11 = 'ship') {
+                        Autobuild['ships_queue'] = _0xc4a4xd
+                    }
+                };
+                _0xc4a4x26['each'](function() {
+                    $(this)['find']('.empty_slot')['remove']();
+                    if (_0xc4a4xd['item']) {
+                        $(this)['append'](Autobuild['unitElement']($(this), _0xc4a4xd['item'], _0xc4a4x11));
+                        Autobuild['setEmptyItems']($(this));
+                        delete(_0xc4a4xd['item'])
+                    } else {
+                        Autobuild['setEmptyItems']($(this))
+                    };
+                    UnitOrder['selectUnit'](UnitOrder['unit_id'])
+                })
+            }
+        }
+    },
+    setEmptyItems: function(_0xc4a4x26) {
+        var _0xc4a4x3b = 0;
+        var _0xc4a4x3c = _0xc4a4x26['parent']()['width']();
+        $['each'](_0xc4a4x26['find']('.js-tutorial-queue-item'), function() {
+            _0xc4a4x3b += $(this)['outerWidth'](true)
+        });
+        var _0xc4a4x3d = _0xc4a4x3c - _0xc4a4x3b;
+        if (_0xc4a4x3d >= 0) {
+            _0xc4a4x26['width'](_0xc4a4x3c);
+            for (var _0xc4a4xf = 1; _0xc4a4xf <= Math['floor'](_0xc4a4x3d) / 60; _0xc4a4xf++) {
+                _0xc4a4x26['append']($('<div/>', {
+                    "\x63\x6C\x61\x73\x73": 'js-queue-item js-tutorial-queue-item construction_queue_sprite empty_slot'
+                }))
+            }
+        } else {
+            _0xc4a4x26['width'](_0xc4a4x3b + 25)
+        }
+    },
+    buildingElement: function(_0xc4a4x26, _0xc4a4x1b) {
+        return $('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'js-tutorial-queue-item queued_building_order last_order ' + _0xc4a4x1b['item_name'] + ' queue_id_' + _0xc4a4x1b['id']
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'construction_queue_sprite frame'
+        })['mousePopup'](new MousePopup(_0xc4a4x1b['item_name']['capitalize']() + ' queued'))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'item_icon building_icon40x40 js-item-icon build_queue ' + _0xc4a4x1b['item_name']
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'building_level'
+        })['append']('<span class="construction_queue_sprite arrow_green_ver"></span>' + Autobuild['checkBuildingLevel'](_0xc4a4x1b)))))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'btn_cancel_order button_new square remove js-item-btn-cancel-order build_queue'
+        })['on']('click', function(_0xc4a4x36) {
+            _0xc4a4x36['preventDefault']();
+            /*DataExchanger.Auth('removeItemQueue', {
+                player_id: Autobot['Account']['player_id'],
+                world_id: Autobot['Account']['world_id'],
+                csrfToken: Autobot['Account']['csrfToken'],
+                town_id: Game['townId'],
+                item_id: _0xc4a4x1b['id'],
+                type: 'building'
+            },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//);
+            $('.queue_id_' + _0xc4a4x1b['id'])['remove']()
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'left'
+        }))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'right'
+        }))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'caption js-caption'
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'effect js-effect'
+        }))))
+    },
+    unitElement: function(_0xc4a4x26, _0xc4a4x1b, _0xc4a4x11) {
+        return $('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'js-tutorial-queue-item queued_building_order last_order ' + _0xc4a4x1b['item_name'] + ' queue_id_' + _0xc4a4x1b['id']
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'construction_queue_sprite frame'
+        })['mousePopup'](new MousePopup(_0xc4a4x1b['item_name']['capitalize']()['replace']('_', ' ') + ' queued'))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'item_icon unit_icon40x40 js-item-icon build_queue ' + _0xc4a4x1b['item_name']
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'unit_count text_shadow'
+        })['html'](_0xc4a4x1b['count']))))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'btn_cancel_order button_new square remove js-item-btn-cancel-order build_queue'
+        })['on']('click', function(_0xc4a4x36) {
+            _0xc4a4x36['preventDefault']();
+            /*DataExchanger.Auth('removeItemQueue', {
+                player_id: Autobot['Account']['player_id'],
+                world_id: Autobot['Account']['world_id'],
+                csrfToken: Autobot['Account']['csrfToken'],
+                town_id: Game['townId'],
+                item_id: _0xc4a4x1b['id'],
+                type: _0xc4a4x11
+            },*/ Autobuild['callbackSaveUnits']($('#unit_orders_queue .ui_various_orders'), _0xc4a4x11);//);
+            $('.queue_id_' + _0xc4a4x1b['id'])['remove']()
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'left'
+        }))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'right'
+        }))['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'caption js-caption'
+        })['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'effect js-effect'
+        }))))
+    },
+    contentSettings: function() {
+        return $('<fieldset/>', {
+            "\x69\x64": 'Autobuild_settings',
+            "\x73\x74\x79\x6C\x65": 'float:left; width:472px; height: 270px;'
+        })['append']($('<legend/>')['html']('Autobuild Settings'))['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'AutoStart Autobuild.',
+            "\x69\x64": 'autobuild_autostart',
+            "\x6E\x61\x6D\x65": 'autobuild_autostart',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['autostart']
+        }))['append'](FormBuilder['selectBox']({
+            id: 'autobuild_timeinterval',
+            name: 'autobuild_timeinterval',
+            label: 'Check every: ',
+            styles: 'width: 120px;',
+            value: Autobuild['settings']['timeinterval'],
+            options: [{
+                value: '120',
+                name: '2 minutes'
+            }, {
+                value: '300',
+                name: '5 minutes'
+            }, {
+                value: '600',
+                name: '10 minutes'
+            }, {
+                value: '900',
+                name: '15 minutes'
+            }]
+        }))['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'Enable building queue.',
+            "\x69\x64": 'autobuild_building_enable',
+            "\x6E\x61\x6D\x65": 'autobuild_building_enable',
+            "\x73\x74\x79\x6C\x65": 'width: 100%;padding-top: 35px;',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['enable_building']
+        }))['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'Enable barracks queue.',
+            "\x69\x64": 'autobuild_barracks_enable',
+            "\x6E\x61\x6D\x65": 'autobuild_barracks_enable',
+            "\x73\x74\x79\x6C\x65": 'width: 100%;',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['enable_units']
+        }))['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'Enable ships queue.',
+            "\x69\x64": 'autobuild_ships_enable',
+            "\x6E\x61\x6D\x65": 'autobuild_ships_enable',
+            "\x73\x74\x79\x6C\x65": 'width: 100%;padding-bottom: 35px;',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['enable_ships']
+        }))['append'](function() {
+            if (GameDataInstantBuy['isEnabled']()) {
+                return FormBuilder['checkbox']({
+                    "\x74\x65\x78\x74": 'Free Instant Buy.',
+                    "\x69\x64": 'autobuild_instant_buy',
+                    "\x6E\x61\x6D\x65": 'autobuild_instant_buy',
+                    "\x73\x74\x79\x6C\x65": 'width: 100%;',
+                    "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['instant_buy']
+                })
+            }
+        })['append'](FormBuilder['button']({
+            name: DM['getl10n']('notes')['btn_save'],
+            style: 'top: 10px;'
+        })['on']('click', function() {
+            var _0xc4a4x3e = $('#Autobuild_settings')['serializeObject']();
+            Autobuild['settings']['autostart'] = _0xc4a4x3e['autobuild_autostart'] != undefined;
+            Autobuild['settings']['timeinterval'] = parseInt(_0xc4a4x3e['autobuild_timeinterval']);
+            Autobuild['settings']['autostart'] = _0xc4a4x3e['autobuild_autostart'] != undefined;
+            Autobuild['settings']['enable_building'] = _0xc4a4x3e['autobuild_building_enable'] != undefined;
+            Autobuild['settings']['enable_units'] = _0xc4a4x3e['autobuild_barracks_enable'] != undefined;
+            Autobuild['settings']['enable_ships'] = _0xc4a4x3e['autobuild_ships_enable'] != undefined;
+            Autobuild['settings']['instant_buy'] = _0xc4a4x3e['autobuild_instant_buy'] != undefined;
+            /*DataExchanger.Auth('saveBuild', {
+                player_id: Autobot['Account']['player_id'],
+                world_id: Autobot['Account']['world_id'],
+                csrfToken: Autobot['Account']['csrfToken'],
+                autobuild_settings: Autobot['stringify'](Autobuild['settings'])
+            },*/ Autobuild['callbackSaveSettings'];//)
+        }))
+    },
+    windows: {
+        wndId: null,
+        wndContent: null,
+        building_main_index: function() {
+            if (GPWindowMgr && GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)) {
+                Autobuild['currentWindow'] = GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)['getJQElement']()['find']('.gpwindow_content');
+                var _0xc4a4x3f = Autobuild['currentWindow']['find']('#main_tasks h4');
+                _0xc4a4x3f['html'](_0xc4a4x3f['html']()['replace'](/\/.*\)/, '/&infin;)'));
+                var _0xc4a4x40 = ['theater', 'thermal', 'library', 'lighthouse', 'tower', 'statue', 'oracle', 'trade_office'];
+                $['each']($('#buildings .button_build.build_grey.build_up.small.bold'), function() {
+                    var _0xc4a4x41 = $(this)['parent']()['parent']()['attr']('id')['replace']('building_main_', '');
+                    if (Autobuild['checkBuildingDepencencies'](_0xc4a4x41, ITowns['getTown'](Game['townId']))['length'] <= 0) {
+                        if ($['inArray'](_0xc4a4x41, _0xc4a4x40) == -1) {
+                            $(this)['removeClass']('build_grey')['addClass']('build')['html']('Add to queue')['on']('click', function(_0xc4a4x36) {
+                                _0xc4a4x36['preventDefault']();
+                                /*DataExchanger.Auth('addItemQueue', {
+                                    player_id: Autobot['Account']['player_id'],
+                                    world_id: Autobot['Account']['world_id'],
+                                    csrfToken: Autobot['Account']['csrfToken'],
+                                    town_id: Game['townId'],
+                                    item_name: _0xc4a4x41,
+                                    count: 1,
+                                    type: 'building'
+                                },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//)
+                            })
+                        }
+                    }
+                })
+            }
+        },
+        building_barracks_index: function() {
+            if (GPWindowMgr && GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)) {
+                Autobuild['currentWindow'] = GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)['getJQElement']()['find']('.gpwindow_content');
+                var _0xc4a4x3f = Autobuild['currentWindow']['find']('#unit_orders_queue h4');
+                _0xc4a4x3f['find']('.js-max-order-queue-count')['html']('&infin;')
+            }
+        }
+    }
+}
