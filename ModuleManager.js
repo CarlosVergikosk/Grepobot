@@ -314,23 +314,23 @@ ModuleManager = {
         if (Autobot['trial_time'] - Timestamp['now']() >= 0 || Autobot['premium_time'] - Timestamp['now']() >= 0) {
             if (typeof Autofarm == 'undefined' && typeof Autoculture == 'undefined' && typeof Autobuild == 'undefined' && typeof Autoattack == 'undefined') {
                 $['when']($['ajax']({
-                    method: 'POST',
-                    data: Autobot['Account'],
+                    method: 'GET',
+                    //data: Autobot['Account'],
                     url: Autobot['domain'] + 'Autofarm.js',
                     dataType: 'script'
                 }), $['ajax']({
-                    method: 'POST',
-                    data: Autobot['Account'],
+                    method: 'GET',
+                    //data: Autobot['Account'],
                     url: Autobot['domain'] + 'Autoculture.js',
                     dataType: 'script'
                 }), $['ajax']({
-                    method: 'POST',
-                    data: Autobot['Account'],
+                    method: 'GET',
+                    //data: Autobot['Account'],
                     url: Autobot['domain'] + 'Autobuild.js',
                     dataType: 'script'
                 }), $['ajax']({
-                    method: 'POST',
-                    data: Autobot['Account'],
+                    method: 'GET',
+                    //data: Autobot['Account'],
                     url: Autobot['domain'] + 'Autoattack.js',
                     dataType: 'script'
                 }), $.Deferred(function(_0xa6b2x1f) {
@@ -351,8 +351,8 @@ ModuleManager = {
         } else {
             if (typeof Autofarm == 'undefined') {
                 $['when']($['ajax']({
-                    method: 'POST',
-                    data: Autobot['Account'],
+                    method: 'GET',
+                    //data: Autobot['Account'],
                     url: Autobot['domain'] + 'Autofarm.js',
                     dataType: 'script'
                 }), $.Deferred(function(_0xa6b2x1f) {
