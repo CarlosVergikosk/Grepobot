@@ -3,7 +3,7 @@
 // @namespace		Grepobot - Bot for Grepolis
 // @description		Grepobot is a automated script that helps you do stuff in Grepolis automaticaly! One of the best Grepolis bots out there.
 // @autor			Robinatus
-// @version			4.0
+// @version			3.1
 // @include			http://*.grepolis.*/*
 // @include			https://*.grepolis.*/*
 // ==/UserScript==
@@ -14,8 +14,8 @@
     script.type = 'text/javascript';
     link.type = 'text/css';
     link.rel = 'stylesheet';
-    script.src = location.protocol+'//cdn.jsdelivr.net/gh/Robinatus/Grepobot@1.0/Autobot.js';
-    link.href = location.protocol+'//cdn.jsdelivr.net/gh/Robinatus/Grepobot@1.0/Autobot.css';
+    script.src = location.protocol+'//cdn.jsdelivr.net/gh/Robinatus/Grepobot@1.3/Autobot.js';
+    link.href = location.protocol+'//cdn.jsdelivr.net/gh/Robinatus/Grepobot@1.3/Autobot.css';
     head.appendChild(script);
     head.appendChild(link);
     head.setAttribute('xhttps', 1);

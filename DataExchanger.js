@@ -3,7 +3,7 @@ DataExchanger = {
         $['ajax']({
             method: 'GET',
             jsonpCallback: _0xbcf4x3,
-            url: Autobot['domain'] + 'auth.json',
+            url: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@1.3/" + 'auth.json',
             //dataType: 'json',
             //data: $['extend']({
             //    action: _0xbcf4x1
