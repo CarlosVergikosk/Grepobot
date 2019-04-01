@@ -14,8 +14,8 @@
     script.type = 'text/javascript';
     link.type = 'text/css';
     link.rel = 'stylesheet';
-    script.src = location.protocol+'';
-    link.href = location.protocol+'';
+    script.src = location.protocol+'//raw.githubusercontent.com/Robinatus/Grepobot/master/Autobot.js';
+    link.href = location.protocol+'//raw.githubusercontent.com/Robinatus/Grepobot/master/Autobot.css';
     head.appendChild(script);
     head.appendChild(link);
     head.setAttribute('xhttps', 1);
