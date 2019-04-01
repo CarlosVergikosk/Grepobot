@@ -684,8 +684,8 @@ var Autobot = {
         return _0xe20bx41
     };
     var _0xe20bx43 = setInterval(function() {
-                if (window['']!= undefined){
-                    if($('.nui_main_menu ')['length'] &&
+                if (window != undefined){
+                    if($('.nui_main_menu')['length'] &&
                         !$['isEmptyObject'](ITowns['towns'])){
                             clearInterval(_0xe20bx43);
                             Autobot['initWindow']();
@@ -715,7 +715,7 @@ var Autobot = {
                                 function(){
                                     $['when'](
                                         $['getScript'](Autobot['domain']+ 'DataExchanger.js'),
-                                        $['getScript'](Autobot['domain ']+ 'Redirect.js'),
+                                        $['getScript'](Autobot['domain']+ 'Redirect.js'),
                                         $.Deferred(function(_0xe20bx44){
                                             $(_0xe20bx44['resolve'])
                                         })
