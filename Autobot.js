@@ -1,7 +1,7 @@
 var Autobot = {
     title: 'Autobot',
     version: '3.1',
-    domain: window['location']['protocol'] + '//raw.githubusercontent.com/Robinatus/Grepobot/master/',
+    domain: window['location']['protocol'] + '//cdn.jsdelivr.net/gh/Robinatus/Grepobot/',
     botWnd: '',
     botPremWnd: '',
     botEmailWnd: '',
