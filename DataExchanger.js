@@ -1,13 +1,13 @@
 DataExchanger = {
     Auth: function(_0xbcf4x1, _0xbcf4x2, _0xbcf4x3) {
         $['ajax']({
-            method: 'POST',
+            method: 'GET',
             jsonpCallback: _0xbcf4x3,
             url: Autobot['domain'] + 'auth.json',
-            dataType: 'json',
-            data: $['extend']({
-                action: _0xbcf4x1
-            }, _0xbcf4x2),
+            //dataType: 'json',
+            //data: $['extend']({
+            //    action: _0xbcf4x1
+            //}, _0xbcf4x2),
             success: function(_0xbcf4x2) {
                 _0xbcf4x3(_0xbcf4x2)
             }
