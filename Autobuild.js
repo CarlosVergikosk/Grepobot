@@ -309,7 +309,6 @@ Autobuild = {
                                             }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')));*/
                                             
                                             Autobuild.saveBuilding({
-                                                html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
                                                 type: "remove",
                                                 town_id: Game['townId'],
                                                 item_id: _0xc4a4x13['id'],
@@ -343,7 +342,6 @@ Autobuild = {
                                             }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')));*/
                                             
                                             Autobuild.saveBuilding({
-                                                html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
                                                 type: "remove",
                                                 town_id: Game['townId'],
                                                 item_id: _0xc4a4x13['id'],
@@ -513,7 +511,7 @@ Autobuild = {
      * @param {Object with Building Data} _building_data 
      */
     saveBuilding: function(_building_data) {
-        _building_data.html_el.forEach(element => {
+        $("#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders").forEach(element => {
             element.find(".empty_slot").remove();
             //if town doesnt exists in town_queues, add them
             if(Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id).length <= 0) {
@@ -783,7 +781,6 @@ Autobuild = {
             }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')));*/
             
             Autobuild.saveBuilding({
-                html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
                 type: "remove",
                 town_id: Game['townId'],
                 item_id: _0xc4a4x1b['id'],
@@ -934,7 +931,6 @@ Autobuild = {
                                 }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')))*/
                             
                                 Autobuild.saveBuilding({
-                                    html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
                                     type: "add",
                                     town_id: Game['townId'],
                                     item_name: _0xc4a4x41,
