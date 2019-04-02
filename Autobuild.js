@@ -416,15 +416,22 @@ Autobuild = {
         });
         var _0xc4a4x1a = null;
         var _0xc4a4xc = 'nothing';
-        $['each'](_0xc4a4x17, function (_0xc4a4x18, _0xc4a4x1b) {
+        $['each'](_0xc4a4x17, function (_type, _0xc4a4x1b) {
+            //if ((_0xc4a4x18 == 'building' && Autobuild['building_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'unit' && Autobuild['units_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'ship' && Autobuild['ships_queue'][_0xc4a4x16] != undefined)) {
+
             if (Autobuild.town_queues.filter(e => e.town_id === _townId).length > 0) {
-                if (_0xc4a4x1a == null) {
-                    _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
-                    _0xc4a4xc = _0xc4a4x18
-                } else {
-                    if (_0xc4a4x1b['timeLeft'] < _0xc4a4x1a) {
+                let current_town = Autobuild.town_queues.find(e => e.town_id === _townId);
+                if((_type == 'building' && current_town.building_queue.length > 0) || 
+                   (_type == 'unit' && current_town.unit_queue.length > 0) || 
+                   (_type == 'ship' && current_town.ship_queue.length > 0)) {
+                    if (_0xc4a4x1a == null) {
                         _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
-                        _0xc4a4xc = _0xc4a4x18
+                        _0xc4a4xc = _type
+                    } else {
+                        if (_0xc4a4x1b['timeLeft'] < _0xc4a4x1a) {
+                            _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
+                            _0xc4a4xc = _type
+                        }
                     }
                 }
             }
