@@ -511,7 +511,7 @@ Autobuild = {
      * @param {Object with Building Data} _building_data 
      */
     saveBuilding: function(_building_data) {
-        $("#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders").forEach(element => {
+        $("#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders").each(element => {
             element.find(".empty_slot").remove();
             //if town doesnt exists in town_queues, add them
             if(Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id).length <= 0) {
