@@ -534,13 +534,13 @@ Autobuild = {
             Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.remove(e => e.id === _building_data.item_id);
         }
 
-        $("#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders").each(element => {
-            $(element).find(".empty_slot").remove();
+        $("#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders").each(function() {
+            $(this).find(".empty_slot").remove();
             //Add new item to building queue
             if(_building_data.type === "add") {
-                $(element).append(Autobuild.buildingElement($(element), newBuilding));
+                $(this).append(Autobuild.buildingElement($(this), newBuilding));
             }
-            Autobuild.setEmptyItems($(element));
+            Autobuild.setEmptyItems($(this));
         });
     },
     callbackSaveSettings: function() {
