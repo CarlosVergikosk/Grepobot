@@ -529,14 +529,12 @@ Autobuild = {
                     item_name: _building_data.item_name,
                     count: _building_data.count
                 }
-                let current_town = Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id);
-                current_town.building_queue.push(newBuilding);
+                Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.push(newBuilding);
 
                 $(element).append(Autobuild.buildingElement($(element), newBuilding));
             }
             else if(_building_data.type === "remove"){
-                let current_town = Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id);
-                current_town.building_queue.remove(e => e.id === _building_data.item_id);
+                Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.remove(e => e.id === _building_data.item_id);
             }
 
             Autobuild.setEmptyItems($(element));
