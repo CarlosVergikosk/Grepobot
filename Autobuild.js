@@ -531,7 +531,8 @@ Autobuild = {
             Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.push(newBuilding);
         }
         else if(_building_data.type === "remove"){
-            Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.splice(findIndex(e => e.id === _building_data.item_id), 1);
+            let current_town_queue = Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue;
+            current_town_queue.splice(current_town_queue.findIndex(e => e.id === _building_data.item_id), 1);
         }
 
         $("#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders").each(function() {
