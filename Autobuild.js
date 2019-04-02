@@ -398,10 +398,7 @@ Autobuild = {
                 }
             }
         });
-        //if there is space in the queue, set timeleft to 0
-        if (_queues.building.queue.length < Autobot.Queue) {
-            _queues.building.timeLeft = 0;
-        }
+
         $['each'](MM['getOnlyCollectionByName']('UnitOrder')['models'], function (_index, _element) {
             if (_townId == _element['attributes']['town_id']) {
                 if (_element['attributes']['kind'] == 'ground') {
@@ -416,7 +413,7 @@ Autobuild = {
                 if (_element['attributes']['kind'] == 'naval') {
                     _queues['ship']['queue']['push']({
                         type: 'ship',
-                        model: _element
+                       model: _element
                     });
                     if (_queues['ship']['timeLeft'] == 0) {
                         _queues['ship']['timeLeft'] = _element['getTimeLeft']()
@@ -424,13 +421,7 @@ Autobuild = {
                 }
             }
         });
-        //if there is space in the queue, set timeleft to 0
-        if (_queues.unit.queue.length < Autobot.Queue) {
-            _queues.unit.timeLeft = 0;
-        }
-        if (_queues.ship.queue.length < Autobot.Queue) {
-            _queues.ship.timeLeft = 0;
-        }
+
         var _readyTime = null;
         var _doNext = 'nothing';
         //check which bot queue has elements and take the one where 
@@ -450,6 +441,10 @@ Autobuild = {
                             _readyTime = _0xc4a4x1b['timeLeft'];
                             _doNext = _type
                         }
+                    }
+                    //if there is space in the queue, start
+                    if (_queues[_type].queue.length < Autobot.Queue) {
+                        _readyTime = 0;
                     }
                 }
             }
