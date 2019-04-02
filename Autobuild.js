@@ -511,32 +511,35 @@ Autobuild = {
      * @param {Object with Building Data} _building_data 
      */
     saveBuilding: function(_building_data) {
+        let newBuilding;
+        //if town doesnt exists in town_queues, add them
+        if(Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id).length <= 0) {
+            Autobuild.town_queues.push({
+                town_id: _building_data.town_id,
+                building_queue: [],
+                unit_queue: [],
+                ship_queue: []
+            })
+        }
+        //Add new item to building queue
+        if(_building_data.type === "add") {
+            newBuilding = {
+                id: (new Date).toISOString().replace(/-/g,"").replace(/:/g,"").replace(/\./g,""),
+                item_name: _building_data.item_name,
+                count: _building_data.count
+            }
+            Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.push(newBuilding);
+        }
+        else if(_building_data.type === "remove"){
+            Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.remove(e => e.id === _building_data.item_id);
+        }
+
         $("#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders").each(element => {
             $(element).find(".empty_slot").remove();
-            //if town doesnt exists in town_queues, add them
-            if(Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id).length <= 0) {
-                Autobuild.town_queues.push({
-                    town_id: _building_data.town_id,
-                    building_queue: [],
-                    unit_queue: [],
-                    ship_queue: []
-                })
-            }
             //Add new item to building queue
             if(_building_data.type === "add") {
-                let newBuilding = {
-                    id: (new Date).toISOString().replace(/-/g,"").replace(/:/g,"").replace(/\./g,""),
-                    item_name: _building_data.item_name,
-                    count: _building_data.count
-                }
-                Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.push(newBuilding);
-
                 $(element).append(Autobuild.buildingElement($(element), newBuilding));
             }
-            else if(_building_data.type === "remove"){
-                Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue.remove(e => e.id === _building_data.item_id);
-            }
-
             Autobuild.setEmptyItems($(element));
         });
     },
