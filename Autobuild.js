@@ -169,7 +169,7 @@ Autobuild = {
         if (!Autobuild['checkEnabled']()) {
             return false
         };
-        if (Autobuild.town_queues.filter(e => e.town_id === _town.id).length <= 0) {
+        if (Autobuild.town_queues.filter(e => e.town_id === Autobuild.town.id).length <= 0) {
             Autobuild['finished']()
         };
         var _0xc4a4xc = Autobuild['getReadyTime'](Autobuild['town']['id'])['shouldStart'];
@@ -275,8 +275,8 @@ Autobuild = {
             return false
         };
         //check if town has building queues
-        if (Autobuild.town_queues.filter(e => e.town_id === _town.id).length > 0) {
-            let current_town_queue = Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue;
+        if (Autobuild.town_queues.filter(e => e.town_id === Autobuild.town.id).length > 0) {
+            let current_town_queue = Autobuild.town_queues.find(e => e.town_id === Autobuild.town.id).building_queue;
 
             //if there is something to build
             if (current_town_queue.length > 0) {
