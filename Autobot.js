@@ -1,7 +1,7 @@
 var Autobot = {
     title: 'Autobot',
     version: '3.1',
-    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.405/",
+    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.406/",
     botWnd: '',
     botPremWnd: '',
     botEmailWnd: '',
@@ -97,7 +97,7 @@ var Autobot = {
                 var _0xe20bx7 = $('.terminal-output')[0]['scrollHeight'];
                 _0xe20bx6['scrollTop'](_0xe20bx7)
             }
-        })/*['append'](function() {
+        })['append'](function() {
             return _0xe20bx5 != 'Support' ? $('<span/>', {
                 "\x63\x6C\x61\x73\x73": 'left'
             })['append']($('<span/>', {
@@ -105,7 +105,7 @@ var Autobot = {
             })['append']($('<span/>', {
                 "\x63\x6C\x61\x73\x73": 'middle'
             })['html'](_0xe20bx4))) : '<a id="help-button" onclick="return false;" class="confirm"></a>'
-        })*/)
+        }))
     },
     getContent: function(_0xe20bx8) {
         if (_0xe20bx8 == 'Console') {
@@ -153,10 +153,10 @@ var Autobot = {
             return _0xe20bxc
         });
         var _0xe20bxf = FormBuilder['gameWrapper']('Account', 'account_property_wrapper', _0xe20bxa, 'margin-bottom:9px;')[0]['outerHTML'];
-        /*_0xe20bxf += $('<div/>', {
+        _0xe20bxf += $('<div/>', {
             "\x69\x64": 'grepobanner',
             "\x73\x74\x79\x6C\x65": ''
-        })[0]['outerHTML'];*/
+        })[0]['outerHTML'];
         return _0xe20bxf
     },
     /*contentSupport: function() {
