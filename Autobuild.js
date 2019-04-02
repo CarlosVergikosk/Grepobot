@@ -685,7 +685,7 @@ Autobuild = {
             }
         });
         if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
-            $(Autobuild.town_queues.find(e => e.town_id === _building_data.town_id).building_queue)['each'](function (_0xc4a4x18, _0xc4a4x2a) {
+            $(Autobuild.town_queues.find(e => e.town_id === Game.town_id).building_queue)['each'](function (_0xc4a4x18, _0xc4a4x2a) {
                 if (_0xc4a4x2a['id'] == _0xc4a4x1b['id']) {
                     return false
                 };
