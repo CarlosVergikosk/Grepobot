@@ -8,6 +8,7 @@ Autobuild = {
         instant_buy: false
     },
     building_queue: {},
+    town_queues: [],
     units_queue: {},
     ships_queue: {},
     town: null,
@@ -16,6 +17,9 @@ Autobuild = {
     currentWindow: null,
     isCaptain: false,
     Queue: 0,
+    /**
+     * Initilize Autobuild
+     */
     init: function() {
         ConsoleLog.Log('Initialize Autobuild', 3);
         Autobuild['initFunction']();
@@ -23,6 +27,10 @@ Autobuild = {
         Autobuild['checkCaptain']();
         Autobuild['activateCss']()
     },
+    /**
+     * Save the Autobuild Settings to settings property
+     * @param {JSON String} _0xc4a4x1 
+     */
     setSettings: function(_0xc4a4x1) {
         if (_0xc4a4x1 != '' && _0xc4a4x1 != null) {
             $['extend'](Autobuild['settings'], JSON['parse'](_0xc4a4x1))
@@ -31,16 +39,22 @@ Autobuild = {
     activateCss: function() {
         $('.construction_queue_order_container')['addClass']('active')
     },
-    setQueue: function(_0xc4a4x2, _0xc4a4x3, _0xc4a4x4) {
-        if (_0xc4a4x2 != '' && _0xc4a4x2 != null) {
-            Autobuild['building_queue'] = JSON['parse'](_0xc4a4x2);
+    /**
+     * Save the Queue Strings to propertys
+     * @param {Json String} _building_queue 
+     * @param {Json String} _units_queue 
+     * @param {Json Stirng} _ships_queue 
+     */
+    setQueue: function(_building_queue, _units_queue, _ships_queue) {
+        if (_building_queue != '' && _building_queue != null) {
+            Autobuild['building_queue'] = JSON['parse'](_building_queue);
             Autobuild['initQueue']($('.construction_queue_order_container'), 'building')
         };
-        if (_0xc4a4x3 != '' && _0xc4a4x3 != null) {
-            Autobuild['units_queue'] = JSON['parse'](_0xc4a4x3)
+        if (_units_queue != '' && _units_queue != null) {
+            Autobuild['units_queue'] = JSON['parse'](_units_queue)
         };
-        if (_0xc4a4x4 != '' && _0xc4a4x4 != null) {
-            Autobuild['ships_queue'] = JSON['parse'](_0xc4a4x4)
+        if (_ships_queue != '' && _ships_queue != null) {
+            Autobuild['ships_queue'] = JSON['parse'](_ships_queue)
         }
     },
     calls: function(_0xc4a4x5) {
@@ -99,15 +113,25 @@ Autobuild = {
         };
         UnitOrder['selectUnit'] = _0xc4a4x9(UnitOrder['selectUnit'])
     },
+    /**
+     * Initilize the Buttons for Autobuild
+     */
     initButton: function() {
         ModuleManager['initButtons']('Autobuild')
     },
+    /**
+     * Check if Captain is active: Set Queue length to 7.
+     */
     checkCaptain: function() {
         if ($('.advisor_frame.captain div')['hasClass']('captain_active')) {
             Autobuild['isCaptain'] = true
         };
         Autobuild['Queue'] = Autobuild['isCaptain'] ? 7 : 2
     },
+    /**
+     * Check if current town can build
+     * @param {Current Town} _0xc4a4xa 
+     */
     checkReady: function(_0xc4a4xa) {
         var _0xc4a4xb = ITowns['towns'][_0xc4a4xa['id']];
         if (!ModuleManager['modules']['Autobuild']['isOn']) {
@@ -282,7 +306,15 @@ Autobuild = {
                                                 town_id: Autobuild['town']['id'],
                                                 item_id: _0xc4a4x13['id'],
                                                 type: 'building'
-                                            },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//);
+                                            }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')));*/
+                                            
+                                            Autobuild.saveBuilding({
+                                                html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
+                                                type: "remove",
+                                                town_id: Game['townId'],
+                                                item_id: _0xc4a4x13['id'],
+                                            });
+                                            
                                             $('.queue_id_' + _0xc4a4x13['id'])['remove']()
                                         };
                                         if (_0xc4a4xd['error']) {
@@ -308,7 +340,15 @@ Autobuild = {
                                                 town_id: Autobuild['town']['id'],
                                                 item_id: _0xc4a4x13['id'],
                                                 type: 'building'
-                                            },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//);
+                                            }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')));*/
+                                            
+                                            Autobuild.saveBuilding({
+                                                html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
+                                                type: "remove",
+                                                town_id: Game['townId'],
+                                                item_id: _0xc4a4x13['id'],
+                                            });
+                                            
                                             $('.queue_id_' + _0xc4a4x13['id'])['remove']();
                                             Autobuild['finished']()
                                         }
@@ -397,9 +437,15 @@ Autobuild = {
             shouldStart: _0xc4a4xc
         }
     },
+    /**
+     * Stop Autobuild
+     */
     stop: function() {
         clearInterval(Autobuild['interval'])
     },
+    /**
+     * Check if Autobuild is enabled
+     */
     checkEnabled: function() {
         return ModuleManager['modules']['Autobuild']['isOn']
     },
@@ -410,6 +456,10 @@ Autobuild = {
         Autobuild['town']['modules']['Autobuild']['isReadyTime'] = Autobuild['getReadyTime'](Autobuild['town']['id'])['readyTime'];
         ModuleManager['Queue']['next']()
     },
+    /**
+     * Complete if only 5 Minutes are left
+     * @param {} _0xc4a4x16 
+     */
     checkInstantComplete: function(_0xc4a4x16) {
         Autobuild['instantBuyTown'] = false;
         $['each'](MM['getOnlyCollectionByName']('BuildingOrder')['models'], function(_0xc4a4x18, _0xc4a4x19) {
@@ -441,22 +491,58 @@ Autobuild = {
         return _0xc4a4x22
     },
     callbackSaveBuilding: function(_0xc4a4x26) {
-        return function(_0xc4a4xd) {
-            if (_0xc4a4xd['success']) {
+        return function(response) {
+            if (response['success']) {
                 _0xc4a4x26['each'](function() {
                     $(this)['find']('.empty_slot')['remove']();
-                    if (_0xc4a4xd['item']) {
-                        $(this)['append'](Autobuild['buildingElement']($(this), _0xc4a4xd['item']));
+                    if (response['item']) {
+                        $(this)['append'](Autobuild['buildingElement']($(this), response['item']));
                         Autobuild['setEmptyItems']($(this))
                     } else {
                         Autobuild['setEmptyItems']($(this))
                     }
                 });
-                delete(_0xc4a4xd['item']);
-                delete(_0xc4a4xd['success']);
-                Autobuild['building_queue'] = _0xc4a4xd
+                delete(response['item']);
+                delete(response['success']);
+                Autobuild['building_queue'] = response
             }
         }
+    },
+    /**
+     * Update the buildingqueue.
+     * @param {Object with Building Data} _building_data 
+     */
+    saveBuilding: function(_building_data) {
+        _building_data.html_el.forEach(element => {
+            element.find(".empty_slot").remove();
+            //if town doesnt exists in town_queues, add them
+            if(Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id).length <= 0) {
+                Autobuild.town_queues.push({
+                    town_id: _building_data.town_id,
+                    building_queue: [],
+                    unit_queue: [],
+                    ship_queue: []
+                })
+            }
+            //Add new item to building queue
+            if(_building_data.type === "add") {
+                let newBuilding = {
+                    id: (new Date).toISOString().replace(/-/g,"").replace(/:/g,"").replace(/\./g,""),
+                    item_name: _building_data.item_name,
+                    count: _building_data.count
+                }
+                let current_town = Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id);
+                current_town.building_queue.push(newBuilding);
+
+                $(element).append(Autobuild.buildingElement($(element), newBuilding));
+            }
+            else if(_building_data.type === "remove"){
+                let current_town = Autobuild.town_queues.filter(e => e.town_id === _building_data.town_id);
+                current_town.building_queue.remove(e => e.id === _building_data.item_id);
+            }
+
+            Autobuild.setEmptyItems(element);
+        });
     },
     callbackSaveSettings: function() {
         ConsoleLog.Log('Settings saved', 3);
@@ -694,7 +780,15 @@ Autobuild = {
                 town_id: Game['townId'],
                 item_id: _0xc4a4x1b['id'],
                 type: 'building'
-            },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//);
+            }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')));*/
+            
+            Autobuild.saveBuilding({
+                html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
+                type: "remove",
+                town_id: Game['townId'],
+                item_id: _0xc4a4x1b['id'],
+            });
+            
             $('.queue_id_' + _0xc4a4x1b['id'])['remove']()
         })['append']($('<div/>', {
             "\x63\x6C\x61\x73\x73": 'left'
@@ -837,7 +931,17 @@ Autobuild = {
                                     item_name: _0xc4a4x41,
                                     count: 1,
                                     type: 'building'
-                                },*/ Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders'));//)
+                                }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')))*/
+                            
+                                Autobuild.saveBuilding({
+                                    html_el: '#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders',
+                                    type: "add",
+                                    town_id: Game['townId'],
+                                    item_name: _0xc4a4x41,
+                                    count: 1,
+                                });
+                            
+                            
                             })
                         }
                     }
