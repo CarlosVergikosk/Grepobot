@@ -1,7 +1,7 @@
 var Autobot = {
     title: 'Autobot',
     version: '3.1',
-    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.407/",
+    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.408/",
     botWnd: '',
     botPremWnd: '',
     botEmailWnd: '',
@@ -153,10 +153,10 @@ var Autobot = {
             return _0xe20bxc
         });
         var _0xe20bxf = FormBuilder['gameWrapper']('Account', 'account_property_wrapper', _0xe20bxa, 'margin-bottom:9px;')[0]['outerHTML'];
-        _0xe20bxf += $('<div/>', {
+        /*_0xe20bxf += $('<div/>', {
             "\x69\x64": 'grepobanner',
             "\x73\x74\x79\x6C\x65": ''
-        })[0]['outerHTML'];
+        })[0]['outerHTML'];*/
         return _0xe20bxf
     },
     /*contentSupport: function() {

@@ -422,7 +422,7 @@ Autobuild = {
             }
         });
 
-        var _readyTime = null;
+        var _readyTime = -1;
         var _doNext = 'nothing';
         //check which bot queue has elements and take the one where 
         $['each'](_queues, function (_type, _0xc4a4x1b) {
