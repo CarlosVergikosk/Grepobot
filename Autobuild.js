@@ -373,7 +373,7 @@ Autobuild = {
         }
     },
     getReadyTime: function (_townId) {
-        var _0xc4a4x17 = {
+        var _queues = {
             building: {
                 queue: [],
                 timeLeft: 0
@@ -387,36 +387,54 @@ Autobuild = {
                 timeLeft: 0
             }
         };
-        $['each'](MM['getOnlyCollectionByName']('BuildingOrder')['models'], function (_0xc4a4x18, _0xc4a4x19) {
-            if (_townId == _0xc4a4x19['getTownId']()) {
-                _0xc4a4x17['building']['queue']['push']({
+        $['each'](MM['getOnlyCollectionByName']('BuildingOrder')['models'], function (_index, _element) {
+            if (_townId == _element['getTownId']()) {
+                _queues['building']['queue']['push']({
                     type: 'building',
-                    model: _0xc4a4x19
+                    model: _element
                 });
-                _0xc4a4x17['building']['timeLeft'] += _0xc4a4x19['getTimeLeft']()
-            }
-        });
-        $['each'](MM['getOnlyCollectionByName']('UnitOrder')['models'], function (_0xc4a4x18, _0xc4a4x19) {
-            if (_townId == _0xc4a4x19['attributes']['town_id']) {
-                if (_0xc4a4x19['attributes']['kind'] == 'ground') {
-                    _0xc4a4x17['unit']['queue']['push']({
-                        type: 'unit',
-                        model: _0xc4a4x19
-                    });
-                    _0xc4a4x17['unit']['timeLeft'] += _0xc4a4x19['getTimeLeft']()
-                };
-                if (_0xc4a4x19['attributes']['kind'] == 'naval') {
-                    _0xc4a4x17['ship']['queue']['push']({
-                        type: 'ship',
-                        model: _0xc4a4x19
-                    });
-                    _0xc4a4x17['ship']['timeLeft'] += _0xc4a4x19['getTimeLeft']()
+                if (_queues['building']['timeLeft'] == 0){
+                    _queues['building']['timeLeft'] = _element['getTimeLeft']()
                 }
             }
         });
-        var _0xc4a4x1a = null;
-        var _0xc4a4xc = 'nothing';
-        $['each'](_0xc4a4x17, function (_type, _0xc4a4x1b) {
+        //if there is space in the queue, set timeleft to 0
+        if (_queues.building.queue.length < Autobot.Queue) {
+            _queues.building.timeLeft = 0;
+        }
+        $['each'](MM['getOnlyCollectionByName']('UnitOrder')['models'], function (_index, _element) {
+            if (_townId == _element['attributes']['town_id']) {
+                if (_element['attributes']['kind'] == 'ground') {
+                    _queues['unit']['queue']['push']({
+                        type: 'unit',
+                        model: _element
+                    });
+                    if (_queues['unit']['timeLeft'] == 0) {
+                        _queues['unit']['timeLeft'] = _element['getTimeLeft']()
+                    }
+                };
+                if (_element['attributes']['kind'] == 'naval') {
+                    _queues['ship']['queue']['push']({
+                        type: 'ship',
+                        model: _element
+                    });
+                    if (_queues['ship']['timeLeft'] == 0) {
+                        _queues['ship']['timeLeft'] = _element['getTimeLeft']()
+                    }
+                }
+            }
+        });
+        //if there is space in the queue, set timeleft to 0
+        if (_queues.unit.queue.length < Autobot.Queue) {
+            _queues.unit.timeLeft = 0;
+        }
+        if (_queues.ship.queue.length < Autobot.Queue) {
+            _queues.ship.timeLeft = 0;
+        }
+        var _readyTime = null;
+        var _doNext = 'nothing';
+        //check which bot queue has elements and take the one where 
+        $['each'](_queues, function (_type, _0xc4a4x1b) {
             //if ((_0xc4a4x18 == 'building' && Autobuild['building_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'unit' && Autobuild['units_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'ship' && Autobuild['ships_queue'][_0xc4a4x16] != undefined)) {
 
             if (Autobuild.town_queues.filter(e => e.town_id === _townId).length > 0) {
@@ -424,26 +442,32 @@ Autobuild = {
                 if((_type == 'building' && current_town.building_queue.length > 0) || 
                    (_type == 'unit' && current_town.unit_queue.length > 0) || 
                    (_type == 'ship' && current_town.ship_queue.length > 0)) {
-                    if (_0xc4a4x1a == null) {
-                        _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
-                        _0xc4a4xc = _type
+                    if (_readyTime == null) {
+                        _readyTime = _0xc4a4x1b['timeLeft'];
+                        _doNext = _type
                     } else {
-                        if (_0xc4a4x1b['timeLeft'] < _0xc4a4x1a) {
-                            _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
-                            _0xc4a4xc = _type
+                        if (_0xc4a4x1b['timeLeft'] < _readyTime) {
+                            _readyTime = _0xc4a4x1b['timeLeft'];
+                            _doNext = _type
                         }
                     }
                 }
             }
         });
-        if (_0xc4a4xc == 'building' && GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']) {
-            if (_0xc4a4x17['building']['queue']['length'] > 0) {
-                _0xc4a4x1a = _0xc4a4x17['building']['queue'][0]['model']['getTimeLeft']() - 300
+        //if instant buy is enabled
+        if (GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']) {
+            //if there are buildings in the queue
+            if (_queues.building.queue.length > 0) {
+                _doNext = "building";
+                let _firstBuildingTime = _queues.building.queue[0].model.getTimeLeft() - 300;
+                if (_firstBuildingTime < _readyTime && _readyTime > 0 && _firstBuildingTime >= 0) {
+                    _readyTime = _firstBuildingTime
+                }
             }
         };
         return {
-            readyTime: Timestamp['now']() + (_0xc4a4x1a > 0 ? _0xc4a4x1a : +Autobuild['settings']['timeinterval']),
-            shouldStart: _0xc4a4xc
+            readyTime: Timestamp.now() + (_readyTime >= 0 ? _readyTime : +Autobuild['settings']['timeinterval']),
+            shouldStart: _doNext
         }
     },
     /**
@@ -537,7 +561,7 @@ Autobuild = {
         //Add new item to building queue
         if (_building_data.type === "add") {
             newBuilding = {
-                id: (new Date).toISOString().replace(/-/g, "").replace(/:/g, "").replace(/\./g, ""),
+                id: Timestamp.now(),
                 item_name: _building_data.item_name,
                 count: _building_data.count
             }
