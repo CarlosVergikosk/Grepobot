@@ -146,7 +146,8 @@ Autobuild = {
         if (_town['modules']['Autobuild']['isReadyTime'] >= Timestamp['now']()) {
             return _town['modules']['Autobuild']['isReadyTime']
         };
-        return (Autobuild.town_queues.filter(e => e.town_id === _town.id).length > 0)
+        return true;
+        //return (Autobuild.town_queues.filter(e => e.town_id === _town.id).length > 0)
         //return !(typeof(Autobuild['building_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['units_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['ships_queue'][_0xc4a4xa['id']]) == 'undefined')
     },
     startBuild: function (_0xc4a4xa) {
