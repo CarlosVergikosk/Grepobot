@@ -685,14 +685,14 @@ Autobuild = {
             }
         });
         if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
-            $(Autobuild.town_queues.find(e => e.town_id === Game.town_id).building_queue)['each'](function (_0xc4a4x18, _0xc4a4x2a) {
+            $.each(Autobuild.town_queues.find(e => e.town_id === Game.town_id).building_queue, function (_0xc4a4x18, _0xc4a4x2a) {
                 if (_0xc4a4x2a['id'] == _0xc4a4x1b['id']) {
                     return false
                 };
                 if (_0xc4a4x2a['item_name'] == _0xc4a4x1b['item_name']) {
                     _0xc4a4x38++
                 }
-            })
+            });
         };
         _0xc4a4x38++;
         return _0xc4a4x38
