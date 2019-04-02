@@ -417,7 +417,7 @@ Autobuild = {
         var _0xc4a4x1a = null;
         var _0xc4a4xc = 'nothing';
         $['each'](_0xc4a4x17, function (_0xc4a4x18, _0xc4a4x1b) {
-            if (Autobuild.town_queues.filter(e => e.town_id === _town.id).length > 0) {
+            if (Autobuild.town_queues.filter(e => e.town_id === _townId).length > 0) {
                 if (_0xc4a4x1a == null) {
                     _0xc4a4x1a = _0xc4a4x1b['timeLeft'];
                     _0xc4a4xc = _0xc4a4x18
