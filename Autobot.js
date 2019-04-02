@@ -1,7 +1,7 @@
 var Autobot = {
     title: 'Autobot',
     version: '3.1',
-    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.403/",
+    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.404/",
     botWnd: '',
     botPremWnd: '',
     botEmailWnd: '',
@@ -66,7 +66,7 @@ var Autobot = {
                 "\x73\x74\x79\x6C\x65": 'left: 78px; right: 14px'
             })['append']($('<ul/>', {
                 "\x63\x6C\x61\x73\x73": 'menu_inner'
-            })['prepend'](Autobot['addMenuItem']('AUTHORIZE', 'Account', 'Account'))['prepend'](Autobot['addMenuItem']('CONSOLE', 'Assistant', 'Assistant'))['prepend'](Autobot['addMenuItem']('ASSISTANT', 'Console', 'Console'))['prepend'](Autobot['addMenuItem']('SUPPORT', 'Support', 'Support'))));
+            })['prepend'](Autobot['addMenuItem']('AUTHORIZE', 'Account', 'Account'))['prepend'](Autobot['addMenuItem']('CONSOLE', 'Assistant', 'Assistant'))['prepend'](Autobot['addMenuItem']('ASSISTANT', 'Console', 'Console'))/*['prepend'](Autobot['addMenuItem']('SUPPORT', 'Support', 'Support'))*/));
             if (typeof Autoattack !== 'undefined') {
                 _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('ATTACKMODULE', 'Attack', 'Autoattack'))
             };
@@ -97,7 +97,7 @@ var Autobot = {
                 var _0xe20bx7 = $('.terminal-output')[0]['scrollHeight'];
                 _0xe20bx6['scrollTop'](_0xe20bx7)
             }
-        })['append'](function() {
+        })/*['append'](function() {
             return _0xe20bx5 != 'Support' ? $('<span/>', {
                 "\x63\x6C\x61\x73\x73": 'left'
             })['append']($('<span/>', {
@@ -105,7 +105,7 @@ var Autobot = {
             })['append']($('<span/>', {
                 "\x63\x6C\x61\x73\x73": 'middle'
             })['html'](_0xe20bx4))) : '<a id="help-button" onclick="return false;" class="confirm"></a>'
-        }))
+        })*/)
     },
     getContent: function(_0xe20bx8) {
         if (_0xe20bx8 == 'Console') {
@@ -114,14 +114,14 @@ var Autobot = {
             if (_0xe20bx8 == 'Account') {
                 return Autobot['contentAccount']()
             } else {
-                if (_0xe20bx8 == 'Support') {
+                /*if (_0xe20bx8 == 'Support') {
                     return Autobot['contentSupport']()
-                } else {
+                } else {*/
                     if (typeof window[_0xe20bx8] != 'undefined') {
                         return window[_0xe20bx8]['contentSettings']()
                     };
                     return ''
-                }
+                //}
             }
         }
     },
@@ -132,8 +132,8 @@ var Autobot = {
             "\x52\x61\x6E\x6B\x3A": Game['player_rank'],
             "\x54\x6F\x77\x6E\x73\x3A": Game['player_villages'],
             "\x4C\x61\x6E\x67\x75\x61\x67\x65\x3A": Game['locale_lang'],
-            "\x50\x72\x65\x6D\x69\x75\x6D\x3A\x20": (Autobot['premium_time'] - Timestamp['now']()) >= 0 ? Autobot['secondsToTime'](Autobot['premium_time'] - Timestamp['now']()) + '<span id="get_premium" class="open_premium_icon" onclick="Autobot.getPremium();"></span>' : 'No premium' + '<span id="get_premium" class="open_premium_icon" onclick="Autobot.getPremium();"></span>',
-            "\x54\x72\x69\x61\x6C\x3A": ((Autobot['trial_time'] - Timestamp['now']()) >= 0 ? Autobot['secondsToTime'](Autobot['trial_time'] - Timestamp['now']()) : 'Trial is over') + (Autobot['facebook_like'] == 0 ? '<a href="#" id="get_7days" onclick="Autobot.botFacebookWnd();">Get 3 free days!</a>' : '')
+            //"\x50\x72\x65\x6D\x69\x75\x6D\x3A\x20": (Autobot['premium_time'] - Timestamp['now']()) >= 0 ? Autobot['secondsToTime'](Autobot['premium_time'] - Timestamp['now']()) + '<span id="get_premium" class="open_premium_icon" onclick="Autobot.getPremium();"></span>' : 'No premium' + '<span id="get_premium" class="open_premium_icon" onclick="Autobot.getPremium();"></span>',
+            //"\x54\x72\x69\x61\x6C\x3A": ((Autobot['trial_time'] - Timestamp['now']()) >= 0 ? Autobot['secondsToTime'](Autobot['trial_time'] - Timestamp['now']()) : 'Trial is over') + (Autobot['facebook_like'] == 0 ? '<a href="#" id="get_7days" onclick="Autobot.botFacebookWnd();">Get 3 free days!</a>' : '')
         };
         var _0xe20bxa = $('<table/>', {
             "\x63\x6C\x61\x73\x73": 'game_table layout_main_sprite',
@@ -153,13 +153,13 @@ var Autobot = {
             return _0xe20bxc
         });
         var _0xe20bxf = FormBuilder['gameWrapper']('Account', 'account_property_wrapper', _0xe20bxa, 'margin-bottom:9px;')[0]['outerHTML'];
-        _0xe20bxf += $('<div/>', {
+        /*_0xe20bxf += $('<div/>', {
             "\x69\x64": 'grepobanner',
             "\x73\x74\x79\x6C\x65": ''
-        })[0]['outerHTML'];
+        })[0]['outerHTML'];*/
         return _0xe20bxf
     },
-    contentSupport: function() {
+    /*contentSupport: function() {
         return $('<fieldset/>', {
             "\x69\x64": 'Support_tab',
             "\x73\x74\x79\x6C\x65": 'float:left; width:472px;height: 270px;'
@@ -248,7 +248,7 @@ var Autobot = {
             target: '_blank',
             href: 'https://www.facebook.com/BotForGrepolis/'
         })['html']('<img src="https://bot.grepobot.com/images/facebook_page.png" title="Facebook Grepobot"/>')))
-    },
+    },*/
     checkAlliance: function() {
         if (!$('.allianceforum.main_menu_item')['hasClass']('disabled')) {
             DataExchanger['members_show'](function(_0xe20bx9) {
@@ -462,13 +462,14 @@ var Autobot = {
             })
         }
     },
+    /*
     upgrade3Days: function() {
         DataExchanger.Auth('upgrade3Days', Autobot.Account, function(_0xe20bx9) {
             if (_0xe20bx9['success']) {
                 DataExchanger.Auth('login', Autobot.Account, ModuleManager['callbackAuth'])
             }
         })
-    },
+    },*/
     initAjax: function() {
         $(document)['ajaxComplete'](function(_0xe20bx21, _0xe20bx22, _0xe20bx23) {
             if (_0xe20bx23['url']['indexOf'](Autobot['domain']) == -1 && _0xe20bx23['url']['indexOf']('/game/') != -1 && _0xe20bx22['readyState'] == 4 && _0xe20bx22['status'] == 200) {
