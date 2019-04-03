@@ -1,7 +1,7 @@
 var Autobot = {
     title: 'Autobot',
     version: '3.1',
-    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.413/",
+    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.414/",
     botWnd: '',
     //botPremWnd: '',
     botEmailWnd: '',
@@ -21,9 +21,9 @@ var Autobot = {
     toolbox_element: null,
     init: function() {
         ConsoleLog.Log('Initialize Autobot', 0);
-        Autobot['authenticate']();
+        Autobot.loadModules();
         Autobot['obServer']();
-        Autobot['isActive']();
+        //Autobot['isActive']();
         Autobot['setToolbox']();
         Autobot['initAjax']();
         Autobot['initMapTownFeature']();
@@ -33,8 +33,8 @@ var Autobot = {
     setToolbox: function() {
         Autobot['toolbox_element'] = $('.nui_bot_toolbox')
     },
-    authenticate: function() {
-        DataExchanger.Auth('login', Autobot.Account, ModuleManager['callbackAuth'])
+    loadModules: function() {
+        ModuleManager.loadModules();
     },
     obServer: function() {
         $.Observer(GameEvents['notification']['push'])['subscribe']('GRCRTNotification', function() {
@@ -568,11 +568,11 @@ var Autobot = {
         };
         return '{' + _0xe20bx39['join'](',') + '}'
     },
-    isActive: function() {
+    /*isActive: function() {
         setTimeout(function() {
             DataExchanger.Auth('isActive', Autobot.Account, Autobot['isActive'])
         }, 180000)
-    },
+    },*/
     town_map_info: function(_0xe20bx3b, _0xe20bx3c) {
         if (_0xe20bx3b != undefined && _0xe20bx3b['length'] > 0 && _0xe20bx3c['player_name']) {
             for (var _0xe20bx3d = 0; _0xe20bx3d < _0xe20bx3b['length']; _0xe20bx3d++) {
@@ -652,6 +652,7 @@ var Autobot = {
     checkAutoRelogin: function() {
         if (typeof $['cookie']('pid') !== 'undefined' && typeof $['cookie']('ig_conv_last_site') !== 'undefined') {
             var _0xe20bx40 = $['cookie']('ig_conv_last_site')['match'](/\/\/(.*?)\.grepolis\.com/g)[0]['replace']('//', '')['replace']('.grepolis.com', '');
+            /* TODO
             DataExchanger.Auth('checkAutorelogin', {
                 player_id: $['cookie']('pid'),
                 world_id: _0xe20bx40
@@ -661,7 +662,7 @@ var Autobot = {
                         DataExchanger['login_to_game_world'](_0xe20bx40)
                     }, _0xe20bx9 * 1000)
                 }
-            })
+            })*/
         }
     }
 };

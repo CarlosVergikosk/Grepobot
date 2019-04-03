@@ -344,14 +344,14 @@ ModuleManager = {
             return _0xa6b2x1c > _0xa6b2x1d ? 1 : -1
         })
     },
-    callbackAuth: function(_0xa6b2x1e) {
+    loadModules: function() {
         Autobot['isLogged'] = true;
         //Autobot['trial_time'] = _0xa6b2x1e['trial_time'];
         //Autobot['premium_time'] = _0xa6b2x1e['premium_time'];
         //Autobot['facebook_like'] = _0xa6b2x1e['facebook_like'];
-        if (_0xa6b2x1e['assistant_settings'] != '') {
-            Assistant['setSettings'](_0xa6b2x1e['assistant_settings'])
-        };
+        //if (_0xa6b2x1e['assistant_settings'] != '') {
+        //    Assistant['setSettings'](_0xa6b2x1e['assistant_settings'])
+        //};
         /*if (!_0xa6b2x1e['player_email']) {
             Autobot['verifyEmail']()
         };*/
@@ -382,12 +382,12 @@ ModuleManager = {
             }))['done'](function() {
                 ModuleManager['init']();
                 Autofarm['init']();
-                Autofarm['setSettings'](_0xa6b2x1e['autofarm_settings']);
+                //Autofarm['setSettings'](_0xa6b2x1e['autofarm_settings']);
                 Autoculture['init']();
-                Autoculture['setSettings'](_0xa6b2x1e['autoculture_settings']);
+                //Autoculture['setSettings'](_0xa6b2x1e['autoculture_settings']);
                 Autobuild['init']();
-                Autobuild['setSettings'](_0xa6b2x1e['autobuild_settings']);
-                Autobuild['setQueue'](_0xa6b2x1e['building_queue'], _0xa6b2x1e['units_queue'], _0xa6b2x1e['ships_queue']);
+                //Autobuild['setSettings'](_0xa6b2x1e['autobuild_settings']);
+                //Autobuild['setQueue'](_0xa6b2x1e['building_queue'], _0xa6b2x1e['units_queue'], _0xa6b2x1e['ships_queue']);
                 Autoattack['init']();
                 ModuleManager['checkAutostart']()
             })

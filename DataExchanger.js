@@ -1,5 +1,5 @@
 DataExchanger = {
-    Auth: function(_0xbcf4x1, _0xbcf4x2, _0xbcf4x3) {
+    /*Auth: function(_0xbcf4x1, _0xbcf4x2, _0xbcf4x3) {
         $['ajax']({
             method: 'GET',
             jsonpCallback: _0xbcf4x3,
@@ -12,7 +12,7 @@ DataExchanger = {
                 _0xbcf4x3(_0xbcf4x2)
             }
         })
-    },
+    },*/
     default_handler: function(_0xbcf4x3, _0xbcf4x4) {
         return function(_0xbcf4x2, _0xbcf4x5, _0xbcf4x6) {
             _0xbcf4x4 = _0xbcf4x4 != undefined;

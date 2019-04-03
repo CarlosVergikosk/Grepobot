@@ -1,1 +1,465 @@
-var _0xdab1=["\x41\x75\x74\x6F\x66\x61\x72\x6D\x20\x73\x65\x74\x74\x69\x6E\x67\x73","\x69\x64","\x74\x6F\x77\x6E\x73","\x68\x61\x73\x43\x6F\x6E\x71\x75\x65\x72\x6F\x72","\x63\x68\x65\x63\x6B\x45\x6E\x61\x62\x6C\x65\x64","\x69\x73\x52\x65\x61\x64\x79\x54\x69\x6D\x65","\x41\x75\x74\x6F\x66\x61\x72\x6D","\x6D\x6F\x64\x75\x6C\x65\x73","\x6E\x6F\x77","\x72\x65\x73\x6F\x75\x72\x63\x65\x73","\x77\x6F\x6F\x64","\x73\x74\x6F\x72\x61\x67\x65","\x73\x74\x6F\x6E\x65","\x69\x72\x6F\x6E","\x73\x6B\x69\x70\x77\x68\x65\x6E\x66\x75\x6C\x6C","\x73\x65\x74\x74\x69\x6E\x67\x73","\x71\x75\x65\x75\x65","\x51\x75\x65\x75\x65","\x6D\x6F\x64\x75\x6C\x65","\x74\x6F\x77\x6E\x49\x64","\x69\x6E\x64\x65\x78\x4F\x66","\x72\x65\x6C\x61\x74\x65\x64\x54\x6F\x77\x6E\x73","\x65\x61\x63\x68","\x6C\x6F\x77\x72\x65\x73\x66\x69\x72\x73\x74","\x6C\x65\x6E\x67\x74\x68","\x69\x73\x4F\x6E","\x74\x6F\x77\x6E","\x73\x68\x6F\x75\x6C\x64\x46\x61\x72\x6D","\x69\x54\x6F\x77\x6E","\x69\x6E\x74\x65\x72\x76\x61\x6C","\x6E\x61\x6D\x65","\x20\x67\x65\x74\x74\x69\x6E\x67\x20\x66\x61\x72\x6D\x20\x69\x6E\x66\x6F\x72\x6D\x61\x74\x69\x6F\x6E\x2E","\x69\x73\x43\x61\x70\x74\x61\x69\x6E","\x63\x75\x72\x72\x65\x6E\x74\x46\x61\x72\x6D\x43\x6F\x75\x6E\x74","\x63\x6C\x61\x69\x6D\x52\x65\x73\x6F\x75\x72\x63\x65\x73","\x69\x6E\x69\x74\x46\x61\x72\x6D\x54\x6F\x77\x6E\x73","\x69\x6E\x69\x74\x46\x61\x72\x6D\x54\x6F\x77\x6E\x73\x43\x61\x70\x74\x61\x69\x6E","\x72\x61\x6E\x64\x6F\x6D\x69\x7A\x65","\x63\x75\x72\x72\x65\x6E\x74\x54\x6F\x77\x6E","\x6B\x65\x79","\x20\x6D\x6F\x76\x65\x20\x74\x6F\x20\x74\x6F\x77\x6E\x2E","\x73\x77\x69\x74\x63\x68\x5F\x74\x6F\x77\x6E","\x69\x73\x53\x77\x69\x74\x63\x68\x65\x64","\x64\x61\x74\x61","\x6D\x61\x70","\x78","\x67\x65\x74\x49\x73\x6C\x61\x6E\x64\x43\x6F\x6F\x72\x64\x69\x6E\x61\x74\x65\x58","\x79","\x67\x65\x74\x49\x73\x6C\x61\x6E\x64\x43\x6F\x6F\x72\x64\x69\x6E\x61\x74\x65\x59","\x72\x65\x6C\x61\x74\x69\x6F\x6E\x5F\x73\x74\x61\x74\x75\x73","\x70\x75\x73\x68","\x66\x61\x72\x6D\x54\x6F\x77\x6E\x73","\x6C\x6F\x6F\x74","\x67\x61\x6D\x65\x5F\x64\x61\x74\x61","\x66\x61\x72\x6D\x5F\x74\x6F\x77\x6E\x5F\x6C\x69\x73\x74","\x69\x73\x6C\x61\x6E\x64\x5F\x78","\x69\x73\x6C\x61\x6E\x64\x5F\x79","\x72\x65\x6C","\x66\x61\x72\x6D\x5F\x74\x6F\x77\x6E\x5F\x6F\x76\x65\x72\x76\x69\x65\x77\x73","\x20\x68\x61\x73\x20\x6E\x6F\x20\x66\x61\x72\x6D\x20\x74\x6F\x77\x6E\x73\x2E","\x66\x69\x6E\x69\x73\x68\x65\x64","\x6E\x6F\x72\x6D\x61\x6C","\x62\x61\x74\x74\x6C\x65\x70\x6F\x69\x6E\x74\x5F\x76\x69\x6C\x6C\x61\x67\x65\x73","\x66\x65\x61\x74\x75\x72\x65\x73","\x6D\x6F\x6F\x64","\x73\x74\x6F\x70\x6C\x6F\x6F\x74\x62\x65\x6C\x6F\x77","\x64\x6F\x75\x62\x6C\x65","\x67\x65\x74\x4D\x65\x74\x68\x6F\x64\x54\x69\x6D\x65","\x75\x70\x64\x61\x74\x65\x54\x69\x6D\x65\x72","\x63\x6C\x61\x69\x6D\x4C\x6F\x61\x64","\x63\x6C\x61\x69\x6D\x4C\x6F\x61\x64\x73","\x74\x69\x6D\x65\x62\x65\x74\x77\x65\x65\x6E","\x20\x6E\x6F\x74\x20\x72\x65\x61\x64\x79\x20\x79\x65\x74\x2E","\x63\x6C\x61\x69\x6D\x4C\x6F\x61\x64\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x63\x6C\x61\x69\x6D\x5F\x6C\x6F\x61\x64","\x46\x61\x72\x6D\x54\x6F\x77\x6E\x50\x6C\x61\x79\x65\x72\x52\x65\x6C\x61\x74\x69\x6F\x6E\x2F","\x67\x65\x74\x52\x65\x6C\x61\x74\x69\x6F\x6E\x46\x6F\x72\x46\x61\x72\x6D\x54\x6F\x77\x6E","\x46\x61\x72\x6D\x54\x6F\x77\x6E\x50\x6C\x61\x79\x65\x72\x52\x65\x6C\x61\x74\x69\x6F\x6E","\x67\x65\x74\x4F\x6E\x6C\x79\x43\x6F\x6C\x6C\x65\x63\x74\x69\x6F\x6E\x42\x79\x4E\x61\x6D\x65","\x63\x6C\x61\x69\x6D","\x66\x72\x6F\x6E\x74\x65\x6E\x64\x5F\x62\x72\x69\x64\x67\x65","\x73\x75\x63\x63\x65\x73\x73","\x73\x61\x74\x69\x73\x66\x61\x63\x74\x69\x6F\x6E","\x6C\x6F\x6F\x74\x61\x62\x6C\x65\x5F\x68\x75\x6D\x61\x6E","\x75\x70\x64\x61\x74\x65\x53\x74\x61\x74\x75\x73\x49\x6E\x43\x68\x75\x6E\x6B\x54\x6F\x77\x6E\x73","\x70\x6F\x6C\x6C\x46\x6F\x72\x4D\x61\x70\x43\x68\x75\x6E\x6B\x73\x55\x70\x64\x61\x74\x65","\x68\x69\x64\x65\x41\x6A\x61\x78\x4C\x6F\x61\x64\x65\x72","\x3C\x73\x70\x61\x6E\x20\x73\x74\x79\x6C\x65\x3D\x22\x63\x6F\x6C\x6F\x72\x3A\x20\x23\x36\x46\x41\x45\x33\x30\x3B\x22\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E","\x65\x72\x72\x6F\x72","\x20","\x63\x6C\x61\x69\x6D\x4C\x6F\x61\x64\x73\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x63\x6C\x61\x69\x6D\x5F\x6C\x6F\x61\x64\x73","\x6D\x65\x74\x68\x6F\x64","\x67\x65\x74\x54\x6F\x77\x6E\x73","\x54\x6F\x77\x6E","\x62\x6F\x6F\x74\x79","\x68\x61\x73\x52\x65\x73\x65\x61\x72\x63\x68","\x67\x65\x74\x52\x65\x73\x65\x61\x72\x63\x68\x65\x73","\x6E\x6F\x74\x69\x66\x69\x63\x61\x74\x69\x6F\x6E\x73","\x68\x61\x6E\x64\x6C\x65\x64\x5F\x66\x61\x72\x6D\x73","\x6C\x6F\x6F\x74\x61\x62\x6C\x65\x5F\x61\x74","\x70\x6C\x61\x79\x65\x72\x54\x6F\x77\x6E\x73","\x6E\x65\x78\x74","\x49\x6E\x69\x74\x69\x61\x6C\x69\x7A\x65\x20\x41\x75\x74\x6F\x46\x61\x72\x6D","\x69\x6E\x69\x74\x42\x75\x74\x74\x6F\x6E","\x63\x68\x65\x63\x6B\x43\x61\x70\x74\x61\x69\x6E","\x69\x6E\x69\x74\x42\x75\x74\x74\x6F\x6E\x73","\x63\x61\x70\x74\x61\x69\x6E\x5F\x61\x63\x74\x69\x76\x65","\x68\x61\x73\x43\x6C\x61\x73\x73","\x2E\x61\x64\x76\x69\x73\x6F\x72\x5F\x66\x72\x61\x6D\x65\x2E\x63\x61\x70\x74\x61\x69\x6E\x20\x64\x69\x76","","\x70\x61\x72\x73\x65","\x65\x78\x74\x65\x6E\x64","\x63\x6C\x69\x63\x6B","\x68\x61\x73\x50","\x73\x65\x72\x69\x61\x6C\x69\x7A\x65\x4F\x62\x6A\x65\x63\x74","\x23\x41\x75\x74\x6F\x66\x61\x72\x6D\x5F\x73\x65\x74\x74\x69\x6E\x67\x73","\x61\x75\x74\x6F\x73\x74\x61\x72\x74","\x61\x75\x74\x6F\x66\x61\x72\x6D\x5F\x61\x75\x74\x6F\x73\x74\x61\x72\x74","\x61\x75\x74\x6F\x66\x61\x72\x6D\x5F\x6D\x65\x74\x68\x6F\x64","\x61\x75\x74\x6F\x66\x61\x72\x6D\x5F\x62\x65\x77\x74\x65\x65\x6E","\x61\x75\x74\x6F\x66\x61\x72\x6D\x5F\x77\x61\x72\x65\x68\x6F\x75\x73\x65\x66\x75\x6C\x6C","\x61\x75\x74\x6F\x66\x61\x72\x6D\x5F\x6C\x6F\x77\x72\x65\x73\x66\x69\x72\x73\x74","\x61\x75\x74\x6F\x66\x61\x72\x6D\x5F\x6C\x6F\x6F\x74","\x73\x61\x76\x65\x41\x75\x74\x6F\x66\x61\x72\x6D","\x70\x6C\x61\x79\x65\x72\x5F\x69\x64","\x41\x63\x63\x6F\x75\x6E\x74","\x77\x6F\x72\x6C\x64\x5F\x69\x64","\x63\x73\x72\x66\x54\x6F\x6B\x65\x6E","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x63\x61\x6C\x6C\x62\x61\x63\x6B\x53\x61\x76\x65","\x6F\x6E","\x62\x74\x6E\x5F\x73\x61\x76\x65","\x6E\x6F\x74\x65\x73","\x67\x65\x74\x6C\x31\x30\x6E","\x20\x64\x69\x73\x61\x62\x6C\x65\x64","\x74\x6F\x70\x3A\x20\x36\x32\x70\x78\x3B","\x62\x75\x74\x74\x6F\x6E","\x61\x70\x70\x65\x6E\x64","\x53\x74\x6F\x70\x20\x6C\x6F\x6F\x74\x20\x66\x61\x72\x6D\x20\x75\x6E\x74\x69\x6C\x20\x6D\x6F\x6F\x64\x20\x69\x73\x20\x62\x65\x6C\x6F\x77\x20\x38\x30\x25\x2E","\x63\x68\x65\x63\x6B\x62\x6F\x78","\x4C\x6F\x77\x65\x73\x74\x20\x72\x65\x73\x6F\x75\x72\x63\x65\x73\x20\x66\x69\x72\x73\x74\x20\x77\x69\x74\x68\x20\x6D\x6F\x72\x65\x20\x74\x6F\x77\x6E\x73\x20\x6F\x6E\x20\x6F\x6E\x65\x20\x69\x73\x6C\x61\x6E\x64\x2E","\x53\x6B\x69\x70\x20\x66\x61\x72\x6D\x20\x77\x68\x65\x6E\x20\x77\x61\x72\x65\x68\x6F\x75\x73\x65\x20\x69\x73\x20\x66\x75\x6C\x6C\x2E","\x54\x69\x6D\x65\x20\x62\x65\x66\x6F\x72\x65\x20\x6E\x65\x78\x74\x20\x66\x61\x72\x6D\x3A\x20","\x77\x69\x64\x74\x68\x3A\x20\x31\x32\x30\x70\x78\x3B","\x31","\x31\x2D\x32\x20\x73\x65\x63\x6F\x6E\x64\x73","\x33","\x33\x2D\x34\x20\x73\x65\x63\x6F\x6E\x64\x73","\x35","\x35\x2D\x36\x20\x73\x65\x63\x6F\x6E\x64\x73","\x37","\x37\x2D\x38\x20\x73\x65\x63\x6F\x6E\x64\x73","\x39","\x39\x2D\x31\x30\x20\x73\x65\x63\x6F\x6E\x64\x73","\x73\x65\x6C\x65\x63\x74\x42\x6F\x78","\x50\x72\x65\x6D\x69\x75\x6D\x20\x72\x65\x71\x75\x69\x72\x65\x64","\x6D\x6F\x75\x73\x65\x50\x6F\x70\x75\x70","\x46\x61\x72\x6D\x20\x6D\x65\x74\x68\x6F\x64\x3A\x20","\x33\x30\x30","\x35\x20\x6D\x69\x6E\x75\x74\x65\x20\x66\x61\x72\x6D","\x31\x32\x30\x30","\x32\x30\x20\x6D\x69\x6E\x75\x74\x65\x20\x66\x61\x72\x6D","\x35\x34\x30\x30","\x39\x30\x20\x6D\x69\x6E\x75\x74\x65\x20\x66\x61\x72\x6D","\x31\x34\x34\x30\x30","\x32\x34\x30\x20\x6D\x69\x6E\x75\x74\x65\x20\x66\x61\x72\x6D","\x41\x75\x74\x6F\x53\x74\x61\x72\x74\x20\x41\x75\x74\x6F\x46\x61\x72\x6D\x2E","\x74\x69\x74\x6C\x65","\x68\x74\x6D\x6C","\x3C\x6C\x65\x67\x65\x6E\x64\x2F\x3E","\x3C\x66\x69\x65\x6C\x64\x73\x65\x74\x2F\x3E","\x41\x75\x74\x6F\x66\x61\x72\x6D\x5F\x73\x65\x74\x74\x69\x6E\x67\x73","\x66\x6C\x6F\x61\x74\x3A\x6C\x65\x66\x74\x3B\x20\x77\x69\x64\x74\x68\x3A\x34\x37\x32\x70\x78\x3B\x68\x65\x69\x67\x68\x74\x3A\x20\x32\x37\x30\x70\x78\x3B","\x53\x65\x74\x74\x69\x6E\x67\x73\x20\x73\x61\x76\x65\x64","\x54\x68\x65\x20\x73\x65\x74\x74\x69\x6E\x67\x73\x20\x77\x65\x72\x65\x20\x73\x61\x76\x65\x64\x21"];Autofarm= {settings:{autostart:false,method:300,timebetween:1,skipwhenfull:true,lowresfirst:true,stoplootbelow:true},title:_0xdab1[0],town:null,isPauzed:false,iTown:null,interval:null,isCaptain:false,hasP:true,shouldFarm:[],checkReady:function(_0xfac7x1){var _0xfac7x2=ITowns[_0xdab1[2]][_0xfac7x1[_0xdab1[1]]];if(_0xfac7x2[_0xdab1[3]]()){return false};if(!Autofarm[_0xdab1[4]]()){return false};if(_0xfac7x1[_0xdab1[7]][_0xdab1[6]][_0xdab1[5]]>= Timestamp[_0xdab1[8]]()){return _0xfac7x1[_0xdab1[7]][_0xdab1[6]][_0xdab1[5]]};var _0xfac7x3=_0xfac7x2[_0xdab1[9]]();if(_0xfac7x3[_0xdab1[10]]== _0xfac7x3[_0xdab1[11]]&& _0xfac7x3[_0xdab1[12]]== _0xfac7x3[_0xdab1[11]]&& _0xfac7x3[_0xdab1[13]]== _0xfac7x3[_0xdab1[11]]&& Autofarm[_0xdab1[15]][_0xdab1[14]]){return false};var _0xfac7x4=false;$[_0xdab1[22]](ModuleManager[_0xdab1[17]][_0xdab1[16]],function(_0xfac7x5,_0xfac7x6){if(_0xfac7x6[_0xdab1[18]]== _0xdab1[6]){var _0xfac7x7=_0xfac7x1[_0xdab1[21]][_0xdab1[20]](_0xfac7x6[_0xdab1[19]]);if(_0xfac7x7!=  -1){_0xfac7x4= true;return false}}});if(Autofarm[_0xdab1[15]][_0xdab1[23]]){if(_0xfac7x1[_0xdab1[21]][_0xdab1[24]]> 0){_0xfac7x4= false;$[_0xdab1[22]](_0xfac7x1[_0xdab1[21]],function(_0xfac7x5,_0xfac7x8){var _0xfac7x3=_0xfac7x2[_0xdab1[9]]();var _0xfac7x9=ITowns[_0xdab1[2]][_0xfac7x8][_0xdab1[9]]();if((_0xfac7x3[_0xdab1[10]]+ _0xfac7x3[_0xdab1[12]]+ _0xfac7x3[_0xdab1[13]])> (_0xfac7x9[_0xdab1[10]]+ _0xfac7x9[_0xdab1[12]]+ _0xfac7x9[_0xdab1[13]])){_0xfac7x4= true;return false}})}};if(_0xfac7x4){return false};return true},disableP:function(){Autoattack[_0xdab1[15]]= {autostart:false,method:300,timebetween:1,skipwhenfull:true,lowresfirst:true,stoplootbelow:true}},checkEnabled:function(){return ModuleManager[_0xdab1[7]][_0xdab1[6]][_0xdab1[25]]},startFarming:function(_0xfac7x1){if(!Autofarm[_0xdab1[4]]()){return false};Autofarm[_0xdab1[26]]= _0xfac7x1;Autofarm[_0xdab1[27]]= [];Autofarm[_0xdab1[28]]= ITowns[_0xdab1[2]][Autofarm[_0xdab1[26]][_0xdab1[1]]];var _0xfac7xa=function(){Autofarm[_0xdab1[29]]= setTimeout(function(){ConsoleLog.Log(Autofarm[_0xdab1[26]][_0xdab1[30]]+ _0xdab1[31],1);if(!Autofarm[_0xdab1[32]]){Autofarm[_0xdab1[35]](function(){if(!Autofarm[_0xdab1[4]]()){return false};Autofarm[_0xdab1[26]][_0xdab1[33]]= 0;Autofarm[_0xdab1[34]]()})}else {Autofarm[_0xdab1[36]](function(){if(!Autofarm[_0xdab1[4]]()){return false};Autofarm[_0xdab1[34]]()})}},Autobot[_0xdab1[37]](1000,2000))};if(ModuleManager[_0xdab1[38]]!= Autofarm[_0xdab1[26]][_0xdab1[39]]){Autofarm[_0xdab1[29]]= setTimeout(function(){ConsoleLog.Log(Autofarm[_0xdab1[26]][_0xdab1[30]]+ _0xdab1[40],1);DataExchanger[_0xdab1[41]](Autofarm[_0xdab1[26]][_0xdab1[1]],function(){if(!Autofarm[_0xdab1[4]]()){return false};ModuleManager[_0xdab1[38]]= Autofarm[_0xdab1[26]][_0xdab1[39]];_0xfac7xa()});Autofarm[_0xdab1[26]][_0xdab1[42]]= true},Autobot[_0xdab1[37]](1000,2000))}else {_0xfac7xa()}},initFarmTowns:function(_0xfac7xb){DataExchanger[_0xdab1[53]](Autofarm[_0xdab1[26]][_0xdab1[1]],function(_0xfac7xc){if(!Autofarm[_0xdab1[4]]()){return false};var _0xfac7xd=_0xfac7xc[_0xdab1[44]][_0xdab1[43]][_0xdab1[43]][_0xdab1[43]];$[_0xdab1[22]](_0xfac7xd,function(_0xfac7x5,_0xfac7xe){var _0xfac7xf=[];$[_0xdab1[22]](_0xfac7xe[_0xdab1[2]],function(_0xfac7x5,_0xfac7x1){if(_0xfac7x1[_0xdab1[45]]== Autofarm[_0xdab1[28]][_0xdab1[46]]()&& _0xfac7x1[_0xdab1[47]]== Autofarm[_0xdab1[28]][_0xdab1[48]]()&& _0xfac7x1[_0xdab1[49]]== 1){_0xfac7xf[_0xdab1[50]](_0xfac7x1)}});Autofarm[_0xdab1[26]][_0xdab1[51]]= _0xfac7xf});$[_0xdab1[22]](Autofarm[_0xdab1[26]][_0xdab1[51]],function(_0xfac7x10,_0xfac7x11){var _0xfac7x12=_0xfac7x11[_0xdab1[52]]- Timestamp[_0xdab1[8]]();if(_0xfac7x12<= 0){Autofarm[_0xdab1[27]][_0xdab1[50]](_0xfac7x11)}});_0xfac7xb(true)})},initFarmTownsCaptain:function(_0xfac7xb){DataExchanger[_0xdab1[58]](Autofarm[_0xdab1[26]][_0xdab1[1]],function(_0xfac7xc){if(!Autofarm[_0xdab1[4]]()){return false};var _0xfac7xf=[];$[_0xdab1[22]](_0xfac7xc[_0xdab1[54]],function(_0xfac7x5,_0xfac7x1){if(_0xfac7x1[_0xdab1[55]]== Autofarm[_0xdab1[28]][_0xdab1[46]]()&& _0xfac7x1[_0xdab1[56]]== Autofarm[_0xdab1[28]][_0xdab1[48]]()&& _0xfac7x1[_0xdab1[57]]== 1){_0xfac7xf[_0xdab1[50]](_0xfac7x1)}});Autofarm[_0xdab1[26]][_0xdab1[51]]= _0xfac7xf;$[_0xdab1[22]](Autofarm[_0xdab1[26]][_0xdab1[51]],function(_0xfac7x10,_0xfac7x11){var _0xfac7x12=_0xfac7x11[_0xdab1[52]]- Timestamp[_0xdab1[8]]();if(_0xfac7x12<= 0){Autofarm[_0xdab1[27]][_0xdab1[50]](_0xfac7x11)}});_0xfac7xb(true)})},claimResources:function(){if(!Autofarm[_0xdab1[26]][_0xdab1[51]][0]){ConsoleLog.Log(Autofarm[_0xdab1[26]][_0xdab1[30]]+ _0xdab1[59],1);Autofarm[_0xdab1[60]](1800);return false};if(Autofarm[_0xdab1[26]][_0xdab1[33]]< Autofarm[_0xdab1[27]][_0xdab1[24]]){Autofarm[_0xdab1[29]]= setTimeout(function(){var _0xfac7x13=_0xdab1[61];if(!Game[_0xdab1[63]][_0xdab1[62]]){if(Autofarm[_0xdab1[27]][Autofarm[_0xdab1[26]][_0xdab1[33]]][_0xdab1[64]]>= 86&& Autofarm[_0xdab1[15]][_0xdab1[65]]){_0xfac7x13= _0xdab1[66]};if(!Autofarm[_0xdab1[15]][_0xdab1[65]]){_0xfac7x13= _0xdab1[66]}};if(!Autofarm[_0xdab1[32]]){Autofarm[_0xdab1[69]](Autofarm[_0xdab1[27]][Autofarm[_0xdab1[26]][_0xdab1[33]]][_0xdab1[1]],_0xfac7x13,function(){if(!Autofarm[_0xdab1[4]]()){return false};Autofarm[_0xdab1[27]][Autofarm[_0xdab1[26]][_0xdab1[33]]][_0xdab1[52]]= Timestamp[_0xdab1[8]]()+ Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]);ModuleManager[_0xdab1[68]](Autofarm[_0xdab1[27]][_0xdab1[24]],Autofarm[_0xdab1[26]][_0xdab1[33]]);Autofarm[_0xdab1[26]][_0xdab1[33]]++;Autofarm[_0xdab1[34]]()})}else {var _0xfac7x14=[];$[_0xdab1[22]](Autofarm[_0xdab1[27]],function(_0xfac7x5,_0xfac7x15){_0xfac7x14[_0xdab1[50]](_0xfac7x15[_0xdab1[1]])});Autofarm[_0xdab1[70]](_0xfac7x14,_0xfac7x13,function(){if(!Autofarm[_0xdab1[4]]()){return false};Autofarm[_0xdab1[60]](Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]))})}},Autobot[_0xdab1[37]](Autofarm[_0xdab1[15]][_0xdab1[71]]* 1000,Autofarm[_0xdab1[15]][_0xdab1[71]]* 1000+ 1000))}else {var _0xfac7x16=null;$[_0xdab1[22]](Autofarm[_0xdab1[26]][_0xdab1[51]],function(_0xfac7x10,_0xfac7x11){var _0xfac7x17=_0xfac7x11[_0xdab1[52]]- Timestamp[_0xdab1[8]]();if(_0xfac7x16== null){_0xfac7x16= _0xfac7x17}else {if(_0xfac7x17<= _0xfac7x16){_0xfac7x16= _0xfac7x17}}});if(Autofarm[_0xdab1[27]][_0xdab1[24]]> 0){$[_0xdab1[22]](Autofarm[_0xdab1[27]],function(_0xfac7x10,_0xfac7x11){var _0xfac7x17=_0xfac7x11[_0xdab1[52]]- Timestamp[_0xdab1[8]]();if(_0xfac7x16== null){_0xfac7x16= _0xfac7x17}else {if(_0xfac7x17<= _0xfac7x16){_0xfac7x16= _0xfac7x17}}})}else {ConsoleLog.Log(Autofarm[_0xdab1[26]][_0xdab1[30]]+ _0xdab1[72],1)};Autofarm[_0xdab1[60]](_0xfac7x16)}},claimLoad:function(_0xfac7x18,_0xfac7x13,_0xfac7xb){if(!Game[_0xdab1[63]][_0xdab1[62]]){DataExchanger[_0xdab1[74]](Autofarm[_0xdab1[26]][_0xdab1[1]],_0xfac7x13,Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]),_0xfac7x18,function(_0xfac7xc){Autofarm[_0xdab1[73]](_0xfac7x18,_0xfac7xc);_0xfac7xb(_0xfac7xc)})}else {DataExchanger[_0xdab1[80]](Autofarm[_0xdab1[26]][_0xdab1[1]],{model_url:_0xdab1[75]+ MM[_0xdab1[78]](_0xdab1[77])[_0xdab1[76]](_0xfac7x18)[_0xdab1[1]],action_name:_0xdab1[79],arguments:{"\x66\x61\x72\x6D\x5F\x74\x6F\x77\x6E\x5F\x69\x64":_0xfac7x18,"\x74\x79\x70\x65":_0xdab1[9],"\x6F\x70\x74\x69\x6F\x6E":1}},function(_0xfac7x19){Autofarm[_0xdab1[73]](_0xfac7x18,_0xfac7x19);_0xfac7xb(_0xfac7x19)})}},claimLoadCallback:function(_0xfac7x18,_0xfac7xc){if(_0xfac7xc[_0xdab1[81]]){var _0xfac7x1a=_0xfac7xc[_0xdab1[82]],_0xfac7x1b=_0xfac7xc[_0xdab1[83]];if(_0xfac7xc[_0xdab1[49]]=== 2){WMap[_0xdab1[84]](_0xfac7x18[_0xdab1[1]],_0xfac7x1a,Timestamp[_0xdab1[8]]()+ Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]),Timestamp[_0xdab1[8]](),_0xfac7x1b,2);WMap[_0xdab1[85]]()}else {WMap[_0xdab1[84]](_0xfac7x18[_0xdab1[1]],_0xfac7x1a,Timestamp[_0xdab1[8]]()+ Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]),Timestamp[_0xdab1[8]](),_0xfac7x1b)};Layout[_0xdab1[86]]();ConsoleLog.Log(_0xdab1[87]+ _0xfac7xc[_0xdab1[81]]+ _0xdab1[88],1)}else {if(_0xfac7xc[_0xdab1[89]]){ConsoleLog.Log(Autofarm[_0xdab1[26]][_0xdab1[30]]+ _0xdab1[90]+ _0xfac7xc[_0xdab1[89]],1)}}},claimLoads:function(_0xfac7x1c,_0xfac7x13,_0xfac7xb){DataExchanger[_0xdab1[92]](Autofarm[_0xdab1[26]][_0xdab1[1]],_0xfac7x1c,_0xfac7x13,Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]),function(_0xfac7xc){Autofarm[_0xdab1[91]](_0xfac7xc);_0xfac7xb(_0xfac7xc)})},getMethodTime:function(_0xfac7x1d){if(Game[_0xdab1[63]][_0xdab1[62]]){var _0xfac7x1e=Autofarm[_0xdab1[15]][_0xdab1[93]];$[_0xdab1[22]](MM[_0xdab1[78]](_0xdab1[95])[_0xdab1[94]](),function(_0xfac7x10,_0xfac7x1){if(_0xfac7x1[_0xdab1[1]]== _0xfac7x1d){if(_0xfac7x1[_0xdab1[98]]()[_0xdab1[97]](_0xdab1[96])){_0xfac7x1e= Autofarm[_0xdab1[15]][_0xdab1[93]]* 2;return false}}});return _0xfac7x1e}else {return Autofarm[_0xdab1[15]][_0xdab1[93]]}},claimLoadsCallback:function(_0xfac7xc){if(_0xfac7xc[_0xdab1[81]]){var _0xfac7x1f=_0xfac7xc[_0xdab1[99]],_0xfac7x20=_0xfac7xc[_0xdab1[100]];$[_0xdab1[22]](_0xfac7x20,function(_0xfac7x10,_0xfac7x15){if(_0xfac7x15[_0xdab1[49]]== 2){WMap[_0xdab1[84]](_0xfac7x10,_0xfac7x15[_0xdab1[82]],Timestamp[_0xdab1[8]]()+ Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]),Timestamp[_0xdab1[8]](),_0xfac7x15[_0xdab1[101]],2);WMap[_0xdab1[85]]()}else {WMap[_0xdab1[84]](_0xfac7x10,_0xfac7x15[_0xdab1[82]],Timestamp[_0xdab1[8]]()+ Autofarm[_0xdab1[67]](Autofarm[_0xdab1[26]][_0xdab1[1]]),Timestamp[_0xdab1[8]](),_0xfac7x15[_0xdab1[101]])}});ConsoleLog.Log(_0xdab1[87]+ _0xfac7xc[_0xdab1[81]]+ _0xdab1[88],1)}else {if(_0xfac7xc[_0xdab1[89]]){ConsoleLog.Log(Autofarm[_0xdab1[26]][_0xdab1[30]]+ _0xdab1[90]+ _0xfac7xc[_0xdab1[89]],1)}}},finished:function(_0xfac7x21){if(!Autofarm[_0xdab1[4]]()){return false};$[_0xdab1[22]](ModuleManager[_0xdab1[102]],function(_0xfac7x5,_0xfac7x1){var _0xfac7x7=Autofarm[_0xdab1[26]][_0xdab1[21]][_0xdab1[20]](_0xfac7x1[_0xdab1[1]]);if(_0xfac7x7!=  -1){_0xfac7x1[_0xdab1[7]][_0xdab1[6]][_0xdab1[5]]= Timestamp[_0xdab1[8]]()+ _0xfac7x21}});Autofarm[_0xdab1[26]][_0xdab1[7]][_0xdab1[6]][_0xdab1[5]]= Timestamp[_0xdab1[8]]()+ _0xfac7x21;ModuleManager[_0xdab1[17]][_0xdab1[103]]()},stop:function(){clearInterval(Autofarm[_0xdab1[29]])},init:function(){ConsoleLog.Log(_0xdab1[104],1);Autofarm[_0xdab1[105]]();Autofarm[_0xdab1[106]]()},initButton:function(){ModuleManager[_0xdab1[107]](_0xdab1[6])},checkCaptain:function(){if($(_0xdab1[110])[_0xdab1[109]](_0xdab1[108])){Autofarm[_0xdab1[32]]= true}},setSettings:function(_0xfac7x22){if(_0xfac7x22!= _0xdab1[111]&& _0xfac7x22!= null){$[_0xdab1[113]](Autofarm[_0xdab1[15]],JSON[_0xdab1[112]](_0xfac7x22))}},contentSettings:function(){return $(_0xdab1[172],{"\x69\x64":_0xdab1[173],"\x73\x74\x79\x6C\x65":_0xdab1[174]})[_0xdab1[139]]($(_0xdab1[171])[_0xdab1[170]](Autofarm[_0xdab1[169]]))[_0xdab1[139]](FormBuilder[_0xdab1[141]]({"\x74\x65\x78\x74":_0xdab1[168],"\x69\x64":_0xdab1[119],"\x6E\x61\x6D\x65":_0xdab1[119],"\x63\x68\x65\x63\x6B\x65\x64":Autofarm[_0xdab1[15]][_0xdab1[118]],"\x64\x69\x73\x61\x62\x6C\x65\x64":!Autofarm[_0xdab1[115]]}))[_0xdab1[139]](function(){var _0xfac7x24={id:_0xdab1[120],name:_0xdab1[120],label:_0xdab1[159],styles:_0xdab1[145],value:Autofarm[_0xdab1[15]][_0xdab1[93]],options:[{value:_0xdab1[160],name:_0xdab1[161]},{value:_0xdab1[162],name:_0xdab1[163]},{value:_0xdab1[164],name:_0xdab1[165]},{value:_0xdab1[166],name:_0xdab1[167]}],disabled:false};if(!Autofarm[_0xdab1[115]]){_0xfac7x24= $[_0xdab1[113]](_0xfac7x24,{disabled:true})};var _0xfac7x25=FormBuilder[_0xdab1[156]](_0xfac7x24);if(!Autofarm[_0xdab1[115]]){_0xfac7x25[_0xdab1[158]]( new MousePopup(_0xdab1[157]))};return _0xfac7x25})[_0xdab1[139]](function(){var _0xfac7x24={id:_0xdab1[121],name:_0xdab1[121],label:_0xdab1[144],styles:_0xdab1[145],value:Autofarm[_0xdab1[15]][_0xdab1[71]],options:[{value:_0xdab1[146],name:_0xdab1[147]},{value:_0xdab1[148],name:_0xdab1[149]},{value:_0xdab1[150],name:_0xdab1[151]},{value:_0xdab1[152],name:_0xdab1[153]},{value:_0xdab1[154],name:_0xdab1[155]}]};if(!Autofarm[_0xdab1[115]]){_0xfac7x24= $[_0xdab1[113]](_0xfac7x24,{disabled:true})};var _0xfac7x25=FormBuilder[_0xdab1[156]](_0xfac7x24);if(!Autofarm[_0xdab1[115]]){_0xfac7x25[_0xdab1[158]]( new MousePopup(_0xdab1[157]))};return _0xfac7x25})[_0xdab1[139]](FormBuilder[_0xdab1[141]]({"\x74\x65\x78\x74":_0xdab1[143],"\x69\x64":_0xdab1[122],"\x6E\x61\x6D\x65":_0xdab1[122],"\x63\x68\x65\x63\x6B\x65\x64":Autofarm[_0xdab1[15]][_0xdab1[14]],"\x64\x69\x73\x61\x62\x6C\x65\x64":!Autofarm[_0xdab1[115]]}))[_0xdab1[139]](FormBuilder[_0xdab1[141]]({"\x74\x65\x78\x74":_0xdab1[142],"\x69\x64":_0xdab1[123],"\x6E\x61\x6D\x65":_0xdab1[123],"\x63\x68\x65\x63\x6B\x65\x64":Autofarm[_0xdab1[15]][_0xdab1[23]],"\x64\x69\x73\x61\x62\x6C\x65\x64":!Autofarm[_0xdab1[115]]}))[_0xdab1[139]](FormBuilder[_0xdab1[141]]({"\x74\x65\x78\x74":_0xdab1[140],"\x69\x64":_0xdab1[124],"\x6E\x61\x6D\x65":_0xdab1[124],"\x63\x68\x65\x63\x6B\x65\x64":Autofarm[_0xdab1[15]][_0xdab1[65]],"\x64\x69\x73\x61\x62\x6C\x65\x64":!Autofarm[_0xdab1[115]]}))[_0xdab1[139]](FormBuilder[_0xdab1[138]]({name:DM[_0xdab1[135]](_0xdab1[134])[_0xdab1[133]],class:!Autofarm[_0xdab1[115]]?_0xdab1[136]:_0xdab1[111],style:_0xdab1[137]})[_0xdab1[132]](_0xdab1[114],function(){if(!Autofarm[_0xdab1[115]]){return false};var _0xfac7x23=$(_0xdab1[117])[_0xdab1[116]]();Autofarm[_0xdab1[15]][_0xdab1[118]]= _0xfac7x23[_0xdab1[119]]!= undefined;Autofarm[_0xdab1[15]][_0xdab1[93]]= parseInt(_0xfac7x23[_0xdab1[120]]);Autofarm[_0xdab1[15]][_0xdab1[71]]= parseInt(_0xfac7x23[_0xdab1[121]]);Autofarm[_0xdab1[15]][_0xdab1[14]]= _0xfac7x23[_0xdab1[122]]!= undefined;Autofarm[_0xdab1[15]][_0xdab1[23]]= _0xfac7x23[_0xdab1[123]]!= undefined;Autofarm[_0xdab1[15]][_0xdab1[65]]= _0xfac7x23[_0xdab1[124]]!= undefined;DataExchanger.Auth(_0xdab1[125],{player_id:Autobot[_0xdab1[127]][_0xdab1[126]],world_id:Autobot[_0xdab1[127]][_0xdab1[128]],csrfToken:Autobot[_0xdab1[127]][_0xdab1[129]],autofarm_settings:Autobot[_0xdab1[130]](Autofarm[_0xdab1[15]])},Autofarm[_0xdab1[131]])}))},callbackSave:function(){ConsoleLog.Log(_0xdab1[175],1);HumanMessage[_0xdab1[81]](_0xdab1[176])}}
+Autofarm = {
+    settings: {
+        autostart: false,
+        method: 300,
+        timebetween: 1,
+        skipwhenfull: true,
+        lowresfirst: true,
+        stoplootbelow: true
+    },
+    title: 'Autofarm settings',
+    town: null,
+    isPauzed: false,
+    iTown: null,
+    interval: null,
+    isCaptain: false,
+    hasP: true,
+    shouldFarm: [],
+    checkReady: function(_0xfac7x1) {
+        var _0xfac7x2 = ITowns['towns'][_0xfac7x1['id']];
+        if (_0xfac7x2['hasConqueror']()) {
+            return false
+        };
+        if (!Autofarm['checkEnabled']()) {
+            return false
+        };
+        if (_0xfac7x1['modules']['Autofarm']['isReadyTime'] >= Timestamp['now']()) {
+            return _0xfac7x1['modules']['Autofarm']['isReadyTime']
+        };
+        var _0xfac7x3 = _0xfac7x2['resources']();
+        if (_0xfac7x3['wood'] == _0xfac7x3['storage'] && _0xfac7x3['stone'] == _0xfac7x3['storage'] && _0xfac7x3['iron'] == _0xfac7x3['storage'] && Autofarm['settings']['skipwhenfull']) {
+            return false
+        };
+        var _0xfac7x4 = false;
+        $['each'](ModuleManager['Queue']['queue'], function(_0xfac7x5, _0xfac7x6) {
+            if (_0xfac7x6['module'] == 'Autofarm') {
+                var _0xfac7x7 = _0xfac7x1['relatedTowns']['indexOf'](_0xfac7x6['townId']);
+                if (_0xfac7x7 != -1) {
+                    _0xfac7x4 = true;
+                    return false
+                }
+            }
+        });
+        if (Autofarm['settings']['lowresfirst']) {
+            if (_0xfac7x1['relatedTowns']['length'] > 0) {
+                _0xfac7x4 = false;
+                $['each'](_0xfac7x1['relatedTowns'], function(_0xfac7x5, _0xfac7x8) {
+                    var _0xfac7x3 = _0xfac7x2['resources']();
+                    var _0xfac7x9 = ITowns['towns'][_0xfac7x8]['resources']();
+                    if ((_0xfac7x3['wood'] + _0xfac7x3['stone'] + _0xfac7x3['iron']) > (_0xfac7x9['wood'] + _0xfac7x9['stone'] + _0xfac7x9['iron'])) {
+                        _0xfac7x4 = true;
+                        return false
+                    }
+                })
+            }
+        };
+        if (_0xfac7x4) {
+            return false
+        };
+        return true
+    },
+    disableP: function() {
+        Autoattack['settings'] = {
+            autostart: false,
+            method: 300,
+            timebetween: 1,
+            skipwhenfull: true,
+            lowresfirst: true,
+            stoplootbelow: true
+        }
+    },
+    checkEnabled: function() {
+        return ModuleManager['modules']['Autofarm']['isOn']
+    },
+    startFarming: function(_0xfac7x1) {
+        if (!Autofarm['checkEnabled']()) {
+            return false
+        };
+        Autofarm['town'] = _0xfac7x1;
+        Autofarm['shouldFarm'] = [];
+        Autofarm['iTown'] = ITowns['towns'][Autofarm['town']['id']];
+        var _0xfac7xa = function() {
+            Autofarm['interval'] = setTimeout(function() {
+                ConsoleLog.Log(Autofarm['town']['name'] + ' getting farm information.', 1);
+                if (!Autofarm['isCaptain']) {
+                    Autofarm['initFarmTowns'](function() {
+                        if (!Autofarm['checkEnabled']()) {
+                            return false
+                        };
+                        Autofarm['town']['currentFarmCount'] = 0;
+                        Autofarm['claimResources']()
+                    })
+                } else {
+                    Autofarm['initFarmTownsCaptain'](function() {
+                        if (!Autofarm['checkEnabled']()) {
+                            return false
+                        };
+                        Autofarm['claimResources']()
+                    })
+                }
+            }, Autobot['randomize'](1000, 2000))
+        };
+        if (ModuleManager['currentTown'] != Autofarm['town']['key']) {
+            Autofarm['interval'] = setTimeout(function() {
+                ConsoleLog.Log(Autofarm['town']['name'] + ' move to town.', 1);
+                DataExchanger['switch_town'](Autofarm['town']['id'], function() {
+                    if (!Autofarm['checkEnabled']()) {
+                        return false
+                    };
+                    ModuleManager['currentTown'] = Autofarm['town']['key'];
+                    _0xfac7xa()
+                });
+                Autofarm['town']['isSwitched'] = true
+            }, Autobot['randomize'](1000, 2000))
+        } else {
+            _0xfac7xa()
+        }
+    },
+    initFarmTowns: function(_0xfac7xb) {
+        DataExchanger['game_data'](Autofarm['town']['id'], function(_0xfac7xc) {
+            if (!Autofarm['checkEnabled']()) {
+                return false
+            };
+            var _0xfac7xd = _0xfac7xc['map']['data']['data']['data'];
+            $['each'](_0xfac7xd, function(_0xfac7x5, _0xfac7xe) {
+                var _0xfac7xf = [];
+                $['each'](_0xfac7xe['towns'], function(_0xfac7x5, _0xfac7x1) {
+                    if (_0xfac7x1['x'] == Autofarm['iTown']['getIslandCoordinateX']() && _0xfac7x1['y'] == Autofarm['iTown']['getIslandCoordinateY']() && _0xfac7x1['relation_status'] == 1) {
+                        _0xfac7xf['push'](_0xfac7x1)
+                    }
+                });
+                Autofarm['town']['farmTowns'] = _0xfac7xf
+            });
+            $['each'](Autofarm['town']['farmTowns'], function(_0xfac7x10, _0xfac7x11) {
+                var _0xfac7x12 = _0xfac7x11['loot'] - Timestamp['now']();
+                if (_0xfac7x12 <= 0) {
+                    Autofarm['shouldFarm']['push'](_0xfac7x11)
+                }
+            });
+            _0xfac7xb(true)
+        })
+    },
+    initFarmTownsCaptain: function(_0xfac7xb) {
+        DataExchanger['farm_town_overviews'](Autofarm['town']['id'], function(_0xfac7xc) {
+            if (!Autofarm['checkEnabled']()) {
+                return false
+            };
+            var _0xfac7xf = [];
+            $['each'](_0xfac7xc['farm_town_list'], function(_0xfac7x5, _0xfac7x1) {
+                if (_0xfac7x1['island_x'] == Autofarm['iTown']['getIslandCoordinateX']() && _0xfac7x1['island_y'] == Autofarm['iTown']['getIslandCoordinateY']() && _0xfac7x1['rel'] == 1) {
+                    _0xfac7xf['push'](_0xfac7x1)
+                }
+            });
+            Autofarm['town']['farmTowns'] = _0xfac7xf;
+            $['each'](Autofarm['town']['farmTowns'], function(_0xfac7x10, _0xfac7x11) {
+                var _0xfac7x12 = _0xfac7x11['loot'] - Timestamp['now']();
+                if (_0xfac7x12 <= 0) {
+                    Autofarm['shouldFarm']['push'](_0xfac7x11)
+                }
+            });
+            _0xfac7xb(true)
+        })
+    },
+    claimResources: function() {
+        if (!Autofarm['town']['farmTowns'][0]) {
+            ConsoleLog.Log(Autofarm['town']['name'] + ' has no farm towns.', 1);
+            Autofarm['finished'](1800);
+            return false
+        };
+        if (Autofarm['town']['currentFarmCount'] < Autofarm['shouldFarm']['length']) {
+            Autofarm['interval'] = setTimeout(function() {
+                var _0xfac7x13 = 'normal';
+                if (!Game['features']['battlepoint_villages']) {
+                    if (Autofarm['shouldFarm'][Autofarm['town']['currentFarmCount']]['mood'] >= 86 && Autofarm['settings']['stoplootbelow']) {
+                        _0xfac7x13 = 'double'
+                    };
+                    if (!Autofarm['settings']['stoplootbelow']) {
+                        _0xfac7x13 = 'double'
+                    }
+                };
+                if (!Autofarm['isCaptain']) {
+                    Autofarm['claimLoad'](Autofarm['shouldFarm'][Autofarm['town']['currentFarmCount']]['id'], _0xfac7x13, function() {
+                        if (!Autofarm['checkEnabled']()) {
+                            return false
+                        };
+                        Autofarm['shouldFarm'][Autofarm['town']['currentFarmCount']]['loot'] = Timestamp['now']() + Autofarm['getMethodTime'](Autofarm['town']['id']);
+                        ModuleManager['updateTimer'](Autofarm['shouldFarm']['length'], Autofarm['town']['currentFarmCount']);
+                        Autofarm['town']['currentFarmCount']++;
+                        Autofarm['claimResources']()
+                    })
+                } else {
+                    var _0xfac7x14 = [];
+                    $['each'](Autofarm['shouldFarm'], function(_0xfac7x5, _0xfac7x15) {
+                        _0xfac7x14['push'](_0xfac7x15['id'])
+                    });
+                    Autofarm['claimLoads'](_0xfac7x14, _0xfac7x13, function() {
+                        if (!Autofarm['checkEnabled']()) {
+                            return false
+                        };
+                        Autofarm['finished'](Autofarm['getMethodTime'](Autofarm['town']['id']))
+                    })
+                }
+            }, Autobot['randomize'](Autofarm['settings']['timebetween'] * 1000, Autofarm['settings']['timebetween'] * 1000 + 1000))
+        } else {
+            var _0xfac7x16 = null;
+            $['each'](Autofarm['town']['farmTowns'], function(_0xfac7x10, _0xfac7x11) {
+                var _0xfac7x17 = _0xfac7x11['loot'] - Timestamp['now']();
+                if (_0xfac7x16 == null) {
+                    _0xfac7x16 = _0xfac7x17
+                } else {
+                    if (_0xfac7x17 <= _0xfac7x16) {
+                        _0xfac7x16 = _0xfac7x17
+                    }
+                }
+            });
+            if (Autofarm['shouldFarm']['length'] > 0) {
+                $['each'](Autofarm['shouldFarm'], function(_0xfac7x10, _0xfac7x11) {
+                    var _0xfac7x17 = _0xfac7x11['loot'] - Timestamp['now']();
+                    if (_0xfac7x16 == null) {
+                        _0xfac7x16 = _0xfac7x17
+                    } else {
+                        if (_0xfac7x17 <= _0xfac7x16) {
+                            _0xfac7x16 = _0xfac7x17
+                        }
+                    }
+                })
+            } else {
+                ConsoleLog.Log(Autofarm['town']['name'] + ' not ready yet.', 1)
+            };
+            Autofarm['finished'](_0xfac7x16)
+        }
+    },
+    claimLoad: function(_0xfac7x18, _0xfac7x13, _0xfac7xb) {
+        if (!Game['features']['battlepoint_villages']) {
+            DataExchanger['claim_load'](Autofarm['town']['id'], _0xfac7x13, Autofarm['getMethodTime'](Autofarm['town']['id']), _0xfac7x18, function(_0xfac7xc) {
+                Autofarm['claimLoadCallback'](_0xfac7x18, _0xfac7xc);
+                _0xfac7xb(_0xfac7xc)
+            })
+        } else {
+            DataExchanger['frontend_bridge'](Autofarm['town']['id'], {
+                model_url: 'FarmTownPlayerRelation/' + MM['getOnlyCollectionByName']('FarmTownPlayerRelation')['getRelationForFarmTown'](_0xfac7x18)['id'],
+                action_name: 'claim',
+                arguments: {
+                    "\x66\x61\x72\x6D\x5F\x74\x6F\x77\x6E\x5F\x69\x64": _0xfac7x18,
+                    "\x74\x79\x70\x65": 'resources',
+                    "\x6F\x70\x74\x69\x6F\x6E": 1
+                }
+            }, function(_0xfac7x19) {
+                Autofarm['claimLoadCallback'](_0xfac7x18, _0xfac7x19);
+                _0xfac7xb(_0xfac7x19)
+            })
+        }
+    },
+    claimLoadCallback: function(_0xfac7x18, _0xfac7xc) {
+        if (_0xfac7xc['success']) {
+            var _0xfac7x1a = _0xfac7xc['satisfaction'],
+                _0xfac7x1b = _0xfac7xc['lootable_human'];
+            if (_0xfac7xc['relation_status'] === 2) {
+                WMap['updateStatusInChunkTowns'](_0xfac7x18['id'], _0xfac7x1a, Timestamp['now']() + Autofarm['getMethodTime'](Autofarm['town']['id']), Timestamp['now'](), _0xfac7x1b, 2);
+                WMap['pollForMapChunksUpdate']()
+            } else {
+                WMap['updateStatusInChunkTowns'](_0xfac7x18['id'], _0xfac7x1a, Timestamp['now']() + Autofarm['getMethodTime'](Autofarm['town']['id']), Timestamp['now'](), _0xfac7x1b)
+            };
+            Layout['hideAjaxLoader']();
+            ConsoleLog.Log('<span style="color: #6FAE30;">' + _0xfac7xc['success'] + '</span>', 1)
+        } else {
+            if (_0xfac7xc['error']) {
+                ConsoleLog.Log(Autofarm['town']['name'] + ' ' + _0xfac7xc['error'], 1)
+            }
+        }
+    },
+    claimLoads: function(_0xfac7x1c, _0xfac7x13, _0xfac7xb) {
+        DataExchanger['claim_loads'](Autofarm['town']['id'], _0xfac7x1c, _0xfac7x13, Autofarm['getMethodTime'](Autofarm['town']['id']), function(_0xfac7xc) {
+            Autofarm['claimLoadsCallback'](_0xfac7xc);
+            _0xfac7xb(_0xfac7xc)
+        })
+    },
+    getMethodTime: function(_0xfac7x1d) {
+        if (Game['features']['battlepoint_villages']) {
+            var _0xfac7x1e = Autofarm['settings']['method'];
+            $['each'](MM['getOnlyCollectionByName']('Town')['getTowns'](), function(_0xfac7x10, _0xfac7x1) {
+                if (_0xfac7x1['id'] == _0xfac7x1d) {
+                    if (_0xfac7x1['getResearches']()['hasResearch']('booty')) {
+                        _0xfac7x1e = Autofarm['settings']['method'] * 2;
+                        return false
+                    }
+                }
+            });
+            return _0xfac7x1e
+        } else {
+            return Autofarm['settings']['method']
+        }
+    },
+    claimLoadsCallback: function(_0xfac7xc) {
+        if (_0xfac7xc['success']) {
+            var _0xfac7x1f = _0xfac7xc['notifications'],
+                _0xfac7x20 = _0xfac7xc['handled_farms'];
+            $['each'](_0xfac7x20, function(_0xfac7x10, _0xfac7x15) {
+                if (_0xfac7x15['relation_status'] == 2) {
+                    WMap['updateStatusInChunkTowns'](_0xfac7x10, _0xfac7x15['satisfaction'], Timestamp['now']() + Autofarm['getMethodTime'](Autofarm['town']['id']), Timestamp['now'](), _0xfac7x15['lootable_at'], 2);
+                    WMap['pollForMapChunksUpdate']()
+                } else {
+                    WMap['updateStatusInChunkTowns'](_0xfac7x10, _0xfac7x15['satisfaction'], Timestamp['now']() + Autofarm['getMethodTime'](Autofarm['town']['id']), Timestamp['now'](), _0xfac7x15['lootable_at'])
+                }
+            });
+            ConsoleLog.Log('<span style="color: #6FAE30;">' + _0xfac7xc['success'] + '</span>', 1)
+        } else {
+            if (_0xfac7xc['error']) {
+                ConsoleLog.Log(Autofarm['town']['name'] + ' ' + _0xfac7xc['error'], 1)
+            }
+        }
+    },
+    finished: function(_0xfac7x21) {
+        if (!Autofarm['checkEnabled']()) {
+            return false
+        };
+        $['each'](ModuleManager['playerTowns'], function(_0xfac7x5, _0xfac7x1) {
+            var _0xfac7x7 = Autofarm['town']['relatedTowns']['indexOf'](_0xfac7x1['id']);
+            if (_0xfac7x7 != -1) {
+                _0xfac7x1['modules']['Autofarm']['isReadyTime'] = Timestamp['now']() + _0xfac7x21
+            }
+        });
+        Autofarm['town']['modules']['Autofarm']['isReadyTime'] = Timestamp['now']() + _0xfac7x21;
+        ModuleManager['Queue']['next']()
+    },
+    stop: function() {
+        clearInterval(Autofarm['interval'])
+    },
+    init: function() {
+        ConsoleLog.Log('Initialize AutoFarm', 1);
+        Autofarm['initButton']();
+        Autofarm['checkCaptain']()
+    },
+    initButton: function() {
+        ModuleManager['initButtons']('Autofarm')
+    },
+    checkCaptain: function() {
+        if ($('.advisor_frame.captain div')['hasClass']('captain_active')) {
+            Autofarm['isCaptain'] = true
+        }
+    },
+    setSettings: function(_0xfac7x22) {
+        if (_0xfac7x22 != '' && _0xfac7x22 != null) {
+            $['extend'](Autofarm['settings'], JSON['parse'](_0xfac7x22))
+        }
+    },
+    contentSettings: function() {
+        return $('<fieldset/>', {
+            "\x69\x64": 'Autofarm_settings',
+            "\x73\x74\x79\x6C\x65": 'float:left; width:472px;height: 270px;'
+        })['append']($('<legend/>')['html'](Autofarm['title']))['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'AutoStart AutoFarm.',
+            "\x69\x64": 'autofarm_autostart',
+            "\x6E\x61\x6D\x65": 'autofarm_autostart',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['autostart'],
+            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+        }))['append'](function() {
+            var _0xfac7x24 = {
+                id: 'autofarm_method',
+                name: 'autofarm_method',
+                label: 'Farm method: ',
+                styles: 'width: 120px;',
+                value: Autofarm['settings']['method'],
+                options: [{
+                    value: '300',
+                    name: '5 minute farm'
+                }, {
+                    value: '1200',
+                    name: '20 minute farm'
+                }, {
+                    value: '5400',
+                    name: '90 minute farm'
+                }, {
+                    value: '14400',
+                    name: '240 minute farm'
+                }],
+                disabled: false
+            };
+            if (!Autofarm['hasP']) {
+                _0xfac7x24 = $['extend'](_0xfac7x24, {
+                    disabled: true
+                })
+            };
+            var _0xfac7x25 = FormBuilder['selectBox'](_0xfac7x24);
+            if (!Autofarm['hasP']) {
+                _0xfac7x25['mousePopup'](new MousePopup('Premium required'))
+            };
+            return _0xfac7x25
+        })['append'](function() {
+            var _0xfac7x24 = {
+                id: 'autofarm_bewteen',
+                name: 'autofarm_bewteen',
+                label: 'Time before next farm: ',
+                styles: 'width: 120px;',
+                value: Autofarm['settings']['timebetween'],
+                options: [{
+                    value: '1',
+                    name: '1-2 seconds'
+                }, {
+                    value: '3',
+                    name: '3-4 seconds'
+                }, {
+                    value: '5',
+                    name: '5-6 seconds'
+                }, {
+                    value: '7',
+                    name: '7-8 seconds'
+                }, {
+                    value: '9',
+                    name: '9-10 seconds'
+                }]
+            };
+            if (!Autofarm['hasP']) {
+                _0xfac7x24 = $['extend'](_0xfac7x24, {
+                    disabled: true
+                })
+            };
+            var _0xfac7x25 = FormBuilder['selectBox'](_0xfac7x24);
+            if (!Autofarm['hasP']) {
+                _0xfac7x25['mousePopup'](new MousePopup('Premium required'))
+            };
+            return _0xfac7x25
+        })['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'Skip farm when warehouse is full.',
+            "\x69\x64": 'autofarm_warehousefull',
+            "\x6E\x61\x6D\x65": 'autofarm_warehousefull',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['skipwhenfull'],
+            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+        }))['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'Lowest resources first with more towns on one island.',
+            "\x69\x64": 'autofarm_lowresfirst',
+            "\x6E\x61\x6D\x65": 'autofarm_lowresfirst',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['lowresfirst'],
+            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+        }))['append'](FormBuilder['checkbox']({
+            "\x74\x65\x78\x74": 'Stop loot farm until mood is below 80%.',
+            "\x69\x64": 'autofarm_loot',
+            "\x6E\x61\x6D\x65": 'autofarm_loot',
+            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['stoplootbelow'],
+            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+        }))['append'](FormBuilder['button']({
+            name: DM['getl10n']('notes')['btn_save'],
+            class: !Autofarm['hasP'] ? ' disabled' : '',
+            style: 'top: 62px;'
+        })['on']('click', function() {
+            if (!Autofarm['hasP']) {
+                return false
+            };
+            var _0xfac7x23 = $('#Autofarm_settings')['serializeObject']();
+            Autofarm['settings']['autostart'] = _0xfac7x23['autofarm_autostart'] != undefined;
+            Autofarm['settings']['method'] = parseInt(_0xfac7x23['autofarm_method']);
+            Autofarm['settings']['timebetween'] = parseInt(_0xfac7x23['autofarm_bewteen']);
+            Autofarm['settings']['skipwhenfull'] = _0xfac7x23['autofarm_warehousefull'] != undefined;
+            Autofarm['settings']['lowresfirst'] = _0xfac7x23['autofarm_lowresfirst'] != undefined;
+            Autofarm['settings']['stoplootbelow'] = _0xfac7x23['autofarm_loot'] != undefined;
+            /*DataExchanger.Auth('saveAutofarm', {
+                player_id: Autobot['Account']['player_id'],
+                world_id: Autobot['Account']['world_id'],
+                csrfToken: Autobot['Account']['csrfToken'],
+                autofarm_settings: Autobot['stringify'](Autofarm['settings'])
+            }, Autofarm['callbackSave'])*/
+            ConsoleLog.Log('Settings saved', 1);
+            HumanMessage['success']('The settings were saved!');
+        }))
+    },
+}

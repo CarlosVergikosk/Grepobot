@@ -1,3 +1,6 @@
+/**
+ * Autobuild feature for automatic build buildings and units
+ */
 Autobuild = {
     settings: {
         autostart: false,
@@ -17,6 +20,7 @@ Autobuild = {
     currentWindow: null,
     isCaptain: false,
     Queue: 0,
+
     /**
      * Initilize Autobuild
      */
@@ -37,7 +41,7 @@ Autobuild = {
         }
     },
     activateCss: function () {
-        $('.construction_queue_order_container')['addClass']('active')
+        $('.construction_queue_order_container').addClass('active');
     },
     /**
      * Save the Queue Strings to propertys
