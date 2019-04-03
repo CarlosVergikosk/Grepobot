@@ -5,11 +5,11 @@ ConsoleLog = {
     scrollUpdate: true,
     contentConsole: function() {
         var _0x7a76x1 = $('<fieldset/>', {
-            "\x73\x74\x79\x6C\x65": 'float:left; width:472px;'
+            "style": 'float:left; width:472px;'
         })['append']($('<legend/>')['html']('Autobot Console'))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'terminal'
+            "class": 'terminal'
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'terminal-output'
+            "class": 'terminal-output'
         }))['scroll'](function() {
             ConsoleLog.LogScrollBottom()
         }));
@@ -30,7 +30,7 @@ ConsoleLog = {
         var _0x7a76x9 = new Date();
         var _0x7a76xa = _0x7a76x7(_0x7a76x9['getHours']()) + ':' + _0x7a76x7(_0x7a76x9['getMinutes']()) + ':' + _0x7a76x7(_0x7a76x9['getSeconds']());
         var _0x7a76xb = $('<div/>')['append']($('<div/>', {
-            "\x73\x74\x79\x6C\x65": 'width: 100%;'
+            "style": 'width: 100%;'
         })['html'](_0x7a76xa + ' - ' + '[' + ConsoleLog['Types'][_0x7a76x6] + ']: ' + _0x7a76x5));
         this['Logs']['push'](_0x7a76xb);
         var _0x7a76x2 = $('.terminal-output');

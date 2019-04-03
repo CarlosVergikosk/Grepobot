@@ -1,18 +1,4 @@
 DataExchanger = {
-    /*Auth: function(_0xbcf4x1, _0xbcf4x2, _0xbcf4x3) {
-        $['ajax']({
-            method: 'GET',
-            jsonpCallback: _0xbcf4x3,
-            url: Autobot.domain + 'auth.json',
-            //dataType: 'json',
-            //data: $['extend']({
-            //    action: _0xbcf4x1
-            //}, _0xbcf4x2),
-            success: function(_0xbcf4x2) {
-                _0xbcf4x3(_0xbcf4x2)
-            }
-        })
-    },*/
     default_handler: function(_0xbcf4x3, _0xbcf4x4) {
         return function(_0xbcf4x2, _0xbcf4x5, _0xbcf4x6) {
             _0xbcf4x4 = _0xbcf4x4 != undefined;
@@ -375,10 +361,10 @@ DataExchanger = {
         });
         var _0xbcf4x2 = {
             json: JSON['stringify']($['extend']({
-                "\x69\x64": _0xbcf4x19,
-                "\x74\x79\x70\x65": _0xbcf4x18,
-                "\x74\x6F\x77\x6E\x5F\x69\x64": _0xbcf4xb,
-                "\x6E\x6C\x5F\x69\x6E\x69\x74": true
+                "id": _0xbcf4x19,
+                "type": _0xbcf4x18,
+                "town_id": _0xbcf4xb,
+                "nl_init": true
             }, _0xbcf4x1a))
         };
         $['ajax']({

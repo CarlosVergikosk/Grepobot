@@ -345,14 +345,14 @@ Autofarm = {
     },
     contentSettings: function() {
         return $('<fieldset/>', {
-            "\x69\x64": 'Autofarm_settings',
-            "\x73\x74\x79\x6C\x65": 'float:left; width:472px;height: 270px;'
+            "id": 'Autofarm_settings',
+            "style": 'float:left; width:472px;height: 270px;'
         })['append']($('<legend/>')['html'](Autofarm['title']))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'AutoStart AutoFarm.',
-            "\x69\x64": 'autofarm_autostart',
-            "\x6E\x61\x6D\x65": 'autofarm_autostart',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['autostart'],
-            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+            "text": 'AutoStart AutoFarm.',
+            "id": 'autofarm_autostart',
+            "name": 'autofarm_autostart',
+            "checked": Autofarm['settings']['autostart'],
+            "disabled": !Autofarm['hasP']
         }))['append'](function() {
             var _0xfac7x24 = {
                 id: 'autofarm_method',
@@ -420,23 +420,23 @@ Autofarm = {
             };
             return _0xfac7x25
         })['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'Skip farm when warehouse is full.',
-            "\x69\x64": 'autofarm_warehousefull',
-            "\x6E\x61\x6D\x65": 'autofarm_warehousefull',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['skipwhenfull'],
-            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+            "text": 'Skip farm when warehouse is full.',
+            "id": 'autofarm_warehousefull',
+            "name": 'autofarm_warehousefull',
+            "checked": Autofarm['settings']['skipwhenfull'],
+            "disabled": !Autofarm['hasP']
         }))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'Lowest resources first with more towns on one island.',
-            "\x69\x64": 'autofarm_lowresfirst',
-            "\x6E\x61\x6D\x65": 'autofarm_lowresfirst',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['lowresfirst'],
-            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+            "text": 'Lowest resources first with more towns on one island.',
+            "id": 'autofarm_lowresfirst',
+            "name": 'autofarm_lowresfirst',
+            "checked": Autofarm['settings']['lowresfirst'],
+            "disabled": !Autofarm['hasP']
         }))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'Stop loot farm until mood is below 80%.',
-            "\x69\x64": 'autofarm_loot',
-            "\x6E\x61\x6D\x65": 'autofarm_loot',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autofarm['settings']['stoplootbelow'],
-            "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autofarm['hasP']
+            "text": 'Stop loot farm until mood is below 80%.',
+            "id": 'autofarm_loot',
+            "name": 'autofarm_loot',
+            "checked": Autofarm['settings']['stoplootbelow'],
+            "disabled": !Autofarm['hasP']
         }))['append'](FormBuilder['button']({
             name: DM['getl10n']('notes')['btn_save'],
             class: !Autofarm['hasP'] ? ' disabled' : '',

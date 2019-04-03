@@ -543,26 +543,7 @@ Autobuild = {
         });
         return _0xc4a4x22
     },
-    /*
-    callbackSaveBuilding: function (_0xc4a4x26) {
-        return function (response) {
-            if (response['success']) {
-                _0xc4a4x26['each'](function () {
-                    $(this)['find']('.empty_slot')['remove']();
-                    if (response['item']) {
-                        $(this)['append'](Autobuild['buildingElement']($(this), response['item']));
-                        Autobuild['setEmptyItems']($(this))
-                    } else {
-                        Autobuild['setEmptyItems']($(this))
-                    }
-                });
-                delete(response['item']);
-                delete(response['success']);
-                Autobuild['building_queue'] = response
-            }
-        }
-    },
-    */
+
     /**
      * Update the buildingqueue.
      * @param {Object with Building Data} _building_data 
@@ -684,7 +665,7 @@ Autobuild = {
                 _0xc4a4x2f = $('<a/>', {
                     href: '#',
                     id: 'unit_order_addqueue',
-                    "\x63\x6C\x61\x73\x73": 'confirm'
+                    "class": 'confirm'
                 });
                 _0xc4a4x2e['after'](_0xc4a4x2f);
                 _0xc4a4x2f['mousePopup'](new MousePopup('Add to reqruite queue'))['on']('click', function (_0xc4a4x36) {
@@ -806,7 +787,7 @@ Autobuild = {
             _0xc4a4x26['width'](_0xc4a4x3c);
             for (var _0xc4a4xf = 1; _0xc4a4xf <= Math['floor'](_0xc4a4x3d) / 60; _0xc4a4xf++) {
                 _0xc4a4x26['append']($('<div/>', {
-                    "\x63\x6C\x61\x73\x73": 'js-queue-item js-tutorial-queue-item construction_queue_sprite empty_slot'
+                    "class": 'js-queue-item js-tutorial-queue-item construction_queue_sprite empty_slot'
                 }))
             }
         } else {
@@ -815,25 +796,17 @@ Autobuild = {
     },
     buildingElement: function (_0xc4a4x26, _0xc4a4x1b) {
         return $('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'js-tutorial-queue-item queued_building_order last_order ' + _0xc4a4x1b['item_name'] + ' queue_id_' + _0xc4a4x1b['id']
+            "class": 'js-tutorial-queue-item queued_building_order last_order ' + _0xc4a4x1b['item_name'] + ' queue_id_' + _0xc4a4x1b['id']
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'construction_queue_sprite frame'
+            "class": 'construction_queue_sprite frame'
         })['mousePopup'](new MousePopup(_0xc4a4x1b['item_name']['capitalize']() + ' queued'))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'item_icon building_icon40x40 js-item-icon build_queue ' + _0xc4a4x1b['item_name']
+            "class": 'item_icon building_icon40x40 js-item-icon build_queue ' + _0xc4a4x1b['item_name']
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'building_level'
+            "class": 'building_level'
         })['append']('<span class="construction_queue_sprite arrow_green_ver"></span>' + Autobuild['checkBuildingLevel'](_0xc4a4x1b)))))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'btn_cancel_order button_new square remove js-item-btn-cancel-order build_queue'
+            "class": 'btn_cancel_order button_new square remove js-item-btn-cancel-order build_queue'
         })['on']('click', function (_0xc4a4x36) {
             _0xc4a4x36['preventDefault']();
-            /*DataExchanger.Auth('removeItemQueue', {
-                player_id: Autobot['Account']['player_id'],
-                world_id: Autobot['Account']['world_id'],
-                csrfToken: Autobot['Account']['csrfToken'],
-                town_id: Game['townId'],
-                item_id: _0xc4a4x1b['id'],
-                type: 'building'
-            }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')));*/
 
             Autobuild.saveBuilding({
                 type: "remove",
@@ -843,26 +816,26 @@ Autobuild = {
 
             $('.queue_id_' + _0xc4a4x1b['id'])['remove']()
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'left'
+            "class": 'left'
         }))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'right'
+            "class": 'right'
         }))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'caption js-caption'
+            "class": 'caption js-caption'
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'effect js-effect'
+            "class": 'effect js-effect'
         }))))
     },
     unitElement: function (_0xc4a4x26, _0xc4a4x1b, _0xc4a4x11) {
         return $('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'js-tutorial-queue-item queued_building_order last_order ' + _0xc4a4x1b['item_name'] + ' queue_id_' + _0xc4a4x1b['id']
+            "class": 'js-tutorial-queue-item queued_building_order last_order ' + _0xc4a4x1b['item_name'] + ' queue_id_' + _0xc4a4x1b['id']
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'construction_queue_sprite frame'
+            "class": 'construction_queue_sprite frame'
         })['mousePopup'](new MousePopup(_0xc4a4x1b['item_name']['capitalize']()['replace']('_', ' ') + ' queued'))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'item_icon unit_icon40x40 js-item-icon build_queue ' + _0xc4a4x1b['item_name']
+            "class": 'item_icon unit_icon40x40 js-item-icon build_queue ' + _0xc4a4x1b['item_name']
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'unit_count text_shadow'
+            "class": 'unit_count text_shadow'
         })['html'](_0xc4a4x1b['count']))))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'btn_cancel_order button_new square remove js-item-btn-cancel-order build_queue'
+            "class": 'btn_cancel_order button_new square remove js-item-btn-cancel-order build_queue'
         })['on']('click', function (_0xc4a4x36) {
             _0xc4a4x36['preventDefault']();
             /*DataExchanger.Auth('removeItemQueue', {
@@ -876,24 +849,24 @@ Autobuild = {
             Autobuild['callbackSaveUnits']($('#unit_orders_queue .ui_various_orders'), _0xc4a4x11); //);
             $('.queue_id_' + _0xc4a4x1b['id'])['remove']()
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'left'
+            "class": 'left'
         }))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'right'
+            "class": 'right'
         }))['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'caption js-caption'
+            "class": 'caption js-caption'
         })['append']($('<div/>', {
-            "\x63\x6C\x61\x73\x73": 'effect js-effect'
+            "class": 'effect js-effect'
         }))))
     },
     contentSettings: function () {
         return $('<fieldset/>', {
-            "\x69\x64": 'Autobuild_settings',
-            "\x73\x74\x79\x6C\x65": 'float:left; width:472px; height: 270px;'
+            "id": 'Autobuild_settings',
+            "style": 'float:left; width:472px; height: 270px;'
         })['append']($('<legend/>')['html']('Autobuild Settings'))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'AutoStart Autobuild.',
-            "\x69\x64": 'autobuild_autostart',
-            "\x6E\x61\x6D\x65": 'autobuild_autostart',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['autostart']
+            "text": 'AutoStart Autobuild.',
+            "id": 'autobuild_autostart',
+            "name": 'autobuild_autostart',
+            "checked": Autobuild['settings']['autostart']
         }))['append'](FormBuilder['selectBox']({
             id: 'autobuild_timeinterval',
             name: 'autobuild_timeinterval',
@@ -914,31 +887,31 @@ Autobuild = {
                 name: '15 minutes'
             }]
         }))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'Enable building queue.',
-            "\x69\x64": 'autobuild_building_enable',
-            "\x6E\x61\x6D\x65": 'autobuild_building_enable',
-            "\x73\x74\x79\x6C\x65": 'width: 100%;padding-top: 35px;',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['enable_building']
+            "text": 'Enable building queue.',
+            "id": 'autobuild_building_enable',
+            "name": 'autobuild_building_enable',
+            "style": 'width: 100%;padding-top: 35px;',
+            "checked": Autobuild['settings']['enable_building']
         }))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'Enable barracks queue.',
-            "\x69\x64": 'autobuild_barracks_enable',
-            "\x6E\x61\x6D\x65": 'autobuild_barracks_enable',
-            "\x73\x74\x79\x6C\x65": 'width: 100%;',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['enable_units']
+            "text": 'Enable barracks queue.',
+            "id": 'autobuild_barracks_enable',
+            "name": 'autobuild_barracks_enable',
+            "style": 'width: 100%;',
+            "checked": Autobuild['settings']['enable_units']
         }))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'Enable ships queue.',
-            "\x69\x64": 'autobuild_ships_enable',
-            "\x6E\x61\x6D\x65": 'autobuild_ships_enable',
-            "\x73\x74\x79\x6C\x65": 'width: 100%;padding-bottom: 35px;',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['enable_ships']
+            "text": 'Enable ships queue.',
+            "id": 'autobuild_ships_enable',
+            "name": 'autobuild_ships_enable',
+            "style": 'width: 100%;padding-bottom: 35px;',
+            "checked": Autobuild['settings']['enable_ships']
         }))['append'](function () {
             if (GameDataInstantBuy['isEnabled']()) {
                 return FormBuilder['checkbox']({
-                    "\x74\x65\x78\x74": 'Free Instant Buy.',
-                    "\x69\x64": 'autobuild_instant_buy',
-                    "\x6E\x61\x6D\x65": 'autobuild_instant_buy',
-                    "\x73\x74\x79\x6C\x65": 'width: 100%;',
-                    "\x63\x68\x65\x63\x6B\x65\x64": Autobuild['settings']['instant_buy']
+                    "text": 'Free Instant Buy.',
+                    "id": 'autobuild_instant_buy',
+                    "name": 'autobuild_instant_buy',
+                    "style": 'width: 100%;',
+                    "checked": Autobuild['settings']['instant_buy']
                 })
             }
         })['append'](FormBuilder['button']({
@@ -973,15 +946,6 @@ Autobuild = {
                         if ($['inArray'](_0xc4a4x41, _0xc4a4x40) == -1) {
                             $(this)['removeClass']('build_grey')['addClass']('build')['html']('Add to queue')['on']('click', function (_0xc4a4x36) {
                                 _0xc4a4x36['preventDefault']();
-                                /*DataExchanger.Auth('addItemQueue', {
-                                    player_id: Autobot['Account']['player_id'],
-                                    world_id: Autobot['Account']['world_id'],
-                                    csrfToken: Autobot['Account']['csrfToken'],
-                                    town_id: Game['townId'],
-                                    item_name: _0xc4a4x41,
-                                    count: 1,
-                                    type: 'building'
-                                }, Autobuild['callbackSaveBuilding']($('#building_tasks_main .ui_various_orders, .construction_queue_order_container .ui_various_orders')))*/
 
                                 Autobuild.saveBuilding({
                                     type: "add",
@@ -989,8 +953,6 @@ Autobuild = {
                                     item_name: _0xc4a4x41,
                                     count: 1,
                                 });
-
-
                             })
                         }
                     }

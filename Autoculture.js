@@ -329,22 +329,22 @@ Autoculture = {
         });
         $['each'](ModuleManager['playerTowns'], function(_0xaa01x19, _0xaa01x6) {
             _0xaa01x22['find']('#culture_party_' + _0xaa01x6['id'])['html'](FormBuilder['checkbox']({
-                "\x69\x64": 'bot_culture_party_' + _0xaa01x6['id'],
-                "\x6E\x61\x6D\x65": 'bot_culture_party_' + _0xaa01x6['id'],
-                "\x63\x68\x65\x63\x6B\x65\x64": _0xaa01x6['id'] in Autoculture['settings']['towns'] ? Autoculture['settings']['towns'][_0xaa01x6['id']]['party'] : false,
-                "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autoculture['checkAvailable'](_0xaa01x6['id'])['party']
+                "id": 'bot_culture_party_' + _0xaa01x6['id'],
+                "name": 'bot_culture_party_' + _0xaa01x6['id'],
+                "checked": _0xaa01x6['id'] in Autoculture['settings']['towns'] ? Autoculture['settings']['towns'][_0xaa01x6['id']]['party'] : false,
+                "disabled": !Autoculture['checkAvailable'](_0xaa01x6['id'])['party']
             }));
             _0xaa01x22['find']('#culture_triumph_' + _0xaa01x6['id'])['html'](FormBuilder['checkbox']({
-                "\x69\x64": 'bot_culture_triumph_' + _0xaa01x6['id'],
-                "\x6E\x61\x6D\x65": 'bot_culture_triumph_' + _0xaa01x6['id'],
-                "\x63\x68\x65\x63\x6B\x65\x64": _0xaa01x6['id'] in Autoculture['settings']['towns'] ? Autoculture['settings']['towns'][_0xaa01x6['id']]['triumph'] : false,
-                "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autoculture['checkAvailable'](_0xaa01x6['id'])['triumph']
+                "id": 'bot_culture_triumph_' + _0xaa01x6['id'],
+                "name": 'bot_culture_triumph_' + _0xaa01x6['id'],
+                "checked": _0xaa01x6['id'] in Autoculture['settings']['towns'] ? Autoculture['settings']['towns'][_0xaa01x6['id']]['triumph'] : false,
+                "disabled": !Autoculture['checkAvailable'](_0xaa01x6['id'])['triumph']
             }));
             _0xaa01x22['find']('#culture_theater_' + _0xaa01x6['id'])['html'](FormBuilder['checkbox']({
-                "\x69\x64": 'bot_culture_theater_' + _0xaa01x6['id'],
-                "\x6E\x61\x6D\x65": 'bot_culture_theater_' + _0xaa01x6['id'],
-                "\x63\x68\x65\x63\x6B\x65\x64": _0xaa01x6['id'] in Autoculture['settings']['towns'] ? Autoculture['settings']['towns'][_0xaa01x6['id']]['theater'] : false,
-                "\x64\x69\x73\x61\x62\x6C\x65\x64": !Autoculture['checkAvailable'](_0xaa01x6['id'])['theater']
+                "id": 'bot_culture_theater_' + _0xaa01x6['id'],
+                "name": 'bot_culture_theater_' + _0xaa01x6['id'],
+                "checked": _0xaa01x6['id'] in Autoculture['settings']['towns'] ? Autoculture['settings']['towns'][_0xaa01x6['id']]['theater'] : false,
+                "disabled": !Autoculture['checkAvailable'](_0xaa01x6['id'])['theater']
             }))
         });
         _0xaa01x22['find']('#bot_culture_settings')['append'](FormBuilder['button']({
@@ -373,20 +373,13 @@ Autoculture = {
                 }
             });
             Autoculture['settings']['autostart'] = $('#autoculture_autostart')['prop']('checked');
-            /*DataExchanger.Auth('saveCulture', {
-                player_id: Autobot['Account']['player_id'],
-                world_id: Autobot['Account']['world_id'],
-                csrfToken: Autobot['Account']['csrfToken'],
-                autoculture_settings: Autobot['stringify'](Autoculture['settings'])
-            }, Autoculture['callbackSave'])*/
-
             ConsoleLog.Log('Settings saved', 2);
             HumanMessage['success']('The settings were saved!')
         }))['append'](FormBuilder['checkbox']({
-            "\x74\x65\x78\x74": 'AutoStart AutoCulture.',
-            "\x69\x64": 'autoculture_autostart',
-            "\x6E\x61\x6D\x65": 'autoculture_autostart',
-            "\x63\x68\x65\x63\x6B\x65\x64": Autoculture['settings']['autostart']
+            "text": 'AutoStart AutoCulture.',
+            "id": 'autoculture_autostart',
+            "name": 'autoculture_autostart',
+            "checked": Autoculture['settings']['autostart']
         }));
         return FormBuilder['gameWrapper']('AutoCulture', 'bot_townsoverview', _0xaa01x22, 'margin-bottom:9px;')
     },
