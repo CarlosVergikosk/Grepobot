@@ -146,8 +146,11 @@ Autobuild = {
         if (_town['modules']['Autobuild']['isReadyTime'] >= Timestamp['now']()) {
             return _town['modules']['Autobuild']['isReadyTime']
         };
-        return true;
-        //return (Autobuild.town_queues.filter(e => e.town_id === _town.id).length > 0)
+        if (Autobuild.town_queues.filter(e => e.town_id === _town.id).length > 0) {
+            let current_town = Autobuild.town_queues.find(e => e.town_id === _town.id);
+            return (current_town.building_queue > 0 || current_town.unit_queue.length > 0 || current_town.ship_queue > 0);
+        }
+        return (GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']);
         //return !(typeof(Autobuild['building_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['units_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['ships_queue'][_0xc4a4xa['id']]) == 'undefined')
     },
     startBuild: function (_0xc4a4xa) {
@@ -445,7 +448,7 @@ Autobuild = {
                     }
                     //if there is space in the queue, start
                     if (_queues[_type].queue.length < Autobot.Queue) {
-                        _readyTime = 0;
+                        _readyTime = 10;
                     }
                 }
             }
@@ -454,9 +457,11 @@ Autobuild = {
         if (GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']) {
             //if there are buildings in the queue
             if (_queues.building.queue.length > 0) {
-                _doNext = "building";
                 let _firstBuildingTime = _queues.building.queue[0].model.getTimeLeft() - 300;
-                if (_firstBuildingTime < _readyTime && _readyTime > 0 && _firstBuildingTime >= 0) {
+                if (_firstBuildingTime <= 0) {
+                    _firstBuildingTime = 10;
+                }
+                if (_firstBuildingTime < _readyTime || _readyTime == -1) {
                     _readyTime = _firstBuildingTime
                 }
             }
