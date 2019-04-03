@@ -1,86 +1,69 @@
 var Autobot = {
     title: 'Autobot',
-    version: '3.1',
-    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.414/",
+    version: '0.415',
+    domain: window.location.protocol + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.415/",
     botWnd: '',
-    //botPremWnd: '',
-    botEmailWnd: '',
-    //facebookWnd: '',
     isLogged: false,
     Account: {
-        player_id: Game['player_id'],
-        player_name: Game['player_name'],
-        world_id: Game['world_id'],
-        locale_lang: Game['locale_lang'],
-        premium_grepolis: Game['premium_user'],
-        csrfToken: Game['csrfToken']
+        player_id: Game.player_id,
+        player_name: Game.player_name,
+        world_id: Game.world_id,
+        locale_lang: Game.locale_lang,
+        premium_grepolis: Game.premium_user,
+        csrfToken: Game.csrfToken
     },
-    //trial_time: 0,
-    //premium_time: 0,
-    //facebook_like: 0,
-    toolbox_element: null,
     init: function() {
         ConsoleLog.Log('Initialize Autobot', 0);
         Autobot.loadModules();
-        Autobot['obServer']();
-        //Autobot['isActive']();
-        Autobot['setToolbox']();
-        Autobot['initAjax']();
-        Autobot['initMapTownFeature']();
-        Autobot['fixMessage']();
-        Assistant['init']()
+        Autobot.initAjax();
+        Autobot.initMapTownFeature();
+        Autobot.fixMessage();
+        Assistant.init()
     },
-    setToolbox: function() {
-        Autobot['toolbox_element'] = $('.nui_bot_toolbox')
-    },
+    /**
+     * Load all bot modules from CDN
+     */
     loadModules: function() {
         ModuleManager.loadModules();
     },
-    obServer: function() {
-        $.Observer(GameEvents['notification']['push'])['subscribe']('GRCRTNotification', function() {
-            $('#notification_area>.notification.getPremiumNotification')['on']('click', function() {
-                Autobot['getPremium']()
-            })
-        })
-    },
+    /**
+     * Initialize bot window
+     */
     initWnd: function() {
-        if (Autobot['isLogged']) {
-            if (typeof Autobot['botWnd'] != 'undefined') {
-                try {
-                    Autobot['botWnd']['close']()
-                } catch (F) {};
-                Autobot['botWnd'] = undefined
-            };
-            /*if (typeof Autobot['botPremWnd'] != 'undefined') {
-                try {
-                    Autobot['botPremWnd']['close']()
-                } catch (F) {};
-                Autobot['botPremWnd'] = undefined
-            };*/
-            Autobot['botWnd'] = Layout['dialogWindow']['open']('', Autobot['title'] + ' v<span style="font-size: 10px;">' + Autobot['version'] + '</span>', 500, 350, '', false);
-            Autobot['botWnd']['setHeight']([350]);
-            Autobot['botWnd']['setPosition'](['center', 'center']);
-            var _0xe20bx2 = Autobot['botWnd']['getJQElement']();
-            _0xe20bx2['append']($('<div/>', {
-                "\x63\x6C\x61\x73\x73": 'menu_wrapper',
-                "\x73\x74\x79\x6C\x65": 'left: 78px; right: 14px'
-            })['append']($('<ul/>', {
-                "\x63\x6C\x61\x73\x73": 'menu_inner'
-            })['prepend'](Autobot['addMenuItem']('AUTHORIZE', 'Account', 'Account'))['prepend'](Autobot['addMenuItem']('CONSOLE', 'Assistant', 'Assistant'))['prepend'](Autobot['addMenuItem']('ASSISTANT', 'Console', 'Console'))/*['prepend'](Autobot['addMenuItem']('SUPPORT', 'Support', 'Support'))*/));
-            if (typeof Autoattack !== 'undefined') {
-                _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('ATTACKMODULE', 'Attack', 'Autoattack'))
-            };
-            if (typeof Autobuild !== 'undefined') {
-                _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('CONSTRUCTMODULE', 'Build', 'Autobuild'))
-            };
-            if (typeof Autoculture !== 'undefined') {
-                _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('CULTUREMODULE', 'Culture', 'Autoculture'))
-            };
-            if (typeof Autofarm !== 'undefined') {
-                _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('FARMMODULE', 'Farm', 'Autofarm'))
-            };
-            $('#Autobot-AUTHORIZE')['click']()
+        if (!Autobot['isLogged']) {
+            return;
         }
+        //if window is already initialized
+        if (typeof Autobot.botWnd != 'undefined') {
+            try {
+                Autobot['botWnd']['close']()
+            } catch (F) {};
+            Autobot['botWnd'] = undefined
+        };
+
+        Autobot.botWnd = Layout.dialogWindow.open('', Autobot.title + ' v<span style="font-size: 10px;">' + Autobot.version + '</span>', 500, 350, '', false);
+        Autobot.botWnd.setHeight([350])
+        Autobot.botWnd.setPosition(['center', 'center']);
+        var _0xe20bx2 = Autobot.botWnd.getJQElement();
+        _0xe20bx2['append']($('<div/>', {
+            "\x63\x6C\x61\x73\x73": 'menu_wrapper',
+            "\x73\x74\x79\x6C\x65": 'left: 78px; right: 14px'
+        })['append']($('<ul/>', {
+            "\x63\x6C\x61\x73\x73": 'menu_inner'
+        })['prepend'](Autobot['addMenuItem']('AUTHORIZE', 'Account', 'Account'))['prepend'](Autobot['addMenuItem']('CONSOLE', 'Assistant', 'Assistant'))['prepend'](Autobot['addMenuItem']('ASSISTANT', 'Console', 'Console'))/*['prepend'](Autobot['addMenuItem']('SUPPORT', 'Support', 'Support'))*/));
+        if (typeof Autoattack !== 'undefined') {
+            _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('ATTACKMODULE', 'Attack', 'Autoattack'))
+        };
+        if (typeof Autobuild !== 'undefined') {
+            _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('CONSTRUCTMODULE', 'Build', 'Autobuild'))
+        };
+        if (typeof Autoculture !== 'undefined') {
+            _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('CULTUREMODULE', 'Culture', 'Autoculture'))
+        };
+        if (typeof Autofarm !== 'undefined') {
+            _0xe20bx2['find']('.menu_inner li:last-child')['before'](Autobot['addMenuItem']('FARMMODULE', 'Farm', 'Autofarm'))
+        };
+        $('#Autobot-AUTHORIZE')['click']()
     },
     addMenuItem: function(_0xe20bx3, _0xe20bx4, _0xe20bx5) {
         return $('<li/>')['append']($('<a/>', {
@@ -125,141 +108,36 @@ var Autobot = {
             }
         }
     },
+
+    /**
+     * First tab of bot 
+     */
     contentAccount: function() {
-        var _0xe20bx9 = {
-            "\x4E\x61\x6D\x65\x3A": Game['player_name'],
-            "\x57\x6F\x72\x6C\x64\x3A": Game['world_id'],
-            "\x52\x61\x6E\x6B\x3A": Game['player_rank'],
-            "\x54\x6F\x77\x6E\x73\x3A": Game['player_villages'],
-            "\x4C\x61\x6E\x67\x75\x61\x67\x65\x3A": Game['locale_lang'],
-            //"\x50\x72\x65\x6D\x69\x75\x6D\x3A\x20": (Autobot['premium_time'] - Timestamp['now']()) >= 0 ? Autobot['secondsToTime'](Autobot['premium_time'] - Timestamp['now']()) + '<span id="get_premium" class="open_premium_icon" onclick="Autobot.getPremium();"></span>' : 'No premium' + '<span id="get_premium" class="open_premium_icon" onclick="Autobot.getPremium();"></span>',
-            //"\x54\x72\x69\x61\x6C\x3A": ((Autobot['trial_time'] - Timestamp['now']()) >= 0 ? Autobot['secondsToTime'](Autobot['trial_time'] - Timestamp['now']()) : 'Trial is over') + (Autobot['facebook_like'] == 0 ? '<a href="#" id="get_7days" onclick="Autobot.botFacebookWnd();">Get 3 free days!</a>' : '')
+        var _rows = {
+            "Name:": Game.player_name,
+            "World:": Game.world_id,
+            "Rank:": Game.player_rank,
+            "Towns:": Game.player_villages,
+            "Language:": Game.locale_lang
         };
-        var _0xe20bxa = $('<table/>', {
-            "\x63\x6C\x61\x73\x73": 'game_table layout_main_sprite',
-            "\x63\x65\x6C\x6C\x73\x70\x61\x63\x69\x6E\x67": '0',
-            "\x77\x69\x64\x74\x68": '100%'
-        })['append'](function() {
-            var _0xe20bxb = 0;
-            var _0xe20bxc = $('<tbody/>');
-            $['each'](_0xe20bx9, function(_0xe20bxd, _0xe20bxe) {
-                _0xe20bxc['append']($('<tr/>', {
-                    "\x63\x6C\x61\x73\x73": _0xe20bxb % 2 ? 'game_table_even' : 'game_table_odd'
-                })['append']($('<td/>', {
-                    "\x73\x74\x79\x6C\x65": 'background-color: #DFCCA6;width: 30%;'
-                })['html'](_0xe20bxd))['append']($('<td/>')['html'](_0xe20bxe)));
-                _0xe20bxb++
+        var _table = $('<table/>', {
+            "class": 'game_table layout_main_sprite',
+            "cellspacing": '0',
+            "width": '100%'
+        }).append(function() {
+            var _counter = 0;
+            var _tbody = $('<tbody/>');
+            $.each(_rows, function(_index, _value) {
+                _tbody.append($('<tr/>', {
+                    "class": _counter % 2 ? 'game_table_even' : 'game_table_odd'
+                }).append($('<td/>', {
+                    "style": 'background-color: #DFCCA6;width: 30%;'
+                }).html(_index)).append($('<td/>').html(_value)));
+                _counter++
             });
-            return _0xe20bxc
+            return _tbody
         });
-        var _0xe20bxf = FormBuilder['gameWrapper']('Account', 'account_property_wrapper', _0xe20bxa, 'margin-bottom:9px;')[0]['outerHTML'];
-        /*_0xe20bxf += $('<div/>', {
-            "\x69\x64": 'grepobanner',
-            "\x73\x74\x79\x6C\x65": ''
-        })[0]['outerHTML'];*/
-        return _0xe20bxf
-    },
-    /*contentSupport: function() {
-        return $('<fieldset/>', {
-            "\x69\x64": 'Support_tab',
-            "\x73\x74\x79\x6C\x65": 'float:left; width:472px;height: 270px;'
-        })['append']($('<legend/>')['html']('Grepobot Support'))['append']($('<div/>', {
-            style: 'float: left;'
-        })['append'](FormBuilder['selectBox']({
-            id: 'support_type',
-            name: 'support_type',
-            label: 'Type: ',
-            styles: 'width: 167px;margin-left: 18px;',
-            value: 'Bug report',
-            options: [{
-                value: 'Bug report',
-                name: 'Bug report'
-            }, {
-                value: 'Feature request',
-                name: 'Feature request'
-            }, {
-                value: 'Financial',
-                name: 'Financial'
-            }, {
-                value: 'Other',
-                name: 'Other'
-            }]
-        }))['append'](FormBuilder['input']({
-            id: 'support_input_email',
-            name: 'Email',
-            style: 'margin-left: 12px;width: 166px;',
-            value: '',
-            type: 'email'
-        }))['append'](FormBuilder['input']({
-            id: 'support_input_subject',
-            name: 'Subject',
-            style: 'margin-top: 0;width: 166px;',
-            value: '',
-            type: 'text'
-        }))['append'](FormBuilder['textarea']({
-            id: 'support_textarea',
-            name: 'Message',
-            value: ''
-        }))['append'](FormBuilder['button']({
-            name: 'Send',
-            style: 'margin-top: 0;'
-        })['on']('click', function() {
-            var _0xe20bx10 = $('#Support_tab')['serializeObject']();
-            var _0xe20bx11 = false;
-            if (typeof _0xe20bx10['support_input_email'] === 'undefined' || _0xe20bx10['support_input_email'] == '') {
-                _0xe20bx11 = 'Please enter your email.'
-            } else {
-                if (typeof _0xe20bx10['support_input_subject'] === 'undefined' || _0xe20bx10['support_input_subject'] == '') {
-                    _0xe20bx11 = 'Please enter a subject.'
-                } else {
-                    if (typeof _0xe20bx10['support_textarea'] === 'undefined' || _0xe20bx10['support_textarea'] == '') {
-                        _0xe20bx11 = 'Please enter a message.'
-                    } else {
-                        if (typeof _0xe20bx10['support_input_email'] !== 'undefined' && !/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/ ['test'](_0xe20bx10['support_input_email'])) {
-                            _0xe20bx11 = 'Your email is not valid!'
-                        }
-                    }
-                }
-            };
-            if (_0xe20bx11) {
-                HumanMessage['error'](_0xe20bx11)
-            } else {
-                DataExchanger.Auth('supportEmail', $['extend']({
-                    csrfToken: Autobot['Account']['csrfToken'],
-                    player_name: Autobot['Account']['player_name'],
-                    player_id: Autobot['Account']['player_id'],
-                    world_id: Autobot['Account']['world_id']
-                }, _0xe20bx10), function(_0xe20bx9) {
-                    if (_0xe20bx9['success']) {
-                        if (typeof Autobot['botWnd'] != 'undefined') {
-                            try {
-                                Autobot['botWnd']['close']()
-                            } catch (F) {};
-                            Autobot['botWnd'] = undefined
-                        };
-                        HumanMessage['success']('Thank you, your email has been send!')
-                    }
-                })
-            }
-        })))['append']($('<div/>', {
-            style: 'float: right; width: 215px;'
-        })['append']($('<a/>', {
-            id: 'Facebook_grepobot',
-            target: '_blank',
-            href: 'https://www.facebook.com/BotForGrepolis/'
-        })['html']('<img src="https://bot.grepobot.com/images/facebook_page.png" title="Facebook Grepobot"/>')))
-    },*/
-    checkAlliance: function() {
-        if (!$('.allianceforum.main_menu_item')['hasClass']('disabled')) {
-            DataExchanger['members_show'](function(_0xe20bx9) {
-                if (_0xe20bx9['plain']['html'] != undefined) {
-                    jQuery['each']($(_0xe20bx9['plain']['html'])['find']('#ally_members_body .ally_name a'), function() {
-                        var _0xe20bxe = atob($(this)['attr']('href'));
-                        console['log'](JSON['parse'](_0xe20bxe['substr'](0, _0xe20bxe['length'] - 3)))
-                    })
-                }
-            })
-        }
+        return FormBuilder.gameWrapper('Account', 'account_property_wrapper', _table, 'margin-bottom:9px;')[0]['outerHTML'];
     },
     fixMessage: function() {
         var _0xe20bx12 = function(_0xe20bx13) {
@@ -270,216 +148,20 @@ var Autobot = {
         };
         HumanMessage['_initialize'] = _0xe20bx12(HumanMessage._initialize)
     },
-    /*getPremium: function() {
-        if (Autobot['isLogged']) {
-            $.Observer(GameEvents['menu']['click'])['publish']({
-                option_id: 'premium'
-            });
-            if (typeof Autobot['botPremWnd'] != 'undefined') {
-                try {
-                    Autobot['botPremWnd']['close']()
-                } catch (F) {};
-                Autobot['botPremWnd'] = undefined
-            };
-            if (typeof Autobot['botWnd'] != 'undefined') {
-                try {
-                    Autobot['botWnd']['close']()
-                } catch (F) {};
-                Autobot['botWnd'] = undefined
-            };
-            Autobot['botPremWnd'] = Layout['dialogWindow']['open']('', 'Autobot v' + Autobot['version'] + ' - Premium', 500, 350, '', false);
-            Autobot['botPremWnd']['setHeight']([350]);
-            Autobot['botPremWnd']['setPosition'](['center', 'center']);
-            var _0xe20bx14 = $('<div/>', {
-                id: 'payment'
-            })['append']($('<div/>', {
-                id: 'left'
-            })['append']($('<ul/>', {
-                id: 'time_options'
-            })['append']($('<li/>', {
-                class: 'active'
-            })['append']($('<span/>', {
-                class: 'amount'
-            })['html']('1 Month'))['append']($('<span/>', {
-                class: 'price'
-            })['html']('\u20AC&nbsp;4,99')))['append']($('<li/>')['append']($('<span/>', {
-                class: 'amount'
-            })['html']('2 Month'))['append']($('<span/>', {
-                class: 'price'
-            })['html']('\u20AC&nbsp;9,99'))['append']($('<div/>', {
-                class: 'referenceAmount'
-            })['append']($('<div/>', {
-                class: 'reference',
-                style: 'transform: rotate(17deg);'
-            })['html']('+12 Days&nbsp;'))))['append']($('<li/>')['append']($('<span/>', {
-                class: 'amount'
-            })['html']('4 Months'))['append']($('<span/>', {
-                class: 'price'
-            })['html']('\u20AC&nbsp;19,99'))['append']($('<div/>', {
-                class: 'referenceAmount'
-            })['append']($('<div/>', {
-                class: 'reference',
-                style: 'transform: rotate(17deg);'
-            })['html']('+36 Days&nbsp;'))))['append']($('<li/>')['append']($('<span/>', {
-                class: 'amount'
-            })['html']('10 Months'))['append']($('<span/>', {
-                class: 'price'
-            })['html']('\u20AC&nbsp;49,99'))['append']($('<div/>', {
-                class: 'referenceAmount'
-            })['append']($('<div/>', {
-                class: 'reference',
-                style: 'transform: rotate(17deg);'
-            })['html']('+120 Days&nbsp;'))))))['append']($('<div/>', {
-                id: 'right'
-            })['append']($('<div/>', {
-                id: 'pothead'
-            }))['append']($('<div/>', {
-                id: 'information'
-            })['append']($('<span/>', {
-                class: 'text'
-            })['html']('1 month for only \u20AC4,99'))['append']($('<span/>', {
-                class: 'button'
-            })['html']('Buy'))));
-            Autobot['botPremWnd']['setContent2'](_0xe20bx14);
-            var _0xe20bx15 = 0;
-            $('#time_options li')['on']('click', function() {
-                $('#time_options li')['removeClass']('active');
-                $(this)['addClass']('active');
-                _0xe20bx15 = $(this)['index']();
-                var _0xe20bx16 = $('#payment #information .text');
-                if (_0xe20bx15 == 0) {
-                    _0xe20bx16['html']('1 month for only \u20AC4,99')
-                } else {
-                    if (_0xe20bx15 == 1) {
-                        _0xe20bx16['html']('2 month +12 days for only \u20AC9,99')
-                    } else {
-                        if (_0xe20bx15 == 2) {
-                            _0xe20bx16['html']('4 months +36 days for only \u20AC19,99')
-                        } else {
-                            if (_0xe20bx15 == 3) {
-                                _0xe20bx16['html']('10 months +120 days for only \u20AC49,99')
-                            }
-                        }
-                    }
-                }
-            });
-            $('#payment #information')['on']('click', function() {
-                var _0xe20bx17 = window['open'](Autobot['domain'] + 'paypal/process.php?payment=' + _0xe20bx15 + '&player_id=' + Autobot['Account']['player_id'], 'grepolis_payment', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,height=650,width=800');
-                var _0xe20bx18 = setInterval(function() {
-                    if (!_0xe20bx17 || _0xe20bx17['closed']) {
-                        clearInterval(_0xe20bx18);
-                        Autobot['authenticate']()
-                    }
-                }, 500)
-            })
-        }
-    },
-    botFacebookWnd: function() {
-        if (Autobot['isLogged'] && Autobot['facebook_like'] == 0) {
-            if (typeof Autobot['facebookWnd'] != 'undefined') {
-                try {
-                    Autobot['facebookWnd']['close']()
-                } catch (F) {};
-                Autobot['facebookWnd'] = undefined
-            };
-            Autobot['facebookWnd'] = Layout['dialogWindow']['open']('', 'Autobot v' + Autobot['version'] + ' - Get 3 days free!', 275, 125, '', false);
-            Autobot['facebookWnd']['setHeight']([125]);
-            Autobot['facebookWnd']['setPosition'](['center', 'center']);
-            var _0xe20bx14 = $('<div/>', {
-                id: 'facebook_wnd'
-            })['append']('<span class="like-share-text">Like & share and get <b>3 days</b> free premium.</span><a href="#" class="fb-share"><span class="fb-text">Share</spanclass></a><div class="fb_like"><div class="fb-like" data-href="https://www.facebook.com/BotForGrepolis/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div></div>');
-            Autobot['facebookWnd']['setContent2'](_0xe20bx14);
-            $('.ui-dialog #facebook_wnd')['closest']('.gpwindow_content')['css']({
-                "\x6C\x65\x66\x74": '-9px',
-                "\x72\x69\x67\x68\x74": '-9px',
-                "\x74\x6F\x70": '35px'
-            });
-            var _0xe20bx19 = false;
-            var _0xe20bx1a = false;
-            var _0xe20bx1b = function() {
-                if (_0xe20bx19 || _0xe20bx1a) {
-                    Autobot['upgrade3Days']()
-                };
-                if (_0xe20bx19 && _0xe20bx1a) {
-                    $.Observer(GameEvents['window']['quest']['open'])['publish']({
-                        quest_type: 'hermes'
-                    });
-                    HumanMessage['success']('You have received 3 days premium! Thank you for sharing.');
-                    if (typeof Autobot['facebookWnd'] != 'undefined') {
-                        try {
-                            Autobot['facebookWnd']['close']()
-                        } catch (F) {};
-                        Autobot['facebookWnd'] = undefined
-                    };
-                    if (typeof Autobot['botWnd'] != 'undefined') {
-                        try {
-                            Autobot['botWnd']['close']()
-                        } catch (F) {};
-                        Autobot['botWnd'] = undefined
-                    }
-                }
-            };
-            if (window['fbAsyncInit'] == undefined) {
-                window['fbAsyncInit'] = function() {
-                    FB['init']({
-                        appId: '1505555803075328',
-                        xfbml: true,
-                        version: 'v2.4'
-                    });
-                    FB['Event']['subscribe']('edge.create', function(_0xe20bx1c) {
-                        _0xe20bx1a = true;
-                        _0xe20bx1b()
-                    });
-                    FB['Event']['subscribe']('edge.remove', function(_0xe20bx1c) {
-                        _0xe20bx1a = false
-                    })
-                }
-            };
-            if ($('#facebook-jssdk')['length'] <= 0) {
-                (function(_0xe20bx1d, _0xe20bx1e, _0xe20bx3) {
-                    var _0xe20bx1f, _0xe20bx20 = _0xe20bx1d['getElementsByTagName'](_0xe20bx1e)[0];
-                    if (_0xe20bx1d['getElementById'](_0xe20bx3)) {
-                        return
-                    };
-                    _0xe20bx1f = _0xe20bx1d['createElement'](_0xe20bx1e);
-                    _0xe20bx1f['id'] = _0xe20bx3;
-                    _0xe20bx1f['src'] = '//connect.facebook.net/en_US/sdk.js';
-                    _0xe20bx20['parentNode']['insertBefore'](_0xe20bx1f, _0xe20bx20)
-                }(document, 'script', 'facebook-jssdk'))
-            } else {
-                FB['XFBML']['parse']()
-            };
-            $('#facebook_wnd .fb-share')['on']('click', function() {
-                FB['ui']({
-                    method: 'share',
-                    href: 'https://www.facebook.com/BotForGrepolis/'
-                }, function(_0xe20bx1c) {
-                    if (_0xe20bx1c && !_0xe20bx1c['error_code']) {
-                        _0xe20bx19 = true;
-                        _0xe20bx1b()
-                    }
-                })
-            })
-        }
-    },
-    /*
-    upgrade3Days: function() {
-        DataExchanger.Auth('upgrade3Days', Autobot.Account, function(_0xe20bx9) {
-            if (_0xe20bx9['success']) {
-                DataExchanger.Auth('login', Autobot.Account, ModuleManager['callbackAuth'])
-            }
-        })
-    },*/
+
+    /**
+     * Subscribe to ajaxComplete Event
+     */
     initAjax: function() {
-        $(document)['ajaxComplete'](function(_0xe20bx21, _0xe20bx22, _0xe20bx23) {
-            if (_0xe20bx23['url']['indexOf'](Autobot['domain']) == -1 && _0xe20bx23['url']['indexOf']('/game/') != -1 && _0xe20bx22['readyState'] == 4 && _0xe20bx22['status'] == 200) {
-                var _0xe20bx24 = _0xe20bx23['url']['split']('?');
-                var _0xe20bx25 = _0xe20bx24[0]['substr'](6) + '/' + _0xe20bx24[1]['split']('&')[1]['substr'](7);
+        $(document).ajaxComplete(function(_event, _xhr, _settings) {
+            if (_settings.url.indexOf(Autobot.domain) == -1 && _settings.url.indexOf('/game/') != -1 && _xhr.readyState == 4 && _xhr.status == 200) {
+                var _url = _settings.url.split('?');
+                var _action = _url[0].substr(6) + '/' + _url[1].split('&')[1].substr(7);
                 if (typeof Autobuild !== 'undefined') {
-                    Autobuild['calls'](_0xe20bx25)
+                    Autobuild.calls(_action);
                 };
                 if (typeof Autoattack !== 'undefined') {
-                    Autoattack['calls'](_0xe20bx25, _0xe20bx22['responseText'])
+                    Autoattack.calls(_action, _xhr.responseText);
                 }
             }
         })
@@ -568,11 +250,6 @@ var Autobot = {
         };
         return '{' + _0xe20bx39['join'](',') + '}'
     },
-    /*isActive: function() {
-        setTimeout(function() {
-            DataExchanger.Auth('isActive', Autobot.Account, Autobot['isActive'])
-        }, 180000)
-    },*/
     town_map_info: function(_0xe20bx3b, _0xe20bx3c) {
         if (_0xe20bx3b != undefined && _0xe20bx3b['length'] > 0 && _0xe20bx3c['player_name']) {
             for (var _0xe20bx3d = 0; _0xe20bx3d < _0xe20bx3b['length']; _0xe20bx3d++) {
