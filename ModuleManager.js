@@ -1,13 +1,13 @@
 ModuleManager = {
     models: {
         Town: function() {
-            this['key'] = null;
-            this['id'] = null;
-            this['name'] = null;
-            this['farmTowns'] = {};
-            this['relatedTowns'] = [];
-            this['currentFarmCount'] = 0;
-            this['modules'] = {
+            this.key = null;
+            this.id = null;
+            this.name = null;
+            this.farmTowns = {};
+            this.relatedTowns = [];
+            this.currentFarmCount = 0;
+            this.modules = {
                 Autofarm: {
                     isReadyTime: 0
                 },
@@ -18,48 +18,66 @@ ModuleManager = {
                     isReadyTime: 0
                 }
             };
-            this['startFarming'] = function() {
-                Autofarm['startFarming'](this)
+            this.startFarming = function() {
+                Autofarm.startFarming(this);
             };
-            this['startCulture'] = function() {
-                Autoculture['startCulture'](this)
+            this.startCulture = function() {
+                Autoculture.startCulture(this);
             };
-            this['startBuild'] = function() {
-                Autobuild['startBuild'](this)
+            this.startBuild = function() {
+                Autobuild.startBuild(this);
             }
         }
     },
     Queue: {
         total: 0,
         queue: [],
-        add: function(_0xa6b2x1) {
-            this['total']++;
-            this['queue']['push'](_0xa6b2x1)
+        /**
+         * Add item to the queue
+         * @param {Item addded to queue} _item 
+         */
+        add: function(_item) {
+            this.total++;
+            this.queue.push(_item);
         },
+        /**
+         * Start the queue
+         */
         start: function() {
-            this['next']()
+            this.next();
         },
+        /**
+         * Stop the queue
+         */
         stop: function() {
-            this['queue'] = []
+            this.queue = [];
         },
         isRunning: function() {
-            return this['queue']['length'] > 0 || this['total'] > 0
+            return this.queue.length > 0 || this.total > 0
         },
+        /**
+         * Execute the next item in queue
+         */
         next: function() {
-            ModuleManager['updateTimer']();
-            var _0xa6b2x2 = this['queue']['shift']();
-            if (_0xa6b2x2) {
-                _0xa6b2x2['fx']()
+            ModuleManager.updateTimer();
+            var _nextQueueItem = this.queue.shift();
+            // if this is not null, execute it
+            if (_nextQueueItem) {
+                _nextQueueItem.fx();
+            //Queue is empty
             } else {
-                if (this['queue']['length'] <= 0) {
-                    this['total'] = 0;
-                    ModuleManager['finished']()
+                if (this.queue.length <= 0) {
+                    this.total = 0;
+                    ModuleManager.finished();
                 }
             }
         }
     },
     currentTown: null,
     playerTowns: [],
+    /**
+     * ID of the interval timing the next cycle
+     */
     interval: false,
     modules: {
         Autofarm: {
@@ -75,106 +93,127 @@ ModuleManager = {
             isOn: false
         }
     },
+    /**
+     * Initilize the Autobuild feature
+     */
     init: function() {
-        ModuleManager['loadPlayerTowns']();
-        ModuleManager['initButtons']();
-        ModuleManager['initTimer']()
+        ModuleManager.loadPlayerTowns();
+        ModuleManager.initButtons();
+        ModuleManager.initTimer();
     },
+    /**
+     * Start function to decide which feature should start or get the lowest timer to next start
+     */
     start: function() {
-        var _0xa6b2x3 = false;
-        var _0xa6b2x4 = null;
-        $['each'](ModuleManager['playerTowns'], function(_0xa6b2x5, _0xa6b2x6) {
+        var _queueNotEmpty = false;
+        var _nextTimestamp = null;
+        $.each(ModuleManager.playerTowns, function(_each, _town) {
+            //Autofarm
             if (typeof Autofarm !== 'undefined') {
-                var _0xa6b2x7 = Autofarm['checkReady'](_0xa6b2x6);
-                if (_0xa6b2x7 == true) {
-                    _0xa6b2x3 = true;
-                    ModuleManager['Queue']['add']({
-                        townId: _0xa6b2x6['id'],
+                var _readyStatus = Autofarm.checkReady(_town);
+                if (_readyStatus == true) {
+                    _queueNotEmpty = true;
+                    ModuleManager.Queue.add({
+                        townId: _town.id,
                         fx: function() {
-                            _0xa6b2x6['startFarming']()
+                            _town.startFarming()
                         }
                     })
                 } else {
-                    if (_0xa6b2x7 != false && (_0xa6b2x4 == null || _0xa6b2x7 < _0xa6b2x4)) {
-                        _0xa6b2x4 = _0xa6b2x7
+                    if (_readyStatus != false && (_nextTimestamp == null || _readyStatus < _nextTimestamp)) {
+                        _nextTimestamp = _readyStatus
                     }
                 }
             };
+            //Autoculture
             if (typeof Autoculture !== 'undefined') {
-                var _0xa6b2x8 = Autoculture['checkReady'](_0xa6b2x6);
-                if (_0xa6b2x8 == true) {
-                    _0xa6b2x3 = true;
-                    ModuleManager['Queue']['add']({
-                        townId: _0xa6b2x6['id'],
+                var _readyStatus = Autoculture['checkReady'](_town);
+                if (_readyStatus == true) {
+                    _queueNotEmpty = true;
+                    ModuleManager.Queue.add({
+                        townId: _town.id,
                         fx: function() {
-                            _0xa6b2x6['startCulture']()
+                            _town.startCulture()
                         }
                     })
                 } else {
-                    if (_0xa6b2x8 != false && (_0xa6b2x4 == null || _0xa6b2x8 < _0xa6b2x4)) {
-                        _0xa6b2x4 = _0xa6b2x8
+                    if (_readyStatus != false && (_nextTimestamp == null || _readyStatus < _nextTimestamp)) {
+                        _nextTimestamp = _readyStatus
                     }
                 }
             };
+            //Autobuild
             if (typeof Autobuild !== 'undefined') {
-                var _0xa6b2x9 = Autobuild['checkReady'](_0xa6b2x6);
-                if (_0xa6b2x9 == true) {
-                    _0xa6b2x3 = true;
-                    ModuleManager['Queue']['add']({
-                        townId: _0xa6b2x6['id'],
+                var _readyStatus = Autobuild['checkReady'](_town);
+                if (_readyStatus == true) {
+                    _queueNotEmpty = true;
+                    ModuleManager.Queue.add({
+                        townId: _town.id,
                         fx: function() {
-                            _0xa6b2x6['startBuild']()
+                            _town.startBuild()
                         }
                     })
                 } else {
-                    if (_0xa6b2x9 != false && (_0xa6b2x4 == null || _0xa6b2x9 < _0xa6b2x4)) {
-                        _0xa6b2x4 = _0xa6b2x9
+                    if (_readyStatus != false && (_nextTimestamp == null || _readyStatus < _nextTimestamp)) {
+                        _nextTimestamp = _readyStatus
                     }
                 }
             }
         });
-        if (_0xa6b2x4 === null && !_0xa6b2x3) {
+        if (_nextTimestamp === null && !_queueNotEmpty) {
             ConsoleLog.Log('Nothing is ready yet!', 0);
-            ModuleManager['startTimer'](30, function() {
-                ModuleManager['start']()
+            ModuleManager.startTimer(30, function() {
+                ModuleManager.start()
             })
         } else {
-            if (!_0xa6b2x3) {
-                var _0xa6b2xa = (_0xa6b2x4 - Timestamp['now']()) + 10;
-                ModuleManager['startTimer'](_0xa6b2xa, function() {
-                    ModuleManager['start']()
+            if (!_queueNotEmpty) {
+                var _nextInterval = (_nextTimestamp - Timestamp.now()) + 10;
+                ModuleManager.startTimer(_nextInterval, function() {
+                    ModuleManager.start()
                 })
             } else {
-                ModuleManager['Queue']['start']()
+                ModuleManager.Queue.start()
             }
         }
     },
+    /**
+     * Stop the bot.
+     */
     stop: function() {
-        clearInterval(ModuleManager['interval']);
+        clearInterval(ModuleManager.interval);
         ModuleManager['Queue']['stop']();
         $('#time_autobot .caption .value_container .curr')['html']('Stopped')
     },
+    /**
+     * On finish the queue cycle, call the start function to get the next timer
+     */
     finished: function() {
-        ModuleManager['start']()
+        ModuleManager.start()
     },
+    /**
+     * Put the "Start Autobot" text into the timer window
+     */
     initTimer: function() {
-        $('.nui_main_menu')['css']('top', '308px');
-        $('#time_autobot')['append'](FormBuilder['timerBoxSmall']({
-            "\x69\x64": 'Autofarm_timer',
-            "\x73\x74\x79\x6C\x65\x73": '',
-            "\x74\x65\x78\x74": 'Start Autobot'
-        }))['show']()
+        $('.nui_main_menu').css('top', '308px');
+        $('#time_autobot').append(FormBuilder.timerBoxSmall({
+            "id": 'Autofarm_timer',
+            "styles": '',
+            "text": 'Start Autobot'
+        })).show()
     },
-    updateTimer: function(_0xa6b2xb, _0xa6b2xc) {
-        var _0xa6b2xd = 0;
-        if (typeof _0xa6b2xb !== 'undefined' && typeof _0xa6b2xc !== 'undefined') {
-            _0xa6b2xd = (((ModuleManager['Queue']['total'] - (ModuleManager['Queue']['queue']['length'] + 1)) + (_0xa6b2xc / _0xa6b2xb)) / ModuleManager['Queue']['total'] * 100)
-        } else {
-            _0xa6b2xd = (((ModuleManager['Queue']['total'] - ModuleManager['Queue']['queue']['length'])) / ModuleManager['Queue']['total'] * 100)
-        };
-        if (!isNaN(_0xa6b2xd)) {
-            $('#time_autobot .progress .indicator')['width'](_0xa6b2xd + '%');
-            $('#time_autobot .caption .value_container .curr')['html'](Math['round'](_0xa6b2xd) + '%')
+    /**
+     * Updates the timer for progress of actual queue
+     */
+    updateTimer: function(/*_0xa6b2xb, _0xa6b2xc*/) {
+        var _progress = 0;
+        /*if (typeof _0xa6b2xb !== 'undefined' && typeof _0xa6b2xc !== 'undefined') {*/
+            //_0xa6b2xd = (((ModuleManager.Queuetotal - (ModuleManager.Queue.queue.length + 1)) + (_0xa6b2xc / _0xa6b2xb)) / ModuleManager['Queue']['total'] * 100)
+        //} else {
+        _progress = (((ModuleManager.Queue.total - ModuleManager.Queue.queue.length)) / ModuleManager.Queue.total * 100)
+        //};
+        if (!isNaN(_progress)) {
+            $('#time_autobot .progress .indicator').width(_progress + '%');
+            $('#time_autobot .caption .value_container .curr').html(Math.round(_progress) + '%')
         }
     },
     checkAutostart: function() {
@@ -200,15 +239,20 @@ ModuleManager = {
             ModuleManager['start']()
         }
     },
-    startTimer: function(_0xa6b2xf, _0xa6b2x10) {
-        var _0xa6b2x11 = _0xa6b2xf;
-        ModuleManager['interval'] = setInterval(function() {
-            $('#time_autobot .caption .value_container .curr')['html'](Autobot['toHHMMSS'](_0xa6b2xf));
-            $('#time_autobot .progress .indicator')['width']((_0xa6b2x11 - _0xa6b2xf) / _0xa6b2x11 * 100 + '%');
-            _0xa6b2xf--;
-            if (_0xa6b2xf < 0) {
+    /**
+     * Timer that ticks every second to check if Queue has to start
+     * @param {*} _0xa6b2xf 
+     * @param {Starts after the interval elapsed} _callback 
+     */
+    startTimer: function(_interval, _callback) {
+        var _0xa6b2x11 = _interval;
+        ModuleManager.interval = setInterval(function() {
+            $('#time_autobot .caption .value_container .curr')['html'](Autobot['toHHMMSS'](_interval));
+            $('#time_autobot .progress .indicator')['width']((_0xa6b2x11 - _interval) / _0xa6b2x11 * 100 + '%');
+            _interval--;
+            if (_interval < 0) {
                 clearInterval(ModuleManager['interval']);
-                _0xa6b2x10()
+                _callback()
             }
         }, 1000)
     },

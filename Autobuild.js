@@ -150,9 +150,7 @@ Autobuild = {
             let current_town = Autobuild.town_queues.find(e => e.town_id === _town.id);
             return (current_town.building_queue > 0 || current_town.unit_queue.length > 0 || current_town.ship_queue > 0);
         }
-        return false;
-        //return (GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']);
-        //return !(typeof(Autobuild['building_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['units_queue'][_0xc4a4xa['id']]) == 'undefined' && typeof(Autobuild['ships_queue'][_0xc4a4xa['id']]) == 'undefined')
+        return (GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']);
     },
     startBuild: function (_0xc4a4xa) {
         if (!Autobuild['checkEnabled']()) {
