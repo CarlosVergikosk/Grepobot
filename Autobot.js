@@ -1,11 +1,11 @@
 var Autobot = {
     title: 'Autobot',
     version: '3.1',
-    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.412/",
+    domain: window['location']['protocol'] + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.413/",
     botWnd: '',
-    botPremWnd: '',
+    //botPremWnd: '',
     botEmailWnd: '',
-    facebookWnd: '',
+    //facebookWnd: '',
     isLogged: false,
     Account: {
         player_id: Game['player_id'],
@@ -15,9 +15,9 @@ var Autobot = {
         premium_grepolis: Game['premium_user'],
         csrfToken: Game['csrfToken']
     },
-    trial_time: 0,
-    premium_time: 0,
-    facebook_like: 0,
+    //trial_time: 0,
+    //premium_time: 0,
+    //facebook_like: 0,
     toolbox_element: null,
     init: function() {
         ConsoleLog.Log('Initialize Autobot', 0);
@@ -51,12 +51,12 @@ var Autobot = {
                 } catch (F) {};
                 Autobot['botWnd'] = undefined
             };
-            if (typeof Autobot['botPremWnd'] != 'undefined') {
+            /*if (typeof Autobot['botPremWnd'] != 'undefined') {
                 try {
                     Autobot['botPremWnd']['close']()
                 } catch (F) {};
                 Autobot['botPremWnd'] = undefined
-            };
+            };*/
             Autobot['botWnd'] = Layout['dialogWindow']['open']('', Autobot['title'] + ' v<span style="font-size: 10px;">' + Autobot['version'] + '</span>', 500, 350, '', false);
             Autobot['botWnd']['setHeight']([350]);
             Autobot['botWnd']['setPosition'](['center', 'center']);
@@ -270,7 +270,7 @@ var Autobot = {
         };
         HumanMessage['_initialize'] = _0xe20bx12(HumanMessage._initialize)
     },
-    getPremium: function() {
+    /*getPremium: function() {
         if (Autobot['isLogged']) {
             $.Observer(GameEvents['menu']['click'])['publish']({
                 option_id: 'premium'
@@ -484,7 +484,7 @@ var Autobot = {
             }
         })
     },
-    verifyEmail: function() {
+    /*verifyEmail: function() {
         if (Autobot['isLogged']) {
             DataExchanger['email_validation'](function(_0xe20bx9) {
                 if (_0xe20bx9['plain']['html'] != undefined) {
@@ -501,7 +501,7 @@ var Autobot = {
                 }
             })
         }
-    },
+    },*/
     randomize: function(_0xe20bx26, _0xe20bx27) {
         return Math['floor'](Math['random']() * (_0xe20bx27 - _0xe20bx26 + 1)) + _0xe20bx26
     },
@@ -521,7 +521,7 @@ var Autobot = {
         };
         return _0xe20bx1e
     },
-    arrowActivated: function() {
+    /*arrowActivated: function() {
         var _0xe20bx2f = $('<div/>', {
             "\x63\x6C\x61\x73\x73": 'helpers helper_arrow group_quest d_w animate bounce',
             "\x64\x61\x74\x61\x2D\x64\x69\x72\x65\x63\x74\x69\x6F\x6E": 'w',
@@ -534,7 +534,7 @@ var Autobot = {
         setTimeout(function() {
             Autobot['botFacebookWnd']()
         }, 25000)
-    },
+    },*/
     createNotification: function(_0xe20bx30, _0xe20bx31) {
         var _0xe20bx32 = (typeof Layout['notify'] == 'undefined') ? new NotificationHandler() : Layout;
         _0xe20bx32['notify']($('#notification_area>.notification')['length'] + 1, _0xe20bx30, '<span><b>' + 'Autobot' + '</b></span>' + _0xe20bx31 + '<span class=\'small notification_date\'>' + 'Version ' + Autobot['version'] + '</span>')

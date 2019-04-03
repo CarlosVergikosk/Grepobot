@@ -22,10 +22,10 @@ Autobuild = {
      */
     init: function () {
         ConsoleLog.Log('Initialize Autobuild', 3);
-        Autobuild['initFunction']();
-        Autobuild['initButton']();
-        Autobuild['checkCaptain']();
-        Autobuild['activateCss']()
+        Autobuild.initFunction();
+        Autobuild.initButton();
+        Autobuild.checkCaptain();
+        Autobuild.activateCss()
     },
     /**
      * Save the Autobuild Settings to settings property
@@ -168,19 +168,26 @@ Autobuild = {
             Autobuild['startUpgrade']()
         }
     },
+    /**
+     * Start to add items from bot queue to ingame queue
+     */
     startQueueing: function () {
-        if (!Autobuild['checkEnabled']()) {
-            return false
-        };
+        if (!Autobuild.checkEnabled()) {
+            return;
+        }
+        //If this town doesnt have any queues, finish
         if (Autobuild.town_queues.filter(e => e.town_id === Autobuild.town.id).length <= 0) {
-            Autobuild['finished']()
-        };
-        var _0xc4a4xc = Autobuild['getReadyTime'](Autobuild['town']['id'])['shouldStart'];
-        if (_0xc4a4xc == 'building') {
-            Autobuild['startBuildBuilding']()
+            Autobuild.finished()
+            return;
+        }
+
+        //which to start next
+        var _startNext = Autobuild.getReadyTime(Autobuild.town.id).shouldStart;
+        if (_startNext == 'building') {
+            Autobuild.startBuildBuilding();
         } else {
-            if (_0xc4a4xc == 'unit' || _0xc4a4xc == 'ship') {
-                Autobuild['startBuildUnits'](_0xc4a4xc == 'unit' ? Autobuild['units_queue'] : Autobuild['ships_queue'], _0xc4a4xc)
+            if (_startNext == 'unit' || _startNext == 'ship') {
+                Autobuild.startBuildUnits(_startNext)
             } else {
                 Autobuild['finished']()
             }
@@ -223,47 +230,56 @@ Autobuild = {
             Autobuild['startQueueing']()
         }
     },
-    startBuildUnits: function (_0xc4a4x10, _0xc4a4x11) {
+    /**
+     * 
+     * @param {Which queue to start} _queue 
+     */
+    startBuildUnits: function (_queue) {
         if (!Autobuild['checkEnabled']()) {
-            return false
-        };
-        if (_0xc4a4x10[Autobuild['town']['id']] != undefined) {
-            if (_0xc4a4x10[Autobuild['town']['id']][_0xc4a4x11] != undefined) {
-                var _0xc4a4x12 = _0xc4a4x10[Autobuild['town']['id']][_0xc4a4x11][0];
-                if (GameDataUnits['getMaxBuildForSingleUnit'](_0xc4a4x12['item_name']) >= _0xc4a4x12['count']) {
-                    Autobuild['interval'] = setTimeout(function () {
-                        DataExchanger['building_barracks'](Autobuild['town']['id'], {
-                            "\x75\x6E\x69\x74\x5F\x69\x64": _0xc4a4x12['item_name'],
-                            "\x61\x6D\x6F\x75\x6E\x74": _0xc4a4x12['count'],
-                            "\x74\x6F\x77\x6E\x5F\x69\x64": Autobuild['town']['id'],
-                            "\x6E\x6C\x5F\x69\x6E\x69\x74": true
-                        }, function (_0xc4a4xd) {
-                            if (_0xc4a4xd['error']) {
-                                ConsoleLog.Log(Autobuild['town']['name'] + ' ' + _0xc4a4xd['error'], 3)
-                            } else {
-                                if (Autobuild['town']['id'] == Game['townId']) {
-                                    var _0xc4a4xe = GPWindowMgr['getByType'](GPWindowMgr.TYPE_BUILDING);
-                                    for (var _0xc4a4xf = 0; _0xc4a4xe['length'] > _0xc4a4xf; _0xc4a4xf++) {
-                                        _0xc4a4xe[_0xc4a4xf]['getHandler']()['refresh']()
-                                    }
-                                };
-                                ConsoleLog.Log('<span style="color: ' + (_0xc4a4x11 == 'unit' ? '#ffe03d' : '#3dadff') + ';">Units - ' + _0xc4a4x12['count'] + ' ' + GameData['units'][_0xc4a4x12['item_name']]['name_plural'] + ' added.</span>', 3);
-                                /*DataExchanger.Auth('removeItemQueue', {
-                                    player_id: Autobot['Account']['player_id'],
-                                    world_id: Autobot['Account']['world_id'],
-                                    csrfToken: Autobot['Account']['csrfToken'],
-                                    town_id: Autobuild['town']['id'],
-                                    item_id: _0xc4a4x12['id'],
-                                    type: _0xc4a4x11
-                                },*/
-                                Autobuild['callbackSaveUnits']($('#unit_orders_queue .ui_various_orders'), _0xc4a4x11); //);
-                                $('.queue_id_' + _0xc4a4x12['id'])['remove']()
-                            };
-                            Autobuild['finished']()
-                        })
+            return false;
+        }
+        //check if town has building queues
+        if (Autobuild.town_queues.filter(e => e.town_id === Autobuild.town.id).length > 0) {
+            //get unit or ship queue
+            let current_town_queue = Autobuild.town_queues.find(e => e.town_id === Autobuild.town.id)[_queue + "_queue"];
+            //if queue is not empty
+            if (current_town_queue.length > 0) {
+                var _firstQueueItem = current_town_queue[0];
+                if (GameDataUnits.getMaxBuildForSingleUnit(_firstQueueItem.item_name) >= _firstQueueItem.count) {
+                    Autobuild.interval = setTimeout(function () {
+                        DataExchanger.building_barracks(Autobuild.town.id, {
+                                "unit_id": _firstQueueItem.item_name,
+                                "amount": _firstQueueItem.count,
+                                "town_id": Autobuild.town.id,
+                                "nl_init": true
+                            },
+                            function (_response) {
+                                if (_response.error) {
+                                    ConsoleLog.Log(Autobuild.town.name + ' ' + _response.error, 3)
+                                } else {
+                                    if (Autobuild.town.id == Game.townId) {
+                                        var _0xc4a4xe = GPWindowMgr.getByType(GPWindowMgr.TYPE_BUILDING);
+                                        for (var _0xc4a4xf = 0; _0xc4a4xe['length'] > _0xc4a4xf; _0xc4a4xf++) {
+                                            _0xc4a4xe[_0xc4a4xf]['getHandler']()['refresh']()
+                                        }
+                                    };
+                                    ConsoleLog.Log('<span style="color: ' + (_queue == 'unit' ? '#ffe03d' : '#3dadff') + ';">Units - ' + _firstQueueItem.count + ' ' + GameData.units[_firstQueueItem.item_name].name_plural + ' added.</span>', 3);
+                                    /*DataExchanger.Auth('removeItemQueue', {
+                                        player_id: Autobot['Account']['player_id'],
+                                        world_id: Autobot['Account']['world_id'],
+                                        csrfToken: Autobot['Account']['csrfToken'],
+                                        town_id: Autobuild['town']['id'],
+                                        item_id: _0xc4a4x12['id'],
+                                        type: _0xc4a4x11
+                                    },*/
+                                    Autobuild['callbackSaveUnits']($('#unit_orders_queue .ui_various_orders'), _queue); //);
+                                    $('.queue_id_' + _firstQueueItem['id'])['remove']()
+                                }
+                                Autobuild['finished']()
+                            })
                     }, Autobot['randomize'](1000, 2000))
                 } else {
-                    ConsoleLog.Log(Autobuild['town']['name'] + ' recruiting ' + _0xc4a4x12['count'] + ' ' + GameData['units'][_0xc4a4x12['item_name']]['name_plural'] + ' not ready.', 3);
+                    ConsoleLog.Log(Autobuild['town']['name'] + ' recruiting ' + _firstQueueItem['count'] + ' ' + GameData['units'][_firstQueueItem['item_name']]['name_plural'] + ' not ready.', 3);
                     Autobuild['finished']()
                 }
             } else {
@@ -396,7 +412,7 @@ Autobuild = {
                     type: 'building',
                     model: _element
                 });
-                if (_queues['building']['timeLeft'] == 0){
+                if (_queues['building']['timeLeft'] == 0) {
                     _queues['building']['timeLeft'] = _element['getTimeLeft']()
                 }
             }
@@ -416,7 +432,7 @@ Autobuild = {
                 if (_element['attributes']['kind'] == 'naval') {
                     _queues['ship']['queue']['push']({
                         type: 'ship',
-                       model: _element
+                        model: _element
                     });
                     if (_queues['ship']['timeLeft'] == 0) {
                         _queues['ship']['timeLeft'] = _element['getTimeLeft']()
@@ -433,9 +449,9 @@ Autobuild = {
 
             if (Autobuild.town_queues.filter(e => e.town_id === _townId).length > 0) {
                 let current_town = Autobuild.town_queues.find(e => e.town_id === _townId);
-                if((_type == 'building' && current_town.building_queue.length > 0) || 
-                   (_type == 'unit' && current_town.unit_queue.length > 0) || 
-                   (_type == 'ship' && current_town.ship_queue.length > 0)) {
+                if ((_type == 'building' && current_town.building_queue.length > 0) ||
+                    (_type == 'unit' && current_town.unit_queue.length > 0) ||
+                    (_type == 'ship' && current_town.ship_queue.length > 0)) {
                     if (_readyTime == null) {
                         _readyTime = _0xc4a4x1b['timeLeft'];
                         _doNext = _type
@@ -457,7 +473,7 @@ Autobuild = {
             //if there are buildings in the queue
             if (_queues.building.queue.length > 0) {
                 let _firstBuildingTime = _queues.building.queue[0].model.getTimeLeft() - 300;
-                if (_firstBuildingTime <= 0) {
+                if (_firstBuildingTime <= 0) {
                     _firstBuildingTime = 10;
                 }
                 if (_firstBuildingTime < _readyTime || _readyTime == -1) {
@@ -580,10 +596,6 @@ Autobuild = {
             Autobuild.setEmptyItems($(this));
         });
     },
-    callbackSaveSettings: function () {
-        ConsoleLog.Log('Settings saved', 3);
-        HumanMessage['success']('The settings were saved!')
-    },
     hasFreeBuildingSlots: function (_0xc4a4x27) {
         var _0xc4a4x28 = false;
         if (_0xc4a4x27 != undefined) {
@@ -609,9 +621,9 @@ Autobuild = {
         if (_0xc4a4x11 == 'building') {
             $('#building_tasks_main')['addClass']('active');
 
-            if(Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
+            if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
                 let current_town_queue = Autobuild.town_queues.find(e => e.town_id == Game.townId).building_queue;
-                $.each(current_town_queue, function(_index, _element) {
+                $.each(current_town_queue, function (_index, _element) {
                     _guiQueue.append(Autobuild.buildingElement(_guiQueue, _element))
                 });
             }
@@ -937,13 +949,9 @@ Autobuild = {
             Autobuild['settings']['enable_units'] = _0xc4a4x3e['autobuild_barracks_enable'] != undefined;
             Autobuild['settings']['enable_ships'] = _0xc4a4x3e['autobuild_ships_enable'] != undefined;
             Autobuild['settings']['instant_buy'] = _0xc4a4x3e['autobuild_instant_buy'] != undefined;
-            /*DataExchanger.Auth('saveBuild', {
-                player_id: Autobot['Account']['player_id'],
-                world_id: Autobot['Account']['world_id'],
-                csrfToken: Autobot['Account']['csrfToken'],
-                autobuild_settings: Autobot['stringify'](Autobuild['settings'])
-            },*/
-            Autobuild['callbackSaveSettings']; //)
+
+            ConsoleLog.Log('Settings saved', 3);
+            HumanMessage['success']('The settings were saved!')
         }))
     },
     windows: {
