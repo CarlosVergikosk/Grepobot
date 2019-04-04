@@ -81,16 +81,9 @@ Assistant = {
             Assistant['settings']['player_name'] = _0x8bc3x2['assistant_player_names'] != undefined;
             Assistant['settings']['alliance_name'] = _0x8bc3x2['assistant_alliance_names'] != undefined;
             Assistant['settings']['auto_relogin'] = parseInt(_0x8bc3x2['assistant_auto_relogin']);
-            DataExchanger.Auth('saveAssistant', {
-                player_id: Autobot['Account']['player_id'],
-                world_id: Autobot['Account']['world_id'],
-                csrfToken: Autobot['Account']['csrfToken'],
-                assistant_settings: Autobot['stringify'](Assistant['settings'])
-            }, Assistant['callbackSave'])
+            HumanMessage.success('The settings were saved!');
+            Assistant.initSettings();
+
         }))
     },
-    callbackSave: function() {
-        HumanMessage['success']('The settings were saved!');
-        Assistant['initSettings']()
-    }
 }

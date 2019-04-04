@@ -12,8 +12,6 @@ Autobuild = {
     },
     building_queue: {},
     town_queues: [],
-    units_queue: {},
-    ships_queue: {},
     town: null,
     iTown: null,
     interval: null,
@@ -611,7 +609,7 @@ Autobuild = {
             $(this).find(".empty_slot").remove();
             //Add new item to building queue
             if (_building_data.type === "add") {
-                $(this).append(Autobuild.buildingElement($(this), newBuilding));
+                $(this).append(Autobuild.buildingElement(newBuilding));
             }
             Autobuild.setEmptyItems($(this));
         });
@@ -645,44 +643,56 @@ Autobuild = {
         };
         return _buildings
     },
-    initQueue: function (_0xc4a4x2a, _0xc4a4x11) {
-        var _guiQueue = _0xc4a4x2a['find']('.ui_various_orders');
-        _guiQueue['find']('.empty_slot')['remove']();
-        if (_0xc4a4x11 == 'building') {
-            $('#building_tasks_main')['addClass']('active');
 
-            if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
-                let current_town_queue = Autobuild.town_queues.find(e => e.town_id == Game.townId).building_queue;
-                $.each(current_town_queue, function (_index, _element) {
-                    _guiQueue.append(Autobuild.buildingElement(_guiQueue, _element))
-                });
-            }
-        };
-        if (_0xc4a4x11 == 'unit') {
-            $('#unit_orders_queue')['addClass']('active');
-            if (Autobuild['units_queue'][Game['townId']] != undefined) {
-                if (Autobuild['units_queue'][Game['townId']][_0xc4a4x11] != undefined) {
-                    $['each'](Autobuild['units_queue'][Game['townId']][_0xc4a4x11], function (_0xc4a4x18, _0xc4a4x1b) {
-                        _guiQueue['append'](Autobuild['unitElement'](_guiQueue, _0xc4a4x1b, _0xc4a4x11))
-                    })
+    /**
+     * Add the bot queue items to the queue
+     * @param {JQuery Element to add the Items to} _jqueryElement 
+     * @param {building, unit or ship} _queueType 
+     */
+    initQueue: function (_jqueryElement, _queueType) {
+        var _guiQueue = _jqueryElement.find('.ui_various_orders');
+        _guiQueue.find('.empty_slot').remove();
+
+        switch (_queueType) {
+            case 'building':
+                $('#building_tasks_main').addClass('active');
+
+                if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
+                    let current_town_queue = Autobuild.town_queues.find(e => e.town_id == Game.townId).building_queue;
+                    $.each(current_town_queue, function (_index, _element) {
+                        _guiQueue.append(Autobuild.buildingElement(_element))
+                    });
                 }
-            }
-        };
-        if (_0xc4a4x11 == 'ship') {
-            $('#unit_orders_queue')['addClass']('active');
-            if (Autobuild['ships_queue'][Game['townId']] != undefined) {
-                if (Autobuild['ships_queue'][Game['townId']][_0xc4a4x11] != undefined) {
-                    $['each'](Autobuild['ships_queue'][Game['townId']][_0xc4a4x11], function (_0xc4a4x18, _0xc4a4x1b) {
-                        _guiQueue['append'](Autobuild['unitElement'](_guiQueue, _0xc4a4x1b, _0xc4a4x11))
-                    })
+                break;
+            case 'unit':
+                $('#unit_orders_queue').addClass('active');
+
+                if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
+                    let current_town_queue = Autobuild.town_queues.find(e => e.town_id == Game.townId).unit_queue;
+                    $.each(current_town_queue, function (_index, _element) {
+                        _guiQueue.append(Autobuild.unitElement(_guiQueue, _element, _queueType))
+                    });
                 }
-            }
-        };
-        Autobuild['setEmptyItems'](_guiQueue);
-        _guiQueue['parent']()['mousewheel'](function (_0xc4a4x2b, _0xc4a4x2c) {
-            this['scrollLeft'] -= (_0xc4a4x2c * 30);
-            _0xc4a4x2b['preventDefault']()
-        })
+                break;
+            case 'ship':
+                $('#unit_orders_queue').addClass('active');
+
+                if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
+                    let current_town_queue = Autobuild.town_queues.find(e => e.town_id == Game.townId).ship_queue;
+                    $.each(current_town_queue, function (_index, _element) {
+                        _guiQueue.append(Autobuild.unitElement(_guiQueue, _element, _queueType))
+                    });
+                }
+                break;
+            default:
+                break;
+        }
+
+        Autobuild.setEmptyItems(_guiQueue);
+        _guiQueue.parent().mousewheel(function (_event, _speed) {
+            this.scrollLeft -= (_speed * 30);
+            _event.preventDefault();
+        });
     },
     initUnitOrder: function (_0xc4a4x2d, _0xc4a4x11) {
         var _0xc4a4x12 = _0xc4a4x2d['units'][_0xc4a4x2d['unit_id']];
@@ -770,66 +780,45 @@ Autobuild = {
         _0xc4a4x38++;
         return _0xc4a4x38
     },
+
+    /**
+     * Calculate the population being build in the unit and ship queue
+     */
     checkPopulationBeingBuild: function () {
-        var _0xc4a4x39 = 0;
-        if (Autobuild['units_queue'][Game['townId']] != undefined) {
-            $(Autobuild['units_queue'][Game['townId']]['unit'])['each'](function (_0xc4a4x18, _0xc4a4x2a) {
-                _0xc4a4x39 += (_0xc4a4x2a['count'] * GameData['units'][_0xc4a4x2a['item_name']]['population'])
-            })
-        };
-        if (Autobuild['ships_queue'][Game['townId']] != undefined) {
-            $(Autobuild['ships_queue'][Game['townId']]['ship'])['each'](function (_0xc4a4x18, _0xc4a4x2a) {
-                _0xc4a4x39 += (_0xc4a4x2a['count'] * GameData['units'][_0xc4a4x2a['item_name']]['population'])
-            })
-        };
-        return _0xc4a4x39
+        var _count = 0;
+        if (Autobuild.town_queues.filter(e => e.town_id == Game.townId).length > 0) {
+            let current_town = Autobuild.town_queues.find(e => e.town_id == Game.townId);
+            //unit queue
+            $.each(current_town.unit_queue, function (_index, _element) {
+                _count += (_element.count * GameData.units[_element.item_name].population);
+            });
+            //ships queue
+            $.each(current_town.ship_queue, function (_index, _element) {
+                _count += (_element.count * GameData.units[_element.item_name].population);
+            });
+        }
+        return _count
     },
-    addUnitQueueItem: function (_0xc4a4x3a, _0xc4a4x11) {
-        /*DataExchanger.Auth('addItemQueue', {
-            player_id: Autobot['Account']['player_id'],
-            world_id: Autobot['Account']['world_id'],
-            csrfToken: Autobot['Account']['csrfToken'],
-            town_id: Game['townId'],
-            item_name: _0xc4a4x3a['id'],
-            type: _0xc4a4x11,
-            count: UnitOrder['slider']['getValue']()
-        },*/
+
+    /**
+     * Add unit or ship to the the queue
+     * @param {Unit} _unit 
+     * @param {ship or unit} _type 
+     */
+    addUnitQueueItem: function (_unit, _type) {
         Autobuild.saveUnits({
             action: 'add',
             town_id: Game.townId,
-            item_name: _0xc4a4x3a.id,
-            type: _0xc4a4x11,
+            item_name: _unit.id,
+            type: _type,
             count: UnitOrder.slider.getValue()
         });
-
-        //Autobuild['callbackSaveUnits']($('#unit_orders_queue .ui_various_orders'), _0xc4a4x11); //)
     },
-    /*    callbackSaveUnits: function (_0xc4a4x26, _type) {
-            return function (_0xc4a4xd) {
-                if (_0xc4a4xd['success']) {
-                    delete(_0xc4a4xd['success']);
-                    if (_type == 'unit') {
-                        Autobuild['units_queue'] = _0xc4a4xd
-                    } else {
-                        if (_type = 'ship') {
-                            Autobuild['ships_queue'] = _0xc4a4xd
-                        }
-                    };
-                    _0xc4a4x26['each'](function () {
-                        $(this)['find']('.empty_slot')['remove']();
-                        if (_0xc4a4xd['item']) {
-                            $(this)['append'](Autobuild['unitElement']($(this), _0xc4a4xd['item'], _type));
-                            Autobuild['setEmptyItems']($(this));
-                            delete(_0xc4a4xd['item'])
-                        } else {
-                            Autobuild['setEmptyItems']($(this))
-                        };
-                        UnitOrder['selectUnit'](UnitOrder['unit_id'])
-                    })
-                }
-            }
-        },
-    */
+    
+    /**
+     * Add or remove the Unit from the bot queue and render it
+     * @param {Unit Data} _unitData 
+     */
     saveUnits: function (_unitData) {
         //if town doesnt exists in town_queues, add them
         if (Autobuild.town_queues.filter(e => e.town_id === _unitData.town_id).length <= 0) {
@@ -867,25 +856,29 @@ Autobuild = {
         });
     },
 
-    setEmptyItems: function (_0xc4a4x26) {
-        var _0xc4a4x3b = 0;
-        var _0xc4a4x3c = _0xc4a4x26['parent']()['width']();
-        $['each'](_0xc4a4x26['find']('.js-tutorial-queue-item'), function () {
-            _0xc4a4x3b += $(this)['outerWidth'](true)
+    /**
+     * Add empty queue item to the Element
+     * @param {Element to add the empty items to} _jqueryElement 
+     */
+    setEmptyItems: function (_jqueryElement) {
+        var _width = 0;
+        var _queueParentWidth = _jqueryElement['parent']()['width']();
+        $.each(_jqueryElement.find('.js-tutorial-queue-item'), function () {
+            _width += $(this).outerWidth(true);
         });
-        var _0xc4a4x3d = _0xc4a4x3c - _0xc4a4x3b;
-        if (_0xc4a4x3d >= 0) {
-            _0xc4a4x26['width'](_0xc4a4x3c);
-            for (var _0xc4a4xf = 1; _0xc4a4xf <= Math['floor'](_0xc4a4x3d) / 60; _0xc4a4xf++) {
-                _0xc4a4x26['append']($('<div/>', {
+        var _freeWidth = _queueParentWidth - _width;
+        if (_freeWidth >= 0) {
+            _jqueryElement.width(_queueParentWidth);
+            for (let i = 1; i <= Math.floor(_freeWidth) / 60; i++) {
+                _jqueryElement.append($('<div/>', {
                     "class": 'js-queue-item js-tutorial-queue-item construction_queue_sprite empty_slot'
-                }))
+                }));
             }
         } else {
-            _0xc4a4x26['width'](_0xc4a4x3b + 25)
+            _jqueryElement.width(_width + 25);
         }
     },
-    buildingElement: function (_0xc4a4x26, _0xc4a4x1b) {
+    buildingElement: function (_0xc4a4x1b) {
         return $('<div/>', {
             "class": 'js-tutorial-queue-item queued_building_order last_order ' + _0xc4a4x1b['item_name'] + ' queue_id_' + _0xc4a4x1b['id']
         })['append']($('<div/>', {
@@ -896,8 +889,8 @@ Autobuild = {
             "class": 'building_level'
         })['append']('<span class="construction_queue_sprite arrow_green_ver"></span>' + Autobuild['checkBuildingLevel'](_0xc4a4x1b)))))['append']($('<div/>', {
             "class": 'btn_cancel_order button_new square remove js-item-btn-cancel-order build_queue'
-        })['on']('click', function (_0xc4a4x36) {
-            _0xc4a4x36['preventDefault']();
+        })['on']('click', function (_event) {
+            _event.preventDefault();
 
             Autobuild.saveBuilding({
                 type: "remove",
