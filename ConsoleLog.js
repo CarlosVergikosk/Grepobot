@@ -19,7 +19,7 @@ ConsoleLog = {
         });
         return _0x7a76x1
     },
-    Log: function(_0x7a76x5, _0x7a76x6) {
+    Log: function(_message, _type) {
         if (this['Logs']['length'] >= 500) {
             this['Logs']['shift']()
         };
@@ -31,7 +31,7 @@ ConsoleLog = {
         var _0x7a76xa = _0x7a76x7(_0x7a76x9['getHours']()) + ':' + _0x7a76x7(_0x7a76x9['getMinutes']()) + ':' + _0x7a76x7(_0x7a76x9['getSeconds']());
         var _0x7a76xb = $('<div/>')['append']($('<div/>', {
             "style": 'width: 100%;'
-        })['html'](_0x7a76xa + ' - ' + '[' + ConsoleLog['Types'][_0x7a76x6] + ']: ' + _0x7a76x5));
+        })['html'](_0x7a76xa + ' - ' + '[' + ConsoleLog['Types'][_type] + ']: ' + _message));
         this['Logs']['push'](_0x7a76xb);
         var _0x7a76x2 = $('.terminal-output');
         if (_0x7a76x2['length']) {
