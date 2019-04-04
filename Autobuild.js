@@ -36,10 +36,14 @@ Autobuild = {
      * @param {JSON String} _0xc4a4x1 
      */
     setSettings: function (_0xc4a4x1) {
-        if (_0xc4a4x1 != '' && _0xc4a4x1 != null) {
+        //TODO
+        /*if (_0xc4a4x1 != '' && _0xc4a4x1 != null) {
             $['extend'](Autobuild['settings'], JSON['parse'](_0xc4a4x1))
-        }
+        }*/
     },
+    /**
+     * Add css class to show Autobuild is active
+     */
     activateCss: function () {
         $('.construction_queue_order_container').addClass('active');
     },
@@ -50,7 +54,8 @@ Autobuild = {
      * @param {Json Stirng} _ships_queue 
      */
     setQueue: function (_building_queue, _units_queue, _ships_queue) {
-        if (_building_queue != '' && _building_queue != null) {
+        //TODO
+        /*if (_building_queue != '' && _building_queue != null) {
             Autobuild['building_queue'] = JSON['parse'](_building_queue);
             Autobuild['initQueue']($('.construction_queue_order_container'), 'building')
         };
@@ -59,10 +64,14 @@ Autobuild = {
         };
         if (_ships_queue != '' && _ships_queue != null) {
             Autobuild['ships_queue'] = JSON['parse'](_ships_queue)
-        }
+        }*/
     },
-    calls: function (_0xc4a4x5) {
-        switch (_0xc4a4x5) {
+    /**
+     * React to ajax response
+     * @param {Action from Ajax Response} _action 
+     */
+    calls: function (_action) {
+        switch (_action) {
             case 'building_main/index':
                 ;
             case 'building_main/build':
@@ -70,7 +79,7 @@ Autobuild = {
             case 'building_main/cancel':
                 ;
             case 'building_main/tear_down':
-                Autobuild['windows']['building_main_index'](_0xc4a4x5);
+                Autobuild.windows.building_main_index(_action);
                 break;
             case 'building_barracks/index':
                 ;
@@ -79,14 +88,14 @@ Autobuild = {
             case 'building_barracks/cancel':
                 ;
             case 'building_barracks/tear_down':
-                Autobuild['windows']['building_barracks_index'](_0xc4a4x5);
-                break
+                Autobuild.windows.building_barracks_index(_action);
+                break;
         }
     },
     initFunction: function () {
-        var _0xc4a4x6 = function (_0xc4a4x7) {
+        var _renderQueue = function (_originalRenderQueue) {
             return function () {
-                _0xc4a4x7['apply'](this, arguments);
+                _originalRenderQueue['apply'](this, arguments);
                 if (this['$el']['selector'] == '#building_tasks_main .various_orders_queue .frame-content .various_orders_content' || this['$el']['selector'] == '#ui_box .ui_construction_queue .construction_queue_order_container') {
                     Autobuild['initQueue'](this.$el, 'building')
                 };
@@ -102,7 +111,7 @@ Autobuild = {
                 }
             }
         };
-        GameViews['ConstructionQueueBaseView']['prototype']['renderQueue'] = _0xc4a4x6(GameViews['ConstructionQueueBaseView']['prototype']['renderQueue']);
+        GameViews['ConstructionQueueBaseView']['prototype']['renderQueue'] = _renderQueue(GameViews['ConstructionQueueBaseView']['prototype']['renderQueue']);
         var _0xc4a4x9 = function (_0xc4a4x7) {
             return function () {
                 _0xc4a4x7['apply'](this, arguments);
@@ -395,6 +404,10 @@ Autobuild = {
             Autobuild['finished']()
         }
     },
+    /**
+     * Calculate the next queue to build and the time left until the building should start
+     * @param {ID of the town} _townId 
+     */
     getReadyTime: function (_townId) {
         var _queues = {
             building: {
@@ -410,36 +423,36 @@ Autobuild = {
                 timeLeft: 0
             }
         };
-        $['each'](MM['getOnlyCollectionByName']('BuildingOrder')['models'], function (_index, _element) {
-            if (_townId == _element['getTownId']()) {
-                _queues['building']['queue']['push']({
+        $.each(MM.getOnlyCollectionByName('BuildingOrder').models, function (_index, _element) {
+            if (_townId == _element.getTownId()) {
+                _queues.building.queue.push({
                     type: 'building',
                     model: _element
                 });
-                if (_queues['building']['timeLeft'] == 0) {
-                    _queues['building']['timeLeft'] = _element['getTimeLeft']()
+                if (_queues.building.timeLeft == 0) {
+                    _queues.building.timeLeft = _element.getTimeLeft()
                 }
             }
         });
 
-        $['each'](MM['getOnlyCollectionByName']('UnitOrder')['models'], function (_index, _element) {
-            if (_townId == _element['attributes']['town_id']) {
-                if (_element['attributes']['kind'] == 'ground') {
-                    _queues['unit']['queue']['push']({
+        $.each(MM.getOnlyCollectionByName('UnitOrder').models, function (_index, _element) {
+            if (_townId == _element.attributes.town_id) {
+                if (_element.attributes.kind == 'ground') {
+                    _queues.unit.queue.push({
                         type: 'unit',
                         model: _element
                     });
-                    if (_queues['unit']['timeLeft'] == 0) {
-                        _queues['unit']['timeLeft'] = _element['getTimeLeft']()
+                    if (_queues.unit.timeLeft == 0) {
+                        _queues.unit.timeLeft = _element.getTimeLeft()
                     }
                 };
-                if (_element['attributes']['kind'] == 'naval') {
-                    _queues['ship']['queue']['push']({
+                if (_element.attributes.kind == 'naval') {
+                    _queues.ship.queue.push({
                         type: 'ship',
                         model: _element
                     });
-                    if (_queues['ship']['timeLeft'] == 0) {
-                        _queues['ship']['timeLeft'] = _element['getTimeLeft']()
+                    if (_queues.ship.timeLeft == 0) {
+                        _queues.ship.timeLeft = _element.getTimeLeft()
                     }
                 }
             }
@@ -447,46 +460,44 @@ Autobuild = {
 
         var _readyTime = -1;
         var _doNext = 'nothing';
-        //check which bot queue has elements and take the one where 
-        $['each'](_queues, function (_type, _0xc4a4x1b) {
-            //if ((_0xc4a4x18 == 'building' && Autobuild['building_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'unit' && Autobuild['units_queue'][_0xc4a4x16] != undefined) || (_0xc4a4x18 == 'ship' && Autobuild['ships_queue'][_0xc4a4x16] != undefined)) {
-
+        //check which bot queue has elements and take the one which has the lowest timeLeft 
+        $.each(_queues, function (_type, _model) {
             if (Autobuild.town_queues.filter(e => e.town_id === _townId).length > 0) {
                 let current_town = Autobuild.town_queues.find(e => e.town_id === _townId);
                 if ((_type == 'building' && current_town.building_queue.length > 0) ||
                     (_type == 'unit' && current_town.unit_queue.length > 0) ||
                     (_type == 'ship' && current_town.ship_queue.length > 0)) {
                     if (_readyTime == null) {
-                        _readyTime = _0xc4a4x1b['timeLeft'];
+                        _readyTime = _model.timeLeft;
                         _doNext = _type
                     } else {
-                        if (_0xc4a4x1b['timeLeft'] < _readyTime) {
-                            _readyTime = _0xc4a4x1b['timeLeft'];
+                        if (_model.timeLeft < _readyTime) {
+                            _readyTime = _model.timeLeft;
                             _doNext = _type
                         }
                     }
-                    //if there is space in the queue, start
+                    //if there is space in the queue, start immediately
                     if (_queues[_type].queue.length < Autobot.Queue) {
-                        _readyTime = 10;
+                        _readyTime = 0;
                     }
                 }
             }
         });
         //if instant buy is enabled
-        if (GameDataInstantBuy['isEnabled']() && Autobuild['settings']['instant_buy']) {
+        if (GameDataInstantBuy.isEnabled() && Autobuild.settings.instant_buy) {
             //if there are buildings in the queue
             if (_queues.building.queue.length > 0) {
                 let _firstBuildingTime = _queues.building.queue[0].model.getTimeLeft() - 300;
                 if (_firstBuildingTime <= 0) {
-                    _firstBuildingTime = 10;
+                    _firstBuildingTime = 0;
                 }
-                if (_firstBuildingTime < _readyTime || _readyTime == -1) {
+                if (_firstBuildingTime < _readyTime) {
                     _readyTime = _firstBuildingTime
                 }
             }
         };
         return {
-            readyTime: Timestamp.now() + (_readyTime >= 0 ? _readyTime : +Autobuild['settings']['timeinterval']),
+            readyTime: Timestamp.now() + (_readyTime >= 0 ? _readyTime : +Autobuild.settings.timeinterval),
             shouldStart: _doNext
         }
     },
@@ -494,54 +505,63 @@ Autobuild = {
      * Stop Autobuild
      */
     stop: function () {
-        clearInterval(Autobuild['interval'])
+        clearInterval(Autobuild.interval)
     },
     /**
      * Check if Autobuild is enabled
      */
     checkEnabled: function () {
-        return ModuleManager['modules']['Autobuild']['isOn']
-    },
-    finished: function () {
-        if (!Autobuild['checkEnabled']()) {
-            return false
-        };
-        Autobuild['town']['modules']['Autobuild']['isReadyTime'] = Autobuild['getReadyTime'](Autobuild['town']['id'])['readyTime'];
-        ModuleManager['Queue']['next']()
+        return ModuleManager.modules.Autobuild.isOn;
     },
     /**
-     * Complete if only 5 Minutes are left
+     * Called on the end of the Autobuild Queue.
+     */
+    finished: function () {
+        if (!Autobuild.checkEnabled()) {
+            return false;
+        };
+        Autobuild.town.modules.Autobuild.isReadyTime = Autobuild.getReadyTime(Autobuild.town.id).readyTime;
+        ModuleManager.Queue.next();
+    },
+    /**
+     * Check if a Building in the town has only 5 minutes left
      * @param {} _0xc4a4x16 
      */
-    checkInstantComplete: function (_0xc4a4x16) {
-        Autobuild['instantBuyTown'] = false;
-        $['each'](MM['getOnlyCollectionByName']('BuildingOrder')['models'], function (_0xc4a4x18, _0xc4a4x19) {
-            if (_0xc4a4x16 == _0xc4a4x19['getTownId']() && _0xc4a4x19['getTimeLeft']() < 300) {
-                Autobuild['instantBuyTown'] = {
-                    order_id: _0xc4a4x19['id'],
-                    building_name: _0xc4a4x19['getBuildingId']()
+    checkInstantComplete: function (_townId) {
+        Autobuild.instantBuyTown = false;
+        $.each(MM.getOnlyCollectionByName('BuildingOrder').models, function (_index, _element) {
+            if (_townId == _element.getTownId() && _element.getTimeLeft() < 300) {
+                Autobuild.instantBuyTown = {
+                    order_id: _element.id,
+                    building_name: _element.getBuildingId()
                 };
-                return false
+                return false;
             }
         });
-        return Autobuild['instantBuyTown']
+        return Autobuild.instantBuyTown
     },
-    checkBuildingDepencencies: function (_0xc4a4x1c, _0xc4a4x1d) {
-        var _0xc4a4x1e = GameData['buildings'][_0xc4a4x1c],
-            _0xc4a4x1f = _0xc4a4x1e['dependencies'],
-            _0xc4a4x20 = _0xc4a4x1d['getBuildings'](),
-            _0xc4a4x21 = _0xc4a4x20['getBuildings']();
-        var _0xc4a4x22 = [];
-        $['each'](_0xc4a4x1f, function (_0xc4a4x23, _0xc4a4x24) {
-            var _0xc4a4x25 = _0xc4a4x21[_0xc4a4x23];
-            if (_0xc4a4x25 < _0xc4a4x24) {
-                _0xc4a4x22['push']({
-                    building_id: _0xc4a4x23,
-                    level: _0xc4a4x24
+    /**
+     * Check if the building can be upgraded
+     * @param {ID of the building} _buildingId 
+     * @param {iTown Object of the town} _iTown 
+     */
+    checkBuildingDependencies: function (_buildingId, _iTown) {
+        var _building = GameData.buildings[_buildingId],
+            _AllDependencies = _building.dependencies,
+            _iTownBuildings = _iTown.getBuildings(),
+            _buildingsLevel = _iTownBuildings.getBuildings();
+
+        var _dependencies = [];
+        $.each(_AllDependencies, function (_index, _requiredLevel) {
+            var _dependencieBuildingLevel = _buildingsLevel[_index];
+            if (_dependencieBuildingLevel < _requiredLevel) {
+                _dependencies.push({
+                    building_id: _index,
+                    level: _requiredLevel
                 })
             }
         });
-        return _0xc4a4x22
+        return _dependencies
     },
 
     /**
@@ -931,26 +951,33 @@ Autobuild = {
             HumanMessage['success']('The settings were saved!')
         }))
     },
+    /**
+     * Window events on open main building and barracks
+     */
     windows: {
         wndId: null,
         wndContent: null,
         building_main_index: function () {
-            if (GPWindowMgr && GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)) {
-                Autobuild['currentWindow'] = GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)['getJQElement']()['find']('.gpwindow_content');
-                var _0xc4a4x3f = Autobuild['currentWindow']['find']('#main_tasks h4');
-                _0xc4a4x3f['html'](_0xc4a4x3f['html']()['replace'](/\/.*\)/, '/&infin;)'));
-                var _0xc4a4x40 = ['theater', 'thermal', 'library', 'lighthouse', 'tower', 'statue', 'oracle', 'trade_office'];
-                $['each']($('#buildings .button_build.build_grey.build_up.small.bold'), function () {
-                    var _0xc4a4x41 = $(this)['parent']()['parent']()['attr']('id')['replace']('building_main_', '');
-                    if (Autobuild['checkBuildingDepencencies'](_0xc4a4x41, ITowns['getTown'](Game['townId']))['length'] <= 0) {
-                        if ($['inArray'](_0xc4a4x41, _0xc4a4x40) == -1) {
-                            $(this)['removeClass']('build_grey')['addClass']('build')['html']('Add to queue')['on']('click', function (_0xc4a4x36) {
-                                _0xc4a4x36['preventDefault']();
+            if (GPWindowMgr && GPWindowMgr.getOpenFirst(Layout.wnd.TYPE_BUILDING)) {
+                Autobuild.currentWindow = GPWindowMgr.getOpenFirst(Layout.wnd.TYPE_BUILDING).getJQElement().find('.gpwindow_content');
+                var _mainTasks = Autobuild.currentWindow.find('#main_tasks h4');
+                //replace max count of building tasks with infinit
+                _mainTasks.html(_mainTasks.html().replace(/\/.*\)/, '/&infin;)'));
+                var _specialBuildings = ['theater', 'thermal', 'library', 'lighthouse', 'tower', 'statue', 'oracle', 'trade_office'];
+                //replace the "cant upgrade" with "add to queue"
+                $.each($('#buildings .button_build.build_grey.build_up.small.bold'), function () {
+                    var _buildingId = $(this).parent().parent().attr('id').replace('building_main_', '');
+                    // if there are no more dependendencies
+                    if (Autobuild.checkBuildingDependencies(_buildingId, ITowns.getTown(Game.townId)).length <= 0) {
+                        //if the building is not a special building
+                        if ($.inArray(_buildingId, _specialBuildings) == -1) {
+                            $(this).removeClass('build_grey').addClass('build').html('Add to queue').on('click', function (_event) {
+                                _event.preventDefault();
 
                                 Autobuild.saveBuilding({
                                     type: "add",
-                                    town_id: Game['townId'],
-                                    item_name: _0xc4a4x41,
+                                    town_id: Game.townId,
+                                    item_name: _buildingId,
                                     count: 1,
                                 });
                             })
@@ -959,11 +986,12 @@ Autobuild = {
                 })
             }
         },
+        //replace max count of building tasks with infinit
         building_barracks_index: function () {
-            if (GPWindowMgr && GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)) {
-                Autobuild['currentWindow'] = GPWindowMgr['getOpenFirst'](Layout['wnd'].TYPE_BUILDING)['getJQElement']()['find']('.gpwindow_content');
-                var _0xc4a4x3f = Autobuild['currentWindow']['find']('#unit_orders_queue h4');
-                _0xc4a4x3f['find']('.js-max-order-queue-count')['html']('&infin;')
+            if (GPWindowMgr && GPWindowMgr.getOpenFirst(Layoutwnd.TYPE_BUILDING)) {
+                Autobuild.currentWindow = GPWindowMgr.getOpenFirst(Layout.wnd.TYPE_BUILDING).getJQElement().find('.gpwindow_content');
+                var _unitQueue = Autobuild.currentWindow.find('#unit_orders_queue h4');
+                _unitQueue.find('.js-max-order-queue-count').html('&infin;')
             }
         }
     }
