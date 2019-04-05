@@ -480,7 +480,7 @@ Autobuild = {
                 if ((_type == 'building' && current_town.building_queue.length > 0) ||
                     (_type == 'unit' && current_town.unit_queue.length > 0) ||
                     (_type == 'ship' && current_town.ship_queue.length > 0)) {
-                    if (_readyTime == null) {
+                    if (_readyTime == -1) {
                         _readyTime = _model.timeLeft;
                         _doNext = _type
                     } else {
