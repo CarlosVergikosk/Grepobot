@@ -492,6 +492,7 @@ Autobuild = {
                     //if there is space in the queue, start immediately
                     if (_queues[_type].queue.length < Autobot.Queue) {
                         _readyTime = 0;
+                        _doNext = _type;
                     }
                 }
             }

@@ -1,7 +1,7 @@
 var Autobot = {
     title: 'Autobot',
-    version: '0.422',
-    domain: window.location.protocol + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.422/",
+    version: '0.423',
+    domain: window.location.protocol + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.423/",
     botWnd: '',
     isLogged: false,
     Account: {
