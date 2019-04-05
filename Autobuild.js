@@ -614,6 +614,8 @@ Autobuild = {
             }
             Autobuild.setEmptyItems($(this));
         });
+
+        Autobuild.town.modules.Autobuild.isReadyTime = Autobuild.getReadyTime(Autobuild.town.id).readyTime;
     },
 
     /**
