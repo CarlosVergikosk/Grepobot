@@ -1027,7 +1027,7 @@ Autobuild = {
             Autobuild.settings.enable_ships = _settings.autobuild_ships_enable != undefined;
             Autobuild.settings.instant_buy = _settings.autobuild_instant_buy != undefined;
 
-            localStorage.setItem("Autobuild.Settings", JSON.stringify(_settings).replaceAll("autobuild_", ""));
+            localStorage.setItem("Autobuild.Settings", JSON.stringify(Autobuild.settings));
 
             ConsoleLog.Log('Settings saved', 3);
             HumanMessage.success('The settings were saved!')

@@ -329,6 +329,7 @@ Autofarm = {
         ConsoleLog.Log('Initialize AutoFarm', 1);
         Autofarm['initButton']();
         Autofarm['checkCaptain']()
+        Autofarm.loadSettings();
     },
     initButton: function() {
         ModuleManager['initButtons']('Autofarm')
@@ -338,9 +339,13 @@ Autofarm = {
             Autofarm['isCaptain'] = true
         }
     },
-    setSettings: function(_0xfac7x22) {
-        if (_0xfac7x22 != '' && _0xfac7x22 != null) {
-            $['extend'](Autofarm['settings'], JSON['parse'](_0xfac7x22))
+    /**
+     * Load settings from local storage
+     */
+    loadSettings: function() {
+        let _settings = localStorage.getItem("Autofarm.Settings")
+        if (_settings) {
+            $.extend(Autofarm.settings, JSON.parse(_settings));
         }
     },
     contentSettings: function() {
@@ -452,12 +457,9 @@ Autofarm = {
             Autofarm['settings']['skipwhenfull'] = _0xfac7x23['autofarm_warehousefull'] != undefined;
             Autofarm['settings']['lowresfirst'] = _0xfac7x23['autofarm_lowresfirst'] != undefined;
             Autofarm['settings']['stoplootbelow'] = _0xfac7x23['autofarm_loot'] != undefined;
-            /*DataExchanger.Auth('saveAutofarm', {
-                player_id: Autobot['Account']['player_id'],
-                world_id: Autobot['Account']['world_id'],
-                csrfToken: Autobot['Account']['csrfToken'],
-                autofarm_settings: Autobot['stringify'](Autofarm['settings'])
-            }, Autofarm['callbackSave'])*/
+
+            localStorage.setItem("Autofarm.Settings", JSON.stringify(Autofarm.settings));
+
             ConsoleLog.Log('Settings saved', 1);
             HumanMessage['success']('The settings were saved!');
         }))
