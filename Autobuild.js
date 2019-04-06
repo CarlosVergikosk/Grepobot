@@ -162,7 +162,8 @@ Autobuild = {
             let current_town = Autobuild.town_queues.find(e => e.town_id === _town.id);
             return (current_town.building_queue.length > 0 
                     || current_town.unit_queue.length > 0 
-                    || current_town.ship_queue.length > 0);
+                    || current_town.ship_queue.length > 0
+                    || (GameDataInstantBuy.isEnabled() && Autobuild.settings.instant_buy));
         }
         //Instant buy is enabled
         return (GameDataInstantBuy.isEnabled() && Autobuild.settings.instant_buy);
