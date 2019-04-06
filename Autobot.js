@@ -1,7 +1,7 @@
 var Autobot = {
     title: 'Autobot',
-    version: '0.428',
-    domain: window.location.protocol + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.428/",
+    version: '0.429',
+    domain: window.location.protocol + "//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.429/",
     botWnd: '',
     isLogged: false,
     Account: {
@@ -315,6 +315,9 @@ var Autobot = {
 (function () {
     String['prototype']['capitalize'] = function () {
         return this['charAt'](0)['toUpperCase']() + this['slice'](1)
+    };
+    String.prototype.replaceAll = function (search, replacement) {
+        return this.replace(new RegExp(search, 'g'), replacement);
     };
     $['fn']['serializeObject'] = function () {
         var _0xe20bx41 = {};
