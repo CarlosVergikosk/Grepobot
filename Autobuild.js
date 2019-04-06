@@ -130,7 +130,7 @@ Autobuild = {
         if ($('.advisor_frame.captain div').hasClass('captain_active')) {
             Autobuild.isCaptain = true;
         }
-        if ($('.advisor_frame.captain div').hasClass('curator_active')) {
+        if ($('.advisor_frame.curator div').hasClass('curator_active')) {
             Autobuild.isCurator = true;
         }
         Autobuild.Queue = Autobuild.isCurator ? 7 : 2
