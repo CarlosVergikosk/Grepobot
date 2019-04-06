@@ -29,6 +29,7 @@ Autobuild = {
         Autobuild.checkCaptain();
         Autobuild.activateCss();
         Autobuild.loadSettings();
+        Autobuild.loadQueue();
     },
     /**
      * Load the Autobuild settings from local storage
@@ -46,23 +47,14 @@ Autobuild = {
         $('.construction_queue_order_container').addClass('active');
     },
     /**
-     * Save the Queue Strings to propertys
-     * @param {Json String} _building_queue 
-     * @param {Json String} _units_queue 
-     * @param {Json Stirng} _ships_queue 
+     * Load the queue from local storage
      */
-    setQueue: function (_building_queue, _units_queue, _ships_queue) {
-        //TODO
-        /*if (_building_queue != '' && _building_queue != null) {
-            Autobuild['building_queue'] = JSON['parse'](_building_queue);
-            Autobuild['initQueue']($('.construction_queue_order_container'), 'building')
-        };
-        if (_units_queue != '' && _units_queue != null) {
-            Autobuild['units_queue'] = JSON['parse'](_units_queue)
-        };
-        if (_ships_queue != '' && _ships_queue != null) {
-            Autobuild['ships_queue'] = JSON['parse'](_ships_queue)
-        }*/
+    loadQueue: function () {
+        let _queues = localStorage.getItem("Autobuild.Queue");
+        if (_queues){
+            Autobuild.town_queues = JSON.parse(_queues);
+        }
+        localStorage.setItem("Autobuild.Queue", JSON.stringify(Autobuild.town_queues));
     },
     /**
      * React to ajax response
@@ -491,9 +483,9 @@ Autobuild = {
                             _doNext = _type
                         }
                     }
-                    //if there is space in the queue, start immediately
+                    //if there is space in the queue, start after the interval
                     if (_queues[_type].queue.length < Autobot.Queue) {
-                        _readyTime = 0;
+                        _readyTime = +Autobuild.settings.timeinterval
                         _doNext = _type;
                     }
                 }
@@ -617,7 +609,7 @@ Autobuild = {
             Autobuild.setEmptyItems($(this));
         });
 
-        
+        localStorage.setItem("Autobuild.Queue", JSON.stringify(Autobuild.town_queues));
     },
 
     /**
@@ -859,6 +851,8 @@ Autobuild = {
             Autobuild.setEmptyItems($(this));
             UnitOrder.selectUnit(UnitOrder.unit_id)
         });
+
+        localStorage.setItem("Autobuild.Queue", JSON.stringify(Autobuild.town_queues));
     },
 
     /**
