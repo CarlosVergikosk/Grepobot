@@ -164,7 +164,9 @@ Autobuild = {
         //is any bot queue not empty
         if (Autobuild.town_queues.filter(e => e.town_id === _town.id).length > 0) {
             let current_town = Autobuild.town_queues.find(e => e.town_id === _town.id);
-            return (current_town.building_queue > 0 || current_town.unit_queue.length > 0 || current_town.ship_queue > 0);
+            return (current_town.building_queue.length > 0 
+                    || current_town.unit_queue.length > 0 
+                    || current_town.ship_queue.length > 0);
         }
         //Instant buy is enabled
         return (GameDataInstantBuy.isEnabled() && Autobuild.settings.instant_buy);
@@ -615,7 +617,7 @@ Autobuild = {
             Autobuild.setEmptyItems($(this));
         });
 
-        Autobuild.town.modules.Autobuild.isReadyTime = Autobuild.getReadyTime(Autobuild.town.id).readyTime;
+        
     },
 
     /**
