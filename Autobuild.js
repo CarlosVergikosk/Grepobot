@@ -17,6 +17,7 @@ Autobuild = {
     interval: null,
     currentWindow: null,
     isCaptain: false,
+    isCurator: false,
     Queue: 0,
 
     /**
@@ -126,10 +127,13 @@ Autobuild = {
      * Check if Captain is active: Set Queue length to 7.
      */
     checkCaptain: function () {
-        if ($('.advisor_frame.captain div')['hasClass']('captain_active')) {
-            Autobuild['isCaptain'] = true
-        };
-        Autobuild['Queue'] = Autobuild['isCaptain'] ? 7 : 2
+        if ($('.advisor_frame.captain div').hasClass('captain_active')) {
+            Autobuild.isCaptain = true;
+        }
+        if ($('.advisor_frame.captain div').hasClass('curator_active')) {
+            Autobuild.isCurator = true;
+        }
+        Autobuild.Queue = Autobuild.isCurator ? 7 : 2
     },
     /**
      * Check if current town can build
@@ -484,7 +488,7 @@ Autobuild = {
                         }
                     }
                     //if there is space in the queue, start after the interval
-                    if (_queues[_type].queue.length < Autobot.Queue) {
+                    if (_queues[_type].queue.length < Autobuild.Queue) {
                         _readyTime = +Autobuild.settings.timeinterval
                         _doNext = _type;
                     }
