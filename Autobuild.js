@@ -435,7 +435,7 @@ Autobuild = {
                 timeLeft: 0
             }
         };
-        $.each(MM.getOnlyCollectionByName('BuildingOrder').models, function (_index, _element) {
+        $.each(MM.getModels().BuildingOrder, function (_index, _element) {
             if (_townId == _element.getTownId()) {
                 _queues.building.queue.push({
                     type: 'building',
@@ -447,7 +447,7 @@ Autobuild = {
             }
         });
 
-        $.each(MM.getOnlyCollectionByName('UnitOrder').models, function (_index, _element) {
+        $.each(MM.getModels().UnitOrder, function (_index, _element) {
             if (_townId == _element.attributes.town_id) {
                 if (_element.attributes.kind == 'ground') {
                     _queues.unit.queue.push({
@@ -542,7 +542,7 @@ Autobuild = {
      */
     checkInstantComplete: function (_townId) {
         Autobuild.instantBuyTown = false;
-        $.each(MM.getOnlyCollectionByName('BuildingOrder').models, function (_index, _element) {
+        $.each(MM.getModels().BuildingOrder, function (_index, _element) {
             if (_townId == _element.getTownId() && _element.getTimeLeft() < 300) {
                 Autobuild.instantBuyTown = {
                     order_id: _element.id,
