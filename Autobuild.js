@@ -27,17 +27,17 @@ Autobuild = {
         Autobuild.initFunction();
         Autobuild.initButton();
         Autobuild.checkCaptain();
-        Autobuild.activateCss()
+        Autobuild.activateCss();
+        Autobuild.loadSettings();
     },
     /**
-     * Save the Autobuild Settings to settings property
-     * @param {JSON String} _0xc4a4x1 
+     * Load the Autobuild settings from local storage
      */
-    setSettings: function (_0xc4a4x1) {
-        //TODO
-        /*if (_0xc4a4x1 != '' && _0xc4a4x1 != null) {
-            $['extend'](Autobuild['settings'], JSON['parse'](_0xc4a4x1))
-        }*/
+    loadSettings: function () {
+        let _settings = localStorage.getItem("Autobuild.Settings")
+        if (_settings){
+            $.extend(Autobuild.settings, JSON.parse(_settings));
+        }
     },
     /**
      * Add css class to show Autobuild is active
@@ -1024,14 +1024,16 @@ Autobuild = {
             style: 'top: 10px;'
         //Save Settings
         }).on('click', function () {
-            var _0xc4a4x3e = $('#Autobuild_settings').serializeObject();
-            Autobuild.settings.autostart = _0xc4a4x3e.autobuild_autostart != undefined;
-            Autobuild.settings.timeinterval = parseInt(_0xc4a4x3e.autobuild_timeinterval);
-            Autobuild.settings.autostart = _0xc4a4x3e.autobuild_autostart != undefined;
-            Autobuild.settings.enable_building = _0xc4a4x3e.autobuild_building_enable != undefined;
-            Autobuild.settings.enable_units = _0xc4a4x3e.autobuild_barracks_enable != undefined;
-            Autobuild.settings.enable_ships = _0xc4a4x3e.autobuild_ships_enable != undefined;
-            Autobuild.settings.instant_buy = _0xc4a4x3e.autobuild_instant_buy != undefined;
+            var _settings = $('#Autobuild_settings').serializeObject();
+            Autobuild.settings.autostart = _settings.autobuild_autostart != undefined;
+            Autobuild.settings.timeinterval = parseInt(_settings.autobuild_timeinterval);
+            Autobuild.settings.autostart = _settings.autobuild_autostart != undefined;
+            Autobuild.settings.enable_building = _settings.autobuild_building_enable != undefined;
+            Autobuild.settings.enable_units = _settings.autobuild_barracks_enable != undefined;
+            Autobuild.settings.enable_ships = _settings.autobuild_ships_enable != undefined;
+            Autobuild.settings.instant_buy = _settings.autobuild_instant_buy != undefined;
+
+            localStorage.setItem("Autobuild.Settings", JSON.stringify(_settings));
 
             ConsoleLog.Log('Settings saved', 3);
             HumanMessage.success('The settings were saved!')
