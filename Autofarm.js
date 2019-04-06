@@ -102,18 +102,23 @@ Autofarm = {
         if (ModuleManager['currentTown'] != Autofarm['town']['key']) {
             Autofarm['interval'] = setTimeout(function() {
                 ConsoleLog.Log(Autofarm['town']['name'] + ' move to town.', 1);
-                DataExchanger['switch_town'](Autofarm['town']['id'], function() {
+                if (!Autofarm['checkEnabled']()) {
+                    return false
+                };
+                ModuleManager['currentTown'] = Autofarm['town']['key'];                
+                
+                /*DataExchanger['switch_town'](Autofarm['town']['id'], function() {
                     if (!Autofarm['checkEnabled']()) {
                         return false
                     };
                     ModuleManager['currentTown'] = Autofarm['town']['key'];
                     _0xfac7xa()
-                });
+                });*/
+
                 Autofarm['town']['isSwitched'] = true
             }, Autobot['randomize'](1000, 2000))
-        } else {
-            _0xfac7xa()
         }
+        _0xfac7xa()
     },
     initFarmTowns: function(_0xfac7xb) {
         DataExchanger['game_data'](Autofarm['town']['id'], function(_0xfac7xc) {

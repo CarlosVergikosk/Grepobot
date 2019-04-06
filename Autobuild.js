@@ -180,15 +180,15 @@ Autobuild = {
         };
         Autobuild.town = _town;
         Autobuild.iTown = ITowns.towns[Autobuild.town.id];
-        if (ModuleManager.currentTown != Autobuild.town.key || Game.townId != Autobuild.town.key) {
+        if (ModuleManager.currentTown != Autobuild.town.key) {
             ConsoleLog.Log(Autobuild.town.name + ' move to town.', 3);
-            DataExchanger.switch_town(Autobuild.town.id, function () {
+            ModuleManager.currentTown = Autobuild.town.key;
+        }
+            /*DataExchanger.switch_town(Autobuild.town.id, function () {
                 ModuleManager.currentTown = Autobuild.town.key;
                 Autobuild.startUpgrade();
-            })
-        } else {
-            Autobuild.startUpgrade();
-        }
+            })*/
+        Autobuild.startUpgrade();
     },
 
     /**
