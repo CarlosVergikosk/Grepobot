@@ -435,41 +435,44 @@ Autobuild = {
                 timeLeft: 0
             }
         };
-        $.each(MM.getModels().BuildingOrder, function (_index, _element) {
-            if (_townId == _element.getTownId()) {
-                _queues.building.queue.push({
-                    type: 'building',
-                    model: _element
-                });
-                if (_queues.building.timeLeft == 0) {
-                    _queues.building.timeLeft = _element.getTimeLeft()
-                }
-            }
-        });
-
-        $.each(MM.getModels().UnitOrder, function (_index, _element) {
-            if (_townId == _element.attributes.town_id) {
-                if (_element.attributes.kind == 'ground') {
-                    _queues.unit.queue.push({
-                        type: 'unit',
+        if (MM.getModels().BuildingOrder) {
+            $.each(MM.getModels().BuildingOrder, function (_index, _element) {
+                if (_townId == _element.getTownId()) {
+                    _queues.building.queue.push({
+                        type: 'building',
                         model: _element
                     });
-                    if (_queues.unit.timeLeft == 0) {
-                        _queues.unit.timeLeft = _element.getTimeLeft()
-                    }
-                };
-                if (_element.attributes.kind == 'naval') {
-                    _queues.ship.queue.push({
-                        type: 'ship',
-                        model: _element
-                    });
-                    if (_queues.ship.timeLeft == 0) {
-                        _queues.ship.timeLeft = _element.getTimeLeft()
+                    if (_queues.building.timeLeft == 0) {
+                        _queues.building.timeLeft = _element.getTimeLeft()
                     }
                 }
-            }
-        });
+            });
+        }
 
+        if (MM.getModels().UnitOrder) {
+            $.each(MM.getModels().UnitOrder, function (_index, _element) {
+                if (_townId == _element.attributes.town_id) {
+                    if (_element.attributes.kind == 'ground') {
+                        _queues.unit.queue.push({
+                            type: 'unit',
+                            model: _element
+                        });
+                        if (_queues.unit.timeLeft == 0) {
+                            _queues.unit.timeLeft = _element.getTimeLeft()
+                        }
+                    };
+                    if (_element.attributes.kind == 'naval') {
+                        _queues.ship.queue.push({
+                            type: 'ship',
+                            model: _element
+                        });
+                        if (_queues.ship.timeLeft == 0) {
+                            _queues.ship.timeLeft = _element.getTimeLeft()
+                        }
+                    }
+                }
+            });
+        }
         var _readyTime = -1;
         var _doNext = 'nothing';
         //check which bot queue has elements and take the one which has the lowest timeLeft 
