@@ -224,7 +224,7 @@ Autobuild = {
                         if (MM.getModels().BuildingOrder[Autobuild.instantBuyTown.order_id]) {
                             delete MM.getModels().BuildingOrder[Autobuild.instantBuyTown.order_id];
                         }
-                        
+
                         ConsoleLog.Log('<span style="color: #ffa03d;">' + Autobuild.instantBuyTown.building_name.capitalize() + ' - ' + _response.success + '</span>', 3)
                     };
                     if (_response.error) {
@@ -849,7 +849,7 @@ Autobuild = {
                 count: _unitData.count
             }
             Autobuild.town_queues.find(e => e.town_id === _unitData.town_id)[_unitData.type + "_queue"].push(newUnit);
-        } else if (_unitData._unitData === "remove") {
+        } else if (_unitData.action === "remove") {
             let current_town_queue = Autobuild.town_queues.find(e => e.town_id === _unitData.town_id)[_unitData.type + "_queue"];
             current_town_queue.splice(current_town_queue.findIndex(e => e.id === _unitData.item_id), 1);
         }
