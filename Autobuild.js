@@ -213,12 +213,18 @@ Autobuild = {
                     nl_init: true
                 }, function (_response) {
                     if (_response.success) {
+                        //refresh queue
                         if (Autobuild.town.id == Game.townId) {
                             let _buildingWindows = GPWindowMgr.getByType(GPWindowMgr.TYPE_BUILDING);
                             for (let i = 0; _buildingWindows.length > i; i++) {
                                 _buildingWindows[i].getHandler().refresh()
                             }
-                        };
+                        }
+                        //if current town is not the selected town, sometimes the completed building remains in the queue
+                        if (MM.getModels().BuildingOrder[Autobuild.instantBuyTown.order_id]) {
+                            delete MM.getModels().BuildingOrder[Autobuild.instantBuyTown.order_id];
+                        }
+                        
                         ConsoleLog.Log('<span style="color: #ffa03d;">' + Autobuild.instantBuyTown.building_name.capitalize() + ' - ' + _response.success + '</span>', 3)
                     };
                     if (_response.error) {
