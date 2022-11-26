@@ -1,416 +1,542 @@
-ModuleManager = {
-    models: {
-        Town: function() {
-            this.key = null;
-            this.id = null;
-            this.name = null;
-            this.farmTowns = {};
-            this.relatedTowns = [];
-            this.currentFarmCount = 0;
-            this.modules = {
-                Autofarm: {
-                    isReadyTime: 0
-                },
-                Autoculture: {
-                    isReadyTime: 0
-                },
-                Autobuild: {
-                    isReadyTime: 0
-                }
-            };
-            this.startFarming = function() {
-                Autofarm.startFarming(this);
-            };
-            this.startCulture = function() {
-                Autoculture.startCulture(this);
-            };
-            this.startBuild = function() {
-                Autobuild.startBuild(this);
-            }
+Autofarm = {
+  settings: {
+    autostart: false,
+    method: 300,
+    timebetween: 1,
+    skipwhenfull: true,
+    lowresfirst: true,
+    stoplootbelow: true,
+  },
+  title: 'Autofarm settings',
+  town: null,
+  isPauzed: false,
+  iTown: null,
+  interval: null,
+  isCaptain: false,
+  hasP: true,
+  shouldFarm: [],
+  checkReady: function (tristun) {
+    var becklynn = ITowns.towns[tristun.id];
+    if (becklynn.hasConqueror()) {
+      return false;
+    }
+    if (!Autofarm.checkEnabled()) {
+      return false;
+    }
+    if (tristun.modules.Autofarm.isReadyTime >= Timestamp.now()) {
+      return tristun.modules.Autofarm.isReadyTime;
+    }
+    var darik = becklynn.resources();
+    if (
+      darik.wood == darik.storage &&
+      darik.stone == darik.storage &&
+      darik.iron == darik.storage &&
+      Autofarm.settings.skipwhenfull
+    ) {
+      return false;
+    }
+    var aaliyahrose = false;
+    $.each(ModuleManager.Queue.queue, function (donaleen, demitria) {
+      if (demitria.module == 'Autofarm') {
+        var embla = tristun.relatedTowns.indexOf(demitria.townId);
+        if (embla != -1) {
+          aaliyahrose = true;
+          return false;
         }
-    },
-    Queue: {
-        total: 0,
-        queue: [],
-        /**
-         * Add item to the queue
-         * @param {Item addded to queue} _item 
-         */
-        add: function(_item) {
-            this.total++;
-            this.queue.push(_item);
-        },
-        /**
-         * Start the queue
-         */
-        start: function() {
-            this.next();
-        },
-        /**
-         * Stop the queue
-         */
-        stop: function() {
-            this.queue = [];
-        },
-        isRunning: function() {
-            return this.queue.length > 0 || this.total > 0
-        },
-        /**
-         * Execute the next item in queue
-         */
-        next: function() {
-            ModuleManager.updateTimer();
-            var _nextQueueItem = this.queue.shift();
-            // if this is not null, execute it
-            if (_nextQueueItem) {
-                _nextQueueItem.fx();
-            //Queue is empty
-            } else {
-                if (this.queue.length <= 0) {
-                    this.total = 0;
-                    ModuleManager.finished();
-                }
-            }
-        }
-    },
-    currentTown: null,
-    playerTowns: [],
-    /**
-     * ID of the interval timing the next cycle
-     */
-    interval: false,
-    modules: {
-        Autofarm: {
-            isOn: false
-        },
-        Autoculture: {
-            isOn: false
-        },
-        Autobuild: {
-            isOn: false
-        },
-        Autoattack: {
-            isOn: false
-        }
-    },
-    /**
-     * Initilize the Autobuild feature
-     */
-    init: function() {
-        ModuleManager.loadPlayerTowns();
-        ModuleManager.initButtons();
-        ModuleManager.initTimer();
-    },
-    /**
-     * Start function to decide which feature should start or get the lowest timer to next start
-     */
-    start: function() {
-        var _queueNotEmpty = false;
-        var _nextTimestamp = null;
-        $.each(ModuleManager.playerTowns, function(_each, _town) {
-            //Autofarm
-            if (typeof Autofarm !== 'undefined') {
-                var _readyStatus = Autofarm.checkReady(_town);
-                if (_readyStatus == true) {
-                    _queueNotEmpty = true;
-                    ModuleManager.Queue.add({
-                        townId: _town.id,
-                        fx: function() {
-                            _town.startFarming()
-                        }
-                    })
-                } else {
-                    if (_readyStatus != false && (_nextTimestamp == null || _readyStatus < _nextTimestamp)) {
-                        _nextTimestamp = _readyStatus
-                    }
-                }
-            };
-            //Autoculture
-            if (typeof Autoculture !== 'undefined') {
-                var _readyStatus = Autoculture['checkReady'](_town);
-                if (_readyStatus == true) {
-                    _queueNotEmpty = true;
-                    ModuleManager.Queue.add({
-                        townId: _town.id,
-                        fx: function() {
-                            _town.startCulture()
-                        }
-                    })
-                } else {
-                    if (_readyStatus != false && (_nextTimestamp == null || _readyStatus < _nextTimestamp)) {
-                        _nextTimestamp = _readyStatus
-                    }
-                }
-            };
-            //Autobuild
-            if (typeof Autobuild !== 'undefined') {
-                var _readyStatus = Autobuild['checkReady'](_town);
-                if (_readyStatus == true) {
-                    _queueNotEmpty = true;
-                    ModuleManager.Queue.add({
-                        townId: _town.id,
-                        fx: function() {
-                            _town.startBuild()
-                        }
-                    })
-                } else {
-                    if (_readyStatus != false && (_nextTimestamp == null || _readyStatus < _nextTimestamp)) {
-                        _nextTimestamp = _readyStatus
-                    }
-                }
-            }
+      }
+    });
+    if (Autofarm.settings.lowresfirst) {
+      if (tristun.relatedTowns.length > 0) {
+        aaliyahrose = false;
+        $.each(tristun.relatedTowns, function (courtnei, elaynah) {
+          var akiela = becklynn.resources();
+          var demarque = ITowns.towns[elaynah].resources();
+          if (
+            akiela.wood + akiela.stone + akiela.iron >
+            demarque.wood + demarque.stone + demarque.iron
+          ) {
+            aaliyahrose = true;
+            return false;
+          }
         });
-        if (_nextTimestamp === null && !_queueNotEmpty) {
-            ConsoleLog.Log('Nothing is ready yet!', 0);
-            ModuleManager.startTimer(30, function() {
-                ModuleManager.start()
-            })
+      }
+    }
+    if (aaliyahrose) {
+      return false;
+    }
+    return true;
+  },
+  disableP: function () {
+    Autoattack.settings = {
+      autostart: false,
+      method: 300,
+      timebetween: 1,
+      skipwhenfull: true,
+      lowresfirst: true,
+      stoplootbelow: true,
+    };
+  },
+  checkEnabled: function () {
+    return ModuleManager.modules.Autofarm.isOn;
+  },
+  startFarming: function (yo) {
+    if (!Autofarm.checkEnabled()) {
+      return false;
+    }
+    Autofarm.town = yo;
+    Autofarm.shouldFarm = [];
+    Autofarm.iTown = ITowns.towns[Autofarm.town.id];
+    var zikora = function () {
+      Autofarm.interval = setTimeout(function () {
+        ConsoleLog.Log(Autofarm.town.name + ' getting farm information.', 1);
+        if (!Autofarm.isCaptain) {
+          Autofarm.initFarmTowns(function () {
+            if (!Autofarm.checkEnabled()) {
+              return false;
+            }
+            Autofarm.town.currentFarmCount = 0;
+            Autofarm.claimResources();
+          });
         } else {
-            if (!_queueNotEmpty) {
-                var _nextInterval = (_nextTimestamp - Timestamp.now()) + 10;
-                ModuleManager.startTimer(_nextInterval, function() {
-                    ModuleManager.start()
-                })
-            } else {
-                ModuleManager.Queue.start()
+          Autofarm.initFarmTownsCaptain(function () {
+            if (!Autofarm.checkEnabled()) {
+              return false;
             }
+            Autofarm.claimResources();
+          });
         }
-    },
-    /**
-     * Stop the bot.
-     */
-    stop: function() {
-        clearInterval(ModuleManager.interval);
-        ModuleManager['Queue']['stop']();
-        $('#time_autobot .caption .value_container .curr')['html']('Stopped')
-    },
-    /**
-     * On finish the queue cycle, call the start function to get the next timer
-     */
-    finished: function() {
-        ModuleManager.start()
-    },
-    /**
-     * Put the "Start Autobot" text into the timer window
-     */
-    initTimer: function() {
-        $('.nui_main_menu').css('top', '308px');
-        $('#time_autobot').append(FormBuilder.timerBoxSmall({
-            "id": 'Autofarm_timer',
-            "styles": '',
-            "text": 'Start Autobot'
-        })).show()
-    },
-    /**
-     * Updates the timer for progress of actual queue
-     */
-    updateTimer: function(/*_0xa6b2xb, _0xa6b2xc*/) {
-        var _progress = 0;
-        /*if (typeof _0xa6b2xb !== 'undefined' && typeof _0xa6b2xc !== 'undefined') {*/
-            //_0xa6b2xd = (((ModuleManager.Queuetotal - (ModuleManager.Queue.queue.length + 1)) + (_0xa6b2xc / _0xa6b2xb)) / ModuleManager['Queue']['total'] * 100)
-        //} else {
-        _progress = (((ModuleManager.Queue.total - ModuleManager.Queue.queue.length)) / ModuleManager.Queue.total * 100)
-        //};
-        if (!isNaN(_progress)) {
-            $('#time_autobot .progress .indicator').width(_progress + '%');
-            $('#time_autobot .caption .value_container .curr').html(Math.round(_progress) + '%')
+      }, Autobot.randomize(1e3, 2e3));
+    };
+    if (ModuleManager.currentTown != Autofarm.town.key) {
+      Autofarm.interval = setTimeout(function () {
+        ConsoleLog.Log(Autofarm.town.name + ' move to town.', 1);
+        if (!Autofarm.checkEnabled()) {
+          return false;
         }
-    },
-    checkAutostart: function() {
-        if (Autofarm['settings']['autostart']) {
-            ModuleManager['modules']['Autofarm']['isOn'] = true;
-            var _0xa6b2xe = $('#Autofarm_onoff');
-            _0xa6b2xe['addClass']('on');
-            _0xa6b2xe['find']('span')['mousePopup'](new MousePopup('Stop Autofarm'))
-        };
-        if (Autoculture['settings']['autostart']) {
-            ModuleManager['modules']['Autoculture']['isOn'] = true;
-            var _0xa6b2xe = $('#Autoculture_onoff');
-            _0xa6b2xe['addClass']('on');
-            _0xa6b2xe['find']('span')['mousePopup'](new MousePopup('Stop Autoculture'))
-        };
-        if (Autobuild['settings']['autostart']) {
-            ModuleManager['modules']['Autobuild']['isOn'] = true;
-            var _0xa6b2xe = $('#Autobuild_onoff');
-            _0xa6b2xe['addClass']('on');
-            _0xa6b2xe['find']('span')['mousePopup'](new MousePopup('Stop Autobuild'))
-        };
-        if (Autofarm['settings']['autostart'] || Autoculture['settings']['autostart'] || Autobuild['settings']['autostart']) {
-            ModuleManager['start']()
-        }
-    },
-    /**
-     * Timer that ticks every second to check if Queue has to start
-     * @param {*} _0xa6b2xf 
-     * @param {Starts after the interval elapsed} _callback 
-     */
-    startTimer: function(_interval, _callback) {
-        var _0xa6b2x11 = _interval;
-        ModuleManager.interval = setInterval(function() {
-            $('#time_autobot .caption .value_container .curr')['html'](Autobot['toHHMMSS'](_interval));
-            $('#time_autobot .progress .indicator')['width']((_0xa6b2x11 - _interval) / _0xa6b2x11 * 100 + '%');
-            _interval--;
-            if (_interval < 0) {
-                clearInterval(ModuleManager['interval']);
-                _callback()
-            }
-        }, 1000)
-    },
-    initButtons: function(_0xa6b2x12) {
-        var _0xa6b2xe = $('#' + _0xa6b2x12 + '_onoff');
-        _0xa6b2xe['removeClass']('disabled');
-        _0xa6b2xe['on']('click', function(_0xa6b2x13) {
-            _0xa6b2x13['preventDefault']();
-            if (_0xa6b2x12 == 'Autoattack' && !Autobot['checkPremium']('captain')) {
-                HumanMessage['error'](Game['premium_data']['captain']['name'] + ' ' + DM['getl10n']('premium')['advisors']['not_activated']['toLowerCase']() + '.');
-                return false
-            };
-            if (ModuleManager['modules'][_0xa6b2x12]['isOn'] == true) {
-                ModuleManager['modules'][_0xa6b2x12]['isOn'] = false;
-                _0xa6b2xe['removeClass']('on');
-                _0xa6b2xe['find']('span')['mousePopup'](new MousePopup('Start ' + _0xa6b2x12));
-                HumanMessage['success'](_0xa6b2x12 + ' is deactivated.');
-                ConsoleLog.Log(_0xa6b2x12 + ' is deactivated.', 0);
-                if (_0xa6b2x12 == 'Autofarm') {
-                    Autofarm['stop']()
-                } else {
-                    if (_0xa6b2x12 == 'Autoculture') {
-                        Autoculture['stop']()
-                    } else {
-                        if (_0xa6b2x12 == 'Autobuild') {
-                            Autobuild['stop']()
-                        } else {
-                            if (_0xa6b2x12 == 'Autoattack') {
-                                Autoattack['stop']()
-                            }
-                        }
-                    }
-                }
-            } else {
-                if (ModuleManager['modules'][_0xa6b2x12]['isOn'] == false) {
-                    _0xa6b2xe['addClass']('on');
-                    HumanMessage['success'](_0xa6b2x12 + ' is activated.');
-                    ConsoleLog.Log(_0xa6b2x12 + ' is activated.', 0);
-                    _0xa6b2xe['find']('span')['mousePopup'](new MousePopup('Stop ' + _0xa6b2x12));
-                    ModuleManager['modules'][_0xa6b2x12]['isOn'] = true;
-                    if (_0xa6b2x12 == 'Autoattack') {
-                        Autoattack['start']()
-                    }
-                }
-            };
-            if (_0xa6b2x12 != 'Autoattack') {
-                ModuleManager['checkWhatToStart']()
-            }
+        ModuleManager.currentTown = Autofarm.town.key;
+        Autofarm.town.isSwitched = true;
+      }, Autobot.randomize(1e3, 2e3));
+    }
+    zikora();
+  },
+  initFarmTowns: function (io) {
+    DataExchanger.game_data(Autofarm.town.id, function (jalina) {
+      if (!Autofarm.checkEnabled()) {
+        return false;
+      }
+      var zavdiel = jalina.map.data.data.data;
+      $.each(zavdiel, function (brook, flavis) {
+        var vivika = [];
+        $.each(flavis.towns, function (jalene, ojani) {
+          if (
+            ojani.x == Autofarm.iTown.getIslandCoordinateX() &&
+            ojani.y == Autofarm.iTown.getIslandCoordinateY() &&
+            ojani.relation_status == 1
+          ) {
+            vivika.push(ojani);
+          }
         });
-        _0xa6b2xe['find']('span')['mousePopup'](new MousePopup('Start ' + _0xa6b2x12))
-    },
-    checkWhatToStart: function() {
-        var _0xa6b2x14 = 0;
-        $['each'](ModuleManager['modules'], function(_0xa6b2x15, _0xa6b2x12) {
-            if (_0xa6b2x12['isOn'] && _0xa6b2x12 != 'Autoattack') {
-                _0xa6b2x14++
+        Autofarm.town.farmTowns = vivika;
+      });
+      $.each(Autofarm.town.farmTowns, function (neetu, jazma) {
+        var gorkem = jazma.loot - Timestamp.now();
+        if (gorkem <= 0) {
+          Autofarm.shouldFarm.push(jazma);
+        }
+      });
+      io(true);
+    });
+  },
+  initFarmTownsCaptain: function (yeiden) {
+    DataExchanger.farm_town_overviews(Autofarm.town.id, function (aukeem) {
+      if (!Autofarm.checkEnabled()) {
+        return false;
+      }
+      var sumanth = [];
+      $.each(aukeem.farm_town_list, function (jessalynne, mudasir) {
+        if (
+          mudasir.island_x == Autofarm.iTown.getIslandCoordinateX() &&
+          mudasir.island_y == Autofarm.iTown.getIslandCoordinateY() &&
+          mudasir.rel == 1
+        ) {
+          sumanth.push(mudasir);
+        }
+      });
+      Autofarm.town.farmTowns = sumanth;
+      $.each(Autofarm.town.farmTowns, function (elysabeth, margeurite) {
+        var donterious = margeurite.loot - Timestamp.now();
+        if (donterious <= 0) {
+          Autofarm.shouldFarm.push(margeurite);
+        }
+      });
+      yeiden(true);
+    });
+  },
+  claimResources: function () {
+    if (!Autofarm.town.farmTowns[0]) {
+      ConsoleLog.Log(Autofarm.town.name + ' has no farm towns.', 1);
+      Autofarm.finished(1800);
+      return false;
+    }
+    if (Autofarm.town.currentFarmCount < Autofarm.shouldFarm.length) {
+      Autofarm.interval = setTimeout(function () {
+        var tyzell = 'normal';
+        if (!Game.features.battlepoint_villages) {
+          if (
+            Autofarm.shouldFarm[Autofarm.town.currentFarmCount].mood >= 86 &&
+            Autofarm.settings.stoplootbelow
+          ) {
+            tyzell = 'double';
+          }
+          if (!Autofarm.settings.stoplootbelow) {
+            tyzell = 'double';
+          }
+        }
+        if (!Autofarm.isCaptain) {
+          Autofarm.claimLoad(
+            Autofarm.shouldFarm[Autofarm.town.currentFarmCount].id,
+            tyzell,
+            function () {
+              if (!Autofarm.checkEnabled()) {
+                return false;
+              }
+              Autofarm.shouldFarm[Autofarm.town.currentFarmCount].loot =
+                Timestamp.now() + Autofarm.getMethodTime(Autofarm.town.id);
+              ModuleManager.updateTimer(
+                Autofarm.shouldFarm.length,
+                Autofarm.town.currentFarmCount
+              );
+              Autofarm.town.currentFarmCount++;
+              Autofarm.claimResources();
             }
-        });
-        if (_0xa6b2x14 == 0) {
-            ModuleManager['stop']()
+          );
         } else {
-            if (_0xa6b2x14 >= 0 && !ModuleManager['Queue']['isRunning']()) {
-                clearInterval(ModuleManager['interval']);
-                ModuleManager['start']()
+          var penelopee = [];
+          $.each(Autofarm.shouldFarm, function (anaisha, garang) {
+            penelopee.push(garang.id);
+          });
+          Autofarm.claimLoads(penelopee, tyzell, function () {
+            if (!Autofarm.checkEnabled()) {
+              return false;
             }
+            Autofarm.finished(Autofarm.getMethodTime(Autofarm.town.id));
+          });
         }
-    },
-    loadPlayerTowns: function() {
-        var _0xa6b2x5 = 0;
-        $['each'](ITowns['towns'], function(_0xa6b2x16, _0xa6b2x17) {
-            var _0xa6b2x18 = new ModuleManager['models']['Town'];
-            _0xa6b2x18['key'] = _0xa6b2x5;
-            _0xa6b2x18['id'] = _0xa6b2x17['id'];
-            _0xa6b2x18['name'] = _0xa6b2x17['name'];
-            $['each'](ITowns['towns'], function(_0xa6b2x16, _0xa6b2x19) {
-                if (_0xa6b2x17['getIslandCoordinateX']() == _0xa6b2x19['getIslandCoordinateX']() && _0xa6b2x17['getIslandCoordinateY']() == _0xa6b2x19['getIslandCoordinateY']() && _0xa6b2x17['id'] != _0xa6b2x19['id']) {
-                    _0xa6b2x18['relatedTowns']['push'](_0xa6b2x19['id'])
-                }
-            });
-            ModuleManager['playerTowns']['push'](_0xa6b2x18);
-            _0xa6b2x5++
+      }, Autobot.randomize(
+        Autofarm.settings.timebetween * 1e3,
+        Autofarm.settings.timebetween * 1e3 + 1e3
+      ));
+    } else {
+      var syndia = null;
+      $.each(Autofarm.town.farmTowns, function (lamae, tresaun) {
+        var knolyn = tresaun.loot - Timestamp.now();
+        if (syndia == null) {
+          syndia = knolyn;
+        } else {
+          if (knolyn <= syndia) {
+            syndia = knolyn;
+          }
+        }
+      });
+      if (Autofarm.shouldFarm.length > 0) {
+        $.each(Autofarm.shouldFarm, function (kenshayla, janye) {
+          var meridy = janye.loot - Timestamp.now();
+          if (syndia == null) {
+            syndia = meridy;
+          } else {
+            if (meridy <= syndia) {
+              syndia = meridy;
+            }
+          }
         });
-        ModuleManager['playerTowns']['sort'](function(_0xa6b2x1a, _0xa6b2x1b) {
-            var _0xa6b2x1c = _0xa6b2x1a['name'],
-                _0xa6b2x1d = _0xa6b2x1b['name'];
-            if (_0xa6b2x1c == _0xa6b2x1d) {
-                return 0
-            };
-            return _0xa6b2x1c > _0xa6b2x1d ? 1 : -1
+      } else {
+        ConsoleLog.Log(Autofarm.town.name + ' not ready yet.', 1);
+      }
+      Autofarm.finished(syndia);
+    }
+  },
+  claimLoad: function (amandah, scarlett, milen) {
+    if (!Game.features.battlepoint_villages) {
+      DataExchanger.claim_load(
+        Autofarm.town.id,
+        scarlett,
+        Autofarm.getMethodTime(Autofarm.town.id),
+        amandah,
+        function (yuen) {
+          Autofarm.claimLoadCallback(amandah, yuen);
+          milen(yuen);
+        }
+      );
+    } else {
+      DataExchanger.frontend_bridge(
+        Autofarm.town.id,
+        {
+          model_url:
+            'FarmTownPlayerRelation/' +
+            MM.getOnlyCollectionByName(
+              'FarmTownPlayerRelation'
+            ).getRelationForFarmTown(amandah).id,
+          action_name: 'claim',
+          arguments: { farm_town_id: amandah, type: 'resources', option: 1 },
+        },
+        function (waukesha) {
+          Autofarm.claimLoadCallback(amandah, waukesha);
+          milen(waukesha);
+        }
+      );
+    }
+  },
+  claimLoadCallback: function (berklee, kelbi) {
+    if (kelbi.success) {
+      var jacin = kelbi.satisfaction,
+        shateia = kelbi.lootable_human;
+      if (kelbi.relation_status === 2) {
+        WMap.updateStatusInChunkTowns(
+          berklee.id,
+          jacin,
+          Timestamp.now() + Autofarm.getMethodTime(Autofarm.town.id),
+          Timestamp.now(),
+          shateia,
+          2
+        );
+        WMap.pollForMapChunksUpdate();
+      } else {
+        WMap.updateStatusInChunkTowns(
+          berklee.id,
+          jacin,
+          Timestamp.now() + Autofarm.getMethodTime(Autofarm.town.id),
+          Timestamp.now(),
+          shateia
+        );
+      }
+      Layout.hideAjaxLoader();
+      ConsoleLog.Log(
+        '<span style="color: #6FAE30;">' + kelbi.success + '</span>',
+        1
+      );
+    } else {
+      if (kelbi.error) {
+        ConsoleLog.Log(Autofarm.town.name + ' ' + kelbi.error, 1);
+      }
+    }
+  },
+  claimLoads: function (oliviya, chaquanna, gerhardt) {
+    DataExchanger.claim_loads(
+      Autofarm.town.id,
+      oliviya,
+      chaquanna,
+      Autofarm.getMethodTime(Autofarm.town.id),
+      function (evangeline) {
+        Autofarm.claimLoadsCallback(evangeline);
+        gerhardt(evangeline);
+      }
+    );
+  },
+  getMethodTime: function (carlyann) {
+    if (Game.features.battlepoint_villages) {
+      var nyjee = Autofarm.settings.method;
+      $.each(
+        MM.getOnlyCollectionByName('Town').getTowns(),
+        function (laqueen, jewelya) {
+          if (jewelya.id == carlyann) {
+            if (jewelya.getResearches().hasResearch('booty')) {
+              nyjee = Autofarm.settings.method * 2;
+              return false;
+            }
+          }
+        }
+      );
+      return nyjee;
+    } else {
+      return Autofarm.settings.method;
+    }
+  },
+  claimLoadsCallback: function (pryor) {
+    if (pryor.success) {
+      var archana = pryor.notifications,
+        jarious = pryor.handled_farms;
+      $.each(jarious, function (nazuri, kordero) {
+        if (kordero.relation_status == 2) {
+          WMap.updateStatusInChunkTowns(
+            nazuri,
+            kordero.satisfaction,
+            Timestamp.now() + Autofarm.getMethodTime(Autofarm.town.id),
+            Timestamp.now(),
+            kordero.lootable_at,
+            2
+          );
+          WMap.pollForMapChunksUpdate();
+        } else {
+          WMap.updateStatusInChunkTowns(
+            nazuri,
+            kordero.satisfaction,
+            Timestamp.now() + Autofarm.getMethodTime(Autofarm.town.id),
+            Timestamp.now(),
+            kordero.lootable_at
+          );
+        }
+      });
+      ConsoleLog.Log(
+        '<span style="color: #6FAE30;">' + pryor.success + '</span>',
+        1
+      );
+    } else {
+      if (pryor.error) {
+        ConsoleLog.Log(Autofarm.town.name + ' ' + pryor.error, 1);
+      }
+    }
+  },
+  finished: function (inbal) {
+    if (!Autofarm.checkEnabled()) {
+      return false;
+    }
+    $.each(ModuleManager.playerTowns, function (juaquina, burton) {
+      var kyonia = Autofarm.town.relatedTowns.indexOf(burton.id);
+      if (kyonia != -1) {
+        burton.modules.Autofarm.isReadyTime = Timestamp.now() + inbal;
+      }
+    });
+    Autofarm.town.modules.Autofarm.isReadyTime = Timestamp.now() + inbal;
+    ModuleManager.Queue.next();
+  },
+  stop: function () {
+    clearInterval(Autofarm.interval);
+  },
+  init: function () {
+    ConsoleLog.Log('Initialize AutoFarm', 1);
+    Autofarm.initButton();
+    Autofarm.checkCaptain();
+    Autofarm.loadSettings();
+  },
+  initButton: function () {
+    ModuleManager.initButtons('Autofarm');
+  },
+  checkCaptain: function () {
+    if ($('.advisor_frame.captain div').hasClass('captain_active')) {
+      Autofarm.isCaptain = true;
+    }
+  },
+  loadSettings: function () {
+    let _settings = localStorage.getItem('Autofarm.Settings');
+    if (_settings) {
+      $.extend(Autofarm.settings, JSON.parse(_settings));
+    }
+  },
+  contentSettings: function () {
+    return $('<fieldset/>', {
+      id: 'Autofarm_settings',
+      style: 'float:left; width:472px;height: 270px;',
+    })
+      .append($('<legend/>').html(Autofarm.title))
+      .append(
+        FormBuilder.checkbox({
+          text: 'AutoStart AutoFarm.',
+          id: 'autofarm_autostart',
+          name: 'autofarm_autostart',
+          checked: Autofarm.settings.autostart,
+          disabled: !Autofarm.hasP,
         })
-    },
-    loadModules: function() {
-        Autobot['isLogged'] = true;
-        //Autobot['trial_time'] = _0xa6b2x1e['trial_time'];
-        //Autobot['premium_time'] = _0xa6b2x1e['premium_time'];
-        //Autobot['facebook_like'] = _0xa6b2x1e['facebook_like'];
-        //if (_0xa6b2x1e['assistant_settings'] != '') {
-        //    Assistant['setSettings'](_0xa6b2x1e['assistant_settings'])
-        //};
-        /*if (!_0xa6b2x1e['player_email']) {
-            Autobot['verifyEmail']()
-        };*/
-        //if (Autobot['trial_time'] - Timestamp['now']() >= 0 || Autobot['premium_time'] - Timestamp['now']() >= 0) {
-        if (typeof Autofarm == 'undefined' && typeof Autoculture == 'undefined' && typeof Autobuild == 'undefined' && typeof Autoattack == 'undefined') {
-            $['when']($['ajax']({
-                method: 'GET',
-                //data: Autobot['Account'],
-                url: Autobot['domain'] + 'Autofarm.js',
-                dataType: 'script'
-            }), $['ajax']({
-                method: 'GET',
-                //data: Autobot['Account'],
-                url: Autobot['domain'] + 'Autoculture.js',
-                dataType: 'script'
-            }), $['ajax']({
-                method: 'GET',
-                //data: Autobot['Account'],
-                url: Autobot['domain'] + 'Autobuild.js',
-                dataType: 'script'
-            }), $['ajax']({
-                method: 'GET',
-                //data: Autobot['Account'],
-                url: Autobot['domain'] + 'Autoattack.js',
-                dataType: 'script'
-            }), $.Deferred(function(_0xa6b2x1f) {
-                $(_0xa6b2x1f['resolve'])
-            }))['done'](function() {
-                ModuleManager['init']();
-                Autofarm['init']();
-                //Autofarm['setSettings'](_0xa6b2x1e['autofarm_settings']);
-                Autoculture['init']();
-                //Autoculture['setSettings'](_0xa6b2x1e['autoculture_settings']);
-                Autobuild['init']();
-                //Autobuild['setSettings'](_0xa6b2x1e['autobuild_settings']);
-                //Autobuild['setQueue'](_0xa6b2x1e['building_queue'], _0xa6b2x1e['units_queue'], _0xa6b2x1e['ships_queue']);
-                Autoattack['init']();
-                ModuleManager['checkAutostart']()
-            })
+      )
+      .append(function () {
+        var syvella = {
+          id: 'autofarm_method',
+          name: 'autofarm_method',
+          label: 'Farm method: ',
+          styles: 'width: 120px;',
+          value: Autofarm.settings.method,
+          options: [
+            { value: '613', name: '10 minute farm' },
+            { value: '1200', name: '20 minute farm' },
+            { value: '5400', name: '90 minute farm' },
+            { value: '14400', name: '240 minute farm' },
+          ],
+          disabled: false,
+        };
+        if (!Autofarm.hasP) {
+          syvella = $.extend(syvella, { disabled: true });
         }
-        /*} else {
-            if (typeof Autofarm == 'undefined') {
-                $['when']($['ajax']({
-                    method: 'GET',
-                    //data: Autobot['Account'],
-                    url: Autobot['domain'] + 'Autofarm.js',
-                    dataType: 'script'
-                }), $.Deferred(function(_0xa6b2x1f) {
-                    $(_0xa6b2x1f['resolve'])
-                }))['done'](function() {
-                    ModuleManager['init']();
-                    Autofarm['init']()
-                })
-            };
-            $('#Autoculture_onoff')['mousePopup'](new MousePopup(ModuleManager['requiredPrem']));
-            $('#Autobuild_onoff')['mousePopup'](new MousePopup(ModuleManager['requiredPrem']));
-            $('#Autoattack_onoff')['mousePopup'](new MousePopup(ModuleManager['requiredPrem']));
-            Autobot['createNotification']('getPremiumNotification', 'Unfortunately your premium membership is over. Please upgrade now!')
-        }*/
-    },
-    requiredPrem: DM['getl10n']('tooltips')['requirements']['replace']('.', '') + ' premium'
-}
+        var larenz = FormBuilder.selectBox(syvella);
+        if (!Autofarm.hasP) {
+          larenz.mousePopup(new MousePopup('Premium required'));
+        }
+        return larenz;
+      })
+      .append(function () {
+        var kicia = {
+          id: 'autofarm_bewteen',
+          name: 'autofarm_bewteen',
+          label: 'Time before next farm: ',
+          styles: 'width: 120px;',
+          value: Autofarm.settings.timebetween,
+          options: [
+            { value: '1', name: '1-2 seconds' },
+            { value: '3', name: '3-4 seconds' },
+            { value: '5', name: '5-6 seconds' },
+            { value: '7', name: '7-8 seconds' },
+            { value: '9', name: '9-10 seconds' },
+          ],
+        };
+        if (!Autofarm.hasP) {
+          kicia = $.extend(kicia, { disabled: true });
+        }
+        var halana = FormBuilder.selectBox(kicia);
+        if (!Autofarm.hasP) {
+          halana.mousePopup(new MousePopup('Premium required'));
+        }
+        return halana;
+      })
+      .append(
+        FormBuilder.checkbox({
+          text: 'Skip farm when warehouse is full.',
+          id: 'autofarm_warehousefull',
+          name: 'autofarm_warehousefull',
+          checked: Autofarm.settings.skipwhenfull,
+          disabled: !Autofarm.hasP,
+        })
+      )
+      .append(
+        FormBuilder.checkbox({
+          text: 'Lowest resources first with more towns on one island.',
+          id: 'autofarm_lowresfirst',
+          name: 'autofarm_lowresfirst',
+          checked: Autofarm.settings.lowresfirst,
+          disabled: !Autofarm.hasP,
+        })
+      )
+      .append(
+        FormBuilder.checkbox({
+          text: 'Stop loot farm until mood is below 80%.',
+          id: 'autofarm_loot',
+          name: 'autofarm_loot',
+          checked: Autofarm.settings.stoplootbelow,
+          disabled: !Autofarm.hasP,
+        })
+      )
+      .append(
+        FormBuilder.button({
+          name: DM.getl10n('notes').btn_save,
+          class: !Autofarm.hasP ? ' disabled' : '',
+          style: 'top: 62px;',
+        }).on('click', function () {
+          if (!Autofarm.hasP) {
+            return false;
+          }
+          var riaan = $('#Autofarm_settings').serializeObject();
+          Autofarm.settings.autostart = riaan.autofarm_autostart != undefined;
+          Autofarm.settings.method = parseInt(riaan.autofarm_method);
+          Autofarm.settings.timebetween = parseInt(riaan.autofarm_bewteen);
+          Autofarm.settings.skipwhenfull =
+            riaan.autofarm_warehousefull != undefined;
+          Autofarm.settings.lowresfirst =
+            riaan.autofarm_lowresfirst != undefined;
+          Autofarm.settings.stoplootbelow = riaan.autofarm_loot != undefined;
+          localStorage.setItem(
+            'Autofarm.Settings',
+            JSON.stringify(Autofarm.settings)
+          );
+          ConsoleLog.Log('Settings saved', 1);
+          HumanMessage.success('The settings were saved!');
+        })
+      );
+  },
+};
