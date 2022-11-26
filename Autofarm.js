@@ -3,13 +3,13 @@ Autofarm = {
     autostart: false,
     method: 300,
     timebetween: 1,
-    skipwhenfull: true,
+    skipWhenFull: true,
     lowresfirst: true,
     stoplootbelow: true,
   },
   title: 'Autofarm settings',
   town: null,
-  isPauzed: false,
+  isPaused: false,
   iTown: null,
   interval: null,
   isCaptain: false,
@@ -31,7 +31,7 @@ Autofarm = {
       darik.wood == darik.storage &&
       darik.stone == darik.storage &&
       darik.iron == darik.storage &&
-      Autofarm.settings.skipwhenfull
+      Autofarm.settings.skipWhenFull
     ) {
       return false;
     }
@@ -71,7 +71,7 @@ Autofarm = {
       autostart: false,
       method: 300,
       timebetween: 1,
-      skipwhenfull: true,
+      skipWhenFull: true,
       lowresfirst: true,
       stoplootbelow: true,
     };
@@ -490,7 +490,7 @@ Autofarm = {
           text: 'Skip farm when warehouse is full.',
           id: 'autofarm_warehousefull',
           name: 'autofarm_warehousefull',
-          checked: Autofarm.settings.skipwhenfull,
+          checked: Autofarm.settings.skipWhenFull,
           disabled: !Autofarm.hasP,
         })
       )
@@ -525,7 +525,7 @@ Autofarm = {
           Autofarm.settings.autostart = riaan.autofarm_autostart != undefined;
           Autofarm.settings.method = parseInt(riaan.autofarm_method);
           Autofarm.settings.timebetween = parseInt(riaan.autofarm_bewteen);
-          Autofarm.settings.skipwhenfull =
+          Autofarm.settings.skipWhenFull =
             riaan.autofarm_warehousefull != undefined;
           Autofarm.settings.lowresfirst =
             riaan.autofarm_lowresfirst != undefined;

@@ -3,21 +3,21 @@ Autofarm = {
     autostart: false,
     method: 300,
     timebetween: 1,
-    skipwhenfull: true,
+    skipWhenFull: true,
     lowresfirst: true,
     stoplootbelow: true,
   },
   title: 'Autofarm settings',
   town: null,
-  isPauzed: false,
+  isPaused: false,
   iTown: null,
   interval: null,
   isCaptain: false,
   hasP: true,
   shouldFarm: [],
   checkReady: function (tristun) {
-    var becklynn = ITowns.towns[tristun.id];
-    if (becklynn.hasConqueror()) {
+    var city = ITowns.towns[tristun.id];
+    if (city.hasConqueror()) {
       return false;
     }
     if (!Autofarm.checkEnabled()) {
@@ -26,12 +26,12 @@ Autofarm = {
     if (tristun.modules.Autofarm.isReadyTime >= Timestamp.now()) {
       return tristun.modules.Autofarm.isReadyTime;
     }
-    var darik = becklynn.resources();
+    var resources = city.resources();
     if (
-      darik.wood == darik.storage &&
-      darik.stone == darik.storage &&
-      darik.iron == darik.storage &&
-      Autofarm.settings.skipwhenfull
+      resources.wood == resources.storage &&
+      resources.stone == resources.storage &&
+      resources.iron == resources.storage &&
+      Autofarm.settings.skipWhenFull
     ) {
       return false;
     }
@@ -49,10 +49,10 @@ Autofarm = {
       if (tristun.relatedTowns.length > 0) {
         aaliyahrose = false;
         $.each(tristun.relatedTowns, function (courtnei, elaynah) {
-          var akiela = becklynn.resources();
+          var resources = city.resources();
           var demarque = ITowns.towns[elaynah].resources();
           if (
-            akiela.wood + akiela.stone + akiela.iron >
+            resources.wood + resources.stone + resources.iron >
             demarque.wood + demarque.stone + demarque.iron
           ) {
             aaliyahrose = true;
@@ -71,7 +71,7 @@ Autofarm = {
       autostart: false,
       method: 300,
       timebetween: 1,
-      skipwhenfull: true,
+      skipWhenFull: true,
       lowresfirst: true,
       stoplootbelow: true,
     };
@@ -120,23 +120,23 @@ Autofarm = {
     zikora();
   },
   initFarmTowns: function (io) {
-    DataExchanger.game_data(Autofarm.town.id, function (jalina) {
+    DataExchanger.game_data(Autofarm.town.id, function (data) {
       if (!Autofarm.checkEnabled()) {
         return false;
       }
-      var zavdiel = jalina.map.data.data.data;
+      var zavdiel = data.map.data.data.data;
       $.each(zavdiel, function (brook, flavis) {
-        var vivika = [];
-        $.each(flavis.towns, function (jalene, ojani) {
+        var farmTowns = [];
+        $.each(flavis.towns, function (jalene, town) {
           if (
-            ojani.x == Autofarm.iTown.getIslandCoordinateX() &&
-            ojani.y == Autofarm.iTown.getIslandCoordinateY() &&
-            ojani.relation_status == 1
+            town.x == Autofarm.iTown.getIslandCoordinateX() &&
+            town.y == Autofarm.iTown.getIslandCoordinateY() &&
+            town.relation_status == 1
           ) {
-            vivika.push(ojani);
+            farmTowns.push(town);
           }
         });
-        Autofarm.town.farmTowns = vivika;
+        Autofarm.town.farmTowns = farmTowns;
       });
       $.each(Autofarm.town.farmTowns, function (neetu, jazma) {
         var gorkem = jazma.loot - Timestamp.now();
@@ -255,15 +255,15 @@ Autofarm = {
       Autofarm.finished(syndia);
     }
   },
-  claimLoad: function (amandah, scarlett, milen) {
+  claimLoad: function (farmTownId, scarlett, milen) {
     if (!Game.features.battlepoint_villages) {
       DataExchanger.claim_load(
         Autofarm.town.id,
         scarlett,
         Autofarm.getMethodTime(Autofarm.town.id),
-        amandah,
+        farmTownId,
         function (yuen) {
-          Autofarm.claimLoadCallback(amandah, yuen);
+          Autofarm.claimLoadCallback(farmTownId, yuen);
           milen(yuen);
         }
       );
@@ -275,12 +275,11 @@ Autofarm = {
             'FarmTownPlayerRelation/' +
             MM.getOnlyCollectionByName(
               'FarmTownPlayerRelation'
-            ).getRelationForFarmTown(amandah).id,
+            ).getRelationForFarmTown(farmTownId).id,
           action_name: 'claim',
-          arguments: { farm_town_id: amandah, type: 'resources', option: 1 },
         },
         function (waukesha) {
-          Autofarm.claimLoadCallback(amandah, waukesha);
+          Autofarm.claimLoadCallback(farmTownId, waukesha);
           milen(waukesha);
         }
       );
@@ -490,7 +489,7 @@ Autofarm = {
           text: 'Skip farm when warehouse is full.',
           id: 'autofarm_warehousefull',
           name: 'autofarm_warehousefull',
-          checked: Autofarm.settings.skipwhenfull,
+          checked: Autofarm.settings.skipWhenFull,
           disabled: !Autofarm.hasP,
         })
       )
@@ -525,7 +524,7 @@ Autofarm = {
           Autofarm.settings.autostart = riaan.autofarm_autostart != undefined;
           Autofarm.settings.method = parseInt(riaan.autofarm_method);
           Autofarm.settings.timebetween = parseInt(riaan.autofarm_bewteen);
-          Autofarm.settings.skipwhenfull =
+          Autofarm.settings.skipWhenFull =
             riaan.autofarm_warehousefull != undefined;
           Autofarm.settings.lowresfirst =
             riaan.autofarm_lowresfirst != undefined;
