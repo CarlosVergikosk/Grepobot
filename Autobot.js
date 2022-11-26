@@ -1,8 +1,9 @@
 var Autobot = {
   title: 'Autobot',
-  version: '0.44',
+  version: '1',
   domain:
-    window.location.protocol + '//cdn.jsdelivr.net/gh/Robinatus/Grepobot@0.44/',
+    window.location.protocol +
+    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@master/',
   botWnd: '',
   isLogged: false,
   Account: {
@@ -385,10 +386,10 @@ var Autobot = {
     });
     return elah;
   };
-  var kaybri = setInterval(function () {
+  var initer = setInterval(function () {
     if (window != undefined) {
       if ($('.nui_main_menu').length && !$.isEmptyObject(ITowns.towns)) {
-        clearInterval(kaybri);
+        clearInterval(initer);
         Autobot.initWindow();
         Autobot.initMapTownFeature();
         $.when(
@@ -405,7 +406,7 @@ var Autobot = {
         });
       } else {
         if (/grepolis\.com\/start\?nosession/g.test(window.location.href)) {
-          clearInterval(kaybri);
+          clearInterval(initer);
           $.when(
             $.getScript(Autobot.domain + 'DataExchanger.js'),
             $.getScript(Autobot.domain + 'Redirect.js'),
