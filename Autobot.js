@@ -1,9 +1,9 @@
 var Autobot = {
   title: 'Autobot',
-  version: '1',
+  version: '0.13',
   domain:
     window.location.protocol +
-    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.12/',
+    `//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@${Autobot.version}/`,
   botWnd: '',
   isLogged: false,
   Account: {
@@ -392,6 +392,8 @@ var Autobot = {
         clearInterval(initer);
         Autobot.initWindow();
         Autobot.initMapTownFeature();
+        console.log('Autobot v' + Autobot.version + ' loaded');
+        console.log('Autobot domain' + Autobot.domain);
         $.when(
           $.getScript(Autobot.domain + 'DataExchanger.js'),
           $.getScript(Autobot.domain + 'ConsoleLog.js'),
