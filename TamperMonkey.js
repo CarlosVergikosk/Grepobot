@@ -15,11 +15,11 @@
   console.log('  location.src', location.protocol);
   script.src =
     location.protocol +
-    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@master/Autobot.js';
+    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Namazu@0.11/Autobot.js';
   console.log('  script.src', script.src);
   link.href =
     location.protocol +
-    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@master/Autobot.css';
+    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Namazu@0.11/Autobot.css';
   console.log('href', link.href);
   head.appendChild(script);
   head.appendChild(link);
