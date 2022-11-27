@@ -3,7 +3,7 @@ var Autobot = {
   version: '1',
   domain:
     window.location.protocol +
-    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Namazu@0.11/',
+    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.12/',
   botWnd: '',
   isLogged: false,
   Account: {
