@@ -1,9 +1,9 @@
 var Autobot = {
   title: 'Autobot',
-  version: '0.13',
+  version: '0.15',
   domain:
     window.location.protocol +
-    `//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@${this.version}/`,
+    `//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.15/`,
   botWnd: '',
   isLogged: false,
   Account: {
