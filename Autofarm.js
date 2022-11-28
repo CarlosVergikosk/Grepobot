@@ -521,21 +521,22 @@ Autofarm = {
           if (!Autofarm.hasP) {
             return false;
           }
-          var riaan = $('#Autofarm_settings').serializeObject();
-          Autofarm.settings.autostart = riaan.autofarm_autostart != undefined;
-          Autofarm.settings.method = parseInt(riaan.autofarm_method);
-          Autofarm.settings.timebetween = parseInt(riaan.autofarm_bewteen);
+          var settings = $('#Autofarm_settings').serializeObject();
+          Autofarm.settings.autostart =
+            settings.autofarm_autostart != undefined;
+          Autofarm.settings.method = parseInt(settings.autofarm_method);
+          Autofarm.settings.timebetween = parseInt(settings.autofarm_bewteen);
           Autofarm.settings.skipWhenFull =
-            riaan.autofarm_warehousefull != undefined;
+            settings.autofarm_warehousefull != undefined;
           Autofarm.settings.lowresfirst =
-            riaan.autofarm_lowresfirst != undefined;
-          Autofarm.settings.stoplootbelow = riaan.autofarm_loot != undefined;
+            settings.autofarm_lowresfirst != undefined;
+          Autofarm.settings.stoplootbelow = settings.autofarm_loot != undefined;
           localStorage.setItem(
             'Autofarm.Settings',
             JSON.stringify(Autofarm.settings)
           );
-          ConsoleLog.Log('Settings saved', 1);
-          HumanMessage.success('The settings were saved!');
+          ConsoleLog.Log('Settings settings', 1);
+          HumanMessage.success('The settings were settings!');
         })
       );
   },
