@@ -52,7 +52,7 @@ var Autobot = {
     _0xe20bx2['append'](
       $('<div/>', {
         '\x63\x6C\x61\x73\x73': 'menu_wrapper',
-        '\x73\x74\x79\x6C\x65': 'left: 78px; right: 14px',
+        '\x73\x74\x79\x6C\x65': 'right: 45px; top: 8px',
       })['append'](
         $('<ul/>', {
           '\x63\x6C\x61\x73\x73': 'menu_inner',

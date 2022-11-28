@@ -203,7 +203,7 @@ ModuleManager = {
    * Put the "Start Autobot" text into the timer window
    */
   initTimer: function () {
-    $('.nui_main_menu').css('top', '308px');
+    $('.nui_main_menu').css('top', '274px');
     $('#time_autobot')
       .append(
         FormBuilder.timerBoxSmall({
