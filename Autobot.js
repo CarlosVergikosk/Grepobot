@@ -40,10 +40,7 @@ var Autobot = {
 
     Autobot.botWnd = Layout.dialogWindow.open(
       '',
-      Autobot.title +
-        ' v<span style="font-size: 10px;">' +
-        Autobot.version +
-        '</span>',
+      Autobot.title,
       500,
       350,
       '',
