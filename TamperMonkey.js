@@ -14,10 +14,10 @@
   link.rel = 'stylesheet';
   script.src =
     location.protocol +
-    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.12/Autobot.js';
+    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.16/Autobot.js';
   link.href =
     location.protocol +
-    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.12/Autobot.css';
+    '//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.16/Autobot.css';
   head.appendChild(script);
   head.appendChild(link);
   head.setAttribute('xhttps', 1);

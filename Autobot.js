@@ -3,7 +3,7 @@ var Autobot = {
   version: '0.15',
   domain:
     window.location.protocol +
-    `//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.15/`,
+    `//cdn.jsdelivr.net/gh/CarlosVergikosk/Grepobot@0.16/`,
   botWnd: '',
   isLogged: false,
   Account: {
@@ -23,6 +23,7 @@ var Autobot = {
     Assistant.init();
   },
   loadModules: function () {
+    console.log('ModuleManager', ModuleManager);
     ModuleManager.loadModules();
   },
   initWnd: function () {
@@ -392,16 +393,15 @@ var Autobot = {
         clearInterval(initer);
         Autobot.initWindow();
         Autobot.initMapTownFeature();
-        console.log('Autobot v' + Autobot.version + ' loaded');
-        console.log('Autobot domain' + Autobot.domain);
+        console.log('Autobot v ' + Autobot.version + ' loaded');
         $.when(
           $.getScript(Autobot.domain + 'DataExchanger.js'),
           $.getScript(Autobot.domain + 'ConsoleLog.js'),
           $.getScript(Autobot.domain + 'FormBuilder.js'),
           $.getScript(Autobot.domain + 'ModuleManager.js'),
           $.getScript(Autobot.domain + 'Assistant.js'),
-          $.Deferred(function (brixley) {
-            $(brixley.resolve);
+          $.Deferred(function (promise) {
+            $(promise.resolve);
           })
         ).done(function () {
           Autobot.init();
