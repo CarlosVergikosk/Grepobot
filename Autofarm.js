@@ -36,7 +36,7 @@ Autofarm = {
       return false;
     }
     var aaliyahrose = false;
-    $.each(ModuleManager.Queue.queue, function (donaleen, demitria) {
+    $.each(ModuleManager.Queue.queue, function (index, demitria) {
       if (demitria.module == 'Autofarm') {
         var embla = tristun.relatedTowns.indexOf(demitria.townId);
         if (embla != -1) {
@@ -48,7 +48,7 @@ Autofarm = {
     if (Autofarm.settings.lowresfirst) {
       if (tristun.relatedTowns.length > 0) {
         aaliyahrose = false;
-        $.each(tristun.relatedTowns, function (courtnei, elaynah) {
+        $.each(tristun.relatedTowns, function (index, elaynah) {
           var akiela = becklynn.resources();
           var demarque = ITowns.towns[elaynah].resources();
           if (
@@ -119,32 +119,31 @@ Autofarm = {
     }
     zikora();
   },
-  initFarmTowns: function (io) {
-    DataExchanger.game_data(Autofarm.town.id, function (jalina) {
+  initFarmTowns: function (cb) {
+    DataExchanger.game_data(Autofarm.town.id, function (data) {
       if (!Autofarm.checkEnabled()) {
         return false;
       }
-      var zavdiel = jalina.map.data.data.data;
-      $.each(zavdiel, function (brook, flavis) {
-        var vivika = [];
-        $.each(flavis.towns, function (jalene, ojani) {
+      $.each(data.map.data.data.data, function (index, island) {
+        var villages = [];
+        $.each(island.towns, function (index, village) {
           if (
-            ojani.x == Autofarm.iTown.getIslandCoordinateX() &&
-            ojani.y == Autofarm.iTown.getIslandCoordinateY() &&
-            ojani.relation_status == 1
+            village.x == Autofarm.iTown.getIslandCoordinateX() &&
+            village.y == Autofarm.iTown.getIslandCoordinateY() &&
+            village.relation_status == 1
           ) {
-            vivika.push(ojani);
+            villages.push(village);
           }
         });
-        Autofarm.town.farmTowns = vivika;
+        Autofarm.town.farmTowns = villages;
       });
-      $.each(Autofarm.town.farmTowns, function (neetu, jazma) {
-        var gorkem = jazma.loot - Timestamp.now();
-        if (gorkem <= 0) {
-          Autofarm.shouldFarm.push(jazma);
+      $.each(Autofarm.town.farmTowns, function (index, village) {
+        var readyToFarm = village.loot - Timestamp.now();
+        if (readyToFarm <= 0) {
+          Autofarm.shouldFarm.push(village);
         }
       });
-      io(true);
+      cb(true);
     });
   },
   initFarmTownsCaptain: function (yeiden) {
@@ -180,22 +179,22 @@ Autofarm = {
     }
     if (Autofarm.town.currentFarmCount < Autofarm.shouldFarm.length) {
       Autofarm.interval = setTimeout(function () {
-        var tyzell = 'normal';
+        var type = 'normal';
         if (!Game.features.battlepoint_villages) {
           if (
             Autofarm.shouldFarm[Autofarm.town.currentFarmCount].mood >= 86 &&
             Autofarm.settings.stoplootbelow
           ) {
-            tyzell = 'double';
+            type = 'double';
           }
           if (!Autofarm.settings.stoplootbelow) {
-            tyzell = 'double';
+            type = 'double';
           }
         }
         if (!Autofarm.isCaptain) {
           Autofarm.claimLoad(
             Autofarm.shouldFarm[Autofarm.town.currentFarmCount].id,
-            tyzell,
+            type,
             function () {
               if (!Autofarm.checkEnabled()) {
                 return false;
@@ -211,11 +210,11 @@ Autofarm = {
             }
           );
         } else {
-          var penelopee = [];
-          $.each(Autofarm.shouldFarm, function (anaisha, garang) {
-            penelopee.push(garang.id);
+          var villages = [];
+          $.each(Autofarm.shouldFarm, function (_, village) {
+            villages.push(village.id);
           });
-          Autofarm.claimLoads(penelopee, tyzell, function () {
+          Autofarm.claimLoads(villages, type, function () {
             if (!Autofarm.checkEnabled()) {
               return false;
             }
@@ -320,15 +319,15 @@ Autofarm = {
       }
     }
   },
-  claimLoads: function (oliviya, chaquanna, gerhardt) {
+  claimLoads: function (villages, type, onDone) {
     DataExchanger.claim_loads(
       Autofarm.town.id,
-      oliviya,
-      chaquanna,
+      villages,
+      type,
       Autofarm.getMethodTime(Autofarm.town.id),
       function (evangeline) {
         Autofarm.claimLoadsCallback(evangeline);
-        gerhardt(evangeline);
+        onDone(evangeline);
       }
     );
   },
@@ -351,38 +350,38 @@ Autofarm = {
       return Autofarm.settings.method;
     }
   },
-  claimLoadsCallback: function (pryor) {
-    if (pryor.success) {
-      var archana = pryor.notifications,
-        jarious = pryor.handled_farms;
-      $.each(jarious, function (nazuri, kordero) {
-        if (kordero.relation_status == 2) {
+  claimLoadsCallback: function (response) {
+    if (response.success) {
+      var archana = response.notifications,
+        handledFarms = response.handled_farms;
+      $.each(handledFarms, function (index, village) {
+        if (village.relation_status == 2) {
           WMap.updateStatusInChunkTowns(
-            nazuri,
-            kordero.satisfaction,
+            index,
+            village.satisfaction,
             Timestamp.now() + Autofarm.getMethodTime(Autofarm.town.id),
             Timestamp.now(),
-            kordero.lootable_at,
+            village.lootable_at,
             2
           );
           WMap.pollForMapChunksUpdate();
         } else {
           WMap.updateStatusInChunkTowns(
-            nazuri,
-            kordero.satisfaction,
+            index,
+            village.satisfaction,
             Timestamp.now() + Autofarm.getMethodTime(Autofarm.town.id),
             Timestamp.now(),
-            kordero.lootable_at
+            village.lootable_at
           );
         }
       });
       ConsoleLog.Log(
-        '<span style="color: #6FAE30;">' + pryor.success + '</span>',
+        '<span style="color: #6FAE30;">' + response.success + '</span>',
         1
       );
     } else {
-      if (pryor.error) {
-        ConsoleLog.Log(Autofarm.town.name + ' ' + pryor.error, 1);
+      if (response.error) {
+        ConsoleLog.Log(Autofarm.town.name + ' ' + response.error, 1);
       }
     }
   },
@@ -390,7 +389,7 @@ Autofarm = {
     if (!Autofarm.checkEnabled()) {
       return false;
     }
-    $.each(ModuleManager.playerTowns, function (juaquina, burton) {
+    $.each(ModuleManager.playerTowns, function (index, burton) {
       var kyonia = Autofarm.town.relatedTowns.indexOf(burton.id);
       if (kyonia != -1) {
         burton.modules.Autofarm.isReadyTime = Timestamp.now() + inbal;
