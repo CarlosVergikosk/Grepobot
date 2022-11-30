@@ -437,13 +437,14 @@ Autofarm = {
         })
       )
       .append(function () {
-        var syvella = {
+        var config = {
           id: 'autofarm_method',
           name: 'autofarm_method',
           label: 'Farm method: ',
           styles: 'width: 120px;',
           value: Autofarm.settings.method,
           options: [
+            { value: '300', name: '5 minute farm' },
             { value: '613', name: '10 minute farm' },
             { value: '1200', name: '20 minute farm' },
             { value: '5400', name: '90 minute farm' },
@@ -452,9 +453,9 @@ Autofarm = {
           disabled: false,
         };
         if (!Autofarm.hasP) {
-          syvella = $.extend(syvella, { disabled: true });
+          config = $.extend(config, { disabled: true });
         }
-        var larenz = FormBuilder.selectBox(syvella);
+        var larenz = FormBuilder.selectBox(config);
         if (!Autofarm.hasP) {
           larenz.mousePopup(new MousePopup('Premium required'));
         }
